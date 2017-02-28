@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by LinnykOleh on 2/8/17.
+ * @author LinnykOleh
  */
 public class FizzBuzz {
 

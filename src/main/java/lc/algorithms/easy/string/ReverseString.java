@@ -1,7 +1,7 @@
 package lc.algorithms.easy.string;
 
 /**
- * Created by LinnykOleh on 2/8/17.
+ * @author LinnykOleh
  */
 public class ReverseString {
 

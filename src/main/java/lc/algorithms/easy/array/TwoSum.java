@@ -1,7 +1,7 @@
 package lc.algorithms.easy.array;
 
 /**
- * Created by LinnykOleh on 16.01.17.
+ * @author LinnykOleh
  */
 public class TwoSum {
 
