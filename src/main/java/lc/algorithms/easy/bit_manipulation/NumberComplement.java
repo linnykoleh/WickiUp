@@ -1,7 +1,7 @@
 package lc.algorithms.easy.bit_manipulation;
 
 /**
- * Created by LinnikOleg on 2/8/17.
+ * Created by LinnykOleh on 2/8/17.
  */
 public class NumberComplement {
 

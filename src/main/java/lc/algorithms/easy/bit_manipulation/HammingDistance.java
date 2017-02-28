@@ -1,7 +1,7 @@
 package lc.algorithms.easy.bit_manipulation;
 
 /**
- * Created by LinnikOleg on 08.02.17.
+ * Created by LinnykOleh on 08.02.17.
  */
 public class HammingDistance {
 
