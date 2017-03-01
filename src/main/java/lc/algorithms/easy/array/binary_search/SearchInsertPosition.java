@@ -18,7 +18,7 @@ public class SearchInsertPosition {
 	 *
 	 *
 	 * @param nums   input array
-	 * @param target which elemetn find id
+	 * @param target which element find id
 	 * @return       id of target
 	 */
 	public int searchInsert(int[] nums, int target) {
