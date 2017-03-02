@@ -23,7 +23,7 @@
 
 ***
 
-**Двоичный поиск (бинарный поиск)**
+**Двоичный поиск (бинарный поиск) O(log N)**
 ```java
 public int find(long searchKey){
     int lowerBound = 0;
