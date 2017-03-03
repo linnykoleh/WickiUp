@@ -12,7 +12,7 @@ public class RotateArray {
 	 * @param nums arrays to rotate
 	 * @param k     from which index
 	 */
-	public void rotate_MySolution(int[] nums, int k) {
+	public void rotate(int[] nums, int k) {
 		int [] numsRes = new int[nums.length];
 
 		if(k >= 0 && nums.length >= k){

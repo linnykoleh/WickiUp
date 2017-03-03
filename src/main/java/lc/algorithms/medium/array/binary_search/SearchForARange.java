@@ -20,7 +20,7 @@ public class SearchForARange {
 	 * @param target value to find
 	 * @return       array with positions
 	 */
-	public int[] searchRange_MyLinearImplementation(int[] nums, int target) {
+	public int[] searchRange_LinearImplementation(int[] nums, int target) {
 		int[] result = {-1, -1};
 		int count = 0;
 
