@@ -12,23 +12,20 @@ public class FindTheDuplicateNumber {
 
         while(searchingIndex < nums.length){
             searchingValue = nums[searchingIndex];
-            boolean result = findDuplicate(nums, searchingValue, searchingIndex);
-            if(result){
+            if(findDuplicate(nums, searchingValue, searchingIndex))
                 return searchingValue;
-            }else{
+            else
                 searchingIndex++;
-            }
         }
         return -1;
     }
 
-    public boolean findDuplicate(int[] nums, int value, int leftIndex){
+    private boolean findDuplicate(int[] nums, int value, int leftIndex){
         int left = leftIndex + 1;
         int right = nums.length - 1;
         int mid;
 
-
-        while(left < right){
+        while(left <= right){
             mid = (left + right) / 2;
             int midValue = nums[mid];
             if(value == midValue){
@@ -42,5 +39,13 @@ public class FindTheDuplicateNumber {
             }
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new FindTheDuplicateNumber().findDuplicate(new int[]{1, 2, 3, 4, 5, 6, 7, 7, 8, 9}));
+
+        System.out.println(new FindTheDuplicateNumber().findDuplicate(new int[]{1, 1, 1, 2, 3, 4, 5, 8, 11}));
+
+        System.out.println(new FindTheDuplicateNumber().findDuplicate(new int[]{1, 2, 3, 4, 5, 8, 11, 11}));
     }
 }
