@@ -52,7 +52,6 @@ public class FindTheDuplicateNumber {
 
 class FindTheDuplicateNumber_Best{
 
-
     public int findDuplicate(int[] nums) {
         int n = nums.length;
         int slow = n;
@@ -72,6 +71,7 @@ class FindTheDuplicateNumber_Best{
 
     public static void main(String[] args) {
         System.out.println(new FindTheDuplicateNumber_Best().findDuplicate(new int[] {2, 5, 1, 1, 4, 3}));
+        System.out.println(new FindTheDuplicateNumber_Best().findDuplicate(new int[] {3, 3, 4, 1, 2, 5}));
     }
 
 }
