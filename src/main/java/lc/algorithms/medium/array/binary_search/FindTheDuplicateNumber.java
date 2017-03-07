@@ -5,7 +5,20 @@ package lc.algorithms.medium.array.binary_search;
  */
 public class FindTheDuplicateNumber {
 
-    public int findDuplicate(int[] nums) {
+    /**
+     * Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive),
+     * prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
+     *
+     * Note:
+     *     - You must not modify the array (assume the array is read only).
+     *     - You must use only constant, O(1) extra space.
+     *     - Your runtime complexity should be less than O(n2).
+     *     - There is only one duplicate number in the array, but it could be repeated more than once.
+     *
+     * @param nums given array
+     * @return    duplicated number
+     */
+    public int findDuplicate_ForSortedArray(int[] nums) {
 
         int searchingIndex = 0;
         int searchingValue;
@@ -42,17 +55,17 @@ public class FindTheDuplicateNumber {
     }
 
     public static void main(String[] args) {
-        System.out.println(new FindTheDuplicateNumber().findDuplicate(new int[]{1, 2, 3, 4, 5, 6, 7, 7, 8, 9}));
+        System.out.println(new FindTheDuplicateNumber().findDuplicate_ForSortedArray(new int[]{1, 2, 3, 4, 5, 6, 7, 7, 8, 9}));
 
-        System.out.println(new FindTheDuplicateNumber().findDuplicate(new int[]{1, 1, 1, 2, 3, 4, 5, 8, 11}));
+        System.out.println(new FindTheDuplicateNumber().findDuplicate_ForSortedArray(new int[]{1, 1, 1, 2, 3, 4, 5, 8, 11}));
 
-        System.out.println(new FindTheDuplicateNumber().findDuplicate(new int[]{1, 2, 3, 4, 5, 8, 11, 11}));
+        System.out.println(new FindTheDuplicateNumber().findDuplicate_ForSortedArray(new int[]{1, 2, 3, 4, 5, 8, 11, 11}));
     }
 }
 
 class FindTheDuplicateNumber_Best{
 
-    public int findDuplicate(int[] nums) {
+    public int findDuplicate_ForNonSortedArray(int[] nums) {
         int n = nums.length;
         int slow = n;
         int fast = n;
@@ -70,8 +83,9 @@ class FindTheDuplicateNumber_Best{
     }
 
     public static void main(String[] args) {
-        System.out.println(new FindTheDuplicateNumber_Best().findDuplicate(new int[] {2, 5, 1, 1, 4, 3}));
-        System.out.println(new FindTheDuplicateNumber_Best().findDuplicate(new int[] {3, 3, 4, 1, 2, 5}));
+        System.out.println(new FindTheDuplicateNumber_Best().findDuplicate_ForNonSortedArray(new int[] {2, 5, 1, 1, 4, 3}));
+        System.out.println(new FindTheDuplicateNumber_Best().findDuplicate_ForNonSortedArray(new int[] {3, 3, 4, 1, 2, 5}));
+        System.out.println(new FindTheDuplicateNumber_Best().findDuplicate_ForNonSortedArray(new int[] {7, 6, 6, 2, 3, 4, 5, 1}));
     }
 
 }
