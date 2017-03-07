@@ -128,7 +128,7 @@ public class Search2DMatrix {
     }
 }
 
-class Search2DMatrix_BestImplementation{
+class Search2DMatrix_Best {
 
     public boolean searchMatrix(int[][] matrix, int target) {
 
@@ -151,50 +151,50 @@ class Search2DMatrix_BestImplementation{
     }
 
     public static void main(String[] args) {
-        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+        System.out.println(new Search2DMatrix_Best().searchMatrix(
                 new int[][]{
                         new int[]{ 1, 3, 5, 7},
                         new int[]{10,11,16,20},
                         new int[]{23,30,34,50}},
                 34));
 
-        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+        System.out.println(new Search2DMatrix_Best().searchMatrix(
                 new int[][]{
                         new int[]{1}},
                 1));
 
-        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+        System.out.println(new Search2DMatrix_Best().searchMatrix(
                 new int[][]{
                         new int[]{}},
                 1));
 
-        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+        System.out.println(new Search2DMatrix_Best().searchMatrix(
                 new int[][]{
                         new int[]{1}},
                 0));
 
-        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+        System.out.println(new Search2DMatrix_Best().searchMatrix(
                 new int[][]{
                         new int[]{1,1}},
                 0));
 
-        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+        System.out.println(new Search2DMatrix_Best().searchMatrix(
                 new int[][]{
                         new int[]{1},
                         new int[]{3}},
                 3));
 
-        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+        System.out.println(new Search2DMatrix_Best().searchMatrix(
                 new int[][]{
                         new int[]{1, 3, 5}},
                 1));
 
-        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+        System.out.println(new Search2DMatrix_Best().searchMatrix(
                 new int[][]{
                         new int[]{1, 1}},
                 2));
 
-        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+        System.out.println(new Search2DMatrix_Best().searchMatrix(
                 new int[][]{
                         new int[]{1, 1},
                         new int[]{2, 2}},
