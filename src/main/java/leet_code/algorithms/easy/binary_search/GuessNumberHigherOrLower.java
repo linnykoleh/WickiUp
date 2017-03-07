@@ -1,4 +1,4 @@
-package lc.algorithms.easy.binary_search;
+package leet_code.algorithms.easy.binary_search;
 
 /**
  * @author LinnykOleh

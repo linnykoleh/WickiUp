@@ -1,4 +1,4 @@
-package lc.algorithms.easy.bit_manipulation;
+package leet_code.algorithms.easy.bit_manipulation;
 
 /**
  * @author LinnykOleh

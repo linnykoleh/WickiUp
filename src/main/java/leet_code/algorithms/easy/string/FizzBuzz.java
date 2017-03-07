@@ -1,4 +1,4 @@
-package lc.algorithms.easy.string;
+package leet_code.algorithms.easy.string;
 
 import java.util.ArrayList;
 import java.util.List;
