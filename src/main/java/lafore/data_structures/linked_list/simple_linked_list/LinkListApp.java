@@ -1,4 +1,4 @@
-package lafore.data_structures.linked_list;
+package lafore.data_structures.linked_list.simple_linked_list;
 
 /**
  * @author LinnykOleh
@@ -20,6 +20,13 @@ public class LinkListApp {
 
 		linkList.deleteFirst();
 		linkList.deleteFirst();
+
+		linkList.displayLinkList();
+
+		final Link link = linkList.find(2);
+		link.displayDataInfo();
+
+		linkList.delete(2);
 
 		linkList.displayLinkList();
 	}

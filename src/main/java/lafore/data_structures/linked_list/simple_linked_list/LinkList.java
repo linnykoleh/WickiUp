@@ -1,4 +1,4 @@
-package lafore.data_structures.linked_list;
+package lafore.data_structures.linked_list.simple_linked_list;
 
 /**
  * Класс LinkList содержит всего один элемент данных: ссылку на первый элемент списка. Ссылка хранится в поле с именем first. Это единственная информация
@@ -32,11 +32,45 @@ public class LinkList {
 		return deletedFirst;
 	}
 
+	public Link find(int iData){
+		Link current = first;
+		if(!isEmpty()){
+			while (current != null){
+				if(current.iData == iData){
+					return current;
+				}else{
+					current = current.next;
+				}
+			}
+			return null;
+		}
+		return current;
+	}
+
+	public Link delete(int iData){
+		Link current = first;
+		Link previous = first;
+
+		while(current.iData != iData) {
+			if(current.next == null)
+				return null;
+			else {
+				previous = current;
+				current = current.next;
+			}
+		}
+		if(current == first)
+			first = first.next;
+		else
+			previous.next = current.next;
+		return current;
+	}
+
 	public void displayLinkList(){
-		Link link = first;
-		while (link!= null){
-			link.displayDataInfo();
-			link = link.next;
+		Link current = first;
+		while (current!= null){
+			current.displayDataInfo();
+			current = current.next;
 		}
 		System.out.println("");
 	}
