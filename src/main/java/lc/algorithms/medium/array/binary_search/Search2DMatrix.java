@@ -46,8 +46,8 @@ public class Search2DMatrix {
             if(midValue == target){
                 return true;
             }
-            if(mid > target){
-                right = mid;
+            if(midValue > target){
+                right = mid - 1;
             }else{
                 left = mid + 1;
             }
@@ -64,9 +64,13 @@ public class Search2DMatrix {
             mid = left + ((right - left) / 2);
             int midRowFirstValue = matrix[mid][0];
             if(midRowFirstValue <= target){
+                if(midRowFirstValue < target && matrix[mid].length == 1){
+                    left = mid + 1;
+                    continue;
+                }
                 return mid;
             }else{
-                right = mid;
+                right = mid - 1;
             }
         }
         return -1;
@@ -94,5 +98,107 @@ public class Search2DMatrix {
                 new int[][]{
                         new int[]{1}},
                 0));
+
+        System.out.println(new Search2DMatrix().searchMatrix(
+                new int[][]{
+                        new int[]{1,1}},
+                0));
+
+        System.out.println(new Search2DMatrix().searchMatrix(
+                new int[][]{
+                        new int[]{1},
+                        new int[]{3}},
+                3));
+
+        System.out.println(new Search2DMatrix().searchMatrix(
+                new int[][]{
+                        new int[]{1, 3, 5}},
+                1));
+
+        System.out.println(new Search2DMatrix().searchMatrix(
+                new int[][]{
+                        new int[]{1, 1}},
+                2));
+
+        System.out.println(new Search2DMatrix().searchMatrix(
+                new int[][]{
+                        new int[]{1, 1},
+                        new int[]{2, 2}},
+                2));
     }
+}
+
+class Search2DMatrix_BestImplementation{
+
+    public boolean searchMatrix(int[][] matrix, int target) {
+
+        if(matrix.length > 0 && matrix[0].length > 0) {
+            int row = 0;
+            int column = matrix[0].length - 1;
+
+            while (row < matrix.length && column >= 0) {
+                if (matrix[row][column] == target) {
+                    return true;
+                } else if (matrix[row][column] > target) {
+                    column--;
+                } else {
+                    row++;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+                new int[][]{
+                        new int[]{ 1, 3, 5, 7},
+                        new int[]{10,11,16,20},
+                        new int[]{23,30,34,50}},
+                34));
+
+        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+                new int[][]{
+                        new int[]{1}},
+                1));
+
+        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+                new int[][]{
+                        new int[]{}},
+                1));
+
+        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+                new int[][]{
+                        new int[]{1}},
+                0));
+
+        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+                new int[][]{
+                        new int[]{1,1}},
+                0));
+
+        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+                new int[][]{
+                        new int[]{1},
+                        new int[]{3}},
+                3));
+
+        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+                new int[][]{
+                        new int[]{1, 3, 5}},
+                1));
+
+        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+                new int[][]{
+                        new int[]{1, 1}},
+                2));
+
+        System.out.println(new Search2DMatrix_BestImplementation().searchMatrix(
+                new int[][]{
+                        new int[]{1, 1},
+                        new int[]{2, 2}},
+                2));
+    }
+
 }
