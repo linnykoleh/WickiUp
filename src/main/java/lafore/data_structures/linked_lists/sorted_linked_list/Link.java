@@ -1,4 +1,4 @@
-package lafore.data_structures.linked_list.sorted_linked_list;
+package lafore.data_structures.linked_lists.sorted_linked_list;
 
 /**
  * @author LinnykOleh

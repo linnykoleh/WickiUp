@@ -4,4 +4,4 @@
 
 [Arrays](src/main/resources/arrays/arrays.md)
 
-[Linked list](src/main/resources/linked_list/linked_list.md)
+[Linked lists](src/main/resources/linked_lists/linked_lists.md)

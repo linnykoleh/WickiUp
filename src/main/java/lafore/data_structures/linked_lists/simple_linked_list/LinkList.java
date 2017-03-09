@@ -1,4 +1,4 @@
-package lafore.data_structures.linked_list.simple_linked_list;
+package lafore.data_structures.linked_lists.simple_linked_list;
 
 /**
  * Класс LinkList содержит всего один элемент данных: ссылку на первый элемент списка. Ссылка хранится в поле с именем first. Это единственная информация
