@@ -1,4 +1,4 @@
-package lafore.data_structures.linked_list.two_sided_list;
+package lafore.data_structures.linked_list.two_sided_linked_list;
 
 
 /**
