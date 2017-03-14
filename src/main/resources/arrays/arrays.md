@@ -122,3 +122,5 @@ T = log(N).
   
   
   ![alt text](images/сложность_выполнения_операции.png)
+  
+  ![alt text](images/order_of_growth.png)
