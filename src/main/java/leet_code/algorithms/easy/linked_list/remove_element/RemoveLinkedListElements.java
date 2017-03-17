@@ -1,4 +1,4 @@
-package leet_code.algorithms.easy.linked_list;
+package leet_code.algorithms.easy.linked_list.remove_element;
 
 /**
  * @author LinnykOleh
@@ -48,5 +48,15 @@ public class RemoveLinkedListElements {
         }
         return fake.next;
 
+    }
+}
+
+class ListNode {
+
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
     }
 }

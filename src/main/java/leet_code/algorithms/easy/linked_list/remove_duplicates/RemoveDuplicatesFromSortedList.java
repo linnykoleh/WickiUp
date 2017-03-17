@@ -1,4 +1,4 @@
-package leet_code.algorithms.easy.linked_list;
+package leet_code.algorithms.easy.linked_list.remove_duplicates;
 
 /**
  * @author LinnykOleh
