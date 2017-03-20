@@ -38,24 +38,24 @@ public class ReverseLinkedList {
 	 * 		1 ≤ m ≤ n ≤ length of list.
 	 *
 	 *
-	 * @param head
-	 * @param m
-	 * @param n
-	 * @return
+	 * @param head head of linked list
+	 * @param m start reverse position
+	 * @param n end reverse position
+	 * @return   head of linked list
 	 */
 	public static ListNode reverseBetween(ListNode head, int m, int n) {
 		if(head == null) return null;
 		ListNode dummy = new ListNode(0);
 		dummy.next = head;
 		ListNode pre = dummy;
-		for(int i = 0; i<m-1; i++){
+		for(int i = 0; i < m-1; i++){
 			pre = pre.next;
 		}
 
 		ListNode start = pre.next;
 		ListNode then = start.next;
 
-		for(int i=0; i<n-m; i++){
+		for(int i = 0; i < n-m; i++){
 			start.next = then.next;
 			then.next = pre.next;
 			pre.next = then;
