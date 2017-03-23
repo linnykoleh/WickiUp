@@ -9,17 +9,30 @@ public class RemoveDuplicatesFromSortedListII {
 		ListNode _1 = new ListNode(1);
 		ListNode _2 = new ListNode(1);
 		ListNode _3 = new ListNode(1);
-		ListNode _4 = new ListNode(4);
-		ListNode _5 = new ListNode(5);
-		ListNode _6 = new ListNode(6);
+		ListNode _4 = new ListNode(2);
+		ListNode _5 = new ListNode(3);
+		ListNode _6 = new ListNode(4);
+		ListNode _7 = new ListNode(4);
+		ListNode _8 = new ListNode(4);
 
-		_1.next = _2;_2.next = _3;_3.next = _4;_4.next = _5;_5.next = _6;_6.next = null;
+		_1.next = _2;_2.next = _3;_3.next = _4;_4.next = _5;_5.next = _6;_6.next = _7;_7.next = _8;_8.next = null;
+
 
 		System.out.println(_1);
+		/*
+		 * Before:
+		 *
+		 *|1| -> |1| -> |1| -> |2| -> |3| -> |4| -> |4| -> |4| -> null
+		 * */
 
-		deleteDuplicates(_1);
+		_1 = deleteDuplicates(_1);
 
 		System.out.println(_1);
+		/*
+		 * After:
+		 *
+		 *|2| -> |3| -> null
+		 * */
 
 	}
 
@@ -34,23 +47,23 @@ public class RemoveDuplicatesFromSortedListII {
 	 * @return    head of LinkedList where removed duplicates
 	 */
 	public static ListNode deleteDuplicates(ListNode head) {
-		if(head==null) return null;
+		if(head == null) return null;
 
-		ListNode fake=new ListNode(-1);
-		fake.next=head;
+		ListNode fake = new ListNode(-1);
+		fake.next = head;
 
-		ListNode pre=fake;
-		ListNode cur=head;
+		ListNode pre = fake;
+		ListNode cur = head;
 		while(cur != null){
 			while(cur.next != null && cur.val == cur.next.val){
-				cur=cur.next;
+				cur = cur.next;
 			}
-			if(pre.next==cur){
-				pre=pre.next;
+			if(pre.next == cur){
+				pre = pre.next;
 			}else{
-				pre.next=cur.next;
+				pre.next = cur.next;
 			}
-			cur=cur.next;
+			cur = cur.next;
 		}
 		return fake.next;
 	}
