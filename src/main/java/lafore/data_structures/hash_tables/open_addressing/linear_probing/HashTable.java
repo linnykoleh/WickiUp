@@ -55,4 +55,16 @@ public class HashTable {
 		}
 		return null;
 	}
+
+	public DataItem find(int key){
+		int hashVal = hashFunc(key);
+		while(hashArray[hashVal] != null){ // Пока не будет найдена пустая ячейка
+			if(hashArray[hashVal].getKey() == key){
+				return hashArray[hashVal];
+			}
+			++hashVal;
+			hashVal %= arraySize; // При достижении конца таблицы происходит возврат к началу
+		}
+		return null;
+	}
 }
