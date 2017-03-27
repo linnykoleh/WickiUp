@@ -1,9 +1,11 @@
 ## Hash Tables
 
- - How to run **Hash** applet:
+ - How to run **Hash table** applets:
     
       ```
       appletviewer http://cs.brynmawr.edu/Courses/cs206/spring2004/WorkshopApplets/Chap11/Hash/Hash.html
+      appletviewer  http://cs.brynmawr.edu/Courses/cs206/spring2004/WorkshopApplets/Chap11/HashDouble/HashDouble.html
+      appletviewer http://cs.brynmawr.edu/Courses/cs206/spring2004/WorkshopApplets/Chap11/HashChain/HashChain.html
       ```
 
 - Хеш-таблицей называется структура данных, обеспечивающая очень быструю вставку и поиск.
@@ -82,3 +84,11 @@ private int hashFunc2(int key){
 последовательность проб рано или поздно проверит каждую ячейку.
 
 В общем случае при использовании открытой адресации предпочтение следует отдавать `двойному хешированию`.
+
+<h3>Метод цепочек</h3>
+
+Другое возможное решение основано на ведении отдельного связанного списка по каждому индексу в хеш-таблице.
+Ключ элемента данных хешируется в индекс обычным способом, а полученный элемент вставляется в связанный
+список по этому индексу. Другие элементы, хешируемые в тот же индекс, просто добавляются в связанный список;
+
+![alt text](images/hash_table.png)
