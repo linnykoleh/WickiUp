@@ -1,6 +1,5 @@
 package lafore.data_structures.hash_tables.hash_map;
 
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -34,16 +33,10 @@ public class Node<K, V> {
 		return Objects.hashCode(key) ^ Objects.hashCode(value);
 	}
 
-	public final V setValue(V newValue) {
-		V oldValue = value;
-		value = newValue;
-		return oldValue;
-	}
-
 	public final boolean equals(Object o) {
 		if (o == this)
 			return true;
-		if (o instanceof Map.Entry) {
+		if (o instanceof Node) {
 			Node e = (Node)o;
 			return Objects.equals(key, e.getKey()) && Objects.equals(value, e.getValue());
 		}
