@@ -30,7 +30,7 @@ public class HashMap<K, V> {
 		} else {
 			Node<K,V> next;
 			K keyForNodeByHashCodeKey = nodeByHashCodeKey.key;
-			if (nodeByHashCodeKey.hash == hashCodeKey && keyForNodeByHashCodeKey == key || (key != null && key.equals(keyForNodeByHashCodeKey))) {
+			if (nodeByHashCodeKey.hashCodeKey == hashCodeKey && keyForNodeByHashCodeKey == key || (key != null && key.equals(keyForNodeByHashCodeKey))) {
 					next = nodeByHashCodeKey;
 			} else {
 				while(true){
@@ -39,7 +39,7 @@ public class HashMap<K, V> {
 						nodeByHashCodeKey.next = new Node<>(hashCodeKey, key, value, null);
 						break;
 					}
-					if (next.hash == hashCodeKey) {
+					if (next.hashCodeKey == hashCodeKey) {
 						keyForNodeByHashCodeKey = next.key;
 						if(keyForNodeByHashCodeKey == key || ( key != null && key.equals(keyForNodeByHashCodeKey) )) {
 							break;
@@ -78,7 +78,7 @@ public class HashMap<K, V> {
 			int indexByHashCodeKey = (hashTable.length - 1) & hashCodeKey;
 			current = hashTable[indexByHashCodeKey];
 			if(current != null) {
-				if (current.hash == hashCodeKey) {
+				if (current.hashCodeKey == hashCodeKey) {
 					keyForNode = current.key;
 					if (keyForNode == keySearch || (keySearch != null && keySearch.equals(keyForNode))) {
 						return current;
@@ -87,7 +87,7 @@ public class HashMap<K, V> {
 				next = current.next;
 				if (next != null) {
 					do {
-						if (next.hash == hashCodeKey) {
+						if (next.hashCodeKey == hashCodeKey) {
 							keyForNode = next.key;
 							if (keyForNode == keySearch || (keySearch != null && keySearch.equals(keyForNode))) {
 								return next;
