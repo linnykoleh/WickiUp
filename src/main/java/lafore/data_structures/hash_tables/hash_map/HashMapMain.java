@@ -2,22 +2,15 @@ package lafore.data_structures.hash_tables.hash_map;
 
 import lafore.data_structures.hash_tables.hash_map.objects.BadKey;
 import lafore.data_structures.hash_tables.hash_map.objects.GoodKey;
+import org.junit.Test;
 
 /**
  * @author LinnykOleh
  */
 public class HashMapMain {
 
-	public static void main(String[] args) {
-
-		test_real_HashMap();
-		test_simple_objects();
-		test_object_with_normal_equal_and_hashcode();
-		test_object_with_bad_equal_and_hashcode_collision();
-
-	}
-
-	private static void test_real_HashMap(){
+	@Test
+	public void test_real_HashMap(){
 		final java.util.HashMap<String, String> hashMap = new java.util.HashMap<>();
 
 		hashMap.put("1", "first");
@@ -29,7 +22,8 @@ public class HashMapMain {
 		System.out.println(result);
 	}
 
-	private static void test_simple_objects(){
+	@Test
+	public void test_simple_objects(){
 		final HashMap<String, String> hashMap = new HashMap<>();
 
 		hashMap.put("1", "first 1");
@@ -46,7 +40,8 @@ public class HashMapMain {
 		System.out.println(result3);
 	}
 
-	private static void test_object_with_normal_equal_and_hashcode(){
+	@Test
+	public void test_object_with_normal_equal_and_hashcode(){
 		final HashMap<GoodKey, String> hashMap = new HashMap<>();
 
 		hashMap.put(new GoodKey("AB", "CD"), "value 1");
@@ -66,7 +61,8 @@ public class HashMapMain {
 		System.out.println(result2);
 	}
 
-	private static void test_object_with_bad_equal_and_hashcode_collision(){
+	@Test
+	public void test_object_with_bad_equal_and_hashcode_collision(){
 		final HashMap<BadKey, String> hashMap = new HashMap<>();
 
 		hashMap.put(new BadKey("AB", "CD"), "value 1");

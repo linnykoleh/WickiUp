@@ -7,13 +7,13 @@ import java.util.Objects;
  */
 public class Node<K, V> {
 
-	final int hash;
+	final int hashCodeKey;
 	final K key;
 	V value;
 	Node<K,V> next;
 
-	public Node(int hash, K key, V value, Node<K,V> next) {
-		this.hash = hash;
+	public Node(int hashCodeKey, K key, V value, Node<K,V> next) {
+		this.hashCodeKey = hashCodeKey;
 		this.key = key;
 		this.value = value;
 		this.next = next;
