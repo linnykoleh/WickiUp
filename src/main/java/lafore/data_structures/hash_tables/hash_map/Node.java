@@ -19,12 +19,6 @@ public class Node<K, V> {
 		this.next = next;
 	}
 
-	public final K getKey() {
-		return key;
-	}
-	public final V getValue() {
-		return value;
-	}
 	public final String toString() {
 		return key + "=" + value;
 	}
@@ -38,7 +32,7 @@ public class Node<K, V> {
 			return true;
 		if (o instanceof Node) {
 			Node e = (Node)o;
-			return Objects.equals(key, e.getKey()) && Objects.equals(value, e.getValue());
+			return Objects.equals(key, e.key) && Objects.equals(value, e.value);
 		}
 		return false;
 	}
