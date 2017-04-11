@@ -1,4 +1,4 @@
-##Binary trees
+## Binary trees
 
  - How to run **Binary tree** applet:
  
@@ -112,7 +112,7 @@ class Person{
 
 ---
 
-<H3> Поиск </h3>
+### Поиск 
 
 Найти узел, представляющий элемент с ключом 57
 
