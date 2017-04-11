@@ -1,9 +1,9 @@
-##LBinary trees
+##Binary trees
 
  - How to run **Binary tree** applet:
  
    ```
-   appletviewer http://cs.brynmawr.edu/Courses/cs206/spring2004/WorkshopApplets/Chap05/LinkList/LinkList.html
+   appletviewer http://cs.brynmawr.edu/Courses/cs206/spring2004/WorkshopApplets/Chap08/Tree/Tree.html
    ```
    
 *Что такое дерево?*
@@ -75,3 +75,65 @@
 
 
 ![alt text](images/binary_tree3.png)
+
+---
+
+*Класс Node*
+
+Класс для представления объектов узлов.
+
+```java
+class Node{
+    
+    int iData; // Данные, используемые в качестве ключа
+    Node leftChild; // Левый потомок узла
+    Node rightChild; // Правый потомок узла
+    
+}
+```
+или более реальный пример из жизни
+
+```java
+class Node{
+    
+    Person p1; // Ссылка на объект person
+    Node leftChild; // Левый потомок узла
+    Node rightChild; // Правый потомок узла
+    
+}
+
+class Person{
+    
+    int iData;
+    double fData;
+    
+}
+```
+
+---
+
+####Поиск
+
+найти узел, представляющий элемент с ключом 57
+
+![alt text](images/binary_tree4.png)
+
+```java
+public Node find(int key){ 
+    
+    Node current = root; // Начать с корневого узла
+    while(current.iData != key){ // Пока не найдено совпадение
+        if(key < current.iData){ // Двигаться налево?
+            current = current.leftChild;
+        }else{
+            current = current.rightChild; // Или направо?
+        } 
+        if(current == null){ // Если потомка нет,
+            return null; // поиск завершился неудачей
+        } 
+    }
+    return current; // Элемент найден
+}
+```
+
+
