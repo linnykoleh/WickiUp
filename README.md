@@ -9,3 +9,5 @@
 [Hash tables](src/main/resources/hash_tables/hash_tables.md)
 
 [Binary trees](src/main/resources/binary_trees/binary_trees.md)
+
+[Red black trees](src/main/resources/red_black_trees/red_black_trees.md)
