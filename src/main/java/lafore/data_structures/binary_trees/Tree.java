@@ -85,6 +85,30 @@ public class Tree {
         }
     }
 
+    public void preOrder(){
+        preOrder(root);
+    }
+
+    private void preOrder(Node localRoot) {
+        if(localRoot != null) {
+            System.out.print(localRoot.iData + " ");
+            preOrder(localRoot.leftChild);
+            preOrder(localRoot.rightChild);
+        }
+    }
+
+    public void postOrder(){
+        postOrder(root);
+    }
+
+    private void postOrder(Node localRoot) {
+        if (localRoot != null) {
+            postOrder(localRoot.leftChild);
+            postOrder(localRoot.rightChild);
+            System.out.print(localRoot.iData + " ");
+        }
+    }
+
     public boolean delete(int key) {
         Node current = root;
         Node parent = root;
