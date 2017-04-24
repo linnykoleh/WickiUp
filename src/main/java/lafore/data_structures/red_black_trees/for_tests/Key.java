@@ -13,6 +13,10 @@ public class Key implements Comparable<Key>{
 		this.index = index;
 	}
 
+	public int getIndex() {
+		return index;
+	}
+
 	@Override
 	public int compareTo(Key o) {
 		if(index > o.index){

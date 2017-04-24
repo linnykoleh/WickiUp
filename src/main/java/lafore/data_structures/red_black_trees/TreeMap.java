@@ -57,7 +57,6 @@ public class TreeMap<K, V> {
 				}
 			} while (entry != null);
 		}
-
 		Entry<K, V> entryOfKey = new Entry<>(key, value, parent);
 		if (cmp < 0)
 			parent.left = entryOfKey;
