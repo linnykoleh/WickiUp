@@ -27,4 +27,9 @@ public class Key implements Comparable<Key>{
 			return SAME;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return index+"";
+	}
 }

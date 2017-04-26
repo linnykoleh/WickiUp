@@ -1,6 +1,7 @@
 package lafore.data_structures.red_black_trees;
 
 import java.util.Comparator;
+import java.util.Stack;
 
 @SuppressWarnings("unchecked")
 public class TreeMap<K, V> {
@@ -10,6 +11,8 @@ public class TreeMap<K, V> {
 
 	private static final boolean RED   = false;
 	private static final boolean BLACK = true;
+
+	private int elements;
 
 	public TreeMap() {
 		comparator = null;
@@ -62,6 +65,7 @@ public class TreeMap<K, V> {
 			parent.left = entryOfKey;
 		else
 			parent.right = entryOfKey;
+		elements++;
 		fixAfterInsertion(entryOfKey);
 		return null;
 	}
@@ -221,5 +225,46 @@ public class TreeMap<K, V> {
 
 	/*/--------------- GET --------------*/
 
+	public void displayTree() {
+
+		Stack globalStack = new Stack();
+		globalStack.push(root);
+		int nBlanks = 62;
+		boolean isRowEmpty = false;
+		System.out.println("......................................................");
+
+		while(!isRowEmpty) {
+			Stack localStack = new Stack();
+			isRowEmpty = true;
+			for(int j = 0; j < nBlanks; j++) {
+				System.out.print(" ");
+			}
+
+			while(!globalStack.isEmpty()) {
+				Entry temp = (Entry)globalStack.pop();
+				if(temp != null) {
+					final String color = temp.color ? "black" : "red";
+					System.out.print("("+temp.getKey() + " " +color + ")");
+					localStack.push(temp.left);
+					localStack.push(temp.right);
+					if(temp.left != null || temp.right != null)
+						isRowEmpty = false;
+				} else {
+					System.out.print(" ");
+					localStack.push(null);
+					localStack.push(null);
+				}
+				for(int j = 0; j < nBlanks * 2 - 2; j++) {
+					System.out.print(" ");
+				}
+			}
+
+			System.out.println();
+			nBlanks /= 2;
+			while(!localStack.isEmpty())
+				globalStack.push(localStack.pop());
+		}
+		System.out.println("......................................................");
+	}
 
 }
