@@ -11,6 +11,7 @@
 | [Red black trees](src/main/resources/data_structures/red_black_trees/red_black_trees.md)         |                                                                                                  |  Strategy         |  Dependency Inversion Principle (Принцип инверсии зависимостей)       													   |
 
 
+ ![alt text](src/main/resources/images/solid.png)
 
 ### Algorithms complexity
 
