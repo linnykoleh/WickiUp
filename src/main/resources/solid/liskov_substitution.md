@@ -23,4 +23,4 @@
  
 > *Постусловия* – это то, что, гарантируется вызываемым методом
  
- 
+[Liskov substitution example](https://github.com/LinnykOleh/AlgorithmsDataStructures/blob/master/src/main/java/solid/l/) 
