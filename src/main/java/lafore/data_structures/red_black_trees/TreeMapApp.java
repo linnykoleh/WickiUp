@@ -33,12 +33,12 @@ public class TreeMapApp {
 		treeMap.put(new Key(6), "hello 6");
 		treeMap.put(new Key(1), "hello 1");
 
-		treeMap.put(new Key(42), "hello 4");
-		treeMap.put(new Key(15), "hello 5");
-		treeMap.put(new Key(23), "hello 3");
-		treeMap.put(new Key(32), "hello 2");
-		treeMap.put(new Key(16), "hello 6");
-		treeMap.put(new Key(13), "hello 1");
+		treeMap.put(new Key(42), "hello 42");
+		treeMap.put(new Key(15), "hello 15");
+		treeMap.put(new Key(23), "hello 23");
+		treeMap.put(new Key(32), "hello 32");
+		treeMap.put(new Key(16), "hello 16");
+		treeMap.put(new Key(13), "hello 13");
 
 		treeMap.displayTree();
 	}
@@ -56,4 +56,29 @@ public class TreeMapApp {
 
 		treeMap.displayTree();
 	}
+
+	@Test
+	public void testTrickyObjectsWithComparableGetValue() {
+		final TreeMap<Key, String> treeMap = new TreeMap<>();
+
+		treeMap.put(new Key(4), "hello 4");
+		treeMap.put(new Key(5), "hello 5");
+		treeMap.put(new Key(3), "hello 3");
+		treeMap.put(new Key(2), "hello 2");
+		treeMap.put(new Key(6), "hello 6");
+		treeMap.put(new Key(1), "hello 1");
+
+		treeMap.put(new Key(42), "hello 42");
+		treeMap.put(new Key(15), "hello 15");
+		treeMap.put(new Key(23), "hello 23");
+		treeMap.put(new Key(32), "hello 32");
+		treeMap.put(new Key(16), "hello 16");
+		treeMap.put(new Key(13), "hello 13");
+
+		final String result = treeMap.get(new Key(3));
+
+		System.out.println(result);
+	}
+
+
 }

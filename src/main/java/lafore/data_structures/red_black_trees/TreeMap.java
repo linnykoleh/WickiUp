@@ -190,10 +190,10 @@ public class TreeMap<K, V> {
 		if (key == null) {
 			throw new NullPointerException();
 		}
-		Comparable<? super K> k = (Comparable<? super K>) key;
+		Comparable<? super K> searchingKey = (Comparable<? super K>) key;
 		Entry<K, V> entry = root;
 		while (entry != null) {
-			int result = k.compareTo(entry.key);
+			int result = searchingKey.compareTo(entry.key);
 			if (result < 0) {
 				entry = entry.left;
 			} else if (result > 0) {
