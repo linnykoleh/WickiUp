@@ -2,7 +2,10 @@ package lafore.data_structures.red_black_trees;
 
 import java.util.Map;
 
-final class Entry<K, V>{
+/**
+ * @author LinnykOleh
+ */
+public class Entry<K, V>{
 
 	private static final boolean RED   = false;
 	private static final boolean BLACK = true;

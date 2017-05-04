@@ -1,6 +1,8 @@
 package lafore.data_structures.red_black_trees.for_tests;
 
-
+/**
+ * @author LinnykOleh
+ */
 public class Key implements Comparable<Key>{
 
 	private static int MORE = 1;

@@ -3,6 +3,9 @@ package lafore.data_structures.red_black_trees;
 import java.util.Comparator;
 import java.util.Stack;
 
+/**
+ * @author LinnykOleh
+ */
 @SuppressWarnings("unchecked")
 public class TreeMap<K, V> {
 

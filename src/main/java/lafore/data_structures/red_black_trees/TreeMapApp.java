@@ -6,6 +6,9 @@ import lafore.data_structures.red_black_trees.for_tests.Key;
 
 import java.util.Comparator;
 
+/**
+ * @author LinnykOleh
+ */
 public class TreeMapApp {
 
 	@Test
