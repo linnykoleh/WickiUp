@@ -11,6 +11,25 @@
 | [Red black trees](src/main/resources/data_structures/red_black_trees/red_black_trees.md)         |                                                                                                  |                                    |  [Dependency Inversion Principle](src/main/resources/solid/dependency_inversion.md)  |
 | [Stack](src/main/resources/data_structures/stack/stack.md)                                       |                                                                                                  |                                    |                                                                                      |
 
+
+```sequence
+Alice->Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob-->Alice: I am good thanks!
+```
+
+```flow
+st=>start: Start
+e=>end
+op=>operation: My Operation
+cond=>condition: Yes or No?
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
+
+
 <table>
   <tr>
     <th><H3> Data structures</th>
@@ -25,7 +44,7 @@
     <td>[Single Responsibility Principle](src/main/resources/solid/single_responsibility.md)     </td>
   </tr>
   <tr>
-    <td> [Linked lists](src/main/resources/data_structures/linked_lists/linked_lists.md)          </td>
+    <td> src/main/resources/data_structures/linked_lists/linked_lists.md         </td>
     <td> [Selection sort](src/main/resources/algorithms/selection_sort/selection_sort.md)         </td>
     <td> 																					      </td>
     <td>[Open Closed Principle](src/main/resources/solid/open_close.md)					          </td>
