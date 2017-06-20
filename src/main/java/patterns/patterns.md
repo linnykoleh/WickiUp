@@ -10,3 +10,9 @@
 ![alt text](images/builder.png)
 
 [example](_1_creational/_2_builder)  
+
+2. 
+
+![alt text](images/prototype.png)
+
+[example](_1_creational/_3_prototype)  
