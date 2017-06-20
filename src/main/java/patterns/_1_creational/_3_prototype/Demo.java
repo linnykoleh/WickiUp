@@ -20,6 +20,14 @@ public class Demo {
 		final Movie movie2 = (Movie) registry.createItem("Movie");
 		System.out.println(movie2);
 
+		/*
+
+		    {runTime=2, title=Patters, price=24.99, url=hello.movie hashcode=1173230247}
+			{runTime=2, title=Gang of Four, price=24.99, url=hello.movie hashcode=856419764}
+            {runTime=2, title=Basic movie, price=24.99, url=hello.movie hashcode=621009875}
+
+		 */
+
 
 	}
 }
