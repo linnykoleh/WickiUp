@@ -7,12 +7,12 @@
 
 2. 
 
-![alt text](images/builder.png)
+![alt text](_1_creational/images/builder.png)
 
 [example](_1_creational/_2_builder)  
 
-2. 
+3. 
 
-![alt text](images/prototype.png)
+![alt text](_1_creational/images/prototype.png)
 
 [example](_1_creational/_3_prototype)  
