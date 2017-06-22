@@ -16,3 +16,9 @@
 ![alt text](_1_creational/images/prototype.png)
 
 [example](_1_creational/_3_prototype)  
+
+4. 
+
+![alt text](_1_creational/images/factory_method.png)
+
+[example](_1_creational/_4_factory_method)  
