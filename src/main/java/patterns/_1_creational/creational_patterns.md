@@ -22,3 +22,10 @@
 ![alt text](_1_creational/images/factory_method.png)
 
 [example](_1_creational/_4_factory_method)  
+
+5.
+
+![alt text](_1_creational/images/abstract_factory.png)
+
+[example](_1_creational/_5_abstract_factory)  
+
