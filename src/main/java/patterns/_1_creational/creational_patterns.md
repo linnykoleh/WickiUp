@@ -28,7 +28,7 @@
  - If not careful, not thread-safe.
  
  
-[example](_1_creational/_1_singleton)  
+[example](_1_singleton)  
 
 2. 
 
@@ -52,7 +52,7 @@
   - Designed first.
   - Complexity.
 
-[example](_1_creational/_2_builder)  
+[example](_2_builder)  
 
 3. 
 
@@ -78,7 +78,7 @@
   - Used with another patterns.
   - Shallow VS Deep Copy.
   
-[example](_1_creational/_3_prototype)  
+[example](_3_prototype)  
 
 4. 
 
@@ -99,7 +99,7 @@
   - Creation in subclass.
   - Refactoring.
 	
-[example](_1_creational/_4_factory_method)  
+[example](_4_factory_method)  
 
 5.
 
@@ -126,5 +126,5 @@
   - Starts as a Factory.
   
 
-[example](_1_creational/_5_abstract_factory)  
+[example](_5_abstract_factory)  
 
