@@ -1,5 +1,7 @@
 
-1. 
+***Данные паттерны помогают внести порядок и научить разные объекты более правильно взаимодействовать друг с другом.***
+
+### 1. Adapter или wrapper (адаптер, обертка)
 
 ![alt text](images/adapter.png)
 
@@ -28,5 +30,8 @@
  - Don't add functionality, if you are adding functionality to your legacy code, 
    then you should probably be considering the `decorator` or some other type of structural pattern!
  
+#### Metaphor 
+Данный паттерн полностью соответствует своему названию. Чтобы заставить работать «советскую» вилку через евро-розетку требуется переходник. 
+Именно это и делает «адаптер», служит промежуточным объектом между двумя другими, которые не могут работать напрямую друг с другом.
  
 [example](_1_adapter/)  
