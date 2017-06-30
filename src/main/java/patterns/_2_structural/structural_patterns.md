@@ -81,7 +81,7 @@
  - Same operations applied on individual and composites
 
 #### Design:
- - Tree structured
+ - Tree structured !!!
  - Root is a component
  - Leaf or Composite, same operations
  - Composite knows about child objects
@@ -97,3 +97,31 @@
 Для примера можно рассмотреть управление солдатами в строю. Существует строевой устав, который определяет как управлять строем и согласно этого устава 
 абсолютно не важно кому отдается приказ (например «шагом марш») одному солдату или целому взводу. 
 Соответственно в устав (если его в чистом виде считать паттерном «компоновщик») нельзя включить команду, которую может исполнить только один солдат, но не может исполнить группа, или наоборот.
+
+### 4. Decorator (декоратор)
+
+![alt text](images/decorator.png)
+
+#### Concept:
+ - Also called a wrapper
+ - Add behavior without affecting others
+ - More that just inheritance
+ - Single responsibility principle
+ - Compose behavior dynamically
+ - Contains another entity
+ - Modifies behaviour
+ 
+#### Design:
+ - Inheritance based
+ - Utilizes composition and inheritance
+ - Constructor requires instance from hierarchy
+ 
+#### Pitfalls:
+ - New class for every feature added
+ - Multiple little objects
+ - Often confused with simple inheritance
+ 
+#### Metaphor 
+Как понятно из названия, данный паттерн чаще всего используется для расширения исходного объекта до требуемого вида.
+Например мы условно можем считать «декоратором» человека с кистью и красной краской. 
+Таким образом, какой бы объект (или определенный тип объектов) мы не передали в руки «декоратору», на выходе мы будем получать красные объекты.
