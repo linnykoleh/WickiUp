@@ -71,6 +71,10 @@
 
 ![alt text](images/composite.png)
 
+> Composite != Composition.
+> The composite pattern is dealing with that hierarchical structure where composition is 
+> just one object containing another.
+
 #### Concept:
  - Components represent part or whole structure
  - Compose object into tree structures
