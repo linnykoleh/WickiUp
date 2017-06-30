@@ -67,3 +67,29 @@
  но за счет сохранения общих правил взаимодействия с ними, мы можем одинаково управлять каждым из них. 
  «Мостом» в данном случае является пара двух «объектов»: конкретного автомобиля и правил взаимодействия с этим (и любым другим) автомобилем.
  
+### 3. Composite (компоновщик)
+
+![alt text](images/composite.png)
+
+#### Concept:
+ - Components represent part or whole structure
+ - Compose object into tree structures
+ - Same operations applied on individual and composites
+
+#### Design:
+ - Tree structured
+ - Root is a component
+ - Leaf or Composite, same operations
+ - Composite knows about child objects
+ - Component, Leaf, Composite
+ 
+#### Pitfalls:
+ - Can overly simplify system
+ - Difficult to restrict
+ - Implementation can possible be costly
+
+#### Metaphor 
+Довольно интересный паттерн суть которого заключается в минимизации различий в управлении как группами объектов так и индивидуальными объектами. 
+Для примера можно рассмотреть управление солдатами в строю. Существует строевой устав, который определяет как управлять строем и согласно этого устава 
+абсолютно не важно кому отдается приказ (например «шагом марш») одному солдату или целому взводу. 
+Соответственно в устав (если его в чистом виде считать паттерном «компоновщик») нельзя включить команду, которую может исполнить только один солдат, но не может исполнить группа, или наоборот.
