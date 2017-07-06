@@ -1,4 +1,4 @@
-package patterns._2_structural._5_flyweight;
+package patterns._2_structural._6_flyweight;
 
 /**
  * Instance of Item will be the Flyweight

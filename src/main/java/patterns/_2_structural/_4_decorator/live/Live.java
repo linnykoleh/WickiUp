@@ -1,4 +1,4 @@
-package patterns._2_structural._3_decorator.live;
+package patterns._2_structural._4_decorator.live;
 
 import java.io.DataOutputStream;
 import java.io.File;

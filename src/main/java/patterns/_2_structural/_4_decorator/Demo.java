@@ -1,4 +1,4 @@
-package patterns._2_structural._3_decorator;
+package patterns._2_structural._4_decorator;
 
 /**
  * @author LinnykOleh

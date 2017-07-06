@@ -187,3 +187,21 @@
  Нам бы стоило огромных денег нанимать для каждой роли отдельного актера, поэтому мы используем паттерн «приспособленец». 
  Мы создадим все нужные нам костюмы, но для каждой массовки будем переодевать небольшую группу актеров в требуемые для этой сцены костюмы. 
  В результате мы имеем возможность ценой малых ресурсов создавать видимость управления большим количеством казалось бы разных объектов.
+ 
+ ### 6. Proxy (прокси)
+ 
+#### Concept:
+ - Interface to something else
+ - Interface by wrapping
+ - Can add more functionality to wrapper
+ - Proxy called to access real object
+ - Examples:
+ 	- java.lang.reflect.Proxy
+ 	- java.rmi.*
+ 	
+#### Design:
+ - Intermediate object intercepts calls
+ - Interface and Implementation class
+ - Client, Interface, InvocationHandler, Proxy, Implementation
+ 
+ 

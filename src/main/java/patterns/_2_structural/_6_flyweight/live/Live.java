@@ -1,4 +1,4 @@
-package patterns._2_structural._5_flyweight.live;
+package patterns._2_structural._6_flyweight.live;
 
 /**
  * @author LinnykOleh
