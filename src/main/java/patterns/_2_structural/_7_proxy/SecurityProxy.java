@@ -22,10 +22,14 @@ public class SecurityProxy implements InvocationHandler{
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		Object result;
 		try{
-			result = method.invoke(proxy, args);
+			if(method.getName().contains("POST")){
+				throw new IllegalAccessException("Post are currently not allowed");
+			}else {
+				result = method.invoke(obj, args);
+			}
 		}catch (Exception e){
 			throw new RuntimeException("unexpected invocation exception");
 		}
-		return null;
+		return result;
 	}
 }
