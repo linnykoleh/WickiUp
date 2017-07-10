@@ -36,4 +36,24 @@
  Таким образом паттерн реализует «цепочку обязанностей» отдельные объекты которой (отделения банка) должны обработать ваш запрос. 
  Соответственно ваш запрос может быть обработан в первом же отделении, или же в нескольких, в зависимости от самого запроса и обрабатывающих объектов.
   
-[example](_3_chain_of_resposibility/)  
+[example](_1_chain_of_resposibility/)  
+
+### 2. Command (команда)  
+
+![alt text](images/command.png)
+
+#### Concept:
+ - Encapsulate request as an Object
+ - Object-oriented callback
+ - Decouple sender from processor
+ - Often used to "undo" functionality
+ - Examples:
+ 	- java.lang.Runnable
+
+#### Design:
+ - Object per command
+ - Command interface
+ - Execute method
+ - 'Unexecute' method
+ - Reflection
+ - Command, Invoker, ConcreteCommand

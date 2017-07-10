@@ -1,4 +1,4 @@
-package patterns._3_behavioral._3_chain_of_resposibility.live;
+package patterns._3_behavioral._1_chain_of_resposibility.live;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
