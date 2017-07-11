@@ -87,7 +87,13 @@
  - AbstractExpression
  - Interpret
  - TerminalExpression
- - NonterminalExression 
+ - NonterminalExpression 
+   
+#### Pitfalls:
+ - Complexity
+ - Class per rule 
+ - Use of another patterns
+ - Specific case
    
 #### Metaphor 
 Сравнить данный паттерн можно с тем, как вы закладываете часто используемые действия в сокращенный набор слов, чтобы сам «интерпретатор» потом превратил этот набор в более комплексные осмысленные действия. 
