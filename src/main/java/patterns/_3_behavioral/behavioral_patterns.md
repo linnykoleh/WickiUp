@@ -200,3 +200,39 @@
 Также уместен аналог с тем, как в играх работает сохранение. Файл «сейва» как раз и будет тем самым паттерном «хранитель».
 
 [example](_6_memento/)
+
+
+### 6. Observer (наблюдатель) 
+
+![alt text](images/observer.png)
+
+#### Concept:
+ - One to many
+ - Decoupled
+ - Event handled
+ - Pub/sub
+ - MVC
+ - Examples:
+   	- java.util.Observer
+   	- java.util.EventListener
+
+#### Design:
+ - Subject
+ - Observer
+ - Observable
+ - Views are Observers
+ - Subject, Concrete subject, Observer, Concrete Observer
+
+#### Pitfalls:
+ - Unexpected updates
+ - Large sized consequences
+ - What changed
+ - Debugging difficult
+
+#### Metaphor
+Очень распространенный паттерн в реальной жизни. Например если вы подписались на какую-либо email (или смс) рассылку, 
+то ваш email (или номер сотового телефона) начинает реализовывать паттерн «наблюдатель». 
+Как только вы подписываетесь на событие (например новая статья или сообщение), всем кто подписан на это событие (наблюдателям) будет выслано уведомление, 
+а они уже в свою очередь могут выбрать как на это сообщение реагировать.
+
+[example](_7_observer/)
