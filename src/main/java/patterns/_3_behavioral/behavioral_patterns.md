@@ -202,7 +202,7 @@
 [example](_6_memento/)
 
 
-### 6. Observer (наблюдатель) 
+### 7. Observer (наблюдатель) 
 
 ![alt text](images/observer.png)
 
@@ -236,3 +236,33 @@
 а они уже в свою очередь могут выбрать как на это сообщение реагировать.
 
 [example](_7_observer/)
+
+### 8. State (состояние) 
+
+![alt text](images/state.png)
+
+#### Concept:
+ - Localize state behavior
+ - State Object
+ - Separates What from Where
+ - Open close principle
+
+#### Design:
+ - Abstract Class / Interface
+ - Class based
+ - Context unaware
+ - Context, State, ConcreteState
+
+#### Pitfalls:
+ - Must know all your States
+ - More classes
+ - Keep logic out of Context
+ - State change triggers
+
+#### Metaphor
+В реальной жизни каждый человек может прибывать в разных состояниях. Точно также порой требуется чтобы объекты в программе вели себя по разному в зависимости от каких-либо их внутренних состояний. 
+По аналогии с реальной жизнью можно например привести следующий пример:
+Если вы устали то на фразу «Сходи в магазин» вы будете выдавать «Не пойду», если вам нужно сходить в магазин (за пивом?), то на «Сходи в магазин» вы будете выдавать «Уже бегу!». 
+Человек (объект) один и тот же, а поведение разное. Именно для этих целей и используют паттерн «состояние».
+
+[example](_8_state/)
