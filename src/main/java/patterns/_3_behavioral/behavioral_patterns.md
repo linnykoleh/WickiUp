@@ -266,3 +266,35 @@
 Человек (объект) один и тот же, а поведение разное. Именно для этих целей и используют паттерн «состояние».
 
 [example](_8_state/)
+
+### 9. Strategy (стратегия) 
+
+![alt text](images/strategy.png)
+
+#### Concept:
+ - Eliminate condition statement
+ - Behavior encapsulated in classes
+ - Difficult ot add new strategy
+ - Client aware of strategy
+ - Client choose strategy
+ - Examples:
+    - java.util.Comparator
+
+#### Design:
+ - Interface or abstract base class
+ - Concrete class er strategy
+ - Removes if/else condition
+ - Strategies are independent
+ - Context, Strategy, ConcreteStrategy
+
+#### Pitfalls:
+ - Client aware of Strategies
+ - Increased number of classes
+
+#### Metaphor
+Используется для выбора различных путей получения результата. Вспомним пример с получением прав. Человек, который будет реализовывать паттерн «стратегия» будет действовать следующим образом: вы говорите ему «Хочу права, денег мало» 
+в ответ вы получите права через длительное время и с большой тратой ресурсов. Если вы скажите ему «Хочу права, денег много», то вы получите права очень быстро. Что именно делал этот человек вы понятия не имеете, но вы задаете начальные условия, 
+а как себя вести уже решает он сам (сам выбирает стратегию). Соответственно внутри «стратегии» хранятся различные способы поведения, и чтобы выбрать, ему нужны определенные параметры, в данном случае это объем денежных средств. 
+Как устроена сама «стратегия» и какие алгоритмы внутри нее вам собственно знать и требуется.
+
+[example](_9_strategy/)
