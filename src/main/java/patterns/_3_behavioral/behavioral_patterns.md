@@ -298,3 +298,30 @@
 Как устроена сама «стратегия» и какие алгоритмы внутри нее вам собственно знать и требуется.
 
 [example](_9_strategy/)
+
+### 10. Template method (шаблонный метод) 
+
+![alt text](images/templay_method.png)
+
+#### Concept:
+ - Code reuse
+ - Common in libraries/framework
+ - IoC
+ - Algorithm emphasis
+ - Examples:
+    - java.util.Collections#sort()
+    - java.util.AbstractList#indexOf()
+
+#### Design:
+ - Abstract base class
+ - Base calls Child
+ - Hooks
+ - Operations
+ - AbstractBase, ConcreteClass
+
+#### Pitfalls:
+ - Restrict access
+ - Confusing hierarchy
+ - Difficult program flow
+
+[example](_10_template_method/)
