@@ -1,4 +1,4 @@
-package patterns._3_behavioral._10_template_method.live;
+package patterns._3_behavioral._10_template_method;
 
 /**
  * @author LinnykOleh

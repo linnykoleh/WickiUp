@@ -1,4 +1,4 @@
-package patterns._3_behavioral._10_template_method.live.live;
+package patterns._3_behavioral._10_template_method.live;
 
 import java.util.ArrayList;
 import java.util.Collections;
