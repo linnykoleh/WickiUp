@@ -6,9 +6,20 @@ package patterns._1_creational._1_singleton;
 public class Demo{
 
 	public static void main(String[]args){
-		System.out.format("StaticSingletons %s \n", StaticSingleton.getInstance() == StaticSingleton.getInstance());
-		System.out.format("LazySingletons %s \n", LazySingleton.getInstance() == LazySingleton.getInstance());
-		System.out.format("LazySingletons %s \n", ThreadSafeSingleton.getInstance() == ThreadSafeSingleton.getInstance());
+		final StaticSingleton staticInstance1 = StaticSingleton.getInstance();
+		final StaticSingleton staticInstance2 = StaticSingleton.getInstance();
+
+		System.out.format("StaticSingletons %s \n", (staticInstance1 == staticInstance2 && staticInstance1.hashCode() ==staticInstance2.hashCode()));
+
+		final LazySingleton lazySingleton1 = LazySingleton.getInstance();
+		final LazySingleton lazySingleton2 = LazySingleton.getInstance();
+
+		System.out.format("LazySingletons %s \n", (lazySingleton1 == lazySingleton2 && lazySingleton1.hashCode() == lazySingleton2.hashCode()));
+
+		final ThreadSafeSingleton threadSafeSingleton1 = ThreadSafeSingleton.getInstance();
+		final ThreadSafeSingleton threadSafeSingleton2 = ThreadSafeSingleton.getInstance();
+
+		System.out.format("LazySingletons %s \n", (threadSafeSingleton1 == threadSafeSingleton2 && threadSafeSingleton1.hashCode() == threadSafeSingleton2.hashCode()));
 	}
 
 }

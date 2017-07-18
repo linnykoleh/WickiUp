@@ -5,7 +5,7 @@ package patterns._1_creational._1_singleton;
  */
 public class StaticSingleton {
 
-	private static StaticSingleton instance;
+	private static StaticSingleton instance = new StaticSingleton();
 
 	private StaticSingleton(){
 
