@@ -23,3 +23,9 @@
  ![alt text](src/main/resources/images/data_structures_complexity.png)
  
  ![alt text](src/main/resources/images/o-complexity.png)
+ 
+ 
+ > In order to run benchmarking
+ 
+ > mvn clean install -DskipTests
+ > java -jar target/benchmarks.jar

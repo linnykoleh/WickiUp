@@ -20,6 +20,12 @@ public class Demo{
 		final ThreadSafeSingleton threadSafeSingleton2 = ThreadSafeSingleton.getInstance();
 
 		System.out.format("LazySingletons %s \n", (threadSafeSingleton1 == threadSafeSingleton2 && threadSafeSingleton1.hashCode() == threadSafeSingleton2.hashCode()));
+
+		final ThreadSafeSingleton threadSafeSingleton3 = ThreadSafeSingleton.getInstanceDoubleLocking();
+		final ThreadSafeSingleton threadSafeSingleton4 = ThreadSafeSingleton.getInstanceDoubleLocking();
+
+		System.out.format("LazySingletons double locking %s \n", (threadSafeSingleton3 == threadSafeSingleton4 && threadSafeSingleton3.hashCode() == threadSafeSingleton4.hashCode()));
+
 	}
 
 }
