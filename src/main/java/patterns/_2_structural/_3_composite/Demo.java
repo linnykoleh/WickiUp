@@ -21,5 +21,15 @@ public class Demo {
 		clamsSubMenu.add(privateClaimsMenu);
 
 		System.out.println(mainMenu.toString());
+
+		/*
+
+			Main: /main
+			... Safety: /safety
+			Claims: /claims
+			... Personal Claim: /personalClaims
+			... Private Claim: /privateClaims
+
+		*/
 	}
 }
