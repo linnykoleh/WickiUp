@@ -1,7 +1,5 @@
 package patterns._2_structural._3_composite;
 
-import java.util.List;
-
 /**
  * @author LinnykOleh
  */

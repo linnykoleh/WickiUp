@@ -17,6 +17,9 @@ public class Demo {
 		final MenuItem personalClaimsMenu = new MenuItem("Personal Claim", "/personalClaims");
 		clamsSubMenu.add(personalClaimsMenu);
 
+		final MenuItem privateClaimsMenu = new MenuItem("Private Claim", "/privateClaims");
+		clamsSubMenu.add(privateClaimsMenu);
+
 		System.out.println(mainMenu.toString());
 	}
 }

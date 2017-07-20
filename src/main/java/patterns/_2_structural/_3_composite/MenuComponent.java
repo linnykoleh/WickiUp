@@ -8,17 +8,9 @@ import java.util.List;
  */
 public abstract class MenuComponent {
 
-	String name;
-	String url;
-	List<MenuComponent> menuComponents = new ArrayList<>();
-
-	public String getName() {
-		return name;
-	}
-
-	public String getUrl() {
-		return url;
-	}
+	protected String name;
+	protected String url;
+	protected List<MenuComponent> menuComponents = new ArrayList<>();
 
 	public MenuComponent add(MenuComponent menuComponent){
 		throw new UnsupportedOperationException("Feature not implemented at this level");
