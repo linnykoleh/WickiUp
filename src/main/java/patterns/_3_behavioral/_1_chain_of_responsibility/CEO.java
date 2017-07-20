@@ -1,4 +1,4 @@
-package patterns._3_behavioral._1_chain_of_resposibility;
+package patterns._3_behavioral._1_chain_of_responsibility;
 
 /**
  * @author LinnykOleh
