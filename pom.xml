@@ -16,6 +16,8 @@
 	<modules>
 		<module>Solid</module>
 		<module>Patterns</module>
+		<module>Lafore</module>
+		<module>LeetCode</module>
 	</modules>
 
 
