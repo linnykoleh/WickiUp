@@ -4,8 +4,8 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.linnik.algorithms</groupId>
-	<artifactId>Algorithms</artifactId>
+	<groupId>com.linnik.wickiup</groupId>
+	<artifactId>WickiUp</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
@@ -13,9 +13,13 @@
 		<uberjar.name>benchmarks</uberjar.name>
 	</properties>
 
+	<modules>
+		<module>Solid</module>
+	</modules>
+
 
 	<build>
-		<finalName>Algorithms</finalName>
+		<finalName>WickiUp</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -136,7 +140,6 @@
 			<artifactId>twitter4j-core</artifactId>
 			<version>4.0.4</version>
 		</dependency>
-
 
 		<!-- benchmark -->
 		<dependency>
