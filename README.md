@@ -1,7 +1,5 @@
 
 
-[Main Information](src/main/resources/main_info.md)
-
 | <H3> Data structures                                                                             | <H3> Algorithms                                                                                  |<H3> Patterns                       			                  			                              | <H3> SOLID                                                                                 |
 |--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
 | [Arrays](Lafore/src/main/resources/data_structures/arrays/arrays.md)                             | [Bubble sort](Lafore/src/main/resources/algorithms/bubble_sort/bubble_sort.md)                   |	[Creational](Patterns/src/main/java/com/linnik/wickiup/patterns/_1_creational/creational_patterns.md) |  [Single Responsibility Principle](Solid/src/main/resources/solid/single_responsibility.md)|
@@ -12,17 +10,14 @@
 | [Stack](Lafore/src/main/resources/data_structures/stack/stack.md)                                |                                                                                                  |                                    			                  			                              |                                                                                            |
 
 
- ![alt text](src/main/resources/images/solid.png)
+ ![alt text](images/solid.png)
 
 ### Algorithms complexity
 
- ![alt text](src/main/resources/images/search_complexity.png)
- 
- ![alt text](src/main/resources/images/sort_complexity.png)
- 
- ![alt text](src/main/resources/images/data_structures_complexity.png)
- 
- ![alt text](src/main/resources/images/o-complexity.png)
+ ![alt text](images/search_complexity.png)
+ ![alt text](images/sort_complexity.png)
+ ![alt text](images/data_structures_complexity.png)
+ ![alt text](images/o-complexity.png)
  
  
  > In order to run benchmarking

@@ -18,6 +18,7 @@
 		<module>Patterns</module>
 		<module>Lafore</module>
 		<module>LeetCode</module>
+		<module>CompleteCode</module>
 	</modules>
 
 
