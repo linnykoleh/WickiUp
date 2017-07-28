@@ -5,13 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.linnik.algorithms</groupId>
-        <artifactId>Algorithms</artifactId>
+        <groupId>com.linnik.wickiup</groupId>
+        <artifactId>WickiUp</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>Solid</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     
 </project>

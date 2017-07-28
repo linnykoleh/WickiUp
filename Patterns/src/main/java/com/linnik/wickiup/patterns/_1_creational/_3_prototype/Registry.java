@@ -1,6 +1,6 @@
 package com.linnik.wickiup.patterns._1_creational._3_prototype;
 
-import lafore.data_structures.hash_tables.hash_map.HashMap;
+import java.util.HashMap;
 
 /**
  * @author LinnykOleh

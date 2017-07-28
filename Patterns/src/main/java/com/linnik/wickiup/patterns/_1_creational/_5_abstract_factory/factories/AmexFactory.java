@@ -1,9 +1,9 @@
 package com.linnik.wickiup.patterns._1_creational._5_abstract_factory.factories;
 
-import patterns._1_creational._5_abstract_factory.CardType;
-import patterns._1_creational._5_abstract_factory.cards.AmexGoldCreditCard;
-import patterns._1_creational._5_abstract_factory.cards.AmexPlatinumCreditCard;
-import patterns._1_creational._5_abstract_factory.cards.CreditCard;
+import com.linnik.wickiup.patterns._1_creational._5_abstract_factory.CardType;
+import com.linnik.wickiup.patterns._1_creational._5_abstract_factory.cards.AmexGoldCreditCard;
+import com.linnik.wickiup.patterns._1_creational._5_abstract_factory.cards.AmexPlatinumCreditCard;
+import com.linnik.wickiup.patterns._1_creational._5_abstract_factory.cards.CreditCard;
 
 /**
  * @author LinnykOleh

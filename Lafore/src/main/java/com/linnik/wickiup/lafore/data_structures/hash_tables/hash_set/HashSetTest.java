@@ -2,7 +2,7 @@ package com.linnik.wickiup.lafore.data_structures.hash_tables.hash_set;
 
 import java.util.HashSet;
 
-import lafore.data_structures.hash_tables.hash_set.objects.Animal;
+import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_set.objects.Animal;
 
 /**
  * @author LinnykOleh

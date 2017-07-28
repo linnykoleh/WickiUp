@@ -1,6 +1,6 @@
 package com.linnik.wickiup.patterns._1_creational._4_factory_method;
 
-import patterns._1_creational._4_factory_method.sites.Website;
+import com.linnik.wickiup.patterns._1_creational._4_factory_method.sites.Website;
 
 /**
  * @author LinnykOleh

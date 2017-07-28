@@ -1,7 +1,7 @@
 package com.linnik.wickiup.patterns._1_creational._5_abstract_factory.factories;
 
-import patterns._1_creational._5_abstract_factory.CardType;
-import patterns._1_creational._5_abstract_factory.cards.CreditCard;
+import com.linnik.wickiup.patterns._1_creational._5_abstract_factory.CardType;
+import com.linnik.wickiup.patterns._1_creational._5_abstract_factory.cards.CreditCard;
 
 /**
  * AbstractFactory

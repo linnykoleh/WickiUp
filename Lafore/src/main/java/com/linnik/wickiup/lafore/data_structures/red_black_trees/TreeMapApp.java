@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import org.junit.Test;
 
-import lafore.data_structures.red_black_trees.for_tests.Key;
+import com.linnik.wickiup.lafore.data_structures.red_black_trees.for_tests.Key;
 
 /**
  * @author LinnykOleh

@@ -1,9 +1,9 @@
 package com.linnik.wickiup.patterns._1_creational._4_factory_method;
 
-import patterns._1_creational._4_factory_method.sites.Blog;
-import patterns._1_creational._4_factory_method.sites.ErrorWebSite;
-import patterns._1_creational._4_factory_method.sites.Shop;
-import patterns._1_creational._4_factory_method.sites.Website;
+import com.linnik.wickiup.patterns._1_creational._4_factory_method.sites.Blog;
+import com.linnik.wickiup.patterns._1_creational._4_factory_method.sites.ErrorWebSite;
+import com.linnik.wickiup.patterns._1_creational._4_factory_method.sites.Shop;
+import com.linnik.wickiup.patterns._1_creational._4_factory_method.sites.Website;
 
 /**
  * @author LinnykOleh

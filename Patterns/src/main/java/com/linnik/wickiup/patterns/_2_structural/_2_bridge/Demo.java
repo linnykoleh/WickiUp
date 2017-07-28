@@ -1,8 +1,8 @@
 package com.linnik.wickiup.patterns._2_structural._2_bridge;
 
-import patterns._2_structural._2_bridge.formatters.Formatter;
-import patterns._2_structural._2_bridge.formatters.HTMLFormatter;
-import patterns._2_structural._2_bridge.formatters.PrintFormatter;
+import com.linnik.wickiup.patterns._2_structural._2_bridge.formatters.Formatter;
+import com.linnik.wickiup.patterns._2_structural._2_bridge.formatters.HTMLFormatter;
+import com.linnik.wickiup.patterns._2_structural._2_bridge.formatters.PrintFormatter;
 
 /**
  * @author LinnykOleh

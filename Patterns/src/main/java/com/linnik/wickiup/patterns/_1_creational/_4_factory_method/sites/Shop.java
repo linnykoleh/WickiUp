@@ -1,8 +1,8 @@
 package com.linnik.wickiup.patterns._1_creational._4_factory_method.sites;
 
-import patterns._1_creational._4_factory_method.pages.CartPage;
-import patterns._1_creational._4_factory_method.pages.ItemPage;
-import patterns._1_creational._4_factory_method.pages.SearchPage;
+import com.linnik.wickiup.patterns._1_creational._4_factory_method.pages.CartPage;
+import com.linnik.wickiup.patterns._1_creational._4_factory_method.pages.ItemPage;
+import com.linnik.wickiup.patterns._1_creational._4_factory_method.pages.SearchPage;
 
 /**
  * @author LinnykOleh

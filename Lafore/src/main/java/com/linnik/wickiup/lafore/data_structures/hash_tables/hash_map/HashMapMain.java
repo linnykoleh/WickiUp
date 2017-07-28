@@ -2,8 +2,8 @@ package com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map;
 
 import org.junit.Test;
 
-import lafore.data_structures.hash_tables.hash_map.objects.BadKey;
-import lafore.data_structures.hash_tables.hash_map.objects.GoodKey;
+import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.BadKey;
+import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.GoodKey;
 
 /**
  * @author LinnykOleh
