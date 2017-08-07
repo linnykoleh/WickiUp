@@ -5,6 +5,7 @@
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/annotation_event/spring.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/ps/xml/spring.xml</file>
         </fileset>
       </configuration>
     </facet>
