@@ -1,11 +1,11 @@
-package com.learning.linnyk.ps.configuration.xml.repository;
+package com.learning.linnyk.ps.xml.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.learning.linnyk.ps.configuration.xml.Customer;
+import com.learning.linnyk.ps.xml.Customer;
 
 /**
  * @author LinnykOleh

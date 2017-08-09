@@ -1,8 +1,8 @@
-package com.learning.linnyk.ps.configuration.xml.repository;
+package com.learning.linnyk.ps.java.repository;
 
 import java.util.List;
 
-import com.learning.linnyk.ps.configuration.xml.Customer;
+import com.learning.linnyk.ps.java.Customer;
 
 /**
  * @author LinnykOleh

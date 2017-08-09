@@ -1,12 +1,12 @@
-package com.learning.linnyk.ps.configuration.xml.service;
+package com.learning.linnyk.ps.xml.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.learning.linnyk.ps.configuration.xml.Customer;
-import com.learning.linnyk.ps.configuration.xml.repository.CustomRepository;
+import com.learning.linnyk.ps.xml.Customer;
+import com.learning.linnyk.ps.xml.repository.CustomRepository;
 
 /**
  * @author LinnykOleh

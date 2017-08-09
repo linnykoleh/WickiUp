@@ -21,6 +21,7 @@
 		<module>LeetCode</module>
 		<module>CompleteCode</module>
 		<module>IOC</module>
+		<module>RabbitMQ</module>
 	</modules>
 
 

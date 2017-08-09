@@ -1,4 +1,4 @@
-package com.learning.linnyk.ps.configuration.java;
+package com.learning.linnyk.ps.java;
 
 /**
  * @author LinnykOleh
