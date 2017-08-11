@@ -8,7 +8,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.util.ReflectionUtils;
 
 /**
- * Позволяет настраивать бины до тго, как они порадают в контейнер.
+ * Позволяет настраивать бины до того, как они попадают в контейнер.
  *
  * Между методами postProcessBeforeInitialization и postProcessAfterInitialization вызывается:
  *      - @PostConstruct
