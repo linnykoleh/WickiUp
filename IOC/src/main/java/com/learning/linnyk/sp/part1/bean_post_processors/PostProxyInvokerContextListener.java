@@ -1,4 +1,4 @@
-package com.learning.linnyk.sp;
+package com.learning.linnyk.sp.part1.bean_post_processors;
 
 import java.lang.reflect.Method;
 
@@ -8,6 +8,8 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+
+import com.learning.linnyk.sp.part1.annotations.PostProxy;
 
 /**
  * @author LinnykOleh

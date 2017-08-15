@@ -1,4 +1,4 @@
-package com.learning.linnyk.sp;
+package com.learning.linnyk.sp.part1;
 
 /**
  * @author LinnykOleh

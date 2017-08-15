@@ -2,10 +2,18 @@ package com.learning.linnyk.sp;
 
 import javax.annotation.PostConstruct;
 
+import com.learning.linnyk.sp.part1.Quoter;
+import com.learning.linnyk.sp.part1.annotations.DeprecatedClass;
+import com.learning.linnyk.sp.part1.annotations.InjectRandomInt;
+import com.learning.linnyk.sp.part1.annotations.PostProxy;
+import com.learning.linnyk.sp.part1.annotations.Profiling;
+import com.learning.linnyk.sp.part2.T1000;
+
 /**
  * @author LinnykOleh
  */
 @Profiling
+@DeprecatedClass(newImpl = T1000.class)
 public class TerminatorQuoter implements Quoter {
 
 	@InjectRandomInt(min = 2, max = 7)
@@ -26,6 +34,10 @@ public class TerminatorQuoter implements Quoter {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public void setRepeat(int repeat) {
+		this.repeat = repeat;
 	}
 
 	@Override

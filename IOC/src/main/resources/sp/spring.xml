@@ -9,13 +9,15 @@
 		<property name="message" value="I'll be back"/>
 	</bean>
 
-	<bean class="com.learning.linnyk.sp.InjectRandomIntAnnotationBeanPostProcessor"/>
+	<bean class="com.learning.linnyk.sp.part1.bean_post_processors.InjectRandomIntAnnotationBeanPostProcessor"/>
 
 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
 
-	<bean class="com.learning.linnyk.sp.ProfilingHandlerBeanPostProcessor"/>
+	<bean class="com.learning.linnyk.sp.part1.bean_post_processors.ProfilingHandlerBeanPostProcessor"/>
 
-	<bean class="com.learning.linnyk.sp.PostProxyInvokerContextListener"/>
+	<bean class="com.learning.linnyk.sp.part1.bean_post_processors.PostProxyInvokerContextListener"/>
+
+	<bean class="com.learning.linnyk.sp.part1.bean_factory_post_processors.DeprecationHandlerBeanFactoryPostProcessor"/>
 
 	<context:annotation-config/>
 

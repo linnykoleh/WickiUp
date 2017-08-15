@@ -1,4 +1,4 @@
-package com.learning.linnyk.sp;
+package com.learning.linnyk.sp.part1.bean_post_processors;
 
 import java.lang.management.ManagementFactory;
 import java.lang.reflect.Proxy;
@@ -10,6 +10,9 @@ import javax.management.ObjectName;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+
+import com.learning.linnyk.sp.part1.ProfilingController;
+import com.learning.linnyk.sp.part1.annotations.Profiling;
 
 /**
  * @author LinnykOleh
