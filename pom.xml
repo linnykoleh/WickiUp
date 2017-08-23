@@ -22,6 +22,7 @@
 		<module>CompleteCode</module>
 		<module>IOC</module>
 		<module>RabbitMQ</module>
+		<module>AWS</module>
 	</modules>
 
 
