@@ -72,7 +72,7 @@ Grants users limited and temporary access to AWS resources. Users can come from 
 
 		
 
-`On exam`:
+####  On exam:
 1. Can you authenticate with active directory?
 	- Yes, using SAML
 2. What type of authenticate?
@@ -81,6 +81,11 @@ Grants users limited and temporary access to AWS resources. Users can come from 
 	- You always authenticate to active directory first and then you will be assign security credential
 4. What is Arn?
 	- Amazon Resource Name
+5. Have you to create new role in new region?
+	- No, because all roles are global
+6. Weather or not is it possible to attach role	to running EC2 instance
+	- It is now possible
+	
 	
 	
 #### IAM Best practices	
