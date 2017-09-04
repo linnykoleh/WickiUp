@@ -1,9 +1,9 @@
-#### IAM -  Identity Access Management  
+### IAM -  Identity Access Management  
 
 https://aws.amazon.com/ru/iam/
 
-Allows you yo manage users and their level of access to the AWS console. 
-It is important to understand IAM and how it works, both for the exam and for the administrating a company's AWS account in real life
+> Allows you yo manage users and their level of access to the AWS console. 
+> It is important to understand IAM and how it works, both for the exam and for the administrating a company's AWS account in real life
 
 **What does IAM give you**
 - Centralised control of your AWS account
@@ -56,20 +56,19 @@ Grants users limited and temporary access to AWS resources. Users can come from 
 	- Let's users from one AWS account access resources in another 	
 
 
-`Understanding Key Terms`:
+**Understanding Key Terms**:
 - Federation: combining or joining a list of users in one domain(such as IAM) with a list of users in another domain (such as Active Directory, Facebook, Linkedin etc)
 	- Identity Broker: a service that allows you to take an identity from point A and join it (federate it) to point B
 	- Identity Store - Services like Active Directory, Facebook, Google etc
 	- Identities - a user of a service like Facebook etc
 
 
-`How it works(have to be on exam)`
+**How it works(have to be on exam)**
 1. Develop an Identity Broker to communicate with LDAP and AWS STS
 2. Identity Broker always authenticates with LDAP first, THEN with AWS STS
 3. Application then gets temporary access to AWS resources 
 
 		
-
 ####  On exam:
 1. Can you authenticate with active directory?
 	- Yes, using SAML
