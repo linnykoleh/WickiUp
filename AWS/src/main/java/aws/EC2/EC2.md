@@ -1,5 +1,11 @@
 ### EC2 - Elastic Compute Cloud
 
+http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-ug.pdf
+
+![ec2_from_off_docs](../images/EC2/ec2_from_off_docs.png)	
+
+![ec2_from_off_docs_with_load_bal](../images/EC2/ec2_from_off_docs_with_load_bal.png)	
+
 #### Part 1 
 > Amazon Elastic Compute Cloud(Amazon EC2) is a web service that provides resizable compute capacity in the cloud. 
 > Amazon EC2 reduces the time required to obtain and boot new server instances to minutes, allowing you to quickly
