@@ -1,7 +1,7 @@
 
-### Concepts and  Components
+## Concepts and  Components
  
-#### Network and Content delivery
+### Network and Content delivery
  
   ![Network_and_Content_delivery](images/network_content.png)
   
@@ -14,7 +14,7 @@
  **Direct Connect** - way to connection your physical data center to AWS directly using dedicated telephone line
  
  
-#### Compute
+### Compute
 
   ![Compute](images/compute.png)
 
@@ -29,7 +29,7 @@
   **Lightsail** - out of a box cloud, automatically deploy
   
   
-#### Storage 
+### Storage 
  
    ![Storage](images/storage.png)
   
@@ -42,7 +42,7 @@
    **Storage Gateway** - way to connecting up S3 to own data center
    
    
-#### Databases   
+### Databases   
 
    ![Databases](images/databases.png)
   
@@ -55,7 +55,7 @@
    **Elasticache** - way of caching your data in a cloud
    
    
-#### Migration   
+### Migration   
 
    ![Migration](images/migration.png)
   
@@ -66,7 +66,7 @@
    **Server Migration Service (SMS)** - exactly the same as DMS 
    
    
-#### Analytics   
+### Analytics   
 
    ![Analytics](images/analytics.png)
   
@@ -85,7 +85,7 @@
    **Quick sight** - business analytic tool, create visualization, dashboard for your data
    
    
-#### Security and Identity
+### Security and Identity
 
    ![Security_and_Identity](images/security_and_identity.png)
   
@@ -102,7 +102,7 @@
    **Artifacts** - way of getting your documentations in AWS
    
    
-#### Management Tools
+### Management Tools
 
    ![Management_Tools](images/management_tools.png)
   
@@ -121,7 +121,7 @@
    **Trusted advisor** - gives tips for customisation, performance optimisation, secure fix, fault tolerance
    
    
-#### Application services
+### Application services
 
    ![Application_services](images/application_services.png)
   
@@ -136,7 +136,7 @@
    **Elastic Transcoder** - transcode your uploaded video to different format
    
    
-#### Developer tools
+### Developer tools
 
    ![Developer_tools](images/developer_tools.png)
   
@@ -149,7 +149,7 @@
    **CodePipeline** - tracking your different versions of code (test, dev or prod)
    
 
-#### Mobile services
+### Mobile services
 
    ![Mobile_services](images/mobile_services.png)
   
@@ -165,7 +165,7 @@
    
    
    
-#### Business productivity
+### Business productivity
 
    ![Business_productivity](images/business_productivity.png)   
    
@@ -174,14 +174,14 @@
    **WorkMail** - sending/receiving emails
    
    
-#### Internet of things
+### Internet of things
 
    ![Internet_of_things](images/iot.png)   
    
    **IOT** - tracking billion devices IOT gateway
    
    
-#### Desktop and App streaming
+### Desktop and App streaming
 
    ![Desktop_and_App_streaming](images/desktop_and_app_streaming.png)   
    
@@ -190,7 +190,7 @@
    **AppStream 2.0** - way of streaming desktop applications to your users
    
    
-#### Artificial Intelligence
+### Artificial Intelligence
 
    ![Artificial_Intelligence](images/artificial_intelligence.png)   
    
@@ -205,7 +205,7 @@
    **Rekognation** - upload a picture and get a text of it, compare faces, percentage rekognition
    
    
-#### Messaging
+### Messaging
 
   ![Messaging](images/messaging.png)   
   
