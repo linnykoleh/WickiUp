@@ -1,6 +1,6 @@
 ### Lambda
 
-![Bash](../images/EC2/what_is_lambda.png)
+![Bash](../../images/EC2/what_is_lambda.png)
 
 AWS Lambda is a compute service where you can upload your code
 and create a Lambda function. AWS Lambda takes care of provisioning
@@ -23,13 +23,13 @@ Toy can use Lambda in the following ways:
  
  ![Bash](../images/EC2/what_is_lambda_http_requests.png)
  
- ![Bash](../images/EC2/languages.png)
+ ![Bash](../../images/EC2/languages.png)
  
- ![Bash](../images/EC2/lambda_priced.png)
+ ![Bash](../../images/EC2/lambda_priced.png)
  
 
  Lambda duration time maximum is 5 minutes
 
  
-![Bash](../images/EC2/lambda_exam_tips.png)
+![Bash](../../images/EC2/lambda_exam_tips.png)
 

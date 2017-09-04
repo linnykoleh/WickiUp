@@ -1,6 +1,6 @@
 
 
-![Bash](../images/EC2/bash.png)
+![Bash](../../images/EC2/bash.png)
 
 #!/bin/bash
 yum update -y

@@ -11,4 +11,3 @@ Features:
 - Can support thousand of concurrent NFS connections
 - Data is stored across multiple AZ's within a region
 - Read After Write Consistency
-
