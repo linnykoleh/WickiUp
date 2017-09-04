@@ -29,6 +29,14 @@ https://aws.amazon.com/ru/iam/
 - Always setup Multi-factor Authentication on yur root account
 - You can create and customise your own password rotation policies
 
+IAM does not require region election:
+
+![IAM does not require region election](../images/IAM/IAM_not_require_reqion.png)
+
+IAM users sign-in link:
+
+![IAM does not require region election](../images/IAM/IAM_user_link.png)
+
 
 **Critical Terms**:
 - Users - End Users (think people) 
@@ -40,7 +48,7 @@ https://aws.amazon.com/ru/iam/
 **Terms**:
 - MFA - multi-factor authentication
 - Root account - email for sign up to AWS
-- Access key ID and Secret Acces key - token would you use in order to programmatically interact with AWS you can't use them to login to AWS console
+- Access key ID and Secret Access key - token would you use in order to programmatically interact with AWS you can't use them to login to AWS console
 
 
 **Security Token Service (STS)**
