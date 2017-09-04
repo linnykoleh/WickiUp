@@ -43,7 +43,7 @@ https://aws.amazon.com/ru/iam/
 - Access key ID and Secret Acces key - token would you use in order to programmatically interact with AWS you can't use them to login to AWS console
 
 
-##### Security Token Service (STS)
+**Security Token Service (STS)**
 
 Grants users limited and temporary access to AWS resources. Users can come from three sources:
 - Federation (typically Active Directory)
@@ -69,7 +69,7 @@ Grants users limited and temporary access to AWS resources. Users can come from 
 3. Application then gets temporary access to AWS resources 
 
 		
-####  On exam:
+**On exam:**
 1. Can you authenticate with active directory?
 	- Yes, using SAML
 2. What type of authenticate?
@@ -84,8 +84,8 @@ Grants users limited and temporary access to AWS resources. Users can come from 
 	- It is now possible
 	
 	
-	
-#### IAM Best practices	
+
+**IAM Best practices**	
 
 Enables you to control who can do what in your AWS account
 
