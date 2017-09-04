@@ -1,12 +1,11 @@
 #### IAM -  Identity Access Management  
-https://aws.amazon.com/ru/iam/
 
+https://aws.amazon.com/ru/iam/
 
 Allows you yo manage users and their level of access to the AWS console. 
 It is important to understand IAM and how it works, both for the exam and for the administrating a company's AWS account in real life
 
-
-`What does IAM give you`
+**What does IAM give you**
 - Centralised control of your AWS account
 - Shared Access to your AWS account
 - Granular permission
@@ -31,21 +30,20 @@ It is important to understand IAM and how it works, both for the exam and for th
 - You can create and customise your own password rotation policies
 
 
-`Critical Terms`:
+**Critical Terms**:
 - Users - End Users (think people) 
 - Groups - A collection of users under one set of permission
 - Roles - You create roles and can then assign them to AWS resources
 - Policies - A document that defines one or more permissions
 
 
-`Terms`:
+**Terms**:
 - MFA - multi-factor authentication
 - Root account - email for sign up to AWS
 - Access key ID and Secret Acces key - token would you use in order to programmatically interact with AWS you can't use them to login to AWS console
 
 
 ##### Security Token Service (STS)
-
 
 Grants users limited and temporary access to AWS resources. Users can come from three sources:
 - Federation (typically Active Directory)
