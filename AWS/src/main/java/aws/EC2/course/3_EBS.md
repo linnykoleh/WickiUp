@@ -34,7 +34,7 @@
    to encrypt the root volume, or this can be done when creating AMI's (lab to follow) in the AWS console or using the API
 - Additional volumes can be encrypted
 
-**EBS (Elastic Block Store) Volumes Exam tips**
+**Exam tips**
 
 - EBS Volumes can be changed on the fly (except for magnetic standard)
 - Best practices to stop the EC2 instance and then change the volume

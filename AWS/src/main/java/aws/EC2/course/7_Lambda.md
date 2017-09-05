@@ -21,14 +21,12 @@ Toy can use Lambda in the following ways:
  Every time user sends a request to API Gateway, invoked a new lambda function
  Tree requests then three lambda functions
  
- ![Bash](../images/EC2/what_is_lambda_http_requests.png)
- 
  ![Bash](../../images/EC2/languages.png)
  
  ![Bash](../../images/EC2/lambda_priced.png)
  
 
- _**Lambda duration time maximum is 5 minutes_**
+ **_Lambda duration time maximum is 5 minutes_**
 
  
 ![Bash](../../images/EC2/lambda_exam_tips.png)
