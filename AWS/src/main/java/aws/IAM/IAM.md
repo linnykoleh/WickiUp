@@ -15,11 +15,13 @@ https://aws.amazon.com/ru/iam/
 - Allows you to set up your own password rotation policy
 - Integrates with many different AWS services 
 - Support PCI DSS Compliance
+
 - IAM consists of the following:
 	 - Users
 	 - Groups (A way to group our users and apply polices to them collectively) 
 	 - Roles
 	 - Policy Documents
+	 
 - IAM is universal. It does not apply to regions at this time 	 
 - The `root account` is simply the account created when first setup your AWS account. It has complete Admin access by default
 - New Users have NO permissions when first created
@@ -39,19 +41,106 @@ IAM users sign-in link:
 
 
 **Critical Terms**:
-- Users - End Users (think people) 
-- Groups - A collection of users under one set of permission
-- Roles - You create roles and can then assign them to AWS resources
-- Policies - A document that defines one or more permissions
+1. **Users** - End Users (think people) 
+
+ 	- How to create user:
+ 	
+	![IAM does not require region election](../images/IAM/add_user_1.png)
+	
+	![IAM does not require region election](../images/IAM/add_user_2.png)
+	
+	- Access type:
+		- Programmatic access.
+		
+		  Enables an access key ID and secret access key for the AWS API, CLI, SDK, and other development tools
+		  
+		- AWS Management Console access.
+		
+		  Enables a password that allow users to sing-in to te AWS Management console
+		  
+	![IAM does not require region election](../images/IAM/add_user_3.png)	  
+	
+	![IAM does not require region election](../images/IAM/add_user_4.png)
+	
+	![IAM does not require region election](../images/IAM/add_user_5.png)
+	
+	![IAM does not require region election](../images/IAM/add_user_6.png)
+ 	
+2. **Groups** - A collection of users under one set of permission
+
+	![IAM does not require region election](../images/IAM/add_group_1.png)
+	
+	![IAM does not require region election](../images/IAM/add_group_2.png)
+	
+	![IAM does not require region election](../images/IAM/add_group_3.png)
+	
+	![IAM does not require region election](../images/IAM/add_group_4.png)
+	
+	![IAM does not require region election](../images/IAM/add_group_5.png)
+	
+3. **Roles** - You create roles and can then assign them to AWS resources
+
+	AWS identity with permission policies that determine what the identity can and cannot do in AWS.
+	However, instead of being uniquely associated with one person, a role is intended to be assumable by anyone who needs it. 
+	Also, a role does not have any credentials (password or access keys) associated with it. 
+	Instead, if a user is assigned to a role, access keys are created dynamically and provided to the user.
+	You can use roles to delegate access to users, applications, or services that don't normally have access to your AWS resources
+	
+	![IAM does not require region election](../images/IAM/add_role_1.png)
+	
+	![IAM does not require region election](../images/IAM/add_role_2.png)
+	
+	![IAM does not require region election](../images/IAM/add_role_3.png)
+	
+4. **Policies** - A document that defines one or more permissions
+	- To assign permissions to a user, group, role, or resource, you create a policy, which is a document that explicitly lists permissions. 
+	  In its most basic sense, a policy lets you specify the following:
+		- Actions: what actions you will allow. Each AWS service has its own set of actions. For example, you might allow a user to use the Amazon S3 ListBucket action, which returns information about the items in a bucket. Any actions that you don't explicitly allow are denied.
+		- Resources: which resources you allow the action on. For example, what specific Amazon S3 buckets will you allow the user to perform the ListBucket action on? Users cannot access any resources that you have not explicitly granted permissions to.
+		- Effect: what the effect will be when the user requests access—either allow or deny. Because the default is that resources are denied to users, you typically specify that you will allow users access to resource.
+		
+	![IAM does not require region election](../images/IAM/policies.png)	
+	
+	![IAM does not require region election](../images/IAM/policies_1.png)	
 
 
 **Terms**:
-- MFA - multi-factor authentication
-- Root account - email for sign up to AWS
-- Access key ID and Secret Access key - token would you use in order to programmatically interact with AWS you can't use them to login to AWS console
+1. **MFA** - multi-factor authentication
 
+	![IAM does not require region election](../images/IAM/mfa_1.png)
+	
+	![IAM does not require region election](../images/IAM/mfa_2.png)
+	
+	![IAM does not require region election](../images/IAM/mfa_3.png)
+	
+	![IAM does not require region election](../images/IAM/mfa_4.png)
+	
+	![IAM does not require region election](../images/IAM/mfa_5.png)
 
-**Security Token Service (STS)**
+2. **Root account** - email for sign up to AWS
+	- When you first create an Amazon Web Services (AWS) account, you begin with a single sign-in identity that has complete access to all AWS services and resources in the account. 
+	  This identity is called the AWS account root user and is accessed by signing in with the email address and password that you used to create the account.
+3. **Access key ID** and **Secret Access key** - token would you use in order to programmatically interact with AWS you can't use them to login to AWS console
+		
+	![IAM does not require region election](../images/IAM/access_sercet_keys.png)
+
+**IAM Best practices**	
+
+Enables you to control who can do what in your AWS account
+
+Users, groups, roles and permissions
+
+Control
+	- Centralized
+	- Fine-grained - APIs, resources, and AWS console
+Security
+	- Secure by default
+	- Multiple users, individual security credentials and permissions
+	
+	
+	
+	
+### Security Token Service (STS)
 
 Grants users limited and temporary access to AWS resources. Users can come from three sources:
 - Federation (typically Active Directory)
@@ -62,7 +151,6 @@ Grants users limited and temporary access to AWS resources. Users can come from 
 	- Use Facebook/Amazon/Google or the OpenID providers to log on
 - Cross Account Access
 	- Let's users from one AWS account access resources in another 	
-
 
 **Understanding Key Terms**:
 - Federation: combining or joining a list of users in one domain(such as IAM) with a list of users in another domain (such as Active Directory, Facebook, Linkedin etc)
@@ -92,16 +180,3 @@ Grants users limited and temporary access to AWS resources. Users can come from 
 	- It is now possible
 	
 	
-
-**IAM Best practices**	
-
-Enables you to control who can do what in your AWS account
-
-Users, groups, roles and permissions
-
-Control
-	- Centralized
-	- Fine-grained - APIs, resources, and AWS console
-Security
-	- Secure by default
-	- Multiple users, individual security credentials and permissions
