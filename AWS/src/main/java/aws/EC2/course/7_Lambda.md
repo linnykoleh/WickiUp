@@ -13,7 +13,7 @@ Toy can use Lambda in the following ways:
  - As a compute service to run your code in response to HTTP requests using 
  Amazon API Gateway or AI calls made using AWS SDKs.
  
- Lambda scales out automatically
+**_Lambda scales out automatically_**
  
 #### On Exam 
 - If we have two user that is sending two http requests that is going to 
@@ -28,7 +28,7 @@ Toy can use Lambda in the following ways:
  ![Bash](../../images/EC2/lambda_priced.png)
  
 
- Lambda duration time maximum is 5 minutes
+ _**Lambda duration time maximum is 5 minutes_**
 
  
 ![Bash](../../images/EC2/lambda_exam_tips.png)

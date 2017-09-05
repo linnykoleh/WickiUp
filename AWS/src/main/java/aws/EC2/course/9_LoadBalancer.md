@@ -1,5 +1,4 @@
-
-#### Elastic Load Balancer
+### Elastic Load Balancer
 
 Elastic Load Balancer to load balance the traffic between these instances. 
 

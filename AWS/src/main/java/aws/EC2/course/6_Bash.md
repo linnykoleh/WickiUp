@@ -1,4 +1,3 @@
-
 ### Bash scripting on AWS
 
 ![Bash](../../images/EC2/bash.png)

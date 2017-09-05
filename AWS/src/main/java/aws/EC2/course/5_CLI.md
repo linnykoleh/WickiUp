@@ -1,4 +1,4 @@
-CLI - Command Line
+### CLI - Command Line
 
 http://docs.aws.amazon.com/cli/latest/index.html
 
@@ -19,7 +19,7 @@ Mostly have to be used when connecting outside.
 - `aws s3 cp --recursive s3://s3-bucket-name /home/ec2-user/` - download data from bucket to ec2
 - `aws s3 cp --recursive s3://acloudguru-linnyk-22-nv /home/ec2-user/ --region eu-west-2` - download data from bucket to ec2 with region 
 
-#### On Exam
+**On Exam**
 - `describe-instances` - Describes one or more of your instances. If you specify one or more instance IDs, Amazon EC2 returns 
 						 information for those instances. If you do not specify instance IDs, Amazon EC2 returns information for 
 						 all relevant instances. If you specify an instance ID that is not valid, an error is returned. 
