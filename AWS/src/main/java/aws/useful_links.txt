@@ -1,0 +1,4 @@
+
+How to PASS AWS Certified Developer Exam - https://acloud.guru/forums/aws-certified-developer-associate/discussion/-KUdI5f2LNbi4wvK7v4I/how_to_pass_aws_certified_deve
+AWS Certified Developer - Associate 2017 (Practice Tests) - https://www.udemy.com/aws-certified-developer-associate-2017-practice-tests/
+Passing the AWS solutions architect - Associate exam  - https://gist.github.com/leonardofed/bbf6459ad154ad5215d354f3825435dc
