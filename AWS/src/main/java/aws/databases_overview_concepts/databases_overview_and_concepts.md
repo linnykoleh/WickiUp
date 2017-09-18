@@ -26,7 +26,7 @@
 ![S3 ](../images/databases_overview_concepts/db_concept_2.png)	  
 			
 
-- What is Dta Warehousing
+- What is Data Warehousing
 
 	Used for business intelligence. Tools like Congos, Jaspersoft, SQL Server Reporting Services, Oracle Hyperio, SAP NetWeaver
 	
@@ -93,8 +93,3 @@
 		- Memcached
 		- Redis
 	- DMS	
-	
-	
-	
-
-	  	
