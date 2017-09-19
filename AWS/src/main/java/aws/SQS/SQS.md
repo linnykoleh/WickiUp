@@ -44,15 +44,15 @@ A pool of Amazon EC2 instances running the needed image processing software does
 7. Check for more messages in the worker queue
 
 **SQS Diagram**
-![S3 ](../images/SQS/SQS_1.png)	
+![SQS ](../images/SQS/SQS_1.png)	
 
-![S3 ](../images/SQS/SQS_2.png)	
+![SQS ](../images/SQS/SQS_2.png)	
 
-![S3 ](../images/SQS/SQS_3.png)	
+![SQS ](../images/SQS/SQS_3.png)	
 
 **SQS Autoscaling**
 
-![S3 ](../images/SQS/SQS_4.png)	
+![SQS ](../images/SQS/SQS_4.png)	
 
 
 **SQS Exam Tips**

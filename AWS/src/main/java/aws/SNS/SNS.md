@@ -42,3 +42,37 @@ When you publish once to a topic, SNS delivers appropriate formatted copies of y
 - $0.60 per 100,000 Notification deliveries over HTTP
 - $0.75 per 100 Notification deliveries oer SMS
 - $2.00 per 100,000 Notification deliveries over Email
+
+
+**Creating An SNS Topic**
+
+![SNS ](../images/SNS/SNS_1.png)	
+
+![SNS ](../images/SNS/SNS_2.png)	
+
+![SNS ](../images/SNS/SNS_3.png)	
+
+![SNS ](../images/SNS/SNS_4.png)	
+
+![SNS ](../images/SNS/SNS_5.png)	
+
+![SNS ](../images/SNS/SNS_6.png)	
+
+![SNS ](../images/SNS/SNS_7.png)	
+
+![SNS ](../images/SNS/SNS_8.png)	
+
+![SNS ](../images/SNS/SNS_9.png)	
+
+**SNS Summary**
+
+- SNS inside has topic and topic has different subscribers. Each subscription method has different protocol (HTTP, EMAIL, SQS)
+- Instantaneous, push - based delivery (no polling)
+- Protocol include
+	- HTTP
+	- HTTPS
+	- Email
+	- Email-JSON
+	- Amazon SQS
+	- Application
+- Messages can be customized for each protocol	

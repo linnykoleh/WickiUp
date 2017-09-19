@@ -7,7 +7,7 @@
 	  	- Row
 	  	- Fields (Columns)
 	  	
-![S3 ](../images/databases_overview_concepts/db_concept_1.png)	  	
+![databases_overview_concepts ](../images/databases_overview_concepts/db_concept_1.png)	  	
 
 - Relational Database Types
 	- SQL Server
@@ -23,7 +23,7 @@
 		- Document   	  = Row
 		- Key Value Pairs = Fields
 		
-![S3 ](../images/databases_overview_concepts/db_concept_2.png)	  
+![databases_overview_concepts ](../images/databases_overview_concepts/db_concept_2.png)	  
 			
 
 - What is Data Warehousing
