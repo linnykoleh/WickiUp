@@ -7,9 +7,8 @@
 | [Hash tables](Lafore/src/main/resources/data_structures/hash_tables/hash_tables.md)              | [Insertion sort](Lafore/src/main/resources/algorithms/insertion_sort/insertion_sort.md)          | [Behavioral](Patterns/src/main/java/com/linnik/wickiup/patterns/_3_behavioral/behavioral_patterns.md) |  [Liskov’s Substitution Principle](Solid/src/main/resources/solid/liskov_substitution.md)  | [EC2](AWS/src/main/java/aws/EC2/ec2_map.md)            |
 | [Binary trees](Lafore/src/main/resources/data_structures/binary_trees/binary_trees.md)           |                                                                                                  |	                                   			                  			                              |  [Interface Segregation Principle](Solid/src/main/resources/solid/interface_segregation.md)| [S3](AWS/src/main/java/aws/S3/S-3.md)                  |
 | [Red black trees](Lafore/rc/main/resources/data_structures/red_black_trees/red_black_trees.md)   |                                                                                                  |                                    			                   			                              |  [Dependency Inversion Principle](Solid/src/main/resources/solid/dependency_inversion.md)  | [DynamoDB](AWS/src/main/java/aws/DynamoDB/DynamoDB.md) |
-| [Stack](Lafore/src/main/resources/data_structures/stack/stack.md)                                |                                                                                                  |                                    			                  			                              |                                                                                            |
-
-
+| [Stack](Lafore/src/main/resources/data_structures/stack/stack.md)                                |                                                                                                  |                                    			                  			                              |                                                                                            | [SQS](AWS/src/main/java/aws/SQS/SQS.md)				|
+|																								   |																								  |																									      |																							   | [SNS](AWS/src/main/java/aws/SNS/SNS.md)				|
  ![alt text](images/solid.png)
 
 ### Algorithms complexity

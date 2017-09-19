@@ -38,4 +38,102 @@
 ![DynamoDB](../images/DynamoDB/dynamo-db-7.png)
 
 **Creating A DynamoDB Table**
+
+![DynamoDB](../images/DynamoDB/dynamo-db-8.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-9.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-10.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-11.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-12.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-13.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-15.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-16.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-17.png)
+
+**DynamoDB Indexes**
+
+- Primary Keys
+	- Single Attribute (think unique ID)
+		- Partition Key (Hash Key) composed of one attribute
+	- Composite (think unique ID and date range)	
+		- Partition key and Sort key (Hash and Range) composed of two attributes
+		
+- Partition Key
+	- DynamoDB uses the partition key's value as input to an internal hash function. 
+	  The output from the hash function determines the partition (this is simply the physical location in which the data is stored)
+	- No two items in a table can have the same partition key value  
+
+- Partition Key and Sort Key
+	- DynamoDB uses the partition key's value as input to an internal hash function.
+	  The output from thee hash function determines the partition (this is the physical location in which the data is stored)
+	- Two items can have the same partition key, but they must have different sort key
+	- All items with the same partition key are stored together, in sorted order by sort key value
+- Indexed
+	- Local Secondary Index
+		- Has the SAME Partition key, different sort key
+		- Can ONLY be created when creating a table. They cannot be removed or modified later
+	- Global Secondary Index
+		- Has DIFFERENT Partition key and different sort key
+		- Can be created at table creation or added LATER
+		
+![DynamoDB](../images/DynamoDB/dynamo-db-18.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-19.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-20.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-22.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-21.png)
+		
+- Streams
+	- Used to capture any kind of modification of the DynamoDB tables
+		- If a new item is added to the table, the stream capture n image of the entire item, including all of its attributes
+		- If an item is updated, the stream capture the "before" and "after" image of any attributes that were modified in the item
+		- If an item is deleted from the table, the stream capture an image of the entire item before it was deleted
+		
+![DynamoDB](../images/DynamoDB/dynamo-db-14.png)
+
+**Scan vs Query API Call**
+- What is a Query
+	- A Query operation finds items in a table using only primary key attribute values. 
+	  You must provide a partition attribute name and a distinct value to search for.
+	- You can optionally provide a sort key attribute name and value, and use a comparison operator to refine the search results
+	- By default, a Query returns all of the data attributes for items with the specified primary key(s);
+	  however you can use the ProjectionExpression parameter so that the Query only returns some of the attributes, rather than all of them
+	- Query results are always sorted by the sort key. 
+	  If the data type of the sort key is a number, the result are returned in numeric order; otherwise, the results are returned in order of ASCII character code values. 
+	  By default, the sort order is ascending. To reverse the order, set the ScanIndexForward parameter to false
+	- By default is eventually consistent but can be changed to be strongly consistent  
+- What is a Scan
+	- A scan operation examines every item in the table. By default, a Scan returns all of the data attributes for every item;
+      however, you can use the ProjectionExpression parameter so that the Scan only returns some of the attributes, rather that all of them
+- What should I use? Query or Scan?
+	- Generally, a Query operation s kore efficient that a Scan operation
+	  A scan operation always scans the entire table, the filters out values to provide the desired result, 
+	  essentially adding the extra step of removing data from the result set. 
+	  Avoid using a Scan operation on a large table with a filter that removes many results, if possible. 
+	  Also, as a table grows, the Scan operation slows. The Scan operation examines every item for the requested values, 
+	  and can use up the provisioned throughput for a large table in a single operation.
+	  For quickly responce times, design your tables in a way that can use the Query, Get, or BatchGetItem APIs, instead.
+	  Alternatively, design your application to use Scan operations in a way that minimizes the impact on your table's request rate
+- Exam Tips
+	- A Query operation fins items in a table using only primary key attribute values. 
+	  You must provide a partition key attribute name and a distinct value to search for.
+	- A Scan operation examines every item in the table. By default, a Scan returns all of the data attributes for every item; 
+	  however, you can use the ProjectionExpression parameter so that the Scan only returns some of the attributes, rather than all of them
+	- Query results are always sorted by the sort key in ascending order. Set ScanIndexForward parameter to false to reverse it
+	- Try to use a query operation over a Scan operation as it is more efficient  
+	   
+	
+  
+		
+		
       
