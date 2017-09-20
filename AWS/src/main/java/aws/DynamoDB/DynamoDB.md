@@ -130,10 +130,92 @@
 	- A Scan operation examines every item in the table. By default, a Scan returns all of the data attributes for every item; 
 	  however, you can use the ProjectionExpression parameter so that the Scan only returns some of the attributes, rather than all of them
 	- Query results are always sorted by the sort key in ascending order. Set ScanIndexForward parameter to false to reverse it
-	- Try to use a query operation over a Scan operation as it is more efficient  
-	   
+	- Try to use a query operation over a Scan operation as it is more efficient 
+	 
+**DynamoDB Provisioned Throughput**	 
+
+- Provisioned Throughput
+	- Unit of Read provisioned throughput
+		- All reads are rounded up tp increments of 4 Lb
+		- Eventually Consistent Reads (default) consist of 2 reads per second
+		- Strongly Consistent Reads consist of 1 read rep second
+	- Unit of Write provisioned throughput
+		- All writes are 1 KB
+		- All writes consist of 1 write per second
+- Magic Formula
+	- Question - You have an application that requires to read 10 items of 1 KB per second using eventual consistency.
+	 What should you set the read throughput to?
+	 	- (Size of Read rounded to nearest 4 KB chunk / 4 KB) * number of items = read throughput
+	 	- Divide by 2 if eventually consistent
+	 
+	- Question - You have an application that requires to read 10 items of 1 KB peer second using eventual consistency.
+	  What should you set to read throughput to?
+	 	- First we calculate how many read units per item we need
+	 	- 1 KB rounded to the nearest 4 KB increment = 4
+	 	- 4 KB / 4 KB = 1 read unit per item
+	 	- 1 * 10 read items = 10
+	 	- Using eventual consistency we got 10 / 2 = 5
+	 	- 5 units of read throughput
+	- Question - You have an application that requires to read 1- items of 6 KB per second using eventual consistency. 
+	 	What should you set the read throughput to?
+	 	- First we calculate how many read units per item we need
+	 	- 6 KB rounded to the nearest increment of 4 KB is 8 KB
+	 	- 8 KB / 4 KB = 2 units per item
+	 	- 2 * 10 read items = 20
+	 	- Using eventual consistency we got 20 / 2 = 10
+	 	- 10 units of read throughput
+	- Question - You have an application that requires to read 5 items of 10 KB per second using eventual consistency. 
+	    What should you set the read throughput to?
+	    - First we calculate how many read units per item we need
+	    - 10 KB rounded up to nearest increment of 4 KB is 12 KB
+	    - 12 KB / 4 KB = 3 read units per item
+	    - 3 * 5 read items = 15
+	    - Using eventual consistency we get 15 / 2 = 7/5
+	    - 8 units of read throughput
+	- Question - You have an application that requires to read 5 items of 10 KB per second using strong consistency.
+	   What should you set the read throughput to?
+		- First we calculate how many units per item we need
+		- 10 KB rounded up to nearest increment of 4 KB is 12 KB
+		- 12 KB / 4 KB = 3 read units per item
+		- 3 * 5 read items = 15		   
+		- Using strong consistency we DON'T divide by 2
+		- 15 units of read throughput
+	- Question - You have an application that requires to write 5 items, wih each item being 10 KB in size per second.
+	  What should you set the write throughput to?
+		- Each write unit consist of 1 KB od data. You need to write 5 items per second with each item using 10 KB of data.
+		- 5 * 10 KB = 50 write units
+		- Write throughput of 50 Units
+	- Question - You have an application that requires to write 12 items 100KB pr item each second. 
+	  What should you set the write throughput to?
+		- Each write unit consist of 1 KB of data. You need to write 12 items per second with each item having 100 KB of data.
+		- 12 * 100 KB = 1200 write units
+		- Write throughput of 1200 Units
+- Error Codes
+		
+	400 HTTP Status Code - ProvisionedThroughputExceededException
 	
-  
-		
-		
-      
+	You exceeded your maximum allowed provisioned throughput for a table or for one or more global secondary indexes
+	
+**Using Web Identity Providers To Connect To Authenticate To DynamoDB**	
+
+- Web Identity Providers
+
+	You can authenticate users using Web identity providers (such as Facebook, Google, Amazon or any other Open-ID Connect-compatible Identity provider).
+	This is done using AssumeRoleWithWebIdentity API.
+	
+	You will need to create a role first.
+	
+	![DynamoDB](../images/DynamoDB/dynamo-db-23.png)
+	
+- Steps	taken to authenticate (comes up on exam)
+
+1. User Authenticates with ID provider (such as Facebook)
+2. They are passed a Token by their ID provider
+3. Your code calls AssumeRoleWithWebIdentity API and provides the providers token and specifies the AEN for the IAM Role
+4. App can now access DynamoDB from between 15 minutes to 1 hour (default is 1 hour)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-24.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-25.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-26.png)
