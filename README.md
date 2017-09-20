@@ -9,6 +9,8 @@
 | [Red black trees](Lafore/rc/main/resources/data_structures/red_black_trees/red_black_trees.md)   |                                                                                                  |                                    			                   			                              |  [Dependency Inversion Principle](Solid/src/main/resources/solid/dependency_inversion.md)  | [DynamoDB](AWS/src/main/java/aws/DynamoDB/DynamoDB.md) |
 | [Stack](Lafore/src/main/resources/data_structures/stack/stack.md)                                |                                                                                                  |                                    			                  			                              |                                                                                            | [SQS](AWS/src/main/java/aws/SQS/SQS.md)				|
 |																								   |																								  |																									      |																							   | [SNS](AWS/src/main/java/aws/SNS/SNS.md)				|
+|																								   |																								  |																									      |																							   | [SWF](AWS/src/main/java/aws/SWF/SWF.md)				|
+
  ![alt text](images/solid.png)
 
 ### Algorithms complexity
