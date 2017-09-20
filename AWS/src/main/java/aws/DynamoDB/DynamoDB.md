@@ -219,3 +219,73 @@
 ![DynamoDB](../images/DynamoDB/dynamo-db-25.png)
 
 ![DynamoDB](../images/DynamoDB/dynamo-db-26.png)
+
+**Other Important Aspects Of DynamoDB**
+
+- Conditional Writes
+
+![DynamoDB](../images/DynamoDB/dynamo-db-27.png)
+
+If item = $10 update to $12
+
+Note that conditional writes are idempotent. This means that you can send the same conditional writes request multiple times,
+but it will have no further effect on the item after the first  time DynamoDB performs the specified update.
+For example, suppose you issue a request to update the price of a book item by 10%, with the expectation that the price is currently $20.
+However, before you get a responce, a network error occurs and you don't know whether your request was successful or not.
+Because a conditional update is an idempotent operation, you can send the same request again
+and DynamoDB will update the price only if the current price is still $20
+
+- Atomic Counters
+
+DynamoDB supports atomic atomic counters, where you use the UpdateItem operation to increment or decrement the values of an 
+existing attribute without interfering with other write requests. (All write requests are applied in the order in which they were received).
+For example, a web application might want to maintain a counter per visitor to their site.
+In this case, the application would need to increment this counter regardless of its current value. 
+
+Atomic counter updates are not idempotent. This means that the counter will increment each time you call UpdateItem.
+If you suspect that a previous request was unsuccessful, your application could retry the UpdateItem operation;
+however, this would risk updating the counter twice. This might be acceptable for a web site counter, because you can
+tolerate with slightly over-or under-counting the visitors. However, in a banking application, 
+it would be safer to use a condition update rather that an atomic counter. 
+
+If your application needs to read multiple items, you can use the BatchGetItem API. A single BatchGetIte, request can retrieve
+up to 1 MB of data, which can contain as many as 100 items. In addition, a single BatchGetItem request can retrieve items
+from multiple tables.
+
+**DynamoDB Summary**
+
+![DynamoDB](../images/DynamoDB/dynamo-db-28.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-29.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-30.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-31.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-32.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-33.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-34.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-35.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-36.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-37.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-38.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-39.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-40.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-41.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-42.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-43.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-44.png)
+
+![DynamoDB](../images/DynamoDB/dynamo-db-45.png)
