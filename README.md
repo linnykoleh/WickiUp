@@ -11,6 +11,7 @@
 |																								   |																								  |																									      |																							   | [SNS](AWS/src/main/java/aws/SNS/SNS.md)										|
 |																								   |																								  |																									      |																							   | [SWF](AWS/src/main/java/aws/SWF/SWF.md)									    |
 |																								   |																								  |																									      |																							   | [ElasticBeanstalk](AWS/src/main/java/aws/ElasticBeanstalk/ElasticBeanstalk.md)	|
+|																								   |																								  |																									      |																							   | [CloudFormation](AWS/src/main/java/aws/CloudFormation/CloudFormation.md)	    |
 
  ![alt text](images/solid.png)
 
