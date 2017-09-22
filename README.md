@@ -13,6 +13,7 @@
 |																								   |																								  |																									      |																							   | [ElasticBeanstalk](AWS/src/main/java/aws/ElasticBeanstalk/ElasticBeanstalk.md)				 |
 |																								   |																								  |																									      |																							   | [CloudFormation](AWS/src/main/java/aws/CloudFormation/CloudFormation.md)	    			 |
 |																								   |																								  |																									      |																							   | [SharedResponsibility](AWS/src/main/java/aws/SharedResponsibility/SharedResponsibility.md)	 |
+|																								   |																								  |																									      |																							   | [Route53](AWS/src/main/java/aws/Route53/Route53.md)	 |
 
  ![alt text](images/solid.png)
 
