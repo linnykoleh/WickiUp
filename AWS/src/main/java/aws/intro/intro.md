@@ -3,7 +3,7 @@
  
 ### Network and Content delivery
  
-  ![Network_and_Content_delivery](images/intro/network_content.png)
+  ![Network_and_Content_delivery](images/network_content.png)
   
  **VPC** - virtual private cloud, virtual data center, virtual data center.
  
@@ -16,7 +16,7 @@
  
 ### Compute
 
-  ![Compute](images/intro/compute.png)
+  ![Compute](images/compute.png)
 
   **EC2** - stands for elastic compute cloud, virtual machines in a cloud
   
@@ -31,7 +31,7 @@
   
 ### Storage 
  
-   ![Storage](images/intro/storage.png)
+   ![Storage](images/storage.png)
   
    **S3** - virtual disk on a cloud that store objects(files, documents, movies), no database or games
    
@@ -44,7 +44,7 @@
    
 ### Databases   
 
-   ![Databases](images/intro/databases.png)
+   ![Databases](images/databases.png)
   
    **RDS** - relational database service, consist different number of database technologies(MySql, SQL, Oracle, PostgresSql)
    
@@ -57,7 +57,7 @@
    
 ### Migration   
 
-   ![Migration](images/intro/migration.png)
+   ![Migration](images/migration.png)
   
    **Snowball** - way doing migration in enterprise level, move terabytes data into the cloud
    
@@ -68,7 +68,7 @@
    
 ### Analytics   
 
-   ![Analytics](images/intro/analytics.png)
+   ![Analytics](images/analytics.png)
   
    **Athena** - run sql query on S3, bunch on scv, json file
    
@@ -87,7 +87,7 @@
    
 ### Security and Identity
 
-   ![Security_and_Identity](images/intro/security_and_identity.png)
+   ![Security_and_Identity](images/security_and_identity.png)
   
    **AIM** - Identity service manager, fundamental component of AWS, how you group users, administrator or developer group
    
@@ -104,7 +104,7 @@
    
 ### Management Tools
 
-   ![Management_Tools](images/intro/management_tools.png)
+   ![Management_Tools](images/management_tools.png)
   
    **Cloud watch** - monitor performance on AWS environment
    
@@ -123,7 +123,7 @@
    
 ### Application services
 
-   ![Application_services](images/intro/application_services.png)
+   ![Application_services](images/application_services.png)
   
    **Step function** - service for visualisation what is going on inside application
    
@@ -138,7 +138,7 @@
    
 ### Developer tools
 
-   ![Developer_tools](images/intro/developer_tools.png)
+   ![Developer_tools](images/developer_tools.png)
   
    **CodeCommit** - store your code on cloud
    
@@ -151,7 +151,7 @@
 
 ### Mobile services
 
-   ![Mobile_services](images/intro/mobile_services.png)
+   ![Mobile_services](images/mobile_services.png)
   
    **Mobile hub** - simplifies the process of building, testing, and monitoring mobile applications that make use of one or more AWS services
    
@@ -167,7 +167,7 @@
    
 ### Business productivity
 
-   ![Business_productivity](images/intro/business_productivity.png)   
+   ![Business_productivity](images/business_productivity.png)   
    
    **WorkDocs** - storing important documents in a cloud
    
@@ -176,14 +176,14 @@
    
 ### Internet of things
 
-   ![Internet_of_things](images/intro/iot.png)   
+   ![Internet_of_things](images/iot.png)   
    
    **IOT** - tracking billion devices IOT gateway
    
    
 ### Desktop and App streaming
 
-   ![Desktop_and_App_streaming](images/intro/desktop_and_app_streaming.png)   
+   ![Desktop_and_App_streaming](images/desktop_and_app_streaming.png)   
    
    **WorkSpaces** - having desktop in a cloud
   
@@ -192,7 +192,7 @@
    
 ### Artificial Intelligence
 
-   ![Artificial_Intelligence](images/intro/artificial_intelligence.png)   
+   ![Artificial_Intelligence](images/artificial_intelligence.png)   
    
    **alexa** - amazon voice service in a cloud 
    
@@ -207,7 +207,7 @@
    
 ### Messaging
 
-  ![Messaging](images/messaging.png)   
+  ![Messaging](developer/images/messaging.png)   
   
   **SNS** - simple notification service, way of notifying you, email, http endpoints
   
