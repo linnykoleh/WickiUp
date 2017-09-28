@@ -2,34 +2,33 @@
 
 https://aws.amazon.com/ru/iam/
 
-> Allows you yo manage users and their level of access to the AWS console. 
-> It is important to understand IAM and how it works, both for the exam and for the administrating a company's AWS account in real life
+Allows you yo manage users and their level of access to the AWS console. 
+It is important to understand IAM and how it works, both for the exam and for the administrating a company's AWS account in real life
 
 **What does IAM give you**
-- Centralised control of your AWS account
-- Shared Access to your AWS account
-- Granular permission
-- Identity Federation (including Active Directory, Facebook, Linkedin) 
-- Multi-factor Authentication
-- Provide temporary access for users/devices and services where necessary
-- Allows you to set up your own password rotation policy
-- Integrates with many different AWS services 
-- Support PCI DSS Compliance
 
-- IAM consists of the following:
+1. Centralised control of your AWS account
+2. Shared Access to your AWS account
+3. Granular permission
+4. Identity Federation (including Active Directory, Facebook, Linkedin) 
+5. Multi-factor Authentication
+6. Provide temporary access for users/devices and services where necessary
+7. Allows you to set up your own password rotation policy
+8. Integrates with many different AWS services 
+9. Support PCI DSS Compliance
+10. IAM consists of the following:
 	 - Users
 	 - Groups (A way to group our users and apply polices to them collectively) 
 	 - Roles
 	 - Policy Documents
-	 
-- IAM is universal. It does not apply to regions at this time 	 
-- The `root account` is simply the account created when first setup your AWS account. It has complete Admin access by default
-- New Users have NO permissions when first created
-- New Users are assigned Access Key ID & Secret Access Keys when first created
-- These are not the same as a password, and you cannot use the Access KeyID & Secret Access Key to Login in to the console. You can use this to access AWS via the APIs and Command Line however
-- You only get to view these once. If you lose them, you have to regenerate them. So save them in a secure location.
-- Always setup Multi-factor Authentication on yur root account
-- You can create and customise your own password rotation policies
+11. IAM is universal. It does not apply to regions at this time 	 
+12. The `root account` is simply the account created when first setup your AWS account. It has complete Admin access by default
+13. New Users have NO permissions when first created
+14. New Users are assigned Access Key ID & Secret Access Keys when first created
+15. These are not the same as a password, and you cannot use the Access KeyID & Secret Access Key to Login in to the console. You can use this to access AWS via the APIs and Command Line however
+16. You only get to view these once. If you lose them, you have to regenerate them. So save them in a secure location.
+17. Always setup Multi-factor Authentication on yur root account
+19 You can create and customise your own password rotation policies
 
 IAM does not require region election:
 
