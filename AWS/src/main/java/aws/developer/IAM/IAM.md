@@ -40,7 +40,8 @@ IAM users sign-in link:
 
 
 **Critical Terms**:
-1. **Users** - End Users (think people) 
+
+1. `Users` - End Users (think people) 
 
  	- How to create user:
  	
@@ -65,7 +66,7 @@ IAM users sign-in link:
 	
 	![IAM does not require region election](../images/IAM/add_user_6.png)
  	
-2. **Groups** - A collection of users under one set of permission
+2. `Groups` - A collection of users under one set of permission
 
 	![IAM does not require region election](../images/IAM/add_group_1.png)
 	
@@ -77,7 +78,7 @@ IAM users sign-in link:
 	
 	![IAM does not require region election](../images/IAM/add_group_5.png)
 	
-3. **Roles** - You create roles and can then assign them to AWS resources
+3. `Roles` - You create roles and can then assign them to AWS resources
 
 	AWS identity with permission policies that determine what the identity can and cannot do in AWS.
 	However, instead of being uniquely associated with one person, a role is intended to be assumable by anyone who needs it. 
@@ -91,7 +92,7 @@ IAM users sign-in link:
 	
 	![IAM does not require region election](../images/IAM/add_role_3.png)
 	
-4. **Policies** - A document that defines one or more permissions
+4. `Policies` - A document that defines one or more permissions
 	- To assign permissions to a user, group, role, or resource, you create a policy, which is a document that explicitly lists permissions. 
 	  In its most basic sense, a policy lets you specify the following:
 		- Actions: what actions you will allow. Each AWS service has its own set of actions. For example, you might allow a user to use the Amazon S3 ListBucket action, which returns information about the items in a bucket. Any actions that you don't explicitly allow are denied.
@@ -103,8 +104,7 @@ IAM users sign-in link:
 	![IAM does not require region election](../images/IAM/policies_1.png)	
 
 
-**Terms**:
-1. **MFA** - multi-factor authentication
+5. `MFA` - multi-factor authentication
 
 	![IAM does not require region election](../images/IAM/mfa_1.png)
 	
@@ -116,10 +116,11 @@ IAM users sign-in link:
 	
 	![IAM does not require region election](../images/IAM/mfa_5.png)
 
-2. **Root account** - email for sign up to AWS
+6. `Root account` - email for sign up to AWS
 	- When you first create an Amazon Web Services (AWS) account, you begin with a single sign-in identity that has complete access to all AWS services and resources in the account. 
 	  This identity is called the AWS account root user and is accessed by signing in with the email address and password that you used to create the account.
-3. **Access key ID** and **Secret Access key** - token would you use in order to programmatically interact with AWS you can't use them to login to AWS console
+
+7. `Access key ID` and `Secret Access key` - token would you use in order to programmatically interact with AWS you can't use them to login to AWS console
 		
 	![IAM does not require region election](../images/IAM/access_sercet_keys.png)
 
@@ -137,8 +138,8 @@ Security
 	- Multiple users, individual security credentials and permissions
 	
 	
-	
-	
+---
+
 ### Security Token Service (STS)
 
 Grants users limited and temporary access to AWS resources. Users can come from three sources:
