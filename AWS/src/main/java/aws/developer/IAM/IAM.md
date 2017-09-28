@@ -1,9 +1,8 @@
-### IAM -  Identity Access Management  
+## IAM -  Identity Access Management  
 
 https://aws.amazon.com/ru/iam/
 
-Allows you yo manage users and their level of access to the AWS console. 
-It is important to understand IAM and how it works, both for the exam and for the administrating a company's AWS account in real life
+**Allows you yo manage users and their level of access to the AWS console.** 
 
 **What does IAM give you**
 
@@ -137,40 +136,37 @@ Security
 	- Secure by default
 	- Multiple users, individual security credentials and permissions
 	
-	
+
 ---
 
 ### Security Token Service (STS)
 
-Grants users limited and temporary access to AWS resources. Users can come from three sources:
-- Federation (typically Active Directory)
-	- Uses Security Assertion MarkUp Language (SAML)
-	- Grants temporary access based off the users Active Directory credentials. Does not need to be a user in AIM
-	- Single sigh on allows users to log in to AWS console without assigning IAM credentials
-- Federation with Mobile Apps
-	- Use Facebook/Amazon/Google or the OpenID providers to log on
-- Cross Account Access
-	- Let's users from one AWS account access resources in another 	
+![AMI](../images/IAM/IAM-1.png)	
 
-**Understanding Key Terms**:
-- Federation: combining or joining a list of users in one domain(such as IAM) with a list of users in another domain (such as Active Directory, Facebook, Linkedin etc)
-	- Identity Broker: a service that allows you to take an identity from point A and join it (federate it) to point B
-	- Identity Store - Services like Active Directory, Facebook, Google etc
-	- Identities - a user of a service like Facebook etc
+![AMI](../images/IAM/IAM-2.png)	
 
+![AMI](../images/IAM/IAM-3.png)	
 
-**How it works(have to be on exam)**
-1. Develop an Identity Broker to communicate with LDAP and AWS STS
-2. Identity Broker always authenticates with LDAP first, THEN with AWS STS
-3. Application then gets temporary access to AWS resources 
+![AMI](../images/IAM/IAM-4.png)
 
+![AMI](../images/IAM/IAM-5.png)
+
+![AMI](../images/IAM/IAM-6.png)
+
+![AMI](../images/IAM/IAM-7.png)
+
+![AMI](../images/IAM/IAM-8.png)
 		
-**On exam:**
+**Active Directory Federation (On exam)**
+
+![AM](../images/IAM/IAM-9.png)
+
 1. Can you authenticate with active directory?
 	- Yes, using SAML
 2. What type of authenticate?
 	- SAML (security assertion markup language)
-3. Whether or not your authenticating to active directory first and then giving a temporal security credential or if you get a temporal security credential first which is then authenticate againt to active directory?
+3. Whether or not your authenticating to active directory first and then giving a temporal security credential 
+	or if you get a temporal security credential first which is then authenticate against to active directory?
 	- You always authenticate to active directory first and then you will be assign security credential
 4. What is Arn?
 	- Amazon Resource Name
@@ -179,4 +175,36 @@ Grants users limited and temporary access to AWS resources. Users can come from 
 6. Weather or not is it possible to attach role	to running EC2 instance
 	- It is now possible
 	
-	
+**Web Identity Federation (WIF)**	
+
+This allows a developer to federate their application from Facebook, Google, or Amazon with their AWS account, allowing their end users to authenticate with one of these Identity Providers (IdP) and receive temporary AWS credentials. 
+In combination with Policy Variables, WIF allows the developer to restrict end users' access to a subset of AWS resources within their account.
+
+![AM](../images/IAM/IAM-10.png)
+
+![AM](../images/IAM/IAM-11.png)
+
+![AM](../images/IAM/IAM-12.png)
+
+![AM](../images/IAM/IAM-13.png)
+
+![AM](../images/IAM/IAM-14.png)
+
+![AM](../images/IAM/IAM-15.png)
+
+![AM](../images/IAM/IAM-16.png)
+
+Have to be remembered for exam:
+
+First you authenticate with Identity Provider, you then obtain security credentials and then
+you call AssumeRoleWithWebIdentity and then when you done it you are able to access AWS resource
+
+---
+
+**IAM Summary**
+
+![AM](../images/IAM/IAM-17.png)
+
+![AM](../images/IAM/IAM-18.png)
+
+![AM](../images/IAM/IAM-19.png)
