@@ -2,8 +2,8 @@
 #### Everything from EC2 chapter
 
 - [EC2](course/1_EC2.md)
-	- [Security Group](course/2_SecurityGroup.md)
-	- [EBS](course/3_EBS.md)
+	- [EBS](course/2_EBS.md)
+	- [Security Group](course/3_SecurityGroup.md)
     - [EFS](course/4_EFS.md)
     - [CLI](course/5_CLI.md)
     - [Bash](course/6_Bash.md)
