@@ -4,6 +4,14 @@
 system on top of these volumes, run a database, or use them in any other way you would use a block device. Amazon EBS volumes
 are placed in a specific Availability Zone, where they are automatically replicated to protect you from the failure of a single component.**
 
+![EC2](../../images/EC2/EC2-29.png)
+
+![EC2](../../images/EC2/EC2-30.png)
+
+![EC2](../../images/EC2/EC2-31.png)
+
+![EC2](../../images/EC2/EC2-32.png)
+
 **EBS Volume Types**
 
 - `General Purpose SSD (GP2)`

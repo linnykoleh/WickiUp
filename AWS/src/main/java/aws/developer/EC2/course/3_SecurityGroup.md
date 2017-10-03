@@ -2,17 +2,20 @@
 
 Security Group is a Virtual Firewall
 It's controlling traffic to your instances
-1 instance can have multiple security groups.
+An instance can have multiple security groups.
 
-- Any rule you make to Security Group applies `immediately`
-- Security Group is stateful. Everything that you added into `InBound` will automatically add to `OutBound`
-- You can denied traffic by Security Group
-- All Inbound traffic is Blocked By default
-- All OutBound traffic is Allowed
-- Changes to Security Groups take effect immediately
-- You can have any number of EC2 instances within a security group
-- You can have multiple security groups attached to EC2 instances
-- Security Groups are STATEFUL
-	- If you create an inbound rule allowing traffic in,  that traffic is automatically allowed back out again
-- You can not block specific IP addresses using Security Groups instead use Network Access Control Lists
-- You can specify allow rules, but not deny rules
+![EC2](../../images/EC2/EC2-22.png)
+
+![EC2](../../images/EC2/EC2-23.png)
+
+![EC2](../../images/EC2/EC2-24.png)
+
+![EC2](../../images/EC2/EC2-25.png)
+
+![EC2](../../images/EC2/EC2-26.png)
+
+![EC2](../../images/EC2/EC2-27.png)
+
+![EC2](../../images/EC2/EC2-28.png)
+
+![EC2](../../images/EC2/EC2-20.png)

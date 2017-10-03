@@ -28,6 +28,3 @@ For exam you need to know
      - reservation-id
      - security-groups
      - services/
-
-
-

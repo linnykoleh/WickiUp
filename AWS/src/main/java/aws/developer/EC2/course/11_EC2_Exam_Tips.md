@@ -97,10 +97,3 @@ You don't have to worry about operating systems, patching, scaling, etc. You can
   These events could be changes to data in an Amazon S3 bucket or an Amazon DynamoDB table.
 - As a compute service to run your code in response to HTTP requests using Amazon API Gateway or 
   API calls made using AWS SDKs
-
- 
-	
-	
-
-
-	

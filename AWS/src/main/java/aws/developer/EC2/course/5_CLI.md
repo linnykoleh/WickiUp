@@ -6,6 +6,8 @@ Define user who has access to EC2 through CLI.
 
 Mostly have to be used when connecting outside.
 
+![EC2](../../images/EC2/EC2-41.png)
+
 - `aws s3 help` - help
 - `aws configure` - configuring access
 	- Enter `AWS Access Key ID`

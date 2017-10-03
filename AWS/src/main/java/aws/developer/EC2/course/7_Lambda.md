@@ -1,17 +1,39 @@
 ### Lambda
 
-![Bash](../../images/EC2/what_is_lambda.png)
+![EC2](../../images/EC2/EC2-42.png)
 
-AWS Lambda is a compute service where you can upload your code
-and create a Lambda function. AWS Lambda takes care of provisioning
-and managing the servers that you use to run the code.
-You don't have to worry about operation systems, patching, scaling, etc.
-Toy can use Lambda in the following ways:
- - As a event-driven compute service where AWS Lambda runs your code in response
- to event. These events could be changes to data in a Amazon S3 bucket or
- an Amazon DynamoDB table
- - As a compute service to run your code in response to HTTP requests using 
- Amazon API Gateway or AI calls made using AWS SDKs.
+![EC2](../../images/EC2/what_is_lambda.png)
+
+![EC2](../../images/EC2/EC2-43.png)
+
+![EC2](../../images/EC2/EC2-44.png)
+
+![EC2](../../images/EC2/EC2-45.png)
+
+![EC2](../../images/EC2/EC2-46.png)
+
+![EC2](../../images/EC2/EC2-47.png)
+
+![EC2](../../images/EC2/EC2-48.png)
+
+![EC2](../../images/EC2/EC2-49.png)
+
+![EC2](../../images/EC2/EC2-50.png)
+
+![EC2](../../images/EC2/EC2-51.png)
+
+![EC2](../../images/EC2/EC2-52.png)
+
+![EC2](../../images/EC2/EC2-53.png)
+
+![EC2](../../images/EC2/EC2-54.png)
+
+![EC2](../../images/EC2/EC2-55.png)
+
+![EC2](../../images/EC2/EC2-56.png)
+
+![EC2](../../images/EC2/EC2-57.png)
+
  
 **_Lambda scales out automatically_**
  
@@ -21,13 +43,14 @@ Toy can use Lambda in the following ways:
  Every time user sends a request to API Gateway, invoked a new lambda function
  Tree requests then three lambda functions
  
- ![Bash](../../images/EC2/languages.png)
+![EC2](../../images/EC2/languages.png)
  
- ![Bash](../../images/EC2/lambda_priced.png)
+![EC2](../../images/EC2/lambda_priced.png)
+ 
+![EC2](../../images/EC2/EC2-45.png)
  
 
- **_Lambda duration time maximum is 5 minutes_**
+**_Lambda duration time maximum is 5 minutes_**
 
- 
-![Bash](../../images/EC2/lambda_exam_tips.png)
+![EC2](../../images/EC2/lambda_exam_tips.png)
 

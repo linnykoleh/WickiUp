@@ -14,10 +14,4 @@ Elastic Load Balancer to load balance the traffic between these instances.
 
 ![ec2_from_off_docs](../../images/EC2/load_balancer_aws_4.png)
 
-
- - Instances monitored by ELB are reported as:
- 	- InService
- 	- OutOfService
- - Health checks check the instance health by talking to it
- - Have their own DNS name. You are never given an IP address
- - Read the ELB FAQ for Classic Load Balancer
+![EC2](../../images/EC2/EC2-58.png)
