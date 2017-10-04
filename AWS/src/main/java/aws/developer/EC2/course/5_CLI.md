@@ -36,4 +36,5 @@ Mostly have to be used when connecting outside.
 						 If you specify multiple instances and the request fails (for example, because of a single incorrect instance ID), none of the instances are terminated.
 						 Terminated instances remain visible after termination (for approximately one hour).
 	- `aws ec2 terminate-instances --instance-ids i-00ad7cfe27fa6e65e`
+- `describe-availability-zones`	- describes one or more of the Availability Zones that are available to you
 			
