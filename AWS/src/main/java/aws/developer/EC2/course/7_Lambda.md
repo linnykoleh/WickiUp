@@ -54,3 +54,39 @@
 
 ![EC2](../../images/EC2/lambda_exam_tips.png)
 
+![EC2](../../images/EC2/EC2-61.png)
+
+![EC2](../../images/EC2/EC2-62.png)
+
+![EC2](../../images/EC2/EC2-63.png)
+
+![EC2](../../images/EC2/EC2-64.png)
+
+![EC2](../../images/EC2/EC2-65.png)
+
+
+```java
+@Component
+@ComponentScan(value = "com.aws.boot.linnyk")
+public class MyLambdaFunctionHandler implements RequestHandler<Map<String, Object>, String> {
+
+	private MyServices myServices;
+
+	public String handleRequest(final Map<String,Object> input, final Context context) {
+		final ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MyLambdaFunctionHandler.class);
+		this.myServices = applicationContext.getBean(MyServices.class);
+		myServices.doBusiness("Message sent from Lambda");
+		return "Hello AWS From Spring";
+	}
+
+}
+
+@Component
+class MyServices {
+
+	public void doBusiness(final String s) {
+		System.out.println(s);
+	}
+}
+```
+
