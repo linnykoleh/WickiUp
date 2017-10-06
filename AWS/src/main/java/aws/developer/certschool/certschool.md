@@ -1,5 +1,5 @@
-1. If an application is storing hourly log files from thousands of instances from a 
-   high traffic web site, which naming scheme would give optimal performance on S3?
+1. **_If an application is storing hourly log files from thousands of instances from a 
+   high traffic web site, which naming scheme would give optimal performance on S3?_**
    
 - instanceID_log-HH-DD-MM-YYYY
 - **HH-DD-MM-YYYY-log_instanceID**
@@ -9,8 +9,8 @@
 
 http://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations.html
  
-2. Your application is trying to upload a 7 GB file to Simple Storage Service and receive a “Your proposed upload exceeds the maximum allowed object size.” error message. 
-   What is a feasible solution for this?
+2. **_Your application is trying to upload a 7 GB file to Simple Storage Service and receive a “Your proposed upload exceeds the maximum allowed object size.” error message. 
+   What is a feasible solution for this?_**
    
   
 - Use thirty party tool to split the objects into multiple pieces for easy upload
@@ -23,7 +23,7 @@ https://aws.amazon.com/s3/faqs/?nc1=h_ls
 The total volume of data and number of objects you can store are unlimited. Individual Amazon S3 objects can range in size from a minimum of 0 bytes to a maximum of 5 terabytes. 
 The largest object that can be uploaded in a single PUT is 5 gigabytes. For objects larger than 100 megabytes, customers should consider using the Multipart Upload capability.
 
-3. What is the format of structured notification messages sent by Amazon SNS?
+3. **_What is the format of structured notification messages sent by Amazon SNS?_**
 
 - An JSON object containing MessageId, DuplicateFlag, Message and other values
 - **An JSON object containing MessageId, unsubscribeURL, Subject, Message and other values**
@@ -46,7 +46,7 @@ The notification message sent by Amazon SNS for deliveries over HTTP, HTTPS, Ema
 
 Notification messages sent over the “Email” transport only contain the payload (message body) as received from the publisher.
 
-4. Which EC2 API call would you use to retrieve a list of Amazon Machine Images?
+4. **_Which EC2 API call would you use to retrieve a list of Amazon Machine Images?_**
 
 - GetAMls
 - **DescribeImages**
