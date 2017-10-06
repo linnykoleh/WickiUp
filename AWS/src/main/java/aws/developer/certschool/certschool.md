@@ -9,6 +9,8 @@
 
 http://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations.html
  
+---
+
 2. **_Your application is trying to upload a 7 GB file to Simple Storage Service and receive a “Your proposed upload exceeds the maximum allowed object size.” error message. 
    What is a feasible solution for this?_**
    
@@ -22,6 +24,8 @@ https://aws.amazon.com/s3/faqs/?nc1=h_ls
 
 The total volume of data and number of objects you can store are unlimited. Individual Amazon S3 objects can range in size from a minimum of 0 bytes to a maximum of 5 terabytes. 
 The largest object that can be uploaded in a single PUT is 5 gigabytes. For objects larger than 100 megabytes, customers should consider using the Multipart Upload capability.
+
+---
 
 3. **_What is the format of structured notification messages sent by Amazon SNS?_**
 
@@ -46,6 +50,8 @@ The notification message sent by Amazon SNS for deliveries over HTTP, HTTPS, Ema
 
 Notification messages sent over the “Email” transport only contain the payload (message body) as received from the publisher.
 
+---
+
 4. **_Which EC2 API call would you use to retrieve a list of Amazon Machine Images?_**
 
 - GetAMls
@@ -58,3 +64,4 @@ http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html
 DescribeImages. Describes one or more of the images (AMIs, AKIs, and ARIs) available to you. 
 Images available to you include public images, private images that you own, and private images owned by other AWS accounts but for which you have explicit launch permissions.
 
+---
