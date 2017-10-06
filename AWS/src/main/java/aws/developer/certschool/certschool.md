@@ -1,4 +1,4 @@
-1. **_If an application is storing hourly log files from thousands of instances from a 
+ **_1. If an application is storing hourly log files from thousands of instances from a 
    high traffic web site, which naming scheme would give optimal performance on S3?_**
    
 - instanceID_log-HH-DD-MM-YYYY
@@ -11,7 +11,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations.
  
 ---
 
-2. **_Your application is trying to upload a 7 GB file to Simple Storage Service and receive a “Your proposed upload exceeds the maximum allowed object size.” error message. 
+**_2. Your application is trying to upload a 7 GB file to Simple Storage Service and receive a “Your proposed upload exceeds the maximum allowed object size.” error message. 
    What is a feasible solution for this?_**
    
   
@@ -27,7 +27,7 @@ The largest object that can be uploaded in a single PUT is 5 gigabytes. For obje
 
 ---
 
-3. **_What is the format of structured notification messages sent by Amazon SNS?_**
+**_3. What is the format of structured notification messages sent by Amazon SNS?_**
 
 - An JSON object containing MessageId, DuplicateFlag, Message and other values
 - **An JSON object containing MessageId, unsubscribeURL, Subject, Message and other values**
@@ -52,7 +52,7 @@ Notification messages sent over the “Email” transport only contain the paylo
 
 ---
 
-4. **_Which EC2 API call would you use to retrieve a list of Amazon Machine Images?_**
+**_4. Which EC2 API call would you use to retrieve a list of Amazon Machine Images?_**
 
 - GetAMls
 - **DescribeImages**
