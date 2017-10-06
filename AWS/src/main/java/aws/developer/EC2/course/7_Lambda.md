@@ -52,6 +52,8 @@
 
 **_Lambda duration time maximum is 5 minutes_**
 
+#### Spring on AWS Lambda
+
 ![EC2](../../images/EC2/lambda_exam_tips.png)
 
 ![EC2](../../images/EC2/EC2-61.png)
