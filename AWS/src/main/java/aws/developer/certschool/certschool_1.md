@@ -8,6 +8,8 @@
 - YYYY-MM-DD-HH-log_instanceID
 
 http://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations.html
+
+"Just remember"
  
 ---
 
@@ -22,8 +24,8 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/request-rate-perf-considerations.
 
 https://aws.amazon.com/s3/faqs/?nc1=h_ls
 
-The total volume of data and number of objects you can store are unlimited. Individual Amazon S3 objects can range in size from a minimum of 0 bytes to a maximum of 5 terabytes. 
-The largest object that can be uploaded in a single PUT is 5 gigabytes. For objects larger than 100 megabytes, customers should consider using the Multipart Upload capability.
+"The total volume of data and number of objects you can store are unlimited. Individual Amazon S3 objects can range in size from a minimum of 0 bytes to a maximum of 5 terabytes. 
+The largest object that can be uploaded in a single PUT is 5 gigabytes. For objects larger than 100 megabytes, customers should consider using the Multipart Upload capability."
 
 ---
 
@@ -36,7 +38,7 @@ The largest object that can be uploaded in a single PUT is 5 gigabytes. For obje
 
 https://aws.amazon.com/sns/faqs/
 
-The notification message sent by Amazon SNS for deliveries over HTTP, HTTPS, Email-JSON and SQS transport protocols will consist of a simple JSON object, which will include the following information:
+"The notification message sent by Amazon SNS for deliveries over HTTP, HTTPS, Email-JSON and SQS transport protocols will consist of a simple JSON object, which will include the following information:
 
 - MessageId: A Universally Unique Identifier, unique for each notification published.
 - Timestamp: The time (in GMT) at which the notification was published.
@@ -48,7 +50,7 @@ The notification message sent by Amazon SNS for deliveries over HTTP, HTTPS, Ema
 - Signature: Base64-encoded “SHA1withRSA” signature of the Message, MessageId, Subject (if present), Type, Timestamp, and Topic values.
 - SignatureVersion: Version of the Amazon SNS signature used.
 
-Notification messages sent over the “Email” transport only contain the payload (message body) as received from the publisher.
+Notification messages sent over the “Email” transport only contain the payload (message body) as received from the publisher."
 
 ---
 
@@ -61,8 +63,8 @@ Notification messages sent over the “Email” transport only contain the paylo
 
 http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html
 
-DescribeImages. Describes one or more of the images (AMIs, AKIs, and ARIs) available to you. 
-Images available to you include public images, private images that you own, and private images owned by other AWS accounts but for which you have explicit launch permissions.
+"DescribeImages. Describes one or more of the images (AMIs, AKIs, and ARIs) available to you. 
+Images available to you include public images, private images that you own, and private images owned by other AWS accounts but for which you have explicit launch permissions."
 
 ---
 
@@ -74,9 +76,9 @@ Images available to you include public images, private images that you own, and 
 
 http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDBClient.html
 
-If you issue a DescribeTable request immediately after a CreateTable request, DynamoDB might return a ResourceNotFoundException. 
+"If you issue a DescribeTable request immediately after a CreateTable request, DynamoDB might return a ResourceNotFoundException. 
 This is because DescribeTable uses an eventually consistent query, and the metadata for your table might not be available at that moment. 
-Wait for a few seconds, and then try the DescribeTable request again.
+Wait for a few seconds, and then try the DescribeTable request again."
 
 ---
 
@@ -89,8 +91,8 @@ Wait for a few seconds, and then try the DescribeTable request again.
 
 http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html
 
-DescribeAvailabilityZones. Describes one or more of the Availability Zones that are available to you. The results include zones only for the region you're currently using. 
-If there is an event impacting an Availability Zone, you can use this request to view the state and any provided message for that Availability Zone.
+"DescribeAvailabilityZones. Describes one or more of the Availability Zones that are available to you. The results include zones only for the region you're currently using. 
+If there is an event impacting an Availability Zone, you can use this request to view the state and any provided message for that Availability Zone.:
 
 ---
 
@@ -106,9 +108,9 @@ What could be an explanation for this?_**
 
 http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
 
-ProvisionedThroughputExceededException
+"ProvisionedThroughputExceededException.
 Message: You exceeded your maximum allowed provisioned throughput for a table or for one or more global secondary indexes. 
-To view performance metrics for provisioned throughput vs. consumed throughput, open the Amazon CloudWatch console.
+To view performance metrics for provisioned throughput vs. consumed throughput, open the Amazon CloudWatch console."
 
 ---
 
@@ -123,10 +125,10 @@ however the developers are not sure of the best way to do this. You advise them 
 
 http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-devicetoken.html
 
-To migrate existing tokens from a CSV file to AWS
+"To migrate existing tokens from a CSV file to AWS
 
 You can migrate existing tokens contained in a CSV file. The CSV file cannot be larger than 2MB. When migrating several tokens, it is recommended to use the CreatePlatformEndpoint API. 
-Each of the tokens in the CSV file must be followed by a newline.
+Each of the tokens in the CSV file must be followed by a newline."
 
 ---
 
@@ -138,7 +140,7 @@ You need to minimize provisioned throughput, storage, and API calls. Given these
 - Retain the items in a single table
 - Delete items individually over a 24 hour period
 
-According to the question, these items are no longer needed and need to minimize provisioned throughput, storage, and API calls. 
+"According to the question, these items are no longer needed and need to minimize provisioned throughput, storage, and API calls."
 
 ---
 
@@ -156,7 +158,7 @@ The application then calls the IAM Security Token Service to assume that IAM Rol
 - **The application authenticates against LDAP. The application then calls the IAM Security Service to login to IAM using the LDAP credentials. 
 The application can use the IAM temporary credentials to access the appropriate S3 bucket.**
 
-Just remember
+"Just remember"
 
 ---
 
@@ -170,7 +172,7 @@ Just remember
 http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
 http://docs.aws.amazon.com/AmazonS3/latest/dev/SSEUsingRESTAPI.html
 
-If you want the target object encrypted using server-side encryption with AWS-managed keys, you must provide the x-amz-server-side-encryption request header.
+"If you want the target object encrypted using server-side encryption with AWS-managed keys, you must provide the x-amz-server-side-encryption request header."
 
 ---
 
@@ -183,9 +185,9 @@ If you want the target object encrypted using server-side encryption with AWS-ma
 
 http://docs.aws.amazon.com/cli/latest/reference/ec2/revoke-security-group-ingress.html
 
-revoke-security-group-ingress
+"revoke-security-group-ingress
 
-Removes one or more ingress rules from a security group. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly.
+Removes one or more ingress rules from a security group. To remove a rule, the values that you specify (for example, ports) must match the existing rule's values exactly."
 
 ---
 
@@ -199,7 +201,7 @@ Removes one or more ingress rules from a security group. To remove a rule, the v
 
 http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-region-selection.html
 
-AWS clients created by using the client constructor will not automatically determine region from the environment and will, instead, use the default SDK region (USEast1).
+"AWS clients created by using the client constructor will not automatically determine region from the environment and will, instead, use the default SDK region (USEast1)."
 
 ---
 
@@ -212,11 +214,11 @@ AWS clients created by using the client constructor will not automatically deter
 
 http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScanGuidelines.html
 
-Reduce Page Size
+"Reduce Page Size.
 Because a Scan operation reads an entire page (by default, 1 MB), you can reduce the impact of the scan operation by setting a smaller page size. 
 The Scan operation provides a Limit parameter that you can use to set the page size for your request. Each Query or Scan request that has a smaller page size uses fewer read operations and creates a "pause" between each request. 
 For example, if each item is 4 KB and you set the page size to 40 items, then a Query request would consume only 40 strongly consistent read operations or 20 eventually consistent read operations.
-A larger number of smaller Query or Scan operations would allow your other critical requests to succeed without throttling.
+A larger number of smaller Query or Scan operations would allow your other critical requests to succeed without throttling."
 
 ---
 
@@ -231,8 +233,8 @@ However, Company XYZ is realizing that polling in tight loops is burning CPU cyc
 http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html
 http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SetQueueAttributes.html
 
-ReceiveMessageWaitTimeSeconds - The length of time, in seconds, for which a ReceiveMessage action waits for a message to arrive. 
-Valid values: an integer from 0 to 20 (seconds). The default is 0.
+"ReceiveMessageWaitTimeSeconds - The length of time, in seconds, for which a ReceiveMessage action waits for a message to arrive. 
+Valid values: an integer from 0 to 20 (seconds). The default is 0."
 
 ---
 
@@ -245,12 +247,12 @@ Valid values: an integer from 0 to 20 (seconds). The default is 0.
 
 http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
 
-When your program sends a request, DynamoDB attempts to process it. If the request is successful, DynamoDB returns an HTTP success status code (200 OK), along with the results from the requested operation.
+"When your program sends a request, DynamoDB attempts to process it. If the request is successful, DynamoDB returns an HTTP success status code (200 OK), along with the results from the requested operation.
 
 If the request is unsuccessful, DynamoDB returns an error. Each error has three components:
 - An HTTP status code (such as 400).
 - An exception name (such as ResourceNotFoundException).
-- An error message (such as Requested resource not found: Table: tablename not found).
+- An error message (such as Requested resource not found: Table: tablename not found)."
 
 ---
 
@@ -264,10 +266,10 @@ If your system doesn’t call DeleteMessage for that message before the visibili
 
 http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html
 
-The visibility timeout clock starts ticking once Amazon SQS returns the message. During that time, the component processes and deletes the message. 
+"The visibility timeout clock starts ticking once Amazon SQS returns the message. During that time, the component processes and deletes the message. 
 But what happens if the component fails before deleting the message? If your system doesn't call DeleteMessage for that message before the visibility timeout expires, 
 the message again becomes visible to the ReceiveMessage calls placed by the components in your system and it will be received again. 
-If a message should only be received once, your system should delete it within the duration of the visibility timeout.
+If a message should only be received once, your system should delete it within the duration of the visibility timeout."
 
 ---
 
@@ -281,9 +283,9 @@ which process below will result in successful processing of the message and remo
 
 http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html
 
-When you receive a message from a queue and begin to process it, the visibility timeout for the queue may be insufficient (for example, you might need to process and delete a message). You can shorten or extend a message's visibility by specifying a new timeout value using the ChangeMessageVisibility action.
+"When you receive a message from a queue and begin to process it, the visibility timeout for the queue may be insufficient (for example, you might need to process and delete a message). You can shorten or extend a message's visibility by specifying a new timeout value using the ChangeMessageVisibility action.
 For example, if the default timeout for a queue is 60 seconds, 15 seconds have elapsed since you received the message, and you send a ChangeMessageVisibility call with VisibilityTimeout set to 10 seconds, the 10 seconds begin to count from the time that you make the ChangeMessageVisibility call. 
-Thus, any attempt to change the visibility timeout or to delete that message 10 seconds after you initially change the visibility timeout (a total of 25 seconds) might result in an error.
+Thus, any attempt to change the visibility timeout or to delete that message 10 seconds after you initially change the visibility timeout (a total of 25 seconds) might result in an error."
 
 ---
 
@@ -312,8 +314,8 @@ The provisioned throughput limit includes the sum of the capacity of the table t
 
 http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RebootInstances.html
 
-RebootInstances. Requests a reboot of one or more instances. This operation is asynchronous; it only queues a request to reboot the specified instances. 
-The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.
+"RebootInstances. Requests a reboot of one or more instances. This operation is asynchronous; it only queues a request to reboot the specified instances. 
+The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored."
 
 ---
 
@@ -345,9 +347,9 @@ Step 3: Uploading an Index Document
 
 http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
 
-Server-side encryption is about protecting data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) employs strong multi-factor encryption. Amazon S3 encrypts each object with a unique key. 
+"Server-side encryption is about protecting data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) employs strong multi-factor encryption. Amazon S3 encrypts each object with a unique key. 
 As an additional safeguard, it encrypts the key itself with a master key that it regularly rotates. 
-Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data.
+Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data."
 
 ---
 
@@ -360,8 +362,8 @@ Amazon S3 server-side encryption uses one of the strongest block ciphers availab
 
 http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
 
-An Elastic IP address is a public IP address, which is reachable from the Internet. If your instance does not have a public IP address, you can associate an Elastic IP address with your instance to enable communication with the Internet; 
-for example, to connect to your instance from your local computer.
+"An Elastic IP address is a public IP address, which is reachable from the Internet. If your instance does not have a public IP address, you can associate an Elastic IP address with your instance to enable communication with the Internet; 
+for example, to connect to your instance from your local computer."
 
 ---
 
@@ -375,8 +377,8 @@ for example, to connect to your instance from your local computer.
 Page 5:
 https://d0.awsstatic.com/whitepapers/aws-securing-data-at-rest-with-encryption.pdf
 
-Another option would be to use file system-level encryption, which works by stacking an encrypted file system on top of an existing file system. 
-This method is typically used to encrypt a specific directory.
+"Another option would be to use file system-level encryption, which works by stacking an encrypted file system on top of an existing file system. 
+This method is typically used to encrypt a specific directory."
 
 ---
 
@@ -389,7 +391,7 @@ This method is typically used to encrypt a specific directory.
 
 http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html
 
-AMIs are a regional resource. Therefore, sharing an AMI makes it available in that region. To make an AMI available in a different region, copy the AMI to the region and then share it. 
+"AMIs are a regional resource. Therefore, sharing an AMI makes it available in that region. To make an AMI available in a different region, copy the AMI to the region and then share it."
 
 ---
 
@@ -424,9 +426,9 @@ If you use this strategy, then your database writes are protected from being ove
 
 https://aws.amazon.com/cloudformation/faqs/
 
-By default, the “automatic rollback on error” feature is enabled. This will cause all AWS resources that AWS CloudFormation created successfully for a stack up to the point where an error occurred to be deleted. 
+"By default, the “automatic rollback on error” feature is enabled. This will cause all AWS resources that AWS CloudFormation created successfully for a stack up to the point where an error occurred to be deleted. 
 This is useful when, for example, you accidentally exceed your default limit of Elastic IP addresses, or you don’t have access to an EC2 AMI you’re trying to run. 
-This feature enables you to rely on the fact that stacks are either fully created, or not at all, which simplifies system administration and layered solutions built on top of AWS CloudFormation.
+This feature enables you to rely on the fact that stacks are either fully created, or not at all, which simplifies system administration and layered solutions built on top of AWS CloudFormation."
 
 ---
 
@@ -439,11 +441,11 @@ This feature enables you to rely on the fact that stacks are either fully create
 
 http://docs.aws.amazon.com/AWSSimpleQueueService/2008-01-01/SQSDeveloperGuide/index.html?Overview.html
 
-SQS ensures delivery of each message at least once, and supports multiple readers and writers interacting with the same queue. 
+"SQS ensures delivery of each message at least once, and supports multiple readers and writers interacting with the same queue. 
 A single queue can be used simultaneously by many distributed application components, with no need for those components to coordinate with each other to share the queue.
 Amazon SQS is engineered to always be available and deliver messages. One of the resulting tradeoffs is that SQS does not guarantee first in, first out delivery of messages. 
 For many distributed applications, each message can stand on its own, and as long as all messages are delivered, the order is not important. 
-If your system requires that order be preserved, you can place sequencing information in each message, so that you can reorder the messages when the queue returns them.
+If your system requires that order be preserved, you can place sequencing information in each message, so that you can reorder the messages when the queue returns them."
 
 ---
 
@@ -457,7 +459,7 @@ The user has stopped the EC2 instance and detached the EBS volumes. What will be
 
 http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html
 
-INSUFFICIENT_DATA—The alarm has just started, the metric is not available, or not enough data is available for the metric to determine the alarm state
+"INSUFFICIENT_DATA—The alarm has just started, the metric is not available, or not enough data is available for the metric to determine the alarm state"
 
 ---
 
@@ -468,7 +470,7 @@ INSUFFICIENT_DATA—The alarm has just started, the metric is not available, or 
 - **UpdateItem**
 - UpdateTable
   
-UpdateItem. Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put, delete, or add attribute values. 
-You can also perform a conditional update on an existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values).
+"UpdateItem. Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put, delete, or add attribute values. 
+You can also perform a conditional update on an existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values)."
 
 ---
