@@ -231,6 +231,120 @@ However, Company XYZ is realizing that polling in tight loops is burning CPU cyc
 http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html
 http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SetQueueAttributes.html
 
-ReceiveMessageWaitTimeSeconds - The length of time, in seconds, for which a ReceiveMessage action waits for a message to arrive. Valid values: an integer from 0 to 20 (seconds). The default is 0.
+ReceiveMessageWaitTimeSeconds - The length of time, in seconds, for which a ReceiveMessage action waits for a message to arrive. 
+Valid values: an integer from 0 to 20 (seconds). The default is 0.
 
 ---
+
+**_16. In DynamoDB, what type of HTTP response codes indicate that a problem was found with the client request sent to the service?_** 
+
+- 700 HTTP response code
+- 500 HTTP response code
+- 200 HTTP response code
+- **400 HTTP response code**
+
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html
+
+When your program sends a request, DynamoDB attempts to process it. If the request is successful, DynamoDB returns an HTTP success status code (200 OK), along with the results from the requested operation.
+
+If the request is unsuccessful, DynamoDB returns an error. Each error has three components:
+- An HTTP status code (such as 400).
+- An exception name (such as ResourceNotFoundException).
+- An error message (such as Requested resource not found: Table: tablename not found).
+
+---
+
+**_17. What happens if the application component fails before deleting the message in SQS? 
+If your system doesn’t call DeleteMessage for that message before the visibility timeout expires?_** 
+
+- the message again becomes visible in the queue, however it wont be available for ReceiveMessage calls
+- the message will be moved to dead letter queue and no longer will be available for component access
+- **the message again becomes visible to the ReceiveMessage calls placed by the components in your system and it will be received again**
+- the message will be deleted automatically by AWS system APIs
+
+http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html
+
+The visibility timeout clock starts ticking once Amazon SQS returns the message. During that time, the component processes and deletes the message. 
+But what happens if the component fails before deleting the message? If your system doesn't call DeleteMessage for that message before the visibility timeout expires, 
+the message again becomes visible to the ReceiveMessage calls placed by the components in your system and it will be received again. 
+If a message should only be received once, your system should delete it within the duration of the visibility timeout.
+
+---
+
+**_18. When a Simple Queue Service message triggers a task that takes 5 minutes to complete, 
+which process below will result in successful processing of the message and remove it from the queue while minimizing the chances of duplicate processing?_** 
+
+- Retrieve the message with an increased visibility timeout, delete the message from the queue, process the message
+- Retrieve the message with increased DelaySeconds, delete the message from the queue, process the message
+- Retrieve the message with increased DelaySeconds, process the message, delete the message from the queue
+- **Retrieve the message with an increased visibility timeout, process the message, delete the message from the queue**
+
+http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html
+
+When you receive a message from a queue and begin to process it, the visibility timeout for the queue may be insufficient (for example, you might need to process and delete a message). You can shorten or extend a message's visibility by specifying a new timeout value using the ChangeMessageVisibility action.
+For example, if the default timeout for a queue is 60 seconds, 15 seconds have elapsed since you received the message, and you send a ChangeMessageVisibility call with VisibilityTimeout set to 10 seconds, the 10 seconds begin to count from the time that you make the ChangeMessageVisibility call. 
+Thus, any attempt to change the visibility timeout or to delete that message 10 seconds after you initially change the visibility timeout (a total of 25 seconds) might result in an error.
+
+---
+
+**_19. Which DynamoDB limits can be raised by contacting AWS support? Choose 2 answers_** 
+
+- The maximum storage used per account
+- The number of hash keys per account
+- **The number of tables per account**
+- The number of local secondary indexes per account
+- **The number of provisioned throughput units per account**
+
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html
+
+1. Tables Per Account. For any AWS account, there is an initial limit of 256 tables per region.
+2. Provisioned Throughput Minimums and Maximums: For any table or global secondary index, the minimum settings for provisioned throughput are 1 read capacity unit and 1 write capacity unit. 
+The provisioned throughput limit includes the sum of the capacity of the table together with the capacity of all of its global secondary indexes.
+
+---
+
+**_20. Which EC2 API call would you use to requests a reboot of one or more instances?_** 
+
+- RebootAllInstances
+- StopInstances
+- RestartInstances
+- **RebootInstances**
+
+http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RebootInstances.html
+
+RebootInstances. Requests a reboot of one or more instances. This operation is asynchronous; it only queues a request to reboot the specified instances. 
+The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.
+
+---
+
+**_21. Company XYZ is currently hosting their corporate site in an Amazon S3 bucket with Static Website Hosting enabled. 
+Currently, when visitors go to thecertschool.com the index.html page is returned. Company XYZ now would like a new page welcome.html to be returned when a visitor enters thecertschool.com in the browser.
+Which of the following steps will allow Company XYZ to meet this requirement? Choose 2 answers_** 
+
+- Create a welcome subfolder in their S3 bucket
+- **Upload an html page named welcome.html to their S3 bucket**
+- **Set the Index Document property to welcome.html**
+- Move the index.html page to a welcome subfolder
+- Set the Error Document property to welcome.htm
+
+http://docs.aws.amazon.com/AmazonS3/latest/dev/HostingWebsiteOnS3Setup.html
+
+Step 3: Uploading an Index Document
+
+1. Create a document. Give it the same name that you gave the index document earlier.
+2. Using the console, upload the index document to your bucket.
+
+---
+
+**_22. What type of block cipher does Amazon S3 offer for server side encryption?_** 
+
+- RC5
+- Blowfish
+- Triple DES
+- **Advanced Encryption Standard**
+
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
+
+Server-side encryption is about protecting data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) employs strong multi-factor encryption. Amazon S3 encrypts each object with a unique key. 
+As an additional safeguard, it encrypts the key itself with a master key that it regularly rotates. 
+Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data.
