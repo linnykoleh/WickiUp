@@ -160,7 +160,7 @@ Just remember
 
 ---
 
-**_11. When uploading an object, what request header can be explicitly specified in a request to Amazon S3 to encrypt object data when saved on the server side?
+**_11. When uploading an object, what request header can be explicitly specified in a request to Amazon S3 to encrypt object data when saved on the server side?_**
 
 - Content-MD5
 - x-amz-security-token
@@ -348,3 +348,127 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
 Server-side encryption is about protecting data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) employs strong multi-factor encryption. Amazon S3 encrypts each object with a unique key. 
 As an additional safeguard, it encrypts the key itself with a master key that it regularly rotates. 
 Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data.
+
+---
+
+**_23. If I want an instance to have a public IP address, which IP address should I use?_** 
+
+- Dynamic IP Address
+- **Elastic IP Address**
+- Domain IP Address
+- Host IP Address
+
+http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
+
+An Elastic IP address is a public IP address, which is reachable from the Internet. If your instance does not have a public IP address, you can associate an Elastic IP address with your instance to enable communication with the Internet; 
+for example, to connect to your instance from your local computer.
+
+---
+
+**_24. How can you secure data at rest on an EBS volume?_** 
+
+- Attach the volume to an instance using EC2’s SSL interface.
+- Create an IAM policy that restricts read and write access to the volume.
+- **Use an encrypted file system on top of the EBS volume.**
+- Encrypt the volume using the S3 server-side encryption service.
+
+Page 5:
+https://d0.awsstatic.com/whitepapers/aws-securing-data-at-rest-with-encryption.pdf
+
+Another option would be to use file system-level encryption, which works by stacking an encrypted file system on top of an existing file system. 
+This method is typically used to encrypt a specific directory.
+
+---
+
+**_25. EC2 instances are launched from Amazon Machine images (AMIS). A given public AMI can:_** 
+
+- only be used to launch EC2 instances in the same country as the AMI is stored
+- **only be used to launch EC2 instances in the same AWS region as the AMI is stored.**
+- be used to launch EC2 Instances in any AWS region
+- only be used to launch EC2 instances in the same AWS availability zone as the AMI is stored
+
+http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html
+
+AMIs are a regional resource. Therefore, sharing an AMI makes it available in that region. To make an AMI available in a different region, copy the AMI to the region and then share it. 
+
+---
+
+**_26. Which statements about DynamoDB are true? Choose 2 answers_** 
+
+- **DynamoDB uses conditional writes for consistency**
+- DynamoDB restricts item access during writes
+- **DynamoDB uses optimistic concurrency control**
+- DynamoDB uses a pessimistic locking model
+- DynamoDB restricts item access during reads
+
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html#WorkingWithItems.ConditionalUpdate
+
+1. By default, the DynamoDB write operations (PutItem, UpdateItem, DeleteItem) are unconditional: each of these operations will overwrite an existing item that has the specified primary key.
+DynamoDB optionally supports conditional writes for these operations. A conditional write will succeed only if the item attributes meet one or more expected conditions. Otherwise, it returns an error. 
+Conditional writes are helpful in many situations. For example, you might want a PutItem operation to succeed only if there is not already an item with the same primary key. 
+Or you could prevent an UpdateItem operation from modifying an item if one of its attributes has a certain value.
+
+http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBMapper.OptimisticLocking.html
+
+2. Optimistic locking is a strategy to ensure that the client-side item that you are updating (or deleting) is the same as the item in DynamoDB. 
+If you use this strategy, then your database writes are protected from being overwritten by the writes of others — and vice-versa.
+
+---
+
+**_27. What happens, by default, when one of the resources in a CloudFormation stack cannot be created?_** 
+
+- **Previously-created resources are deleted and the stack creation terminates.**
+- The stack creation continues, and the final results indicate which steps failed.
+- CloudFormation templates are parsed in advance so stack creation is guaranteed to succeed.
+- Previously-created resources are kept but the stack creation terminates.
+
+https://aws.amazon.com/cloudformation/faqs/
+
+By default, the “automatic rollback on error” feature is enabled. This will cause all AWS resources that AWS CloudFormation created successfully for a stack up to the point where an error occurred to be deleted. 
+This is useful when, for example, you accidentally exceed your default limit of Elastic IP addresses, or you don’t have access to an EC2 AMI you’re trying to run. 
+This feature enables you to rely on the fact that stacks are either fully created, or not at all, which simplifies system administration and layered solutions built on top of AWS CloudFormation.
+
+---
+
+**_28. Which of the following statements about SQS is true?_** 
+
+- Messages will be delivered exactly once and messages will be delivered in Last in, First out order
+- Messages will be delivered exactly once and messages will be delivered in First in, First out order
+- **Messages will be delivered one or more times and message delivery order is indeterminate**
+- Messages will be delivered exactly once and message delivery order is indeterminate
+
+http://docs.aws.amazon.com/AWSSimpleQueueService/2008-01-01/SQSDeveloperGuide/index.html?Overview.html
+
+SQS ensures delivery of each message at least once, and supports multiple readers and writers interacting with the same queue. 
+A single queue can be used simultaneously by many distributed application components, with no need for those components to coordinate with each other to share the queue.
+Amazon SQS is engineered to always be available and deliver messages. One of the resulting tradeoffs is that SQS does not guarantee first in, first out delivery of messages. 
+For many distributed applications, each message can stand on its own, and as long as all messages are delivered, the order is not important. 
+If your system requires that order be preserved, you can place sequencing information in each message, so that you can reorder the messages when the queue returns them.
+
+---
+
+**_29. A user has setup an EBS backed instance and attached 2 EBS volumes to it. The user has setup a CloudWatch alarm on each volume for the disk data. 
+The user has stopped the EC2 instance and detached the EBS volumes. What will be the status of the alarms on the EBS volume?_** 
+
+- The EBS cannot be detached until all the alarms are removed
+- **Insufficient Data**
+- OK
+- Alarm
+
+http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html
+
+INSUFFICIENT_DATA—The alarm has just started, the metric is not available, or not enough data is available for the metric to determine the alarm state
+
+---
+
+**_30. In Dynamo DB, What item operation allows to edit an existing item’s attributes, or adds a new item to the table if it does not already exist?_** 
+
+- GetItem
+- DeleteItem
+- **UpdateItem**
+- UpdateTable
+  
+UpdateItem. Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put, delete, or add attribute values. 
+You can also perform a conditional update on an existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values).
+
+---
