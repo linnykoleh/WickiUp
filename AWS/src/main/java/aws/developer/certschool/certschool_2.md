@@ -186,3 +186,269 @@ What is an effective method to mitigate this?_**
 "Signed URLs allow you to provide users access to your private content. 
 A signed URL includes additional information (e.g., expiration time) that gives you more control over access to your content. 
 This additional information appears in a policy statement, which is based on either a canned policy or a custom policy"
+
+---
+
+**_13. You are configuring your company’s application to use Auto Scaling, and need to move user state information. 
+Which of the following AWS services provides a shared data store with durability and low latency?_**
+
+- AWS ElastiCache Memcached
+- Amazon Simple Storage Service
+- Amazon EC2 instance storage
+- **Amazon DynamoDB**
+
+https://aws.amazon.com/dynamodb/
+
+"Amazon DynamoDB is a NoSQL database service that delivers consistent, single-digit millisecond latency at any scale. 
+DynamoDB provides the performance and availability you need to create real-time bidding (RTB) platforms and recommendation engines"
+
+---
+
+**_14. Which Amazon Elastic Compute Cloud feature, can you query from within the instance to access instance properties?_**
+
+- Resource tags
+- Amazon Machine Image
+- Instance user data
+- **Instance metadata**
+
+http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html
+
+"Instance metadata is data about your instance that you can use to configure or manage the running instance.
+You can also use instance metadata to access user data that you specified when launching your instance"
+
+---
+
+**_15. A company needs to deploy services to an AWS region, which they have not previously used. 
+The company currently has an AWS identity and Access Management (IAM) role for the Amazon EC2 instances, which permits the instance to have access to Amazon DynamoDB.
+ The company wants their EC2 instances in the new region to have the same privileges. How should the company achieve this?_**
+ 
+- Copy the IAM role and associated policies to the new region and attach it to the instances
+- Create a new IAM role and associated policies within the new region
+- **Assign the existing IAM role to the Amazon EC2 instances in the new region**
+- Create an Amazon Machine Image (AMI) of the instance and copy it to the desired region using the AMI Copy feature
+
+"An IAM role is an IAM entity that defines a set of permissions for making AWS service requests. 
+IAM roles are not associated with a specific user or group. Instead, trusted entities assume roles, such as IAM users, applications, or AWS services such as EC2."
+
+---
+
+**_16. On the Amazon S3, the object you request does not exist and you did not have the s3:ListBucket permission also. S3 will return?_**
+
+- HTTP status code 401 ("access denied")
+- **HTTP status code 403 ("access denied")**
+- HTTP status code 404 ("no such key") error
+- HTTP status code 402 ("permission denied")
+
+http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html
+
+"If the object you request does not exist, the error Amazon S3 returns depends on whether you also have the s3:ListBucket permission.
+If you have the s3:ListBucket permission on the bucket, Amazon S3 will return an HTTP status code 404 (“no such key”) error.
+If you don’t have the s3:ListBucket permission, Amazon S3 will return an HTTP status code 403 (“access denied”) error."
+
+---
+
+**_17. A user has stored data on an encrypted EBS volume. The user wants to share the data with his customer’s AWS account. How can user achieve this_**
+
+- Take a snapshot and share the snapshot with a customer
+- If both the accounts are using the same encryption key then the user can share the volume directly
+- Create an AMI from the volume and share the AMI
+- Copy the data to an unencrypted volume and then share
+
+http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html
+
+"You can share an encrypted snapshot with specific AWS accounts, though you cannot make it public. For others to use the snapshot, you must also share the custom CMK key used to encrypt it. 
+Cross-account permissions may be applied to a custom key either when it is created or at a later time. 
+Users with access can copy your snapshot and create their own EBS volumes based on your snapshot while your original snapshot remains unaffected."
+
+---
+
+**_18. Amazon EBS snapshots have which of the following two characteristics? choose 2 answers_**
+
+- EBS snapshots can only be restored to an EBS volume of the same size or smaller
+- **EBS snapshots only save incremental changes from snapshot to snapshot**
+- EBS snapshots can only be restored and mounted to an instance in the same Availability Zone as the original EBS volume
+- **EBS snapshots can be created in real-time without stopping an EC2 instance**
+
+"You can back up the data on your EBS volumes to Amazon S3 by taking point-in-time snapshots. Snapshots are incremental backups, which means that only the blocks on the device that have changed after your most recent snapshot are saved. 
+Snapshots occur asynchronously; the point-in-time snapshot is created immediately, but the status of the snapshot is pending until the snapshot is complete (when all of the modified blocks have been transferred to Amazon S3), 
+which can take several hours for large initial snapshots or subsequent snapshots where many blocks have changed. While it is completing, an in-progress snapshot is not affected by ongoing reads and writes to the volume."
+
+---
+
+**_19. For EC2 instances, who is responsible for management of the guest OS (including updates and security patches)?_**
+
+- AWS
+- Shared Responsibility
+- **Customer**
+- OS Vendor
+
+https://aws.amazon.com/compliance/shared-responsibility-model/
+
+"The customer assumes responsibility and management of the guest operating system (including updates and security patches), other associated application software as well as the configuration of the AWS provided security group firewall. "
+
+---
+
+**_20. In the shared security model, AWS is responsible for which of the following security best practices (check 3 answers)_**
+
+- **Penetration testing**
+- Life-cycle management of IAM credentials
+- **Threat modelling**
+- Security Group and ACL (Access Control List) settings
+- Patch management on the EC2 instances operating system
+- **Static code analysis**
+- Encryption of EBS (Elastic Block Storage) volumes
+
+"In the Shared Security Responsibility Model, AWS is responsible for securing the underlying infrastructure that supports the cloud, and you’re responsible for anything you put on the cloud or connect to the cloud."
+
+---
+
+**_21. If I want my instance to run on a single-tenant hardware, which value do I have to set the instance’s tenancy attribute to?_**
+
+- independent
+- **dedicated**
+- isolated
+- single
+
+"Each instance that you launch into a VPC has a tenancy attribute. This attribute has the following values.
+default – Your instance runs on shared hardware.
+dedicated – Your instance runs on single-tenant hardware.
+host- Your instance runs on a Dedicated Host, which is an isolated server with configurations that you can control."
+
+---
+
+**_22. A start-up deploys its photo-sharing site in a VPC. An elastic load balancer distributes web traffic across two subnets. The load balancer session stickiness is configured to use the AWS-generated session cookie, with a session TTL of 5 minutes. 
+The web server Auto Scaling group is configured as min-size=4, max-size=4. The start-up is preparing for a public launch, by running load-testing software installed on a single Amazon Elastic Compute Cloud (EC2) instance running in us-west-2a. 
+After 60 minutes of load-testing, the web server logs show the following. Select 2 answers_**
+
+![EC2](../images/certschool/certschool_2-1.png)
+
+- Configure Elastic Load Balancing session stickiness to use the app-specific session cookie.
+- Launch and run the load-tester Amazon EC2 instance from us-east-1 instead.
+- **Re-configure the load-testing software to re-resolve DNS for each web request.**
+- Configure Elastic Load Balancing and Auto Scaling to distribute across us-west-2a and us-west-2b.
+- **Use a third-party load-testing service which offers globally distributed test clients.**
+
+https://aws.amazon.com/articles/1636185810492479
+
+---
+
+**_23. The customer wants to decouple the data sending such that the application keeps processing and sending data but does not wait for an acknowledgement of receiving application.
+ Which of the below mentioned service helps in this situation?_**
+
+- AWS SNS
+- AWS SES
+- **AWS SQS**
+- AWS Cloud Watch
+
+https://docs.aws.amazon.com/aws-sdk-php/v3/guide/examples/sqs-examples.html
+
+"Amazon Simple Queue Service (SQS) is a fast, reliable, scalable, fully managed message queuing service. SQS makes it simple and cost-effective to decouple the components of a cloud application. 
+You can use SQS to transmit any volume of data, at any level of throughput, without losing messages or requiring other services to be always available."
+
+---
+
+**_24. From what services I can block incoming/outgoing IPs?_**
+
+- Security Groups
+- ELB
+- **NACL**
+- VPC Subnet
+- IGW
+
+http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html
+
+"A Network Access Control List (ACL) is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets."
+
+---
+
+**_25. A company is storing data on Amazon Simple Storage Service (S3). The company’s security policy mandates that data is encrypted at rest. 
+Which of the following methods can achieve this?(choose 3 Answers)_**
+
+- **Use Amazon S3 server-side encryption with customer-provided keys.**
+- Use Amazon S3 server-side encryption with EC2 key pair.
+- **Use Amazon S3 server-side encryption with AWS Key Management Service managed keys.**
+- **Encrypt the data on the client-side before ingesting to Amazon S3 using their own master key.**
+- Use Amazon S3 bucket policies to restrict access to the data at rest.
+- Use SSL to encrypt the data while in transit to Amazon S3.
+
+1.Use Server-Side Encryption with Amazon S3-Managed Keys (SSE-S3) – Each object is encrypted with a unique key employing strong multi-factor encryption. As an additional safeguard, it encrypts the key itself with a master key that it regularly rotates. Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data.
+2.Use Server-Side Encryption with Customer-Provided Keys (SSE-C) – You manage the encryption keys and Amazon S3 manages the encryption, as it writes to disks, and decryption
+3.You can have your own encryption libraries to encrypt data before storing it in Amazon S3.
+
+---
+
+**_26. In dynamo db, The DeleteTable operation deletes a table and all of its items. After a DeleteTable request, the specified table is in the DELETING state until DynamoDB completes the deletion. If the table is in the ACTIVE state, you can delete it. If a table is in CREATING or UPDATING states, then DynamoDB returns a_**
+
+- ResourceNotFoundException
+- **ResourceInUseException.**
+- ResourceProhibitedException
+- LimitExceededException
+
+http://docs.aws.amazon.com/cli/latest/reference/dynamodb/delete-table.html
+
+"The DeleteTable operation deletes a table and all of its items. After a DeleteTable request, the specified table is in the DELETING state until DynamoDB completes the deletion. 
+If the table is in the ACTIVE state, you can delete it. If a table is in CREATING or UPDATING states, then DynamoDB returns a ResourceInUseException.
+If the specified table does not exist, DynamoDB returns a ResourceNotFoundException. 
+If table is already in the DELETING state, no error is returned."
+
+---
+
+**_27. Company D is running their corporate website on Amazon S3 accessed from http//www.companyd.com. Their marketing team has published new web fonts to a separate S3 bucket accessed by the S3 endpoint: https://s3-uswest1.amazonaws.com/cdfonts.
+While testing the new web fonts, Company D recognized the web fonts are being blocked by the browser. What should Company D do to prevent the web fonts from being blockedby the browser?_**
+
+- Create a policy on the cd fonts bucket to enable access to everyone
+- Enable versioning on the cdfonts bucket for each web font
+- Add the Content-MD5 header to the request for webfonts in the cdfonts bucket from the website
+- **Configure the cdfonts bucket to allow cross-origin requests by creating a CORS configuration**
+
+http://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html
+
+"Cross-origin resource sharing (CORS) defines a way for client web applications that are loaded in one domain to interact with resources in a different domain. 
+With CORS support in Amazon S3, you can build rich client-side web applications with Amazon S3 and selectively allow cross-origin access to your Amazon S3 resources.
+•Scenario 2: Suppose you want to host a web font from your S3 bucket. Again, browsers require a CORS check (also referred as a preflight check) for loading web fonts, so you would configure the bucket that is hosting the web font to allow any origin to make these requests."
+ 
+---
+ 
+**_28. What does the “Server Side Encryption” option on Amazon S3 provide?_**
+
+- It doesn’t exist for Amazon S3, but only for Amazon EC2.
+- It provides an encrypted virtual disk in the Cloud.
+- **It encrypts the files that you send to Amazon S3, on the server side.**
+- It allows to upload files using an SSL endpoint, for a secure transfer
+
+http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html
+
+"Server-side encryption is about protecting data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) employs strong multi-factor encryption.
+Amazon S3 encrypts each object with a unique key. As an additional safeguard, it encrypts the key itself with a master key that it regularly rotates.
+Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data.
+Amazon S3 supports bucket policies that you can use if you require server-side encryption for all objects that are stored in your bucket."
+ 
+---
+  
+**_29. What is the maximum number of S3 Buckets available per AWS account?_**
+
+- 100 per region
+- **100 per account**
+- 100 per IAM user
+- 200 per region
+
+https://aws.amazon.com/s3/faqs/
+
+"By default, customers can provision up to 100 buckets per AWS account. However, you can increase your Amazon S3 bucket limit by visiting AWS Service Limits."
+ 
+---
+  
+**_30. Which of the following statements about SWF are true? Choose 3 answers_**
+
+- **SWF uses deciders and workers to complete tasks**
+- SWF triggers SNS notifications on task assignment
+- **SWF tasks are assigned once and never duplicated**
+- SWF requires at least 1 EC2 instance per domain
+- SWF requires an S3 bucket for workflow storage
+- **SWF workflow executions can last up to a year**
+
+Amazon SWF
+
+1. By implementing workers and deciders, you focus on your differentiated application logic as it pertains to performing the actual processing steps and coordinating them. Amazon SWF handles the underlying details such as storing tasks until they can be assigned, monitoring assigned tasks, and providing consistent information on their completion.
+2.Amazon SWF stores tasks, assigns them to workers when they are ready, and monitors their progress. It ensures that a task is assigned only once and is never duplicated
+3. Maximum workflow execution time – 1 year
