@@ -141,3 +141,303 @@ To add a new customer at any time, simply create a bucket for the customer, add 
 If you launch more than one instance at the same time, the user data is available to all instances in that reservation."
 
 ---
+
+**_11. Which of the following are true regarding encrypted Amazon Elastic Block Store (EBS) volumes? Choose 2 answers_**
+
+- Shared volumes can be encrypted
+- **Snapshots are automatically encrypted**
+- **Supported on all Amazon EBS volume types**
+- Available to all instance types
+- Existing volumes can be encrypted
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html
+
+---
+
+**_12. Which of the following services are key/value stores? Select 3 answers_**
+
+- Simple Notification Service
+- **Amazon Elasticache**
+- Simple Workflow Service
+- **Dynamo DB**
+- **Simple Storage Service**
+
+1. Amazon S3 is a simple key, value store designed to store as many objects as you want. You store these objects in one or more buckets.
+2. Amazon ElastiCache is an in-memory key/value store that sits between your application and the data store (database) that it accesses
+3. Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale. It is a fully managed cloud database and supports both document and key-value store models
+
+---
+
+**_13. Your web application front end consists of multiple EC2 instances behind an Elastic Load Balancer. 
+You configured ELB to perform health checks on these EC2 instances, if an instance fails to pass health checks, which statement will be true?_**
+
+- The instance gets terminated automatically by the ELB.
+- The instance is replaced automatically by the ELB.
+- **The ELB stops sending traffic to the instance that failed its health check.**
+- The instance gets quarantined by the ELB for root cause analysis.
+
+"ELBs are deigned to dynamically forward traffic to the eth0 interface of some set of ec2 instances in one or more availability zones of a single region. 
+When monitoring is setup, the ELB will see that the instance is not responding and stop sending traffic to the failed instance."
+
+---
+
+**_14. What is the maximum write throughput I can provision for a single Dynamic DB table?_**
+
+- 10,000 write capacity units
+- **Dynamic DB is designed to scale without limits, but if you go beyond 10,000 you have to contact AWS first.**
+- 100,000 write capacity units
+- 1,000 write capacity units
+
+"DynamoDB is designed to scale without limits However, if you wish to exceed throughput rates of 10,000 write capacity units or 10,000 read capacity units for an individual table, you must first contact Amazon through this online form.
+If you wish to provision more than 20,000 write capacity units or 20,000 read capacity units from a single subscriber account you must first contact us using the form described above."
+
+---
+
+**_15. Which of the following are correct statements with policy evaluation logic in AWS Identity and Access Management?(Select 2 correct answers)_**
+
+- By default, all request are allowed
+- An explicit allow overrides an explicit deny
+- An explicit deny does not override an explicit allow
+- **By default, all requests are denied**
+- **An explicit allow overrides default deny.**
+
+"By default, all requests are denied. (In general, requests made using the account credentials for resources in the account are always allowed.)
+An explicit allow overrides this default. An explicit deny overrides any allows."
+
+---
+
+**_16.Which Amazon service can I use to define a virtual network that closely resembles a traditional data center?_**
+
+- Amazon Kinesis
+- Amazon Service Bus
+- **Amazon VPC**
+- Amazon EMR
+
+"Amazon Virtual Private Cloud (Amazon VPC) enables you to define a virtual network in your own logically isolated area within the AWS cloud, known as a virtual private cloud (VPC). 
+You can launch your AWS resources, such as instances, into your VPC. Your VPC closely resembles a traditional network that you might operate in your own data center, with the benefits of using AWS’s scalable infrastructure. 
+You can configure your VPC; you can select its IP address range, create subnets, and configure route tables, network gateways, and security settings"
+
+---
+
+**_17. Which of the following are valid arguments for an SNS Publish Request? Choose 3 Answers_**
+
+- **Subject**
+- **TopicArn**
+- Language
+- **Message**
+- Format
+- Destination
+
+"The notification message sent by Amazon SNS for deliveries over HTTP, HTTPS, Email-JSON and SQS transport protocols will consist of a simple JSON object, which will include the following information
+ 
+1. MessageId: A Universally Unique Identifier, unique for each notification published.
+2. Timestamp: The time (in GMT) at which the notification was published.
+3. TopicArn: The topic to which this message was published
+4. Type: The type of the delivery message, set to “Notification” for notification deliveries.
+5. UnsubscribeURL: A link to unsubscribe the end-point from this topic, and prevent receiving any further notifications.
+6. Message: The payload (body) of the message, as received from the publisher.
+7. Subject: The Subject field – if one was included as an optional parameter to the publish API call along with the message.
+8. Signature: Base64-encoded “SHA1withRSA” signature of the Message, MessageId, Subject (if present), Type, Timestamp, and Topic values."
+
+---
+
+**_18. A meteorological system monitors 600 temperature gauges, obtaining temperature samples every minute and saving each sample to a DynamoDB table. 
+Each sample involves writing 1K of data and the writes are evenly distributed over time. 
+How much write throughput is required for the target table?_**
+
+- **10 write capacity units**
+- 600 write capacity units
+- 1 write capacity unit
+- 60 write capacity units
+- 3600 write capacity units
+
+"600 gauges per minute
+ 
+600/60 = 10 gauges per second
+ 
+10 * 1KB = 10 write capacity units"
+
+---
+
+**_19. What will be the status of the snapshot until the snapshot is complete?_**
+
+- Running
+- **Pending**
+- Working
+- Progressing
+
+"Snapshots occur asynchronously; the point-in-time snapshot is created immediately, but the status of the snapshot is pending until the snapshot is complete (when all of the modified blocks have been transferred to Amazon S3), 
+which can take several hours for large initial snapshots or subsequent snapshots where many blocks have changed. 
+While it is completing, an in-progress snapshot is not affected by ongoing reads and writes to the volume."
+
+---
+
+**_20. Before I delete an EBS volume, what can I do if I want to recreate the volume later?_**
+
+- Create a copy of the EBS volume (not a snapshot)
+- **Store a snapshot of the volume**
+- Download the content to an EC2instance
+- Back up the data into a physical disk
+
+"After writing data to an EBS volume, you can periodically create a snapshot of the volume to use as a baseline for new volumes or for data backup. 
+If you make periodic snapshots of a volume, the snapshots are incremental so that only the blocks on the device that have changed after your last snapshot are saved in the new snapshot. 
+Even though snapshots are saved incrementally, the snapshot deletion process is designed so that you need to retain only the most recent snapshot in order to restore the volume."
+
+---
+
+**_21. Which of the following platforms are supported by Elastic Beanstalk? Choose 2 answers_**
+
+- IBM Websphere
+- **Apache Tomcat**
+- Oracle JBoss
+- **.NET**
+
+"Platforms supported by Elastic Beanstalk:
+
+1. Single Container Docker
+2. Multicontainer Docker
+3. reconfigured Docker
+4. Go
+5. Java SE
+6. Java with Tomcat
+7. .NET on Windows Server with IIS
+8. Node.js
+9. PHP
+10. Python
+11. Ruby"
+
+---
+
+**_22. A company is building software on AWS that requires access to various AWS services. 
+Which configuration should be used to ensure mat AWS credentials (i.e., Access Key ID/Secret Access Key combination) are not compromised?_**
+
+- **Assign an IAM role to the Amazon EC2 instance.**
+- Enable Multi-Factor Authentication for your AWS root account.
+- Assign an IAM user to the Amazon EC2 Instance.
+- Store the AWS Access Key ID/Secret Access Key combination in software comments.
+
+"Use roles for applications that run on Amazon EC2 instances. Applications that run on an Amazon EC2 instance need credentials in order to access other AWS services. 
+To provide credentials to the application in a secure way, use IAM roles. A role is an entity that has its own set of permissions, but that isn’t a user or group. 
+Roles also don’t have their own permanent set of credentials the way IAM users do. 
+In the case of Amazon EC2, IAM dynamically provides temporary credentials to the EC2 instance, and these credentials are automatically rotated for you."
+
+---
+
+**_23. You are building a solution for a customer to extend their on-premises data center to AWS. 
+The customer requires a 50-Mbps dedicated and private connection to their VPC. 
+Which AWS product or feature satisfies this requirement?_**
+
+- Elastic IP Addresses
+- Amazon VPC virtual private gateway
+- **AWS Direct Connect**
+- Amazon VPC peering
+
+"AWS Direct Connect makes it easy to establish a dedicated network connection from your premises to AWS. Using AWS Direct Connect, you can establish private connectivity between AWS and your data centre, office, or colocation environment, 
+which in many cases can reduce your network costs, increase bandwidth throughput, and provide a more consistent network experience than Internet-based connections."
+
+---
+
+**_24. A customer is leveraging Amazon Simple Storage Service in eu-west-1 to store static content for a web-based property. 
+The customer is storing objects using the Standard Storage class. 
+Where are the customer’s objects replicated?_**
+
+- A single facility in eu-west-1 and a single facility in us-east-1
+- A single facility in eu-west-1 and a single facility in eu-central-1
+- A single facility in eu-west-1
+- **Multiple facilities in eu-west-1**
+
+"Objects stored in a region never leave the region unless you explicitly transfer them to another region. 
+For example, objects stored in the EU (Ireland) region never leave it. 
+For more information about Amazon S3 regions and endpoints"
+
+---
+
+**_25. Which of the following are valid SNS delivery transports? Choose 3 answers_**
+
+- **SMS**
+- UDP
+- SOAP
+- **Email**
+- **SQS**
+
+"Amazon SNS supports notifications over multiple transport protocols. Customers can select one the following transports as part of the subscription requests:
+ 
+1. “HTTP”, “HTTPS” – Subscribers specify a URL as part of the subscription registration; notifications will be delivered through an HTTP POST to the specified URL.
+2. ”Email”, “Email-JSON” – Messages are sent to registered addresses as email. Email-JSON sends notifications as a JSON object, while Email sends text-based email.
+3. “SQS” – Users can specify an SQS queue as the endpoint; Amazon SNS will enqueue a notification message to the specified queue (which subscribers can then process using SQS APIs such as ReceiveMessage, DeleteMessage, etc.)
+4. “SMS” – Messages are sent to registered phone numbers as SMS text messages."
+
+---
+
+**_26. How is Amazon SNS different from Amazon SQS? choose 2 answers_**
+
+- Amazon SNS allows applications to send time-critical messages to multiple subscribers through a “push” mechanism
+- Amazon SNS allows applications to send time-critical messages to multiple subscribers through a “pull” mechanism
+- Amazon SQS is a message queue service used by distributed applications to exchange messages through a push model, and can be used to decouple sending and receiving components
+- Amazon SQS is a message queue service used by distributed applications to exchange messages through a polling model, and can be used to decouple sending and receiving components
+- Amazon SQS provides flexibility for distributed components of applications to send and receive messages with requiring each component to be concurrently available.
+
+"Amazon Simple Queue Service (SQS) and Amazon SNS are both messaging services within AWS, which provide different benefits for developers. 
+Amazon SNS allows applications to send time-critical messages to multiple subscribers through a “push” mechanism, eliminating the need to periodically check or “poll” for updates. 
+Amazon SQS is a message queue service used by distributed applications to exchange messages through a polling model, and can be used to decouple sending and receiving components. 
+Amazon SQS provides flexibility for distributed components of applications to send and receive messages without requiring each component to be concurrently available."
+
+---
+
+**_27. How can software determine the public and private IP addresses of the Amazon EC2 instance that it is running on?_**
+
+- Query the appropriate Amazon CloudWatch metric.
+- Use ipconfig or hostconfig command.
+- Query the local instance userdata
+- **Query the local instance metadata**
+
+"Because your instance metadata is available from your running instance, you do not need to use the Amazon EC2 console or the AWS CLI. 
+This can be helpful when you’re writing scripts to run from your instance. 
+For example, you can access the local IP address of your instance from instance metadata to manage a connection to an external application."
+
+---
+
+**_28. Which of the following services are included at no additional cost with the use of the AWS platform? Choose 2 answers_**
+
+- **CloudFormation**
+- Elastic Load Balancing
+- Simple Workflow Service
+- **Auto Scaling**
+- Elastic Compute Cloud
+- Simple Storage Service
+
+"CloudFormation Pricing:There is no additional charge for AWS CloudFormation. You pay for AWS resources (such as Amazon EC2 instances, Elastic Load Balancing load balancers, etc.) created using AWS CloudFormation in the same manner as if you created them manually. 
+You only pay for what you use, as you use it; there are no minimum fees and no required upfront commitments.
+AutoScaling Pricing:
+Auto Scaling Pricing:Auto Scaling is enabled by Amazon CloudWatch and carries no additional fees. Amazon EC2 and Amazon CloudWatch service fees apply and are billed separately. Partial hours are billed as full hours."
+
+---
+
+**_29. You have written an application that uses the Elastic Load Balancing service to spread traffic to several web servers Your users complain that they are sometimes forced to login again in the middle of using your application, 
+after they have already togged in. This is not behaviour you have designed. 
+What is a possible solution to prevent this happening?_**
+
+- Use instance storage to save session state.
+- Use instance memory to save session state.
+- Use EBS to save session state
+- **Use ElastiCache to save session state.**
+- Use Glacier to save session slate.
+
+"Amazon ElastiCache is a web service that makes it easy to deploy and run Memcached or Redis protocol-compliant server nodes in the cloud. 
+Amazon ElastiCache improves the performance of web applications by allowing you to retrieve information from a fast, managed, in-memory system, instead of relying entirely on slower disk-based databases. 
+The service simplifies and offloads the management, monitoring and operation of in-memory environments, enabling your engineering resources to focus on developing applications. 
+Using Amazon ElastiCache, you can not only improve load and response times to user actions and queries, but also reduce the cost associated with scaling web applications."
+
+---
+
+**_30. If a message is retrieved from a queue in Amazon SQS, how long is the message inaccessible to other users by default?_**
+
+- 60 Seconds
+- 45 Seconds
+- 30 Seconds
+- 2 hours
+
+"Each queue starts with a default setting of 30 seconds for the visibility timeout. You can change that setting for the entire queue. 
+Typically, you’ll set the visibility timeout to the average time it takes to process and delete a message from the queue. 
+When receiving messages, you can also set a special visibility timeout for the returned messages without changing the overall queue timeout."
+
