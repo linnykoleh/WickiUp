@@ -249,7 +249,7 @@ If you don’t have the s3:ListBucket permission, Amazon S3 will return an HTTP 
 
 **_17. A user has stored data on an encrypted EBS volume. The user wants to share the data with his customer’s AWS account. How can user achieve this_**
 
-- Take a snapshot and share the snapshot with a customer
+- **Take a snapshot and share the snapshot with a customer**
 - If both the accounts are using the same encryption key then the user can share the volume directly
 - Create an AMI from the volume and share the AMI
 - Copy the data to an unencrypted volume and then share
@@ -452,3 +452,5 @@ Amazon SWF
 1. By implementing workers and deciders, you focus on your differentiated application logic as it pertains to performing the actual processing steps and coordinating them. Amazon SWF handles the underlying details such as storing tasks until they can be assigned, monitoring assigned tasks, and providing consistent information on their completion.
 2.Amazon SWF stores tasks, assigns them to workers when they are ready, and monitors their progress. It ensures that a task is assigned only once and is never duplicated
 3. Maximum workflow execution time – 1 year
+
+---
