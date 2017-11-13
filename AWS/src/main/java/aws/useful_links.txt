@@ -7,3 +7,4 @@ Passed with 90% - my exam tips - https://acloud.guru/forums/aws-certified-develo
 Practice Quiz For AWS Certification Exam - https://www.dennyzhang.com/quiz_questions_aws_exam
 Пост о AWS сертификации. Часть 1 - https://ru.linkedin.com/pulse/%D0%BF%D0%BE%D1%81%D1%82-%D0%BE-aws-%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8-%D1%87%D0%B0%D1%81%D1%82%D1%8C-1-platon-korzh
 Cloud Pros - AWS Certified Dev - https://play.google.com/store/apps/details?id=com.ionicframework.awsquiz543924&hl=ru
+Mock Exams - http://www.briefmenow.org/amazon/which-of-the-following-items-are-required-to-allow-an-a-3/
