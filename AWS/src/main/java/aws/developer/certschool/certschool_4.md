@@ -278,6 +278,7 @@ http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/example-templates-
 - Add an IAM User to a running EC2 instance.
 - Create an IAM User that allows write access to the DynamoDB table
 - **Launch an EC2 Instance with the IAM Role included in the launch configuration**.
+- Launch an EC2 Instance with the IAM User included in the launch configuration.
 
 --- 
 
