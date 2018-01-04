@@ -26,7 +26,7 @@ public class HashMap<K, V> {
 		indexForNode = (newHashTableSize - 1) & hashCodeKey;
 		nodeByHashCodeKey = hashTable[indexForNode];
 		if (nodeByHashCodeKey == null) {
-			hashTable[indexForNode] = new Node<>(hashCodeKey, key, value, null);
+			hashTable[indexForNode] = new Node<>(indexForNode, hashCodeKey, key, value, null);
 		} else {
 			Node<K,V> next;
 			K keyForNodeByHashCodeKey = nodeByHashCodeKey.key;
@@ -36,7 +36,7 @@ public class HashMap<K, V> {
 				while(true){
 					next = nodeByHashCodeKey.next;
 					if (next == null) {
-						nodeByHashCodeKey.next = new Node<>(hashCodeKey, key, value, null);
+						nodeByHashCodeKey.next = new Node<>(indexForNode, hashCodeKey, key, value, null);
 						break;
 					}
 					if (next.hashCodeKey == hashCodeKey) {
@@ -99,5 +99,22 @@ public class HashMap<K, V> {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder("HashMap{");
+		for(Node<K, V> node: hashTable ){
+			if(node != null) {
+				stringBuilder.append("\n\t");
+				stringBuilder.append("[Bucket ");
+				stringBuilder.append(node.bucket + "] ");
+				stringBuilder.append("==> ");
+
+				stringBuilder.append(node.buildString());
+			}
+		}
+		stringBuilder.append("\n}");
+		return stringBuilder.toString();
 	}
 }
