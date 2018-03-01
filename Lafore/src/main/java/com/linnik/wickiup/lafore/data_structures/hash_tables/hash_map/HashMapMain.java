@@ -7,6 +7,9 @@ import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.Go
 import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.ObjectEqualsHashCodeNotOverride;
 import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.ObjectEqualsNotOverride;
 import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.ObjectHashCodeNotOverride;
+import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.ObjectWithEqualsAlwaysFalse;
+import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.ObjectWithEqualsAlwaysTrue;
+import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.ObjectWithSameHashCode;
 
 /**
  * @author LinnykOleh
@@ -160,6 +163,57 @@ public class HashMapMain {
 			[Bucket 13] ==> [Key: {1, 2} (h:90320863) = Value: {3}]
 			[Bucket 4] ==> [Key: {1, 2} (h:1216590855) = Value: {6}] ==> [Key: {2, 2} (h:2107447833) = Value: {7}]
 		}
+		*/
+	}
+
+	@Test
+	public void test_object_with_same_hashcode(){
+		final HashMap<ObjectWithSameHashCode, String> hashMap = new HashMap<>();
+
+		hashMap.put(new ObjectWithSameHashCode(1,1), "1");
+		hashMap.put(new ObjectWithSameHashCode(2,2), "2");
+		hashMap.put(new ObjectWithSameHashCode(3,3), "3");
+
+		System.out.println(hashMap);
+
+		/*
+		HashMap{
+			[Bucket 0] ==> [Key: {1, 1} (h:32) = Value: {1}] ==> [Key: {2, 2} (h:32) = Value: {2}] ==> [Key: {3, 3} (h:32) = Value: {3}]
+		}
+		*/
+	}
+
+	@Test
+	public void test_object_with_same_equals_always_false(){
+		final HashMap<ObjectWithEqualsAlwaysFalse, String> hashMap = new HashMap<>();
+
+		hashMap.put(new ObjectWithEqualsAlwaysFalse(1,1), "1");
+		hashMap.put(new ObjectWithEqualsAlwaysFalse(1,1), "2");
+		hashMap.put(new ObjectWithEqualsAlwaysFalse(1,1), "3");
+
+		System.out.println(hashMap);
+
+		/*
+		HashMap{
+			[Bucket 1] ==> [Key: {1, 1} (h:993) = Value: {1}] ==> [Key: {1, 1} (h:993) = Value: {2}] ==> [Key: {1, 1} (h:993) = Value: {3}]
+		}
+		*/
+	}
+
+	@Test
+	public void test_object_with_same_equals_always_true(){
+		final HashMap<ObjectWithEqualsAlwaysTrue, String> hashMap = new HashMap<>();
+
+		hashMap.put(new ObjectWithEqualsAlwaysTrue(1,1), "1");
+		hashMap.put(new ObjectWithEqualsAlwaysTrue(1,1), "2");
+		hashMap.put(new ObjectWithEqualsAlwaysTrue(1,1), "3");
+
+		System.out.println(hashMap);
+
+		/*
+		HashMap{
+	[Bucket 1] ==> [Key: {1, 1} (h:993) = Value: {3}]
+}
 		*/
 	}
 
