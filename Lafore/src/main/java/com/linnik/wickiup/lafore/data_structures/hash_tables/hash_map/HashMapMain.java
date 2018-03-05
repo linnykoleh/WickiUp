@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.BadKey;
 import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.GoodKey;
+import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.ObjectEquals;
 import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.ObjectEqualsHashCodeNotOverride;
 import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.ObjectEqualsNotOverride;
 import com.linnik.wickiup.lafore.data_structures.hash_tables.hash_map.objects.ObjectHashCodeNotOverride;
@@ -244,5 +245,47 @@ public class HashMapMain {
 			[Bucket 15] ==> [Key: {1, 2} (h:1642360923) = Value: {2}]
 		}
 		*/
+	}
+
+	@Test
+	public void test_hashmap_equals(){
+		//Если объекты equals, даже если они не равны по ==
+		//то мы перезапишем значение по ключу
+		final HashMap<ObjectEquals, String> hashMap = new HashMap<>();
+
+		hashMap.put(new ObjectEquals(1), "1");
+		hashMap.put(new ObjectEquals(1), "2");
+
+		System.out.println(hashMap);
+
+		/*HashMap{
+			[Bucket 2] ==> [Key: ObjectEquals{a=1, b=2} (h:994) = Value: {2}]
+		}*/
+	}
+
+	@Test
+	public void test_hashmap_not_equals(){
+		//Если объекты не equals, то мы сделаем новую запись
+		final HashMap<ObjectEquals, String> hashMap = new HashMap<>();
+
+		hashMap.put(new ObjectEquals(1), "1");
+		hashMap.put(new ObjectEquals(2), "2");
+
+		System.out.println(hashMap);
+
+		/*
+		HashMap{
+			[Bucket 0] ==> [Key: ObjectEquals{a=1} (h:32) = Value: {1}]
+			[Bucket 1] ==> [Key: ObjectEquals{a=2} (h:33) = Value: {2}]
+		}*/
+
+		/*
+		Если вдруг произошла коллизия(для разных объектов одинаковый hashCode), тогда мы будем сохранять в линкед лист
+
+		HashMap{
+			[Bucket 0] ==> [Key: ObjectEquals{a=1} (h:32) = Value: {1}] ==> [Key: ObjectEquals{a=2} (h:32) = Value: {2}]
+		}
+		*/
+
 	}
 }

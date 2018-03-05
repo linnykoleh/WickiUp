@@ -7,14 +7,38 @@ public class HashMap<K, V> {
 
 	private transient Node<K,V>[] hashTable;
 
+	/**
+	 * The number of times this HashMap has been structurally modified
+	 * Structural modifications are those that change the number of mappings in
+	 * the HashMap or otherwise modify its internal structure (e.g.,
+	 * rehash).  This field is used to make iterators on Collection-views of
+	 * the HashMap fail-fast.  (See ConcurrentModificationException).
+	 *
+	 *  If updates Iterator while iteration we will get ConcurrentModificationException
+	 *
+	 	if (modificationsCount != expectedModCount)
+		   throw new ConcurrentModificationException();
+	 */
+	private transient int modificationsCount;
+
+	/**
+	 * The number of key-value mappings contained in this map.
+	 */
+	private transient int size;
+
+	/**
+	 * The next size value at which to resize (capacity * load factor).
+	 */
+	private int threshold;
+
 	static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;
 
 	public V put(K key, V value) {
 		int hashCodeKey = hash(key);
-		return putVal(hashCodeKey, key, value);
+		return putVal(hashCodeKey, key, value, true                                                                        );
 	}
 
-	private V putVal(int hashCodeKey, K key, V value) {
+	private V putVal(int hashCodeKey, K key, V value, boolean evict) {
 		int newHashTableSize;
 		int indexForNode;
 		Node<K,V> nodeByHashCodeKey;
@@ -31,7 +55,9 @@ public class HashMap<K, V> {
 			Node<K,V> next;
 			K keyForNodeByHashCodeKey = nodeByHashCodeKey.key;
 			if (nodeByHashCodeKey.hashCodeKey == hashCodeKey && keyForNodeByHashCodeKey == key || (key != null && key.equals(keyForNodeByHashCodeKey))) {
-					next = nodeByHashCodeKey;
+				next = nodeByHashCodeKey;
+			} else if (nodeByHashCodeKey instanceof HashMap.TreeNode){
+					next = ((HashMap.TreeNode<K,V>) nodeByHashCodeKey).putTreeVal(this, hashTable, hashCodeKey, key, value);
 			} else {
 				while(true){
 					next = nodeByHashCodeKey.next;
@@ -56,6 +82,10 @@ public class HashMap<K, V> {
 				return oldValue;
 			}
 		}
+		++modificationsCount;
+		if (++size > threshold)
+			resize(); //stub
+		afterNodeInsertion(evict); //stub
 		return null;
 	}
 
@@ -101,6 +131,15 @@ public class HashMap<K, V> {
 		return null;
 	}
 
+	private Node<K, V>[] resize() {
+		//stub emulating real HashMap
+		return null;
+	}
+
+	void afterNodeInsertion(boolean evict) {
+		//stub emulating real HashMap
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder("HashMap{");
@@ -116,5 +155,16 @@ public class HashMap<K, V> {
 		}
 		stringBuilder.append("\n}");
 		return stringBuilder.toString();
+	}
+
+	static class TreeNode<K, V> extends Node<K, V>{
+
+		public TreeNode(int bucket, int hashCodeKey, K key, V value, Node<K, V> next) {
+			super(bucket, hashCodeKey, key, value, next);
+		}
+
+		final TreeNode<K,V> putTreeVal(HashMap<K,V> hashMap, Node<K,V>[] hashTable, int hashCodeKey, K key, V value) {
+			return this;
+		}
 	}
 }
