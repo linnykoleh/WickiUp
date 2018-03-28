@@ -6,15 +6,23 @@ import java.nio.file.Paths;
 public class NIOTest {
 
 	public static void main(String[] args) {
-
+		resolveIfFile();
 	}
 
 	private static void resolve() {
 		Path path = Paths.get("/home/files/nio/");
 		Path resolved = path.resolve(Paths.get("text1.txt")); // or Path resolved = path.resolve("text1.txt");
 
-		System.out.println(path); // /home//files/nio
+		System.out.println(path); // /home/files/nio
 		System.out.println(resolved); // /home/files/nio/text1.txt
+	}
+
+	private static void resolveIfFile() {
+		Path path = Paths.get("/home/files/nio/text.txt");
+		Path resolved = path.resolve(Paths.get("text1.txt")); // or Path resolved = path.resolve("text1.txt");
+
+		System.out.println(path); // /home/files/nio/text.txt
+		System.out.println(resolved); // /home/files/nio/text.txt/text1.txt
 	}
 
 	private static void resolveAbsolute() {
