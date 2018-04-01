@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 public class NIOTest {
 
 	public static void main(String[] args) {
-		resolveIfFile();
+
 	}
 
 	private static void resolve() {
