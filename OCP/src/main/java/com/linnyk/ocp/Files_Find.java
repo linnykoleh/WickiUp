@@ -22,12 +22,7 @@ public class Files_Find {
 
 	public static void main(String[] args) throws IOException {
 		final Stream<Path> result = Files.find(Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/find/"), 5,
-				(path, basicFileAttributes) -> {
-					{
-						System.out.println(path);
-						return path.endsWith("txt");
-					}
-				});
+				(path, basicFileAttributes) -> path.endsWith(".txt"));
 		result.forEach(System.out::println);
 	}
 }
