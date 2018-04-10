@@ -15,11 +15,13 @@ public class FlatMap2 {
         List<String> sentences = Arrays.asList(sentence1, sentence2, sentence3);
 
         List<String> strm = sentences.stream()
-                .flatMap(str->Stream.of(str.split("[ ,.!?\r\n]")))
+                .flatMap(str -> Stream.of(str.split("[ ,.!?\r\n]")))
                 // flatMap результат
-                //[Carpe, diem, , Seize, the, day, , oys, , Make, your, lives, extraordinary, Frankly, ,
-                // my, dear, , I, don, t, give, a, damn, Do, I, look, like, I, give, a, damn]
-                .filter(s->s.length()>0)
+                //
+                // [Carpe, diem, , Seize, the, day, , oys, , Make, your, lives, extraordinary,
+                // Frankly, , my, dear, , I, don, t, give, a, damn,
+                // Do, I, look, like, I, give, a, damn]
+                .filter(s -> s.length() > 0)
                 .distinct()
                 .collect(Collectors.toList());
 
