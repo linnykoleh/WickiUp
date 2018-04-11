@@ -18,4 +18,9 @@ public class TestOuter {
 
 	}
 
+	public static void main(String[] args) {
+//		new TestOuter.Inner(); Compilation error Cannot be referenced from a static context
+		new TestOuter().new Inner();
+	}
+
 }
