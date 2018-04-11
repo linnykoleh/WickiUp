@@ -21,7 +21,7 @@ public class Files_copy {
 	 */
 
 	public static void main(String[] args) throws IOException {
-		copyWithoutCopyAction();
+		copyWithoutCopyActionSameFile();
 	}
 
 	private static void copyWithCopyAction() throws IOException {
@@ -38,6 +38,22 @@ public class Files_copy {
 		linesDestination.forEach(System.out::println); // source
 	}
 
+	private static void copyWithoutCopyActionSameFile() throws IOException {
+		final Path copy = Files.copy(
+				Paths.get("C:\\Users\\Админ\\Desktop\\IdeaProjects\\WickiUp\\OCP\\src\\main\\java\\com\\linnyk\\ocp\\nio\\copy\\source.txt"),
+				Paths.get("C:\\Users\\Админ\\Desktop\\IdeaProjects\\WickiUp\\OCP\\src\\main\\java\\com\\linnyk\\ocp\\nio\\copy\\target.txt")
+		);
+
+		/*
+		Если не использовать CopyOption и target существует, то будет ошибка
+
+		Exception in thread "main" java.nio.file.FileAlreadyExistsException: C:\Users\Админ\Desktop\IdeaProjects\WickiUp\OCP\src\main\java\com\linnyk\ocp\nio\copy\target.txt
+			at sun.nio.fs.WindowsFileCopy.copy(WindowsFileCopy.java:124)
+			at sun.nio.fs.WindowsFileSystemProvider.copy(WindowsFileSystemProvider.java:278)
+			at java.nio.file.Files.copy(Files.java:1274)
+		 */
+	}
+
 	private static void copyWithoutCopyAction() throws IOException {
 		final Path copy = Files.copy(
 				Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/copy/source.txt"),
@@ -46,7 +62,6 @@ public class Files_copy {
 
 		Stream<String> linesSource = Files.lines(Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/copy/source.txt"));
 		linesSource.forEach(System.out::println); // source
-
 
 		Stream<String> linesDestination = Files.lines(Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/copy/targetNew.txt"));
 		linesDestination.forEach(System.out::println); // source
