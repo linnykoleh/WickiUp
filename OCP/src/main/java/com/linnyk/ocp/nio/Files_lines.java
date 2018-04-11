@@ -11,6 +11,7 @@ public class Files_lines {
 
 	/**
 	    - public static Stream<String> lines(Path path) throws IOException
+
 	    - public static Stream<String> lines(Path path, Charset cs) throws IOException
 
 	 */

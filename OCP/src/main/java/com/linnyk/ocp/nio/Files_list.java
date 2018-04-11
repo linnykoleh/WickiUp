@@ -14,7 +14,7 @@ public class Files_list {
 
 	public static void main(String[] args) throws IOException {
 		final Stream<Path> list = Files.list(Paths.get("/home/olinnyk/IdeaProjects/WickiUp/"));
-//		list.forEach(System.out::println);
+		list.forEach(System.out::println);
 
 		/*
 		    /home/olinnyk/IdeaProjects/WickiUp/AWS
