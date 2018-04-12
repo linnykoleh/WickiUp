@@ -1,4 +1,4 @@
-package com.linnyk.ocp.collectors;
+package com.linnyk.ocp.stream_collectors;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,10 +15,10 @@ public class Mapping {
 	 */
 
 	private static List<Book> books = Arrays.asList(
-			new Book(1, "Name1"),
-			new Book(2, "Name2"),
-			new Book(3, "Name1"),
-			new Book(4, "Name2"));
+			new Book(1, "Name1", 10.0),
+			new Book(2, "Name2", 20.0),
+			new Book(3, "Name1", 30.0),
+			new Book(4, "Name2", 40.0));
 
 	public static void main(String[] args) {
 		final List<Integer> collect = books.stream().collect(Collectors.mapping(Book::getId, Collectors.toList()));
