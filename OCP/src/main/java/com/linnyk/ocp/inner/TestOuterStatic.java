@@ -6,6 +6,13 @@ public class TestOuterStatic {
 
 	}
 
+	public void checkIt(){
+		new InnerStatic();
+
+		new TestOuterStatic.InnerStatic();
+
+	}
+
 	public static void checkItStatic(){
 		new InnerStatic();
 
