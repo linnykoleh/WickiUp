@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 public class NIOTest {
 
 	public static void main(String[] args) {
-
+		relativizeAbsolute2();
 	}
 
 	private static void resolve() {
@@ -56,6 +56,16 @@ public class NIOTest {
 			at com.linnyk.ocp.NIOTest.relativizeAbsolute(NIOTest.java:40)
 			at com.linnyk.ocp.NIOTest.main(NIOTest.java:9)
 		*/
+	}
+
+	private static void relativizeAbsolute2() {
+		// Путь не может быть построен если один из путей имеет
+		// root компонент, если два имеют, то все ОК
+
+		Path p1 = Paths.get("c:\\personal\\.\\photos\\..\\readme.txt");
+		Path p2 = Paths.get("c:\\personal\\index.html");
+		Path p3 = p1.relativize(p2);
+		System.out.println(p3); //  ..\..\..\..\index.html
 	}
 
 	private static void resolveSiblings() {
