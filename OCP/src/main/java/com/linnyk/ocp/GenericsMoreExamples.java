@@ -18,6 +18,7 @@ public class GenericsMoreExamples {
 
 //        dataList.add(booby); Compilation error. ? super Dooby
 //        dataList.add(new Object()); Compilation error. ? super Dooby
+//        dooby = dataList.get(0); Compilation error. If super NO get at all only add
 
     }
 
@@ -27,6 +28,7 @@ public class GenericsMoreExamples {
         Object o = dataList.get(0);
 
 //        tooby = dataList.get(0); Compilation error. ? super Dooby
+//        dataList.add(dooby); Compilation error. If extends NO add at all only get
     }
 
 }

@@ -11,7 +11,8 @@ public class InnerClasses {
 	}
 
 	public class B extends A {
-
+		final static int number = 1;
+//		 static int number1 = 1; Compilation error no static in inner classes
 	}
 
 	public static void main(String[] args) {
