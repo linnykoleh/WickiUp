@@ -1,4 +1,4 @@
-package com.linnyk.ocp;
+package com.linnyk.ocp.nio;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 public class NIOTest {
 
 	public static void main(String[] args) {
-		relativizeAbsolute2();
+		relativizeEmpty();
 	}
 
 	private static void resolve() {
@@ -35,6 +35,16 @@ public class NIOTest {
 		System.out.println(resolved); // /text1.txt
 	}
 
+	private static void resolveEmpty() {
+		Path path = Paths.get("/home/files/nio/");
+		Path resolved = path.resolve(Paths.get("")); // or Path resolved = path.resolve("")
+
+		/* Если путь абсолютный, но он же и возвращается*/
+
+		System.out.println(path); // /home//files/nio
+		System.out.println(resolved); // /home/files/nio
+	}
+
 	private static void relativize() {
 		Path path = Paths.get("nio/text.txt");
 		Path relativized = path.relativize(Paths.get("text1.txt"));
@@ -53,8 +63,8 @@ public class NIOTest {
 		Exception in thread "main" java.lang.IllegalArgumentException: 'other' is different type of Path
 			at sun.nio.fs.UnixPath.relativize(UnixPath.java:416)
 			at sun.nio.fs.UnixPath.relativize(UnixPath.java:43)
-			at com.linnyk.ocp.NIOTest.relativizeAbsolute(NIOTest.java:40)
-			at com.linnyk.ocp.NIOTest.main(NIOTest.java:9)
+			at com.linnyk.ocp.nio.NIOTest.relativizeAbsolute(NIOTest.java:40)
+			at com.linnyk.ocp.nio.NIOTest.main(NIOTest.java:9)
 		*/
 	}
 
@@ -66,6 +76,14 @@ public class NIOTest {
 		Path p2 = Paths.get("c:\\personal\\index.html");
 		Path p3 = p1.relativize(p2);
 		System.out.println(p3); //  ..\..\..\..\index.html
+	}
+
+	private static void relativizeEmpty() {
+		Path path = Paths.get("nio/text.txt");
+		Path relativized = path.relativize(Paths.get(""));
+
+		System.out.println(path); // nio/text.txt
+		System.out.println(relativized); // ../../
 	}
 
 	private static void resolveSiblings() {
