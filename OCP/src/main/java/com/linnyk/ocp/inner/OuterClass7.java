@@ -1,4 +1,4 @@
-package com.linnyk.ocp;
+package com.linnyk.ocp.inner;
 
 public class OuterClass7 {
 

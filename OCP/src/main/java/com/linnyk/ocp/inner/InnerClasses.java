@@ -1,4 +1,4 @@
-package com.linnyk.ocp;
+package com.linnyk.ocp.inner;
 
 class A extends InnerClasses {
 
@@ -6,7 +6,7 @@ class A extends InnerClasses {
 
 public class InnerClasses {
 
-	public abstract class A extends com.linnyk.ocp.A{
+	public abstract class A extends com.linnyk.ocp.inner.A {
 
 	}
 
