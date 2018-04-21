@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 public class NIOTest {
 
 	public static void main(String[] args) {
-		relativizeEmpty();
+
 	}
 
 	private static void resolve() {
@@ -53,7 +53,16 @@ public class NIOTest {
 		System.out.println(relativized); // ../../text1.txt
 	}
 
-	private static void relativizeAbsolute() {
+	private static void relativize3() {
+		Path path = Paths.get("/nio/text.txt");
+		Path relativized = path.relativize(Paths.get("/text1.txt"));
+
+		System.out.println(path); // /nio/text.txt
+		System.out.println(relativized); // ../../text1.txt
+
+	}
+
+	private static void relativizeAbsolute3() {
 		Path path = Paths.get("nio/text.txt");
 		Path relativized = path.relativize(Paths.get("/text1.txt"));
 
