@@ -21,13 +21,13 @@ public class HashMapMainMethods {
 		map.put(1, "1");
 		map.put(2, "2");
 
-		map.computeIfAbsent(1, (newKey) -> {
-			System.out.println(newKey);
+		map.computeIfAbsent(1, (key) -> {
+			System.out.println(key);
 			return "One";
 		});
 
-		map.computeIfAbsent(3, (newKey) -> {
-			System.out.println(newKey); //3
+		map.computeIfAbsent(3, (key) -> {
+			System.out.println(key); //3
 			return "Three";
 		});
 
@@ -40,13 +40,13 @@ public class HashMapMainMethods {
 		map.put(1, "First");
 		map.put(2, "Second");
 
-		map.computeIfPresent(1, (newKey, oldValue) -> {
-			System.out.println(newKey); // 1
+		map.computeIfPresent(1, (key, oldValue) -> {
+			System.out.println(key); // 1
 			System.out.println(oldValue); // First
 			return "One";
 		});
-		map.computeIfPresent(3, (newKey, oldValue) -> {
-			System.out.println(newKey);
+		map.computeIfPresent(3, (key, oldValue) -> {
+			System.out.println(key);
 			System.out.println(oldValue);
 			return "Three";
 		});
@@ -60,8 +60,8 @@ public class HashMapMainMethods {
 		map.put(1, "First");
 		map.put(2, "Second");
 
-		map.compute(1, (newKey, oldValue) -> {
-			System.out.println(newKey); // 1
+		map.compute(1, (key, oldValue) -> {
+			System.out.println(key); // 1
 			System.out.println(oldValue); // First
 			return "One";
 		});
@@ -83,7 +83,7 @@ public class HashMapMainMethods {
 		map.merge(1, "One", (oldValue, newValue) -> {
 			System.out.println(oldValue); // First
 			System.out.println(newValue); // One
-			return "One+One";
+			return "First+One";
 		});
 		map.merge(3, "Three", (oldValue, newValue) -> {
 			System.out.println(oldValue);
@@ -91,6 +91,6 @@ public class HashMapMainMethods {
 			return "Three+Three";
 		});
 
-		System.out.println(map); // {1=One+One, 2=Second, 3=Three}
+		System.out.println(map); // {1=First+One, 2=Second, 3=Three}
 	}
 }
