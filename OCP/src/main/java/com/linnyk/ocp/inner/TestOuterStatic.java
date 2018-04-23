@@ -18,7 +18,7 @@ public class TestOuterStatic {
 
 		new TestOuterStatic.InnerStatic();
 
-		final TestOuterStatic testOuter = new TestOuterStatic();
+//		final TestOuterStatic testOuter = new TestOuterStatic();
 //		testOuter.new InnerStatic(); Qualified new of static class
 
 //		new TestOuterStatic().new InnerStatic(); Qualified new of static class

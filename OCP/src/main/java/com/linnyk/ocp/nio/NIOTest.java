@@ -41,16 +41,40 @@ public class NIOTest {
 
 		/* Если путь абсолютный, но он же и возвращается*/
 
-		System.out.println(path); // /home//files/nio
+		System.out.println(path); // /home/files/nio
 		System.out.println(resolved); // /home/files/nio
 	}
 
-	private static void resolve2() {
+	private static void resolve2Win() {
 		Path path = Paths.get("c:\\personal\\photos\\readme.txt");
-		Path resolved = path.resolve("c:\\personal\\index.html");
+		Path resolved = path.resolve("personal\\index.html");
 
-		System.out.println(path);
-		System.out.println(resolved);
+		System.out.println(path); // c:\personal\photos\readme.txt
+		System.out.println(resolved); // c:\personal\photos\readme.txt\personal\index.html
+	}
+
+	private static void resolve3Win() {
+		Path path = Paths.get("c:\\personal\\photos\\readme.txt");
+		Path resolved = path.resolve("\\personal\\index.html");
+
+		System.out.println(path); // c:\personal\photos\readme.txt
+		System.out.println(resolved); // c:\personal\index.html
+	}
+
+	private static void resolve4Win() {
+		Path path = Paths.get("c:\\personal\\photos\\readme.txt");
+		Path resolved = path.resolve("\\index.html");
+
+		System.out.println(path); // c:\personal\photos\readme.txt
+		System.out.println(resolved); // c:\index.html
+	}
+
+	private static void resolve5Win() {
+		Path path = Paths.get("c:\\personal\\photos\\readme.txt");
+		Path resolved = path.resolve("index.html");
+
+		System.out.println(path); // c:\personal\photos\readme.txt
+		System.out.println(resolved); //c:\personal\photos\readme.txt\index.html
 	}
 
 	private static void relativize() {
