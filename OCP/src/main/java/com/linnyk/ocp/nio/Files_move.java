@@ -14,14 +14,14 @@ public class Files_move {
 	 */
 
 	public static void main(String[] args) throws IOException {
-		final Path move = Files.move(
-				Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/source.txt"),
-				Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/target.txt"),
-				StandardCopyOption.REPLACE_EXISTING
-		);
-
-		Stream<String> linesSource = Files.lines(Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/source.txt"));
-		linesSource.forEach(System.out::println);
+//		final Path move = Files.move(
+//				Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/source.txt"),
+//				Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/target.txt"),
+//				StandardCopyOption.REPLACE_EXISTING
+//		);
+//
+//		Stream<String> linesSource = Files.lines(Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/source.txt"));
+//		linesSource.forEach(System.out::println);
 
 		/*
 		    Исключение получается потомучто мы мувнули файл и его больше нет
@@ -32,6 +32,29 @@ public class Files_move {
 
 		Stream<String> linesDestination = Files.lines(Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/target.txt"));
 		linesDestination.forEach(System.out::println); // source
+		moveIfExistFileAtomicMove();
 	}
+
+	private static void moveIfExistFile() throws IOException {
+		final Path move = Files.move(
+				Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/source.txt"),
+				Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/target.txt")
+		);
+
+		// Exception in thread "main" java.nio.file.FileAlreadyExistsException:
+		// 			/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/target.txt
+	}
+
+	private static void moveIfExistFileAtomicMove() throws IOException {
+		final Path move = Files.move(
+				Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/source.txt"),
+				Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/target.txt"),
+				StandardCopyOption.ATOMIC_MOVE
+		);
+
+		Stream<String> linesDestination = Files.lines(Paths.get("/home/olinnyk/IdeaProjects/WickiUp/OCP/src/main/java/com/linnyk/ocp/nio/move/target.txt"));
+		linesDestination.forEach(System.out::println); // source
+	}
+
 
 }
