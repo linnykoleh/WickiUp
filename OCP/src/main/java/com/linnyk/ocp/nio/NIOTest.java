@@ -45,6 +45,14 @@ public class NIOTest {
 		System.out.println(resolved); // /home/files/nio
 	}
 
+	private static void resolve2() {
+		Path path = Paths.get("c:\\personal\\photos\\readme.txt");
+		Path resolved = path.resolve("c:\\personal\\index.html");
+
+		System.out.println(path);
+		System.out.println(resolved);
+	}
+
 	private static void relativize() {
 		Path path = Paths.get("nio/text.txt");
 		Path relativized = path.relativize(Paths.get("text1.txt"));
@@ -85,6 +93,14 @@ public class NIOTest {
 		Path p2 = Paths.get("c:\\personal\\index.html");
 		Path p3 = p1.relativize(p2);
 		System.out.println(p3); //  ..\..\..\..\index.html
+	}
+
+	private static void relativizeAbsolute3() {
+		Path path = Paths.get("/nio/text.txt");
+		Path relativized = path.relativize(Paths.get("/text1.txt"));
+
+		System.out.println(path); // /nio/text.txt
+		System.out.println(relativized); // ../../text1.txt
 	}
 
 	private static void relativizeEmpty() {
