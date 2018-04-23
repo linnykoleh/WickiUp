@@ -95,7 +95,7 @@ public class NIOTest {
 		System.out.println(p3); //  ..\..\..\..\index.html
 	}
 
-	private static void relativizeAbsolute3() {
+	private static void relativizeAbsolute4() {
 		Path path = Paths.get("/nio/text.txt");
 		Path relativized = path.relativize(Paths.get("/text1.txt"));
 
