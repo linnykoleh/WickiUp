@@ -3,6 +3,7 @@ package com.linnyk.ocp;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -23,6 +24,10 @@ public class DayLightSaving {
         _6();
         System.out.println("-----------------------------");
         _7();
+        System.out.println("-----------------------------");
+        _8();
+        System.out.println("-----------------------------");
+        _9();
     }
 
     private static void _1() {
@@ -98,5 +103,52 @@ public class DayLightSaving {
 
         System.out.println(Duration.between(end, start)); // PT-10H
         System.out.println(Duration.between(start, end)); // PT10H
+    }
+
+    private static void _8() {
+        LocalDateTime ldtAt4 = LocalDateTime.of(2015, Month.OCTOBER, 25, 3, 0);
+        System.out.println(ldtAt4); // 2015-10-25T03:00
+        ZonedDateTime zdtAt4 = ZonedDateTime.of(ldtAt4, ZoneId.of("EET"));
+        System.out.println(zdtAt4); // 2015-10-25T03:00+03:00[EET]
+
+        ZonedDateTime zdtAt4Dur = ZonedDateTime.of(ldtAt4, ZoneId.of("EET"));
+        zdtAt4Dur = zdtAt4Dur.plus(Duration.ofDays(1));
+        System.out.println(zdtAt4Dur); // 2015-10-26T02:00+02:00[EET]
+
+        ZonedDateTime zdtAt4DurMin = ZonedDateTime.of(ldtAt4, ZoneId.of("EET"));
+        zdtAt4DurMin = zdtAt4DurMin.minus(Duration.ofDays(1));
+        System.out.println(zdtAt4DurMin); // 2015-10-24T03:00+03:00[EET]
+
+        ZonedDateTime zdtAt4Per = ZonedDateTime.of(ldtAt4, ZoneId.of("EET"));
+        zdtAt4Per = zdtAt4Per.plus(Period.ofDays(1));
+        System.out.println(zdtAt4Per); // 2015-10-26T03:00+02:00[EET]
+
+        ZonedDateTime zdtAt4PerMin = ZonedDateTime.of(ldtAt4, ZoneId.of("EET"));
+        zdtAt4PerMin = zdtAt4PerMin.minus(Period.ofDays(1));
+        System.out.println(zdtAt4PerMin); // 2015-10-26T03:00+02:00[EET]
+    }
+
+    private static void _9() {
+        LocalDateTime ld1 = LocalDateTime.of(2017, Month.MARCH, 26, 3, 00,0);
+        ZonedDateTime zd1 = ZonedDateTime.of(ld1, ZoneId.of("Europe/Kiev"));
+        System.out.println(zd1); // 2017-03-26T04:00+03:00[Europe/Kiev]
+
+        ZonedDateTime zdtAt4Dur = ZonedDateTime.of(ld1, ZoneId.of("Europe/Kiev"));
+        zdtAt4Dur = zdtAt4Dur.minus(Duration.ofDays(1));
+        System.out.println(zdtAt4Dur); // 2017-03-25T03:00+02:00[Europe/Kiev]
+
+        ZonedDateTime zdtAt4PerPl = ZonedDateTime.of(ld1, ZoneId.of("Europe/Kiev"));
+        zdtAt4PerPl = zdtAt4PerPl.plus(Period.ofDays(1));
+        System.out.println(zdtAt4PerPl); // 2017-03-27T04:00+03:00[Europe/Kiev]
+
+        ZonedDateTime zdtAt4Per = ZonedDateTime.of(ld1, ZoneId.of("Europe/Kiev"));
+        zdtAt4Per = zdtAt4Per.minus(Period.ofDays(1));
+        System.out.println(zdtAt4Per); // 2017-03-25T04:00+02:00[Europe/Kiev]
+
+        ZonedDateTime zdtAt4DurPl = ZonedDateTime.of(ld1, ZoneId.of("Europe/Kiev"));
+        zdtAt4DurPl = zdtAt4DurPl.plus(Duration.ofDays(1));
+        System.out.println(zdtAt4DurPl); // 2017-03-27T04:00+03:00[Europe/Kiev]
+
+
     }
 }
