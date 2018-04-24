@@ -6,7 +6,14 @@ import java.nio.file.Paths;
 public class NIOTest {
 
 	public static void main(String[] args) {
+		resolve0();
+	}
 
+	private static void resolve0() {
+		Path path = Paths.get("\\photos\\vacation");
+		Path path2 = Paths.get("\\yellowstone");
+
+		System.out.println(path.resolve(path2) + " " + path.relativize(path2)); // /home/files/nio/text1.txt
 	}
 
 	private static void resolve() {
