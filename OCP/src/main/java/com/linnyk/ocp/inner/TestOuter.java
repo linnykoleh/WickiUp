@@ -22,6 +22,9 @@ public class TestOuter {
 //		new TestOuter.Inner(); Compilation error Cannot be referenced from a static context
 		new TestOuter().new Inner();
 
+		final TestOuter testOuter = new TestOuter();
+		testOuter.new Inner();
+
 		// Внутри статического метода мы не можем создать ссылку внутреннего класса
 		// без ссылки на внешний класс
 	}
