@@ -23,6 +23,7 @@
 		<module>IOC</module>
 		<module>AWS</module>
 		<module>OCP</module>
+		<module>JPA</module>
 	</modules>
 
 
