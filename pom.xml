@@ -26,7 +26,6 @@
 		<module>JPA</module>
 	</modules>
 
-
 	<build>
 		<finalName>WickiUp</finalName>
 		<plugins>
