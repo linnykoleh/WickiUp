@@ -5,6 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "FINANCES_USER")
+@Access(AccessType.FIELD) //or AccessType.PROPERTY
 public class User {
 
     @Id
@@ -18,7 +19,7 @@ public class User {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "BIRTH_DATE")
+    @Column(name = "BIRTH_DATE", nullable = false) //not null
     private Date birthDate;
 
     @Column(name = "EMAIL_ADDRESS")
@@ -30,10 +31,10 @@ public class User {
     @Column(name = "LAST_UPDATED_BY")
     private String lastUpdatedBy;
 
-    @Column(name = "CREATED_DATE")
+    @Column(name = "CREATED_DATE", updatable = false) //not using while updating
     private Date createdDate;
 
-    @Column(name = "CREATED_BY")
+    @Column(name = "CREATED_BY", updatable = false) //not using while updating
     private String createdBy;
 
     public Long getUserId() {
