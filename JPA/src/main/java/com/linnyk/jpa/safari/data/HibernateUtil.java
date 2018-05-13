@@ -7,27 +7,43 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 
-    private static final SessionFactory SESSION_FACTORY = buildSessionFactory();
+    private static final SessionFactory SESSION_FACTORY_XML = buildSessionFactoryXML();
+    private static final SessionFactory SESSION_FACTORY_ANNOTATIONS = buildSessionFactoryAnnotation();
 
     private HibernateUtil() {
         // singleton class
     }
 
-    private static SessionFactory buildSessionFactory() {
-        try{
-            final Configuration configuration = new Configuration();
-//            configuration.addAnnotatedClass(User.class);
-            return configuration
-                    .buildSessionFactory(new StandardServiceRegistryBuilder()
-                            .applySettings(configuration.getProperties())
-                            .build());
-        }catch (Exception e){
+    /**
+     * Used hibernate.cfg.xml
+     */
+    private static SessionFactory buildSessionFactoryXML() {
+        try {
+            return new Configuration().configure().buildSessionFactory();
+        } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException();
         }
     }
 
-    public static SessionFactory getSessionFactory(){
-        return SESSION_FACTORY;
+    /**
+     * Used hibernate.properties
+     */
+    private static SessionFactory buildSessionFactoryAnnotation() {
+        final Configuration configuration = new Configuration();
+        configuration.addAnnotatedClass(User.class);
+        return configuration
+                .buildSessionFactory(new StandardServiceRegistryBuilder()
+                        .build());
+
     }
+
+    public static SessionFactory getSessionFactoryXML() {
+        return SESSION_FACTORY_XML;
+    }
+
+    public static SessionFactory getSessionFactoryAnnotation() {
+        return SESSION_FACTORY_ANNOTATIONS;
+    }
+
 }

@@ -18,8 +18,8 @@ public class User {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "BIRTH_DAY")
-    private Date birthDay;
+    @Column(name = "BIRTH_DATE")
+    private Date birthDate;
 
     @Column(name = "EMAIL_ADDRESS")
     private String emailAddress;
@@ -60,12 +60,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Date getBirthDay() {
-        return birthDay;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
+    public void setBirthDate(Date birthDay) {
+        this.birthDate = birthDay;
     }
 
     public String getEmailAddress() {
