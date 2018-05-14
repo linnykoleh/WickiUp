@@ -90,4 +90,32 @@ public class HibernateClient {
 
         session.close();
     }
+
+    @Test
+    public void testTransient() {
+        final Session session = HibernateUtil.getSessionFactoryXML().openSession();
+        session.beginTransaction();
+
+        final User user = new User();
+        user.setBirthDate(new Date());
+        user.setCreatedDate(new Date());
+        user.setCreatedBy("Oleh XML 1");
+        user.setEmailAddress("Oleh@Linnyk.com");
+        user.setFirstName("Oleh");
+        user.setLastName("Linnyk");
+        user.setLastUpdatedDate(new Date());
+        user.setLastUpdatedBy("Oleh");
+        user.setValid(true);
+
+        session.save(user); // insert
+                            // into
+                            //    FINANCES_USER
+                            //    (USER_ID, BIRTH_DATE, CREATED_BY, CREATED_DATE, EMAIL_ADDRESS, FIRST_NAME, LAST_NAME, LAST_UPDATED_BY, LAST_UPDATED_DATE)
+                            // values
+                            //    (null, ?, ?, ?, ?, ?, ?, ?, ?)
+                            // There is no VALID field
+        session.getTransaction().commit();
+
+        session.close();
+    }
 }

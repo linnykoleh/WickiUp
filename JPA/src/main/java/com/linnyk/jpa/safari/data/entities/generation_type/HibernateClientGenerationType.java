@@ -102,11 +102,14 @@ public class HibernateClientGenerationType {
         user.setLastUpdatedDate(new Date());
         user.setLastUpdatedBy("Oleh");
 
-        session.save(user); // doesn't work for H2 ?
+        session.save(user);
 
         session.getTransaction().commit();
         session.close();
-        System.out.println(user);
+        System.out.println(user); // UserGTIdentity{userId=10, firstName='Oleh', lastName='Linnyk', birthDate=Mon May 14 20:46:48 EEST 2018,
+                                  // emailAddress='Oleh@Linnyk.com', lastUpdatedDate=Mon May 14 20:46:48 EEST 2018, lastUpdatedBy='Oleh',
+                                  // createdDate=Mon May 14 20:46:48 EEST 2018, createdBy='Oleh'}
+
     }
 
     @Test
@@ -140,6 +143,7 @@ public class HibernateClientGenerationType {
 
         final UserNoGT user = new UserNoGT();
         user.setBirthDate(new Date());
+//        user.setUserId(134L); To fix the problem add id manually
         user.setCreatedDate(new Date());
         user.setCreatedBy("Oleh");
         user.setEmailAddress("Oleh@Linnyk.com");
