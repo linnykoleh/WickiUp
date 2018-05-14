@@ -1,6 +1,12 @@
 package com.linnyk.jpa.safari.data;
 
 import com.linnyk.jpa.safari.data.entities.User;
+import com.linnyk.jpa.safari.data.entities.generation_type.UserGTAuto;
+import com.linnyk.jpa.safari.data.entities.generation_type.UserGTIdentity;
+import com.linnyk.jpa.safari.data.entities.generation_type.UserGTSequence;
+import com.linnyk.jpa.safari.data.entities.generation_type.UserGTTable;
+import com.linnyk.jpa.safari.data.entities.generation_type.UserNoGT;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -15,7 +21,7 @@ public class HibernateUtil {
     }
 
     /**
-     * Used hibernate.cfg.xml
+     * Use hibernate.cfg.xml
      */
     private static SessionFactory buildSessionFactoryXML() {
         try {
@@ -27,11 +33,18 @@ public class HibernateUtil {
     }
 
     /**
-     * Used hibernate.properties
+     * Use hibernate.properties
      */
     private static SessionFactory buildSessionFactoryAnnotation() {
         final Configuration configuration = new Configuration();
+
         configuration.addAnnotatedClass(User.class);
+        configuration.addAnnotatedClass(UserGTTable.class);
+        configuration.addAnnotatedClass(UserGTSequence.class);
+        configuration.addAnnotatedClass(UserGTIdentity.class);
+        configuration.addAnnotatedClass(UserGTAuto.class);
+        configuration.addAnnotatedClass(UserNoGT.class);
+
         return configuration
                 .buildSessionFactory(new StandardServiceRegistryBuilder()
                         .build());

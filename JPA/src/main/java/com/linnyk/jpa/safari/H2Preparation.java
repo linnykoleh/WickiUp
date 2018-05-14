@@ -17,7 +17,8 @@ public class H2Preparation {
         DeleteDbFiles.execute("~", "test", true);
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
-            RunScript.execute(connection, new FileReader("JPA\\src\\main\\java\\com\\linnyk\\jpa\\safari\\init.sql"));
+//            RunScript.execute(connection, new FileReader("JPA\\src\\main\\java\\com\\linnyk\\jpa\\safari\\init.sql")); // Windows
+            RunScript.execute(connection, new FileReader("JPA/src/main/java/com/linnyk/jpa/safari/init.sql")); // Linux
         } catch (Exception e) {
             System.err.println("Something went wrong while preparation " + e);
         }
