@@ -1,13 +1,14 @@
-package com.linnyk.jpa.safari.data.entities.generation_type;
+package com.linnyk.jpa.safari.data.apps.generation_type_app;
 
 import java.util.Date;
 
+import com.linnyk.jpa.safari.data.entities.generation_type.*;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import com.linnyk.jpa.safari.data.HibernateUtil;
+import com.linnyk.jpa.safari.data.util.HibernateUtil;
 
-public class HibernateClientGenerationType {
+public class GenerationTypeApp {
 
     @Test
     public void test_GenerationType_TABLE() {

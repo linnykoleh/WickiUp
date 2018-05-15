@@ -1,5 +1,6 @@
-package com.linnyk.jpa.safari.data;
+package com.linnyk.jpa.safari.data.util;
 
+import com.linnyk.jpa.safari.data.entities.TimeTest;
 import com.linnyk.jpa.safari.data.entities.User;
 import com.linnyk.jpa.safari.data.entities.generation_type.UserGTAuto;
 import com.linnyk.jpa.safari.data.entities.generation_type.UserGTIdentity;
@@ -44,6 +45,7 @@ public class HibernateUtil {
         configuration.addAnnotatedClass(UserGTIdentity.class);
         configuration.addAnnotatedClass(UserGTAuto.class);
         configuration.addAnnotatedClass(UserNoGT.class);
+        configuration.addAnnotatedClass(TimeTest.class);
 
         return configuration
                 .buildSessionFactory(new StandardServiceRegistryBuilder()

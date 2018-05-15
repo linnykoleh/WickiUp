@@ -22,11 +22,14 @@
 
         <!--<property name="hibernate.hbm2ddl.auto">create</property>-->
 
+        <!--Mapping-->
         <mapping class="com.linnyk.jpa.safari.data.entities.User"/>
         <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserGTTable"/>
         <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserGTSequence"/>
         <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserGTIdentity"/>
         <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserGTAuto"/>
         <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserNoGT"/>
+        <mapping class="com.linnyk.jpa.safari.data.entities.TimeTest"/>
+
     </session-factory>
 </hibernate-configuration>

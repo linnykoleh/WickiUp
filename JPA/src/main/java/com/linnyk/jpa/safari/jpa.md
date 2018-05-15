@@ -1,6 +1,7 @@
 https://www.safaribooksonline.com/library/view/hibernate-and-java/9781771373494/
 https://vladmihalcea.com/why-you-should-never-use-the-table-identifier-generator-with-jpa-and-hibernate/
 https://easyjava.ru/data/jpa/pervichnye-klyuchi-v-jpa/	
+https://habr.com/post/271115/
 			      
 ##### GenerationType
 https://www.youtube.com/watch?v=fKO6kbTUEuo&list=PLCA5CB42F5A816A17&index=5

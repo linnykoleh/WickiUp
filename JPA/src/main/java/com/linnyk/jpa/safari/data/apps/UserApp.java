@@ -1,12 +1,13 @@
-package com.linnyk.jpa.safari.data;
+package com.linnyk.jpa.safari.data.apps;
 
+import com.linnyk.jpa.safari.data.util.HibernateUtil;
 import com.linnyk.jpa.safari.data.entities.User;
 import org.hibernate.Session;
 import org.junit.Test;
 
 import java.util.Date;
 
-public class HibernateClient {
+public class UserApp {
 
     @Test
     public void testAnnotation() {
