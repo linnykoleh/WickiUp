@@ -1,5 +1,7 @@
 package com.linnyk.jpa.safari.data.entities;
 
+import org.hibernate.annotations.Formula;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -39,6 +41,9 @@ public class User {
 
     @Transient // ignore for persistence
     private boolean valid;
+
+    @Formula(value = "datediff('YEAR', birth_date, curdate())") // http://www.h2database.com/html/functions.html
+    private int age;
 
     public Long getUserId() {
         return userId;
@@ -118,5 +123,30 @@ public class User {
 
     public void setValid(boolean valid) {
         this.valid = valid;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", emailAddress='" + emailAddress + '\'' +
+                ", lastUpdatedDate=" + lastUpdatedDate +
+                ", lastUpdatedBy='" + lastUpdatedBy + '\'' +
+                ", createdDate=" + createdDate +
+                ", createdBy='" + createdBy + '\'' +
+                ", valid=" + valid +
+                ", age=" + age +
+                '}';
     }
 }

@@ -1,10 +1,12 @@
 package com.linnyk.jpa.safari.data.apps;
 
-import com.linnyk.jpa.safari.data.util.HibernateUtil;
 import com.linnyk.jpa.safari.data.entities.User;
+import com.linnyk.jpa.safari.data.util.HibernateUtil;
 import org.hibernate.Session;
 import org.junit.Test;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Date;
 
 public class UserApp {
@@ -118,5 +120,31 @@ public class UserApp {
         session.getTransaction().commit();
 
         session.close();
+    }
+
+    @Test
+    public void testFormula() {
+        final Session session = HibernateUtil.getSessionFactoryXML().openSession();
+        session.beginTransaction();
+
+        final User user = new User();
+        user.setBirthDate(java.sql.Date.valueOf(LocalDate.of(1993, Month.MAY, 07)));
+        user.setCreatedDate(new Date());
+        user.setCreatedBy("Oleh XML 1");
+        user.setEmailAddress("Oleh@Linnyk.com");
+        user.setFirstName("Oleh");
+        user.setLastName("Linnyk");
+        user.setLastUpdatedDate(new Date());
+        user.setLastUpdatedBy("Oleh");
+        user.setValid(true);
+
+        session.save(user);
+        session.getTransaction().commit();
+
+        session.refresh(user);
+
+        session.close();
+
+        System.out.println("My age is: " + user.getAge()); // My age is: 25
     }
 }
