@@ -1,13 +1,16 @@
 package com.linnyk.jpa.safari.data.apps;
 
 import com.linnyk.jpa.safari.data.entities.User;
+import com.linnyk.jpa.safari.data.entities.embedded.Address;
 import com.linnyk.jpa.safari.data.util.HibernateUtil;
 import org.hibernate.Session;
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class UserApp {
 
@@ -181,5 +184,72 @@ public class UserApp {
                                    // lastUpdatedDate=2018-05-16 13:59:14.483, lastUpdatedBy='Oleh', createdDate=2018-05-16 13:59:14.483, createdBy='Oleh XML 1',
                                    // valid=true, age=25}
 
+    }
+
+    @Test
+    public void testCollectionObjects() {
+        final Session session = HibernateUtil.getSessionFactoryXML().openSession();
+        session.beginTransaction();
+
+        final User user = new User();
+        user.setBirthDate(java.sql.Date.valueOf(LocalDate.of(1993, Month.MAY, 07)));
+        user.setCreatedDate(new Date());
+        user.setCreatedBy("Oleh XML 1");
+        user.setEmailAddress("Oleh@Linnyk.com");
+        user.setFirstName("Oleh");
+        user.setLastName("Linnyk");
+        user.setLastUpdatedDate(new Date());
+        user.setLastUpdatedBy("Oleh");
+        user.setValid(true);
+        user.setAddressLine1("33 Wall Street");
+        user.setAddressLine2("Suite 2");
+        user.setCity("New York");
+        user.setState("NY");
+        user.setZipCode("27914");
+
+        final Address address1 = new Address();
+        address1.setAddressLine1("4 Wall Street");
+        address1.setAddressLine2("Suite 3");
+        address1.setCity("NEW New York");
+        address1.setState("NY");
+        address1.setZipCode("12714");
+        final Address address2 = new Address();
+        address2.setAddressLine1("5 Wall Street");
+        address2.setAddressLine2("Suite 4");
+        address2.setCity("NEW 1 New York");
+        address2.setState("NY");
+        address2.setZipCode("22914");
+
+        final List<Address> addresses = new ArrayList<>();
+        addresses.add(address1);
+        addresses.add(address2);
+
+        user.setAddresses(addresses);
+
+        session.save(user);
+        session.getTransaction().commit();
+
+        session.close();
+
+        //insert
+        //    into
+        //        FINANCES_USER
+        //        (BIRTH_DATE, CREATED_BY, CREATED_DATE, EMAIL_ADDRESS, FIRST_NAME, LAST_NAME, LAST_UPDATED_BY, LAST_UPDATED_DATE, USER_ID)
+        //    values
+        //        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        //
+        // insert
+        //    into
+        //        USER_ADDRESS
+        //        (USER_ID, USER_ADDRESS_LINE_1, USER_ADDRESS_LINE_2, CITY, STATE, ZIP_CODE)
+        //    values
+        //        (?, ?, ?, ?, ?, ?)
+        //
+        //insert
+        //    into
+        //        USER_ADDRESS
+        //        (USER_ID, USER_ADDRESS_LINE_1, USER_ADDRESS_LINE_2, CITY, STATE, ZIP_CODE)
+        //    values
+        //        (?, ?, ?, ?, ?, ?)
     }
 }

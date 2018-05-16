@@ -1,13 +1,21 @@
 package com.linnyk.jpa.safari.data.entities.embedded;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -39,6 +47,23 @@ public class Bank {
 
 	@Column(name = "CREATED_BY")
 	private String createdBy;
+
+	@ElementCollection
+	@CollectionTable(
+			name = "BANK_CONTACT", // название таблице
+			joinColumns = @JoinColumn(name = "BANK_ID") // id нашей ентити
+	)
+	@MapKeyColumn(name = "POSITION_TYPE") // название колонки, которая хранит КЛЮЧИ
+	@Column(name = "NAME") // название колонки которая хранит ЗНАЧЕНИЯ в другой таблице
+	private Map<String, String> contactsMap = new HashMap<>();
+
+	@ElementCollection
+	@CollectionTable(
+			name = "BANK_CONTACT", // название таблице
+			joinColumns = @JoinColumn(name = "BANK_ID") // id нашей ентити
+	)
+	@Column(name = "NAME") // название колонки которая хранит значения в другой таблице
+	private Collection<String> contacts = new ArrayList<>();
 
 	public Long getBankId() {
 		return bankId;
@@ -134,5 +159,29 @@ public class Bank {
 
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Collection<String> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(Collection<String> contacts) {
+		this.contacts = contacts;
+	}
+
+	public Map<String, String> getContactsMap() {
+		return contactsMap;
+	}
+
+	public void setContactsMap(Map<String, String> contactsMap) {
+		this.contactsMap = contactsMap;
 	}
 }

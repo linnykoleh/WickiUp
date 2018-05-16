@@ -3,7 +3,10 @@ package com.linnyk.jpa.safari.data.entities;
 import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.linnyk.jpa.safari.data.entities.embedded.Address;
 
@@ -28,6 +31,16 @@ public class User {
 
     @Column(name = "EMAIL_ADDRESS")
     private String emailAddress;
+
+    @ElementCollection
+    @CollectionTable(
+            name = "USER_ADDRESS", //название таблицы
+            joinColumns = @JoinColumn(name = "USER_ID")) // имя id нашей таблицы
+    @AttributeOverrides({
+            @AttributeOverride(name = "addressLine1", column = @Column(name = "USER_ADDRESS_LINE_1")),
+            @AttributeOverride(name = "addressLine2", column = @Column(name = "USER_ADDRESS_LINE_2"))
+    })
+    private List<Address> addresses = new ArrayList<>();
 
     @Embedded
     @AttributeOverrides({
@@ -141,6 +154,7 @@ public class User {
     public void setAge(int age) {
         this.age = age;
     }
+
     public void setAddressLine1(String addressLine1) {
         this.address.setAddressLine1(addressLine1);
     }
@@ -177,6 +191,22 @@ public class User {
         this.address.setZipCode(zipCode);
     }
 
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -185,6 +215,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
                 ", emailAddress='" + emailAddress + '\'' +
+                ", addresses=" + addresses +
                 ", address=" + address +
                 ", lastUpdatedDate=" + lastUpdatedDate +
                 ", lastUpdatedBy='" + lastUpdatedBy + '\'' +
