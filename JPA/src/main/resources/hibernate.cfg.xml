@@ -20,7 +20,7 @@
         <!--Pretty prints the SQL-->
         <property name="hibernate.format_sql">true</property>
 
-        <!--<property name="hibernate.hbm2ddl.auto">create</property>-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!--Mapping-->
         <mapping class="com.linnyk.jpa.safari.data.entities.User"/>
@@ -30,6 +30,7 @@
         <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserGTAuto"/>
         <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserNoGT"/>
         <mapping class="com.linnyk.jpa.safari.data.entities.TimeTest"/>
+        <mapping class="com.linnyk.jpa.safari.data.entities.embedded.Bank"/>
 
     </session-factory>
 </hibernate-configuration>

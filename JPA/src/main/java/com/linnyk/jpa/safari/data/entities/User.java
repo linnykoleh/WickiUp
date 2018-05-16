@@ -5,13 +5,15 @@ import org.hibernate.annotations.Formula;
 import javax.persistence.*;
 import java.util.Date;
 
+import com.linnyk.jpa.safari.data.entities.embedded.Address;
+
 @Entity
 @Table(name = "FINANCES_USER")
 @Access(AccessType.FIELD) //or AccessType.PROPERTY
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USER_ID")
     private Long userId;
 
@@ -26,6 +28,13 @@ public class User {
 
     @Column(name = "EMAIL_ADDRESS")
     private String emailAddress;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "addressLine1", column = @Column(name = "USER_ADDRESS_LINE_1")),
+            @AttributeOverride(name = "addressLine2", column = @Column(name = "USER_ADDRESS_LINE_2"))
+    })
+    private Address address = new Address();
 
     @Column(name = "LAST_UPDATED_DATE")
     private Date lastUpdatedDate;
@@ -132,6 +141,41 @@ public class User {
     public void setAge(int age) {
         this.age = age;
     }
+    public void setAddressLine1(String addressLine1) {
+        this.address.setAddressLine1(addressLine1);
+    }
+
+    public String getAddressLine2() {
+        return address.getAddressLine2();
+    }
+
+    public void setAddressLine2(String addressLine2) {
+        this.address.setAddressLine2(addressLine2);
+    }
+
+    public String getCity() {
+        return address.getCity();
+    }
+
+    public void setCity(String city) {
+        this.address.setCity(city);
+    }
+
+    public String getState() {
+        return address.getState();
+    }
+
+    public void setState(String state) {
+        this.address.setState(state);
+    }
+
+    public String getZipCode() {
+        return address.getZipCode();
+    }
+
+    public void setZipCode(String zipCode) {
+        this.address.setZipCode(zipCode);
+    }
 
     @Override
     public String toString() {
@@ -141,6 +185,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
                 ", emailAddress='" + emailAddress + '\'' +
+                ", address=" + address +
                 ", lastUpdatedDate=" + lastUpdatedDate +
                 ", lastUpdatedBy='" + lastUpdatedBy + '\'' +
                 ", createdDate=" + createdDate +

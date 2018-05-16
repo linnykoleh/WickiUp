@@ -147,4 +147,39 @@ public class UserApp {
 
         System.out.println("My age is: " + user.getAge()); // My age is: 25
     }
+
+    @Test
+    public void testEmbedded() {
+        final Session session = HibernateUtil.getSessionFactoryXML().openSession();
+        session.beginTransaction();
+
+        final User user = new User();
+        user.setBirthDate(java.sql.Date.valueOf(LocalDate.of(1993, Month.MAY, 07)));
+        user.setCreatedDate(new Date());
+        user.setCreatedBy("Oleh XML 1");
+        user.setEmailAddress("Oleh@Linnyk.com");
+        user.setFirstName("Oleh");
+        user.setLastName("Linnyk");
+        user.setLastUpdatedDate(new Date());
+        user.setLastUpdatedBy("Oleh");
+        user.setValid(true);
+        user.setAddressLine1("33 Wall Street");
+        user.setAddressLine2("Suite 2");
+        user.setCity("New York");
+        user.setState("NY");
+        user.setZipCode("27914");
+
+        session.save(user);
+        session.getTransaction().commit();
+
+        session.refresh(user);
+
+        session.close();
+
+        System.out.println(user);  // User{userId=2, firstName='Oleh', lastName='Linnyk', birthDate=1993-05-07 00:00:00.0, emailAddress='Oleh@Linnyk.com',
+                                   // address=Address{addressLine1='33 Wall Street', addressLine2='Suite 2', city='New York', state='NY', zipCode='27914'},
+                                   // lastUpdatedDate=2018-05-16 13:59:14.483, lastUpdatedBy='Oleh', createdDate=2018-05-16 13:59:14.483, createdBy='Oleh XML 1',
+                                   // valid=true, age=25}
+
+    }
 }
