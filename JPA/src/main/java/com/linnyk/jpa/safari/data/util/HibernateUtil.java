@@ -2,7 +2,7 @@ package com.linnyk.jpa.safari.data.util;
 
 import com.linnyk.jpa.safari.data.entities.TimeTest;
 import com.linnyk.jpa.safari.data.entities.User;
-import com.linnyk.jpa.safari.data.entities.assosiation.Credential;
+import com.linnyk.jpa.safari.data.entities.association.Credential;
 import com.linnyk.jpa.safari.data.entities.embedded.Bank;
 import com.linnyk.jpa.safari.data.entities.generation_type.UserGTAuto;
 import com.linnyk.jpa.safari.data.entities.generation_type.UserGTIdentity;

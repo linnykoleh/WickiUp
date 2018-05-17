@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.data.entities.assosiation;
+package com.linnyk.jpa.safari.data.entities.association;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ public class Credential {
 	public Long credentialId;
 
 	@OneToOne(cascade = CascadeType.ALL) //во время сохранения CREDENTIAL, сохранится и FINANCES_USER
-	@JoinColumn(name = "USER_ID")
+	@JoinColumn(name = "USER_ID") // FK к другой таблице
 	public User user;
 
 	@Column(name="USERNAME")
@@ -67,7 +67,6 @@ public class Credential {
 	public String toString() {
 		return "Credential{" +
 				"credentialId=" + credentialId +
-				", user=" + user +
 				", username='" + username + '\'' +
 				", password='" + password + '\'' +
 				'}';

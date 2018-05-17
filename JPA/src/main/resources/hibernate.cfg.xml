@@ -31,7 +31,7 @@
         <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserNoGT"/>
         <mapping class="com.linnyk.jpa.safari.data.entities.TimeTest"/>
         <mapping class="com.linnyk.jpa.safari.data.entities.embedded.Bank"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.assosiation.Credential"/>
+        <mapping class="com.linnyk.jpa.safari.data.entities.association.Credential"/>
 
     </session-factory>
 </hibernate-configuration>

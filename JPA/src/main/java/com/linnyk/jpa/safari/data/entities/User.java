@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.linnyk.jpa.safari.data.entities.association.Credential;
 import com.linnyk.jpa.safari.data.entities.embedded.Address;
 
 @Entity
@@ -31,6 +32,10 @@ public class User {
 
     @Column(name = "EMAIL_ADDRESS")
     private String emailAddress;
+
+    /*Bidirectional association*/
+    @OneToOne(mappedBy = "user") // поле которое есть в другой ентити для связи
+    private Credential credential;
 
     @ElementCollection
     @CollectionTable(
@@ -205,6 +210,14 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Credential getCredential() {
+        return credential;
+    }
+
+    public void setCredential(Credential credential) {
+        this.credential = credential;
     }
 
     @Override
