@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.data.apps;
+package com.linnyk.jpa.safari.data.apps.association;
 
 import java.util.Date;
 

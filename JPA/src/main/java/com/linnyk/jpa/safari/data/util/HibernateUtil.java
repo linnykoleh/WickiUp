@@ -2,14 +2,11 @@ package com.linnyk.jpa.safari.data.util;
 
 import com.linnyk.jpa.safari.data.entities.TimeTest;
 import com.linnyk.jpa.safari.data.entities.User;
+import com.linnyk.jpa.safari.data.entities.association.Account;
 import com.linnyk.jpa.safari.data.entities.association.Credential;
+import com.linnyk.jpa.safari.data.entities.association.Transaction;
 import com.linnyk.jpa.safari.data.entities.embedded.Bank;
-import com.linnyk.jpa.safari.data.entities.generation_type.UserGTAuto;
-import com.linnyk.jpa.safari.data.entities.generation_type.UserGTIdentity;
-import com.linnyk.jpa.safari.data.entities.generation_type.UserGTSequence;
-import com.linnyk.jpa.safari.data.entities.generation_type.UserGTTable;
-import com.linnyk.jpa.safari.data.entities.generation_type.UserNoGT;
-
+import com.linnyk.jpa.safari.data.entities.generation_type.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -50,6 +47,8 @@ public class HibernateUtil {
         configuration.addAnnotatedClass(TimeTest.class);
         configuration.addAnnotatedClass(Bank.class);
         configuration.addAnnotatedClass(Credential.class);
+        configuration.addAnnotatedClass(Account.class);
+        configuration.addAnnotatedClass(Transaction.class);
 
         return configuration
                 .buildSessionFactory(new StandardServiceRegistryBuilder()
