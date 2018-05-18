@@ -22,6 +22,10 @@ public class Transaction {
     @Column(name = "AMOUNT")
     private BigDecimal amount;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ACCOUNT_ID") //FK для Account
+    private Account account;
+
     @Column(name = "INITIAL_BALANCE")
     private BigDecimal initialBalance;
 
@@ -131,4 +135,11 @@ public class Transaction {
         this.createdBy = createdBy;
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }

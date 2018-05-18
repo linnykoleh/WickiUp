@@ -1,5 +1,6 @@
 package com.linnyk.jpa.safari.data.util;
 
+import com.linnyk.jpa.safari.data.entities.join_table.Budget;
 import com.linnyk.jpa.safari.data.entities.TimeTest;
 import com.linnyk.jpa.safari.data.entities.User;
 import com.linnyk.jpa.safari.data.entities.association.Account;
@@ -49,6 +50,7 @@ public class HibernateUtil {
         configuration.addAnnotatedClass(Credential.class);
         configuration.addAnnotatedClass(Account.class);
         configuration.addAnnotatedClass(Transaction.class);
+        configuration.addAnnotatedClass(Budget.class);
 
         return configuration
                 .buildSessionFactory(new StandardServiceRegistryBuilder()

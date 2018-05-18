@@ -16,44 +16,19 @@ public class AccountApp {
         final Session session = HibernateUtil.getSessionFactoryAnnotation().openSession();
         session.beginTransaction();
 
-        final Account account = new Account();
-        account.setName("Account");
-        account.setInitialBalance(BigDecimal.TEN);
-        account.setCurrentBalance(BigDecimal.ONE);
-        account.setOpenDate(new Date());
-        account.setCloseDate(new Date());
-        account.setCreatedBy("Oleh");
-        account.setCreatedDate(new Date());
-        account.setLastUpdatedBy("Oleh");
-        account.setLastUpdatedDate(new Date());
+        final Account account = getAccount();
 
-        final Transaction transaction = new Transaction();
-        transaction.setTitle("First transaction");
-        transaction.setTransactionType("Type 1");
-        transaction.setAmount(BigDecimal.TEN);
-        transaction.setInitialBalance(BigDecimal.TEN);
-        transaction.setCreatedBy("Oleh");
-        transaction.setCreatedDate(new Date());
-        transaction.setLastUpdatedBy("Oleh");
-        transaction.setLastUpdatedDate(new Date());
-        transaction.setClosingBalance(BigDecimal.ONE);
-
-        final Transaction transaction1 = new Transaction();
-        transaction1.setTitle("Second transaction");
-        transaction1.setTransactionType("Type 2");
-        transaction1.setAmount(BigDecimal.TEN);
-        transaction1.setInitialBalance(BigDecimal.TEN);
-        transaction1.setCreatedBy("Oleh");
-        transaction1.setCreatedDate(new Date());
-        transaction1.setLastUpdatedBy("Oleh");
-        transaction1.setLastUpdatedDate(new Date());
-        transaction1.setClosingBalance(BigDecimal.ONE);
+        final Transaction transaction = getTransaction("First transaction", "Type 1");
+        final Transaction transaction1 = getTransaction("Second transaction", "Type 2");
 
         account.getTransactions().add(transaction);
         account.getTransactions().add(transaction1);
 
         session.save(account);
 
+        // Выполнится 3 INSERT
+        // и 2 UPDATE
+        //
         // insert into ACCOUNT (CLOSE_DATE, CREATED_BY, CREATED_DATE, CURRENT_BALANCE, INITIAL_BALANCE, LAST_UPDATED_BY, LAST_UPDATED_DATE, NAME, OPEN_DATE, ACCOUNT_ID)
         //              values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         //
@@ -69,5 +44,63 @@ public class AccountApp {
 
         session.getTransaction().commit();
         session.close();
+    }
+
+    @Test
+    public void testOneToManyBidirectional() {
+        final Session session = HibernateUtil.getSessionFactoryXML().openSession();
+        session.beginTransaction();
+
+        final Account account = getAccount();
+
+        final Transaction transaction = getTransaction("First transaction", "Type 1");
+        transaction.setAccount(account);
+
+        final Transaction transaction1 = getTransaction("Second transaction", "Type 2");
+        transaction1.setAccount(account);
+
+        account.getTransactions().add(transaction);
+        account.getTransactions().add(transaction1);
+
+        session.save(account);
+
+        session.getTransaction().commit();
+
+        final Transaction transaction2 = session.get(Transaction.class, account.getTransactions().get(0).getTransactionId());
+        System.out.println(transaction2.getAccount().getName()); //Account
+
+        session.close();
+    }
+
+    private Account getAccount() {
+        final Account account = new Account();
+
+        account.setName("Account");
+        account.setInitialBalance(BigDecimal.TEN);
+        account.setCurrentBalance(BigDecimal.ONE);
+        account.setOpenDate(new Date());
+        account.setCloseDate(new Date());
+        account.setCreatedBy("Oleh");
+        account.setCreatedDate(new Date());
+        account.setLastUpdatedBy("Oleh");
+        account.setLastUpdatedDate(new Date());
+
+        return account;
+    }
+
+    private Transaction getTransaction(String title, String tt) {
+        final Transaction transaction = new Transaction();
+
+        transaction.setTitle(title);
+        transaction.setTransactionType(tt);
+        transaction.setAmount(BigDecimal.TEN);
+        transaction.setInitialBalance(BigDecimal.TEN);
+        transaction.setCreatedBy("Oleh");
+        transaction.setCreatedDate(new Date());
+        transaction.setLastUpdatedBy("Oleh");
+        transaction.setLastUpdatedDate(new Date());
+        transaction.setClosingBalance(BigDecimal.ONE);
+
+        return transaction;
     }
 }

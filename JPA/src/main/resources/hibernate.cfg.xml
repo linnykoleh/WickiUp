@@ -20,6 +20,8 @@
         <!--Pretty prints the SQL-->
         <property name="hibernate.format_sql">true</property>
 
+        <property name="use_sql_comments">true</property>
+
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!--Mapping-->
@@ -34,6 +36,7 @@
         <mapping class="com.linnyk.jpa.safari.data.entities.association.Credential"/>
         <mapping class="com.linnyk.jpa.safari.data.entities.association.Account"/>
         <mapping class="com.linnyk.jpa.safari.data.entities.association.Transaction"/>
+        <mapping class="com.linnyk.jpa.safari.data.entities.join_table.Budget"/>
 
     </session-factory>
 </hibernate-configuration>
