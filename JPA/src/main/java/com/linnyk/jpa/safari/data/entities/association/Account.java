@@ -1,10 +1,10 @@
 package com.linnyk.jpa.safari.data.entities.association;
 
+import com.linnyk.jpa.safari.data.entities.User;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "ACCOUNT")
@@ -17,6 +17,12 @@ public class Account {
 
     @Column(name = "NAME")
     private String name;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ACCOUNT", //Таблица в которой будут храниться ключи
+            joinColumns = @JoinColumn(name = "ACCOUNT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "USER_ID"))
+    private Set<User> users = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
     private List<Transaction> transactions = new ArrayList<>();
@@ -133,4 +139,11 @@ public class Account {
         this.transactions = transactions;
     }
 
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }

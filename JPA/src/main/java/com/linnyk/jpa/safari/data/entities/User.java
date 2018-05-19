@@ -1,12 +1,11 @@
 package com.linnyk.jpa.safari.data.entities;
 
+import com.linnyk.jpa.safari.data.entities.association.Account;
 import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import com.linnyk.jpa.safari.data.entities.association.Credential;
 import com.linnyk.jpa.safari.data.entities.embedded.Address;
@@ -32,6 +31,11 @@ public class User {
 
     @Column(name = "EMAIL_ADDRESS")
     private String emailAddress;
+
+    /*Bidirectional association*/
+    @ManyToMany(cascade = CascadeType.ALL,
+            mappedBy = "users") // поле которое есть в другой ентити для связи
+    private Set<Account> accounts = new HashSet<>();
 
     /*Bidirectional association*/
     @OneToOne(mappedBy = "user") // поле которое есть в другой ентити для связи
@@ -218,6 +222,14 @@ public class User {
 
     public void setCredential(Credential credential) {
         this.credential = credential;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
     }
 
     @Override
