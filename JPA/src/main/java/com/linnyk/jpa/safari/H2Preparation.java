@@ -14,11 +14,11 @@ public class H2Preparation {
     private static final String PASSWORD = "";
 
     public static void main(String[] args) {
-        DeleteDbFiles.execute("~", "test", true);
+//        DeleteDbFiles.execute("~", "test", true);
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
 //            RunScript.execute(connection, new FileReader("JPA\\src\\main\\java\\com\\linnyk\\jpa\\safari\\init.sql")); // Windows
-            RunScript.execute(connection, new FileReader("JPA/src/main/java/com/linnyk/jpa/safari/init.sql")); // Linux
+            RunScript.execute(connection, new FileReader("JPA/src/main/java/com/linnyk/jpa/safari/populate.sql")); // Linux
         } catch (Exception e) {
             System.err.println("Something went wrong while preparation " + e);
         }

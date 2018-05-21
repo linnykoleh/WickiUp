@@ -18,25 +18,25 @@
         <property name="show_sql">true</property>
 
         <!--Pretty prints the SQL-->
-        <property name="hibernate.format_sql">true</property>
+        <!--<property name="hibernate.format_sql">true</property>-->
 
-        <property name="use_sql_comments">true</property>
+        <!--<property name="use_sql_comments">true</property>-->
 
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
 
         <!--Mapping-->
-        <mapping class="com.linnyk.jpa.safari.data.entities.User"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserGTTable"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserGTSequence"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserGTIdentity"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserGTAuto"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.generation_type.UserNoGT"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.TimeTest"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.embedded.Bank"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.association.Credential"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.association.Account"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.association.Transaction"/>
-        <mapping class="com.linnyk.jpa.safari.data.entities.join_table.Budget"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.User"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.generation_type.UserGTTable"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.generation_type.UserGTSequence"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.generation_type.UserGTIdentity"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.generation_type.UserGTAuto"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.generation_type.UserNoGT"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.TimeTest"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.embedded.Bank"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.association.Credential"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.association.Account"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.association.Transaction"/>
+        <mapping class="com.linnyk.jpa.safari.mapping.entities.join_table.Budget"/>
 
     </session-factory>
 </hibernate-configuration>
