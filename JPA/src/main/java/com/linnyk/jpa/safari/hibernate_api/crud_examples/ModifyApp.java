@@ -24,7 +24,7 @@ public class ModifyApp {
 			bank.setLastUpdatedBy("Oleh Linnyk");
 			bank.setLastUpdatedDate(new Date());
 
-			transaction.commit();
+			transaction.commit(); // Запись апдейтится на commit
 			//update BANK set ADDRESS_LINE_1=?, ADDRESS_LINE_2=?, CITY=?, STATE=?, ZIP_CODE=?, CREATED_BY=?, CREATED_DATE=?, IS_INTERNATIONAL=?, LAST_UPDATED_BY=?, LAST_UPDATED_DATE=?, NAME=? where BANK_ID=?
 		}catch (Exception e){
 			e.printStackTrace();
