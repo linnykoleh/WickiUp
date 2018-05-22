@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.hibernate_api.mapping_examples;
+package com.linnyk.jpa.safari.mapping_examples;
 
 import com.linnyk.jpa.safari.entities.TimeTest;
 import com.linnyk.jpa.safari.hibernate_api.configuration.HibernateFactoryBuilder;

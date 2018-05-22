@@ -1,9 +1,9 @@
-package com.linnyk.jpa.safari.hibernate_api.mapping_examples.join_table;
+package com.linnyk.jpa.safari.mapping_examples.join_table;
 
 import org.hibernate.Session;
 import org.junit.Test;
 
-import com.linnyk.jpa.safari.entities.association.Account;
+import com.linnyk.jpa.safari.entities.Account;
 import com.linnyk.jpa.safari.entities.association.Transaction;
 import com.linnyk.jpa.safari.entities.join_table.Budget;
 import com.linnyk.jpa.safari.util.EntitiesUtil;

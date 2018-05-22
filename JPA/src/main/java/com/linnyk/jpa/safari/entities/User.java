@@ -1,6 +1,5 @@
 package com.linnyk.jpa.safari.entities;
 
-import com.linnyk.jpa.safari.entities.association.Account;
 import com.linnyk.jpa.safari.entities.association.Credential;
 import com.linnyk.jpa.safari.entities.embedded.Address;
 

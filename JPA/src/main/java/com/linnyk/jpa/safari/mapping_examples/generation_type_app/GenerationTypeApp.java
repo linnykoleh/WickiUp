@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.hibernate_api.mapping_examples.generation_type_app;
+package com.linnyk.jpa.safari.mapping_examples.generation_type_app;
 
 import java.util.Date;
 

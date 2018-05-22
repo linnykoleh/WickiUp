@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.linnyk.jpa.safari.entities.Account;
+
 @Entity
 @Table(name = "TRANSACTION")
 public class Transaction {

@@ -1,6 +1,6 @@
-package com.linnyk.jpa.safari.entities.association;
+package com.linnyk.jpa.safari.entities;
 
-import com.linnyk.jpa.safari.entities.User;
+import com.linnyk.jpa.safari.entities.association.Transaction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -17,6 +17,10 @@ public class Account {
 
     @Column(name = "NAME")
     private String name;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "ACCOUNT_TYPE")
+    private AccountType accountType;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ACCOUNT", //Таблица в которой будут храниться ключи
@@ -145,5 +149,13 @@ public class Account {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
     }
 }

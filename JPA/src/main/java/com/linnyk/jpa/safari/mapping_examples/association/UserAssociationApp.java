@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.hibernate_api.mapping_examples.association;
+package com.linnyk.jpa.safari.mapping_examples.association;
 
 import org.hibernate.Session;
 import org.junit.Test;

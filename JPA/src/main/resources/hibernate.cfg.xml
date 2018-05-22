@@ -34,7 +34,7 @@
         <mapping class="com.linnyk.jpa.safari.entities.TimeTest"/>
         <mapping class="com.linnyk.jpa.safari.entities.embedded.Bank"/>
         <mapping class="com.linnyk.jpa.safari.entities.association.Credential"/>
-        <mapping class="com.linnyk.jpa.safari.entities.association.Account"/>
+        <mapping class="com.linnyk.jpa.safari.entities.Account"/>
         <mapping class="com.linnyk.jpa.safari.entities.association.Transaction"/>
         <mapping class="com.linnyk.jpa.safari.entities.join_table.Budget"/>
 

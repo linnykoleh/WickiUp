@@ -3,7 +3,7 @@ package com.linnyk.jpa.safari.hibernate_api.crud_examples;
 import org.hibernate.Session;
 import org.junit.Test;
 
-import com.linnyk.jpa.safari.entities.association.Account;
+import com.linnyk.jpa.safari.entities.Account;
 import com.linnyk.jpa.safari.entities.association.Transaction;
 import com.linnyk.jpa.safari.util.EntitiesUtil;
 import com.linnyk.jpa.safari.hibernate_api.configuration.HibernateFactoryBuilder;

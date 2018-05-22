@@ -4,9 +4,10 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import com.linnyk.jpa.safari.entities.User;
-import com.linnyk.jpa.safari.entities.association.Account;
+import com.linnyk.jpa.safari.entities.Account;
 import com.linnyk.jpa.safari.entities.association.Credential;
 import com.linnyk.jpa.safari.entities.association.Transaction;
+import com.linnyk.jpa.safari.entities.compound.Currency;
 import com.linnyk.jpa.safari.entities.embedded.Bank;
 import com.linnyk.jpa.safari.entities.join_table.Budget;
 
@@ -82,5 +83,13 @@ public class EntitiesUtil {
 		bank.setLastUpdatedDate(new Date());
 		bank.setInternational(false);
 		return bank;
+	}
+
+	public static Currency getCurrency(String name) {
+		final Currency currency = new Currency();
+		currency.setCountryName("United States");
+		currency.setName(name);
+		currency.setSymbol("$");
+		return currency;
 	}
 }

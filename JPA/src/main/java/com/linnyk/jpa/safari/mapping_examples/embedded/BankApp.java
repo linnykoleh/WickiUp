@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.hibernate_api.mapping_examples.embedded;
+package com.linnyk.jpa.safari.mapping_examples.embedded;
 
 import java.util.ArrayList;
 import java.util.HashMap;

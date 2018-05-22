@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.linnyk.jpa.safari.entities.TimeTest;
 import com.linnyk.jpa.safari.entities.User;
-import com.linnyk.jpa.safari.entities.association.Account;
+import com.linnyk.jpa.safari.entities.Account;
 import com.linnyk.jpa.safari.entities.association.Credential;
 import com.linnyk.jpa.safari.entities.association.Transaction;
 import com.linnyk.jpa.safari.entities.embedded.Bank;
