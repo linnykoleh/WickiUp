@@ -9,6 +9,8 @@ import com.linnyk.jpa.safari.entities.association.Credential;
 import com.linnyk.jpa.safari.entities.association.Transaction;
 import com.linnyk.jpa.safari.entities.compound.Currency;
 import com.linnyk.jpa.safari.entities.embedded.Bank;
+import com.linnyk.jpa.safari.entities.inheritance.Bond;
+import com.linnyk.jpa.safari.entities.inheritance.Stock;
 import com.linnyk.jpa.safari.entities.join_table.Budget;
 
 public class EntitiesUtil {
@@ -91,5 +93,26 @@ public class EntitiesUtil {
 		currency.setName(name);
 		currency.setSymbol("$");
 		return currency;
+	}
+
+	public static Stock getStock(String name) {
+		final Stock stock = new Stock();
+		stock.setName(name);
+		stock.setQuantity(BigDecimal.TEN);
+		stock.setSharePrice(BigDecimal.ONE);
+		stock.setIssuer("Issuer");
+		stock.setPurchaseDate(new Date());
+		return stock;
+	}
+
+	public static Bond getBond(String name) {
+		final Bond bond = new Bond();
+		bond.setName(name);
+		bond.setInterestRate(BigDecimal.TEN);
+		bond.setMaturityDate(new Date());
+		bond.setValue(BigDecimal.ONE);
+		bond.setIssuer("Issuer");
+		bond.setPurchaseDate(new Date());
+		return bond;
 	}
 }
