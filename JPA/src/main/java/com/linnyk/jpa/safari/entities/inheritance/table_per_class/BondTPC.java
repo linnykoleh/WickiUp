@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.entities.inheritance;
+package com.linnyk.jpa.safari.entities.inheritance.table_per_class;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,14 +12,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
-@Table(name = "BOND")
-public class Bond extends Investment{
+import com.linnyk.jpa.safari.entities.inheritance.mapped_super_class.InvestmentMSC;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "BOND_ID")
-	private Long bondId;
+@Entity
+@Table(name = "BOND_TPC")
+public class BondTPC extends InvestmentTPC {
 
 	@Column(name = "VALUE")
 	private BigDecimal value;
@@ -31,13 +28,6 @@ public class Bond extends Investment{
 	@Column(name = "MATURITY_DATE")
 	private Date maturityDate;
 
-	public Long getBondId() {
-		return bondId;
-	}
-
-	public void setBondId(Long bondId) {
-		this.bondId = bondId;
-	}
 
 	public BigDecimal getValue() {
 		return value;

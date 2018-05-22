@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.entities.inheritance;
+package com.linnyk.jpa.safari.entities.inheritance.mapped_super_class;
 
 import java.util.Date;
 
@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class Investment {
+public abstract class InvestmentMSC {
 
 	@Column(name = "NAME")
 	protected String name;

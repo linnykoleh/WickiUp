@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.mapping_examples.inheritance;
+package com.linnyk.jpa.safari.mapping_examples.inheritance.mapped_super_class;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -6,12 +6,12 @@ import javax.persistence.EntityTransaction;
 
 import org.junit.Test;
 
-import com.linnyk.jpa.safari.entities.inheritance.Bond;
-import com.linnyk.jpa.safari.entities.inheritance.Stock;
+import com.linnyk.jpa.safari.entities.inheritance.mapped_super_class.Bond;
+import com.linnyk.jpa.safari.entities.inheritance.mapped_super_class.Stock;
 import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
 import com.linnyk.jpa.safari.util.EntitiesUtil;
 
-public class Inheritance {
+public class MappedSuperClass {
 
 	@Test
 	public void test(){
@@ -20,10 +20,10 @@ public class Inheritance {
 		final EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
 
-		final Stock stock = EntitiesUtil.getStock("Stock");
+		final Stock stock = EntitiesUtil.getStock("StockTPC");
 		entityManager.persist(stock);
 
-		final Bond bond = EntitiesUtil.getBond("Bond");
+		final Bond bond = EntitiesUtil.getBond("BondTPC");
 		entityManager.persist(bond);
 
 		transaction.commit();
