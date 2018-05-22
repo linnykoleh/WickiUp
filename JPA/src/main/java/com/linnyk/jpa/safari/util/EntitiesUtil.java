@@ -11,6 +11,8 @@ import com.linnyk.jpa.safari.entities.compound.Currency;
 import com.linnyk.jpa.safari.entities.embedded.Bank;
 import com.linnyk.jpa.safari.entities.inheritance.mapped_super_class.Bond;
 import com.linnyk.jpa.safari.entities.inheritance.mapped_super_class.Stock;
+import com.linnyk.jpa.safari.entities.inheritance.single_table.BondST;
+import com.linnyk.jpa.safari.entities.inheritance.single_table.StockST;
 import com.linnyk.jpa.safari.entities.inheritance.table_per_class.BondTPC;
 import com.linnyk.jpa.safari.entities.inheritance.table_per_class.StockTPC;
 import com.linnyk.jpa.safari.entities.join_table.Budget;
@@ -117,6 +119,16 @@ public class EntitiesUtil {
 		return stock;
 	}
 
+	public static StockST getStockST(String name) {
+		final StockST stock = new StockST();
+		stock.setName(name);
+		stock.setQuantity(BigDecimal.TEN);
+		stock.setSharePrice(BigDecimal.ONE);
+		stock.setIssuer("Issuer");
+		stock.setPurchaseDate(new Date());
+		return stock;
+	}
+
 	public static Bond getBond(String name) {
 		final Bond bond = new Bond();
 		bond.setName(name);
@@ -130,6 +142,17 @@ public class EntitiesUtil {
 
 	public static BondTPC getBondTPC(String name) {
 		final BondTPC bond = new BondTPC();
+		bond.setName(name);
+		bond.setInterestRate(BigDecimal.TEN);
+		bond.setMaturityDate(new Date());
+		bond.setValue(BigDecimal.ONE);
+		bond.setIssuer("Issuer");
+		bond.setPurchaseDate(new Date());
+		return bond;
+	}
+
+	public static BondST getBondST(String name) {
+		final BondST bond = new BondST();
 		bond.setName(name);
 		bond.setInterestRate(BigDecimal.TEN);
 		bond.setMaturityDate(new Date());
