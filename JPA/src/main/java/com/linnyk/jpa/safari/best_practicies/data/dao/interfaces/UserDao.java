@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.bp.data.dao.interfaces;
+package com.linnyk.jpa.safari.best_practicies.data.dao.interfaces;
 
 import java.util.List;
 

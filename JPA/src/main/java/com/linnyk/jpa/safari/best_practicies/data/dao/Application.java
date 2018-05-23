@@ -1,8 +1,8 @@
-package com.linnyk.jpa.safari.bp.data.dao;
+package com.linnyk.jpa.safari.best_practicies.data.dao;
 
 import org.hibernate.Transaction;
 
-import com.linnyk.jpa.safari.bp.data.dao.interfaces.UserDao;
+import com.linnyk.jpa.safari.best_practicies.data.dao.interfaces.UserDao;
 import com.linnyk.jpa.safari.entities.User;
 import com.linnyk.jpa.safari.hibernate_api.configuration.HibernateFactoryBuilder;
 import com.linnyk.jpa.safari.util.EntitiesUtil;

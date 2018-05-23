@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.bp.data.dao;
+package com.linnyk.jpa.safari.best_practicies.data.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -8,7 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
 
-import com.linnyk.jpa.safari.bp.data.dao.interfaces.Dao;
+import com.linnyk.jpa.safari.best_practicies.data.dao.interfaces.Dao;
 import com.linnyk.jpa.safari.hibernate_api.configuration.HibernateFactoryBuilder;
 
 public class AbstractDao<T,ID extends Serializable> implements Dao<T,ID> {

@@ -144,4 +144,22 @@ public class Transaction {
     public void setAccount(Account account) {
         this.account = account;
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "transactionId=" + transactionId +
+                ", transactionType='" + transactionType + '\'' +
+                ", title='" + title + '\'' +
+                ", amount=" + amount +
+                ", account=" + account +
+                ", initialBalance=" + initialBalance +
+                ", closingBalance=" + closingBalance +
+                ", notes='" + notes + '\'' +
+                ", lastUpdatedDate=" + lastUpdatedDate +
+                ", lastUpdatedBy='" + lastUpdatedBy + '\'' +
+                ", createdDate=" + createdDate +
+                ", createdBy='" + createdBy + '\'' +
+                '}';
+    }
 }

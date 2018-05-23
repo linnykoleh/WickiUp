@@ -12,7 +12,8 @@
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
 			<property name="hibernate.show_sql" value="true"/>
-			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<!-- create, update, validate, create-drop -->
 
 			<!--Не нужно объявлять маппинг, JPA сама это сделает-->
 			<!--JPA пройдет по всем объектам, посмотрит у кого есть @Entity-->
