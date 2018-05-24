@@ -24,8 +24,6 @@ public class UserCredentialViewApp {
 		final List resultList = query.getResultList();
 		System.out.println(resultList);
 
-//		System.out.println(userCredentialView);
-
 		transaction.commit();
 		entityManager.close();
 		entityManagerFactory.close();

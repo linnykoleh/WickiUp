@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -15,8 +16,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.linnyk.jpa.safari.entities.Account;
 
 @Entity
 @Table(name = "BANK")
@@ -29,6 +34,10 @@ public class Bank {
 
 	@Column(name = "NAME")
 	private String name;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ACCOUNT_ID")
+	private Account account;
 
 	@Embedded
 	private Address address = new Address();
@@ -183,5 +192,30 @@ public class Bank {
 
 	public void setContactsMap(Map<String, String> contactsMap) {
 		this.contactsMap = contactsMap;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	@Override
+	public String toString() {
+		return "Bank{" +
+				"bankId=" + bankId +
+				", name='" + name + '\'' +
+				", account=" + account +
+				", address=" + address +
+				", international=" + international +
+				", lastUpdatedDate=" + lastUpdatedDate +
+				", lastUpdatedBy='" + lastUpdatedBy + '\'' +
+				", createdDate=" + createdDate +
+				", createdBy='" + createdBy + '\'' +
+				", contactsMap=" + contactsMap +
+				", contacts=" + contacts +
+				'}';
 	}
 }

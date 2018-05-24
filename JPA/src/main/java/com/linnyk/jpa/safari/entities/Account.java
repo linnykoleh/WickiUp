@@ -1,6 +1,7 @@
 package com.linnyk.jpa.safari.entities;
 
 import com.linnyk.jpa.safari.entities.association.Transaction;
+import com.linnyk.jpa.safari.entities.embedded.Bank;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -8,6 +9,20 @@ import java.util.*;
 
 @Entity
 @Table(name = "ACCOUNT")
+@NamedQueries({
+        @NamedQuery(
+                name = "Account.largeDeposits",
+                query = "select distinct t.account from Transaction t where t.amount > 5 or lower(t.transactionType) = 'deposit'"
+        ),
+        @NamedQuery(
+                name = "Account.byWithdrawlAccount",
+                query = "select distinct t.account.name, "
+                        + " concat(concat(t.account.closeDate, '::'), t.account.initialBalance)"
+                        + " from Transaction t "
+                        + " join t.account a "
+                        + " where t.amount > :amount or t.transactionType = 'Deposit'"
+        )
+})
 public class Account {
 
     @Id
@@ -21,6 +36,9 @@ public class Account {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "ACCOUNT_TYPE")
     private AccountType accountType;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    private List<Bank> bank;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ACCOUNT", //Таблица в которой будут храниться ключи
@@ -157,5 +175,13 @@ public class Account {
 
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
+    }
+
+    public List<Bank> getBank() {
+        return bank;
+    }
+
+    public void setBank(List<Bank> bank) {
+        this.bank = bank;
     }
 }
