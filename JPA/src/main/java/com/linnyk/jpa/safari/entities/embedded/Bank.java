@@ -202,20 +202,5 @@ public class Bank {
 		this.account = account;
 	}
 
-	@Override
-	public String toString() {
-		return "Bank{" +
-				"bankId=" + bankId +
-				", name='" + name + '\'' +
-				", account=" + account +
-				", address=" + address +
-				", international=" + international +
-				", lastUpdatedDate=" + lastUpdatedDate +
-				", lastUpdatedBy='" + lastUpdatedBy + '\'' +
-				", createdDate=" + createdDate +
-				", createdBy='" + createdBy + '\'' +
-				", contactsMap=" + contactsMap +
-				", contacts=" + contacts +
-				'}';
-	}
+
 }
