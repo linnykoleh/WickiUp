@@ -17,7 +17,7 @@ import java.util.List;
 public class JPQLApp {
 
     @Test
-    public void test(){
+    public void test_Simple_Query(){
         final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
         final EntityManager entityManager = entityManagerFactory.createEntityManager();
         final EntityTransaction transaction = entityManager.getTransaction();
