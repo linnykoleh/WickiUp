@@ -1,6 +1,7 @@
-package com.linnyk.jpa.safari.entities.inheritance_2._2;
+package com.linnyk.jpa.safari.entities.inheritance_2._3;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,8 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CREDIT_CARD_2")
-public class CreditCard2 extends BillingDetails2 {
+@Table(name = "CREDIT_CARD_3")
+@DiscriminatorValue("CC")
+public class CreditCard3 extends BillingDetails3 {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -24,7 +26,7 @@ public class CreditCard2 extends BillingDetails2 {
 	@Column(name = "exp_year")
 	private String expYear;
 
-	public CreditCard2() {
+	public CreditCard3() {
 	}
 
 	public int getCardNumber() {
@@ -53,7 +55,7 @@ public class CreditCard2 extends BillingDetails2 {
 
 	@Override
 	public String toString() {
-		return "CreditCard2{" +
+		return "CreditCard3{" +
 				"cardNumber=" + cardNumber +
 				", expMonth='" + expMonth + '\'' +
 				", expYear='" + expYear + '\'' +

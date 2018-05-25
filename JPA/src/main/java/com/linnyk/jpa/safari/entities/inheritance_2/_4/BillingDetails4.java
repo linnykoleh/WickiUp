@@ -1,4 +1,4 @@
-package com.linnyk.jpa.safari.entities.inheritance_2._2;
+package com.linnyk.jpa.safari.entities.inheritance_2._4;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,19 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class BillingDetails2 {
+@Table(name = "BILLING_DETAILS_4")
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class BillingDetails4 {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 
 	private String owner;
-
-	public BillingDetails2() {
-	}
 
 	public int getId() {
 		return id;
@@ -34,7 +33,7 @@ public abstract class BillingDetails2 {
 
 	@Override
 	public String toString() {
-		return "BillingDetails2{" +
+		return "BillingDetails4{" +
 				"id=" + id +
 				", owner='" + owner + '\'' +
 				'}';

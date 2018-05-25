@@ -47,5 +47,13 @@
         <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._2.BillingDetails2"/>
         <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._2.CreditCard2"/>
 
+        <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._3.BankAccount3"/>
+        <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._3.BillingDetails3"/>
+        <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._3.CreditCard3"/>
+
+        <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._4.BankAccount4"/>
+        <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._4.BillingDetails4"/>
+        <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._4.CreditCard4"/>
+
     </session-factory>
 </hibernate-configuration>
