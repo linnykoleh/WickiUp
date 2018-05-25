@@ -38,6 +38,7 @@
         <mapping class="com.linnyk.jpa.safari.entities.Account"/>
         <mapping class="com.linnyk.jpa.safari.entities.association.Transaction"/>
         <mapping class="com.linnyk.jpa.safari.entities.join_table.Budget"/>
+        <mapping class="com.linnyk.jpa.safari.entities.view.UserCredentialView"/>
 
         <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._1.BankAccount1"/>
         <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._1.BillingDetails1"/>
