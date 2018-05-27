@@ -42,7 +42,7 @@ public class ManyToOne_OneToMany {
 
          ITEM_U Table                          BID_U Table
          -------------------                   -----------------------------
-         | ITEM_ID | NAME  |                   | BID_ID | PRICE  | ITEM_ID |
+         |*ITEM_ID*| NAME  |                   | BID_ID | PRICE  |*ITEM_ID*|
          -------------------  <-------------   -----------------------------
          |   5	   |EUR/USD|  1..1      0..*   |   6    | 123.55 | 	 5     |
          -------------------                   |   7    | 136.45 | 	 5     |
@@ -84,7 +84,7 @@ public class ManyToOne_OneToMany {
 
          ITEM_B Table                          BID_B Table
          -------------------                   -----------------------------
-         | ITEM_ID | NAME  |                   | BID_ID | PRICE  | ITEM_ID |
+         |*ITEM_ID*| NAME  |                   | BID_ID | PRICE  |*ITEM_ID*|
          -------------------  <------------->  |--------|--------|---------|
          |   9	   |EUR/USD|  1..1      0..*   |   10   | 123.55 | 	 9     |
          -------------------                   |   11   | 136.45 | 	 9     |
