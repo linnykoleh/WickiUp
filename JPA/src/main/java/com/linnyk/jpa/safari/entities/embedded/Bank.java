@@ -59,7 +59,7 @@ public class Bank {
 
 	@ElementCollection
 	@CollectionTable(
-			name = "BANK_CONTACT", // название таблице
+			name = "BANK_CONTACT_MAP", // название таблице
 			joinColumns = @JoinColumn(name = "BANK_ID") // id нашей ентити
 	)
 	@MapKeyColumn(name = "POSITION_TYPE") // название колонки, которая хранит КЛЮЧИ
@@ -68,7 +68,7 @@ public class Bank {
 
 	@ElementCollection
 	@CollectionTable(
-			name = "BANK_CONTACT", // название таблице
+			name = "BANK_CONTACT_COLLECTION", // название таблице
 			joinColumns = @JoinColumn(name = "BANK_ID") // id нашей ентити
 	)
 	@Column(name = "NAME") // название колонки которая хранит значения в другой таблице
