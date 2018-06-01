@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "ORDER_T")
-public class Order {
+public class OrderT {
 
 	@Id
 	@GeneratedValue
@@ -29,14 +29,14 @@ public class Order {
 	@JoinTable(name = "ORDER_TO_ORDER_LINE",
 			joinColumns = @JoinColumn(name = "order_fk"),
 			inverseJoinColumns = @JoinColumn(name = "order_line_fk") )
-	private List<OrderLine> orderLines;
+	private List<OrderLineT> orderLineTS;
 
-	public Order() {
+	public OrderT() {
 	}
 
-	public Order(Date creationDate, List<OrderLine> orderLines) {
+	public OrderT(Date creationDate, List<OrderLineT> orderLineTS) {
 		this.creationDate = creationDate;
-		this.orderLines = orderLines;
+		this.orderLineTS = orderLineTS;
 	}
 
 	public Long getId() {
@@ -55,11 +55,11 @@ public class Order {
 		this.creationDate = creationDate;
 	}
 
-	public List<OrderLine> getOrderLines() {
-		return orderLines;
+	public List<OrderLineT> getOrderLineTS() {
+		return orderLineTS;
 	}
 
-	public void setOrderLines(List<OrderLine> orderLines) {
-		this.orderLines = orderLines;
+	public void setOrderLineTS(List<OrderLineT> orderLineTS) {
+		this.orderLineTS = orderLineTS;
 	}
 }

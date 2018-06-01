@@ -1,13 +1,14 @@
-package com.linnyk.jpa.jee7.entities.one_to_many_u.join_table;
+package com.linnyk.jpa.jee7.entities.one_to_many_u.join_column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ORDER_LINE_T")
-public class OrderLine {
+@Table(name = "ORDER_LINE_C")
+public class OrderLineC {
 
 	@Id
 	@GeneratedValue
@@ -16,10 +17,10 @@ public class OrderLine {
 	private Double unitPrice;
 	private Integer quantity;
 
-	public OrderLine() {
+	public OrderLineC() {
 	}
 
-	public OrderLine(String item, Double unitPrice, Integer quantity) {
+	public OrderLineC(String item, Double unitPrice, Integer quantity) {
 		this.item = item;
 		this.unitPrice = unitPrice;
 		this.quantity = quantity;
@@ -56,4 +57,5 @@ public class OrderLine {
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
+
 }
