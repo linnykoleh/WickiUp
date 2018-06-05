@@ -4,6 +4,8 @@
 
 	<persistence-unit name="infinite-finances">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+
 		<properties>
 			<property name="javax.persistence.jdbc.user" value="sa"/>
 			<property name="javax.persistence.jdbc.password" value=""/>
@@ -14,6 +16,13 @@
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.hbm2ddl.auto" value="create"/>
 			<!-- create, update, validate, create-drop -->
+
+			<!--Second level cache-->
+			<property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory"/>
+
+			<!--<property name="hibernate.cache.provider_class" value="org.hibernate.cache.SingletonEhCacheProvider"/>-->
+			<!--<property name="hibernate.cache.use_second_level_cache" value="true"/>-->
+			<!--<property name="hibernate.cache.use_query_cache" value="true"/>-->
 
 			<!--Не нужно объявлять маппинг, JPA сама это сделает-->
 			<!--JPA пройдет по всем объектам, посмотрит у кого есть @Entity-->
