@@ -3,7 +3,9 @@
 	http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" version="2.1">
 
 	<persistence-unit name="infinite-finances">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<mapping-file>META-INF/mapping.xml</mapping-file>
+
 		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 
 		<properties>
