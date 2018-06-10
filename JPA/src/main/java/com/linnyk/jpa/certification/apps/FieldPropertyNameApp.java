@@ -1,6 +1,6 @@
 package com.linnyk.jpa.certification.apps;
 
-import com.linnyk.jpa.certification.entities.TransientKeyword;
+import com.linnyk.jpa.certification.entities.FieldPropertyName;
 import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
 import org.junit.Test;
 
@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-public class TransientKeywordApp {
+public class FieldPropertyNameApp {
 
     @Test
     public void test(){
@@ -17,22 +17,14 @@ public class TransientKeywordApp {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        final TransientKeyword transientKeyword =
-                new TransientKeyword("TestName", "TestValueOld", "TestValueNew");
+        final FieldPropertyName fieldPropertyName =
+                new FieldPropertyName("TestName");
 
-        entityManager.persist(transientKeyword);
-        //insert into TransientKeyword (name, id) values (?, ?)
+        entityManager.persist(fieldPropertyName);
+        //
 
         /**
 
-         There are no transient and @Transient fields
-
-         TRANSIENT_KEYWORD
-         -----------------
-         | id | name     |
-         -----------------
-         | 1  |	TestName |
-         -----------------
 
          */
 

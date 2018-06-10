@@ -22,7 +22,7 @@ public class News {
 	private String content;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@OrderBy("postedDate DESC")
+	@OrderBy("posted_date desc, nickname asc")
 	private List<Comment> comments;
 
 	public News() {

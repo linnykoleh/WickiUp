@@ -13,7 +13,7 @@ import com.linnyk.jpa.jee7.entities.order_column.Comment;
 import com.linnyk.jpa.jee7.entities.order_column.News;
 import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
 
-public class OrderByApp {
+public class OrderColumnApp {
 
 	@Test
 	public void test(){
