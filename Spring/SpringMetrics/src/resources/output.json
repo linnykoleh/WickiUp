@@ -1,0 +1,23 @@
+{"mem":520251,"mem.free":403857,"processors":8,"instance.uptime":50439,"uptime":52120,"systemload.average":0.41,"heap.committed":478208,"heap.init":514048,"heap.used":74350,"heap":7290880,"nonheap.committed":42880,"nonheap.init":2496,"nonheap.used":42043,"nonheap":0,"threads.peak":41,"threads.daemon":32,"threads.totalStarted":51,"threads":35,"classes":6007,"classes.loaded":6007,"classes.unloaded":0,"gc.ps_scavenge.count":3,"gc.ps_scavenge.time":43,"gc.ps_marksweep.count":1,"gc.ps_marksweep.time":32,
+
+  "timer.test.value.linnyk.snapshot.999thPercentile":1528472297825,
+  "timer.test.value.linnyk.meanRate":0.21882462294379548,
+  "timer.test.value.linnyk.count":11,
+  "timer.test.value.linnyk.snapshot.median":1528472277824,
+  "timer.test.value.linnyk.oneMinuteRate":0.2,
+  "timer.test.value.linnyk.fifteenMinuteRate":0.2,
+  "timer.test.value.linnyk.snapshot.max":1528472297826,
+  "timer.test.value.linnyk.snapshot.95thPercentile":1528472297825,
+  "timer.test.value.linnyk.fiveMinuteRate":0.2,
+  "timer.test.value.linnyk.snapshot.mean":1528472276531,
+  "timer.test.value.linnyk.snapshot.min":1528472247817,
+  "timer.test.value.linnyk.snapshot.stdDev":15546,
+  "timer.test.value.linnyk.snapshot.99thPercentile":1528472297825,
+  "timer.test.value.linnyk.snapshot.75thPercentile":1528472287824,
+  "timer.test.value.linnyk.snapshot.98thPercentile":1528472297825,
+
+  "gauge.response.metrics":2.0,
+  "gauge.response.metrics.name":28.0,"counter.status.404.metrics.name":1,
+  "counter.status.200.metrics":13,"httpsessions.max":-1,"httpsessions.active":0
+
+}

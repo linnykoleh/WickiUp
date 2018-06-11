@@ -24,6 +24,7 @@
 		<module>AWS</module>
 		<module>OCP</module>
 		<module>JPA</module>
+		<module>Spring</module>
 	</modules>
 
 	<build>
