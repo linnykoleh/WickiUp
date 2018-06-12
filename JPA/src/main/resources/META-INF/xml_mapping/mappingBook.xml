@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+				 version="1.0">
+
+	<persistence-unit-metadata>
+		<persistence-unit-defaults>
+			<!--<schema>HR</schema>            - The schema element -->
+			<!--<catalog>NEW HR</catalog>      - The catalog element -->
+			<!--<access>FIELD</access>         - The access subelement applies to all managed classes in the persistence unit.
+											     The access element. The access subelement is overridden by the use of any annotations specifying mapping information
+												 on the fields or properties of the entity class-->
+			<!--<<cascade-persist/>            - When the empty cascade-persist element is specified, it is analogous to adding the PERSIST cascade option-->
+		</persistence-unit-defaults>
+		<!--<xml-mapping-metadata-complete/>   - all annotations in the entire persistence unit will be ignored -->
+	</persistence-unit-metadata>
+
+	<!--<entity metadata-complete="true" />    - all annotations on the specified class and on any fields or properties in the class will be ignored.-->
+
+
+</entity-mappings>
