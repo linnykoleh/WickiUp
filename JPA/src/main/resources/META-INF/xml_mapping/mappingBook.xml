@@ -4,40 +4,43 @@
 				 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
 				 version="1.0">
 
+	<!--=====================-->
+	<!--Mapping File Defaults-->
+	<!--=====================-->
 
 	<persistence-unit-metadata>
 		<persistence-unit-defaults>
-			<!--<schema>HR</schema>            - The schema element -->
-			<!--<catalog>NEW HR</catalog>      - The catalog element -->
-			<!--<access>FIELD</access>         - The access subelement applies to all managed classes in the persistence unit.
-											     The access element. The access subelement is overridden by the use of any annotations specifying mapping information
-												 on the fields or properties of the entity class-->
-			<!--<<cascade-persist/>            - When the empty cascade-persist element is specified, it is analogous to adding the PERSIST cascade option-->
+			<schema>HR</schema>            - The schema element
+			<catalog>NEW HR</catalog>      - The catalog element
+			<access>FIELD</access>         - The access subelement applies to all managed classes in the persistence unit.
+									         The access element. The access subelement is overridden by the use of any annotations specifying mapping information
+											 on the fields or properties of the entity class
+			<cascade-persist/>            - When the empty cascade-persist element is specified, it is analogous to adding the PERSIST cascade option
 		</persistence-unit-defaults>
-		<!--<xml-mapping-metadata-complete/>   - all annotations in the entire persistence unit will be ignored -->
+		<xml-mapping-metadata-complete/>   - all annotations in the entire persistence unit will be ignored
 	</persistence-unit-metadata>
 
-	<!--<entity metadata-complete="true" />    - all annotations on the specified class and on any fields or properties in the class will be ignored.-->
+	<access>FIELD</access>  - default access type for all entities
 
+	<schema>HR</schema>     - default schema for all entities
 
-	<!--<access>FIELD</access>  - default access type for all entities -->
+	<catalog>HR</catalog>   - default catalog for all entities
 
-	<!--<schema>HR</schema>     - default schema for all entities -->
+	<!--======================-->
+	<!--Queries and Generators-->
+	<!--======================-->
 
-	<!--<catalog>HR</catalog>   - default catalog for all entities -->
+	<sequence-generator name="empGen" sequence-name="empSeq"/>  - default sequence-generator for all entities
 
-	<!--<sequence-generator name="empGen" sequence-name="empSeq"/>  - default sequence-generator for all entities -->
+	<table-generator name="empGen" table="ID_GEN" pk-column-value="EmpId"/>  - default table-generator for all entities
 
-	<!--<table-generator name="empGen" table="ID_GEN" pk-column-value="EmpId"/>  - default table-generator for all entities-->
-
-	<!-- <named-query name="findEmpsWithName">
+	 <named-query name="findEmpsWithName">
 		<query>SELECT e FROM Employee e WHERE e.name LIKE :empName</query>
 		<hint name="javax.persistence.cacheRetrieveMode"
 			  value="CacheRetrieveMode.BYPASS"/>
-	</named-query>  - default named-query for all entities -->
+	</named-query>  - default named-query for all entities
 
-	<!-- <named-native-query name="findAllManagers"
-						result-class="examples.model.Employee">
+	 <named-native-query name="findAllManagers" result-class="com.linnyk.jpa.certification">
 		<query>
 			SELECT /*+ FULL(m) */ e.id, e.name, e.salary,
 				e.manager_id, e.dept_id, e.address_id
@@ -45,23 +48,52 @@
 				(SELECT DISTINCT manager_id AS id FROM emp) m
 			WHERE  e.id = m.id
 		</query>
-	</named-native-query>  - default named-native-query for all entities -->
+	</named-native-query>  - default named-native-query for all entities
 
-	<!-- <named-stored-procedure-query name="fetch_emp" procedure-name="fetch_emp">
-		<parameter name="empList" class="void" mode="REF_CURSOR"/>
-		<result-class>Employee</result-class>
-	</named-stored-procedure-query> - default named-stored-procedure-query for all entities -->
-
-
-	<!-- <sql-result-set-mapping name="DepartmentSummary">
+	 <sql-result-set-mapping name="DepartmentSummary">
 		<entity-result entity-class="examples.model.Department">
 			<field-result name="name" column="DEPT_NAME"/>
 		</entity-result>
 		<entity-result entity-class="examples.model.Employee"/>
 		<column-result name="TOT_EMP"/>
 		<column-result name="AVG_SAL"/>
-	</sql-result-set-mapping> - default sql-result-set-mapping for all entities -->
+	</sql-result-set-mapping> - default sql-result-set-mapping for all entities
 
+	<named-stored-procedure-query name="fetch_emp" procedure-name="fetch_emp">
+		<parameter name="empList" class="void" mode="REF_CURSOR"/>
+		<result-class>Employee</result-class>
+	</named-stored-procedure-query> - default named-stored-procedure-query for all entities
 
+	<!--============================-->
+	<!--Managed Classes and Mappings-->
+	<!--============================-->
+
+	<entity class="com.linnyk.jpa.certification.entities." metadata-complete="true" />
+	all annotations on the specified class and on any fields or properties in the class will be ignored
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<table name="EMP_REC" schema="HR"/>
+	</entity>
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<table name="EMP"/>
+		<secondary-table name="EMP_INFO"/>
+		<secondary-table name="EMP_HIST">
+			<primary-key-join-column name="EMP_ID"/>
+		</secondary-table>
+	</entity>
+
+	<!--===================-->
+	<!--Identifier Mappings-->
+	<!--===================-->
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<attributes>
+			<id name="id">
+				<generated-value strategy="SEQUENCE" generator="empSeq"/>
+				<sequence-generator name="empSeq" sequence-name="mySeq"/>
+			</id>
+		</attributes>
+	</entity>
 
 </entity-mappings>
