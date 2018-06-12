@@ -88,12 +88,222 @@
 	<!--===================-->
 
 	<entity class="com.linnyk.jpa.certification.entities.">
+		<id-class class="examples.model.EmployeePK"/> Id-class
 		<attributes>
-			<id name="id">
+			<id name="id"> Id
 				<generated-value strategy="SEQUENCE" generator="empSeq"/>
 				<sequence-generator name="empSeq" sequence-name="mySeq"/>
 			</id>
+			<embedded-id name="id"/> embedded-id
+
 		</attributes>
+	</entity>
+
+	<!--===============-->
+	<!--Simple Mappings-->
+	<!--===============-->
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<attributes>
+			<basic name="value">
+				<column name="STR_TYPE"/>
+				<enumerated>STRING</enumerated>
+				<temporal>DATE</temporal>
+				<lob/>
+			</basic>
+			<transient name="value1"/>
+			<version name="version"/>
+		</attributes>
+	</entity>
+
+	<!--====================================-->
+	<!--Relationship and Collection Mappings-->
+	<!--====================================-->
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<attributes>
+
+			<many-to-one name="address" fetch="LAZY"/>
+			<many-to-one name="manager" fetch="LAZY">
+				<join-column name="MGR"/>
+			</many-to-one>
+
+			<one-to-many name="directs" mapped-by="manager">
+				<order-by/>
+			</one-to-many>
+			<many-to-one name="manager"/>
+
+			<one-to-one name="parkingSpace" mapped-by="employee"/>
+			<one-to-one name="employee" maps-id="true"/>
+
+			<many-to-many name="projects">
+				<map-key name="name"/>
+				<join-table name="EMP_PRJ">
+					<join-columelement-collectionn name="EMP_ID"/>
+					<inverse-join-column name="PROJ_ID"/>
+				</join-table>
+			</many-to-many>
+			<many-to-many name="employee" mapped-by="projects"/>
+
+			<element-collection name="projectHours" target-class="java.lang.Integer">
+				<map-key-class name="java.lang.String"/>
+				<map-key-column name="PROJ_NAME"/>
+				<column name="HOURS_WORKED"/>
+				<collection-table name="PROJ_TIME"/>
+			</element-collection>
+
+		</attributes>
+	</entity>
+
+
+	<!--========================-->
+	<!--Embedded Object Mappings-->
+	<!--========================-->
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<attributes>
+			<embedded name="address"/>
+			<embedded name="address1">
+				<attribute-override name="state">
+					<column name="PROV"/>
+				</attribute-override>
+				<attribute-override name="zip">
+					<column name="PCODE"/>
+				</attribute-override>
+			</embedded>
+
+			<embedded name="address1">
+				<association-override name="city">
+					<join-column name="CITY_ID"/>
+				</association-override>
+			</embedded>
+		</attributes>
+	</entity>
+	<embeddable class="com.linnyk.jpa.certification.entities."/>
+
+
+	<!--====================-->
+	<!--Inheritance Mappings-->
+	<!--====================-->
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<table name="EMP"/>
+		<inheritance strategy="JOINED"/>
+	</entity>
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<table name="FT_EMP"/>
+	</entity>
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<table name="PT_EMP"/>
+	</entity>
+
+	<!---->
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<inheritance/>
+		<discriminator-column name="TYPE"/>
+	</entity>
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<discriminator-value>FT</discriminator-value>
+	</entity >
+
+	<!---->
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<attribute-override name="name">
+			<column name="EMP_NAME"/>
+		</attribute-override>
+		<attribute-override name="salary">
+			<column name="SAL"/>
+		</attribute-override>
+		<association-override name="manager">
+			<join-column name="MGR_NAME"  referenced-column-name="EMP_NAME"/>
+			<join-column name="MGR_DOB" referenced-column-name="DOB"/>
+		</association-override>
+	</entity>
+
+
+	<!--================-->
+	<!--Lifecycle Events-->
+	<!--================-->
+
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<pre-persist method-name="initTransientState"/>
+		<post-load method-name="initTransientState"/>
+		<pre-update method-name="initTransientState"/>
+		<post-remove method-name="initTransientState"/>
+		...
+	</entity>
+
+
+	<!--================-->
+	<!--Entity Listeners-->
+	<!--================-->
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<entity-listeners>
+			<entity-listener class="com.linnyk.jpa.jee7.entities.listeners.">
+				<post-persist method-name="employeeCreated"/>
+				<post-update method-name="employeeUpdated"/>
+				<post-remove method-name="employeeRemoved"/>
+			</entity-listener>
+			<entity-listener class="examples.listeners.NameValidator">
+				<pre-persist method-name="validateName"/>
+			</entity-listener>
+			<entity-listener class="examples.listeners.EmployeeExitListener">
+				<post-remove method-name="notifyIT"/>
+			</entity-listener>
+		</entity-listeners>
+	</entity>
+
+
+
+	<!--===================-->
+	<!--Named Entity Graphs-->
+	<!--===================-->
+
+	<named-entity-graph>
+		<named-attribute-node name="name"/>
+		<named-attribute-node name="salary"/>
+		<named-attribute-node name="address"/>
+		<named-attribute-node name="phones", subgraph="phone"/>
+		<named-attribute-node name="manager", subgraph="namedEmp"/>
+		<named-attribute-node name="department", subgraph="dept"/>
+		<subgraph name="phone">
+			<named-attribute-node name="number"/>
+			<named-attribute-node name="type"/>
+			<named-attribute-node name="employee" subgraph="namedEmp"/>
+		</subgraph>
+		<subgraph name="namedEmp">
+			<named-attribute-node name="name"/>
+		</subgraph>
+		<subgraph name="dept">
+			<named-attribute-node name="name"/>
+		</subgraph>
+	</named-entity-graph>
+
+	<!--==========-->
+	<!--Converters-->
+	<!--==========-->
+
+	<converter class="examples.SecureURLConverter" auto-apply="true"/>
+
+	<!---->
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<attributes>
+			<basic name="homePage">
+				<convert converter="URLConverter"/>
+			</basic>
+		</attributes>
+	</entity>
+
+	<!---->
+
+	<entity class="com.linnyk.jpa.certification.entities.">
+		<convert converter="SecureURLConverter" attribute-name="homePage"/>
 	</entity>
 
 </entity-mappings>
