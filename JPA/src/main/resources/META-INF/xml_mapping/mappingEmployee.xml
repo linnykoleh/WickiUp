@@ -8,9 +8,13 @@
 
 	<package>com.linnyk.jpa.certification.entities</package>
 
+
+
 	<entity class="com.linnyk.jpa.certification.entities.xml_mapping.Employee" metadata-complete="true">
 		<attributes>
 			<id name="id"/>
 		</attributes>
 	</entity>
+
+
 </entity-mappings>
