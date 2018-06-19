@@ -20,10 +20,10 @@
 		<module>Lafore</module>
 		<module>LeetCode</module>
 		<module>CompleteCode</module>
-		<module>IOC</module>
 		<module>AWS</module>
 		<module>OCP</module>
 		<module>JPA</module>
+		<module>JEEJPA</module>
 		<module>Spring</module>
 	</modules>
 
