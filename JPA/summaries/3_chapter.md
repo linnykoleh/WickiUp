@@ -63,7 +63,7 @@ The session starts when the client obtains a reference to the bean and ends only
 - @PersistenceContext
 - @PersistenceUnit
 
-####Dependency lookup 
+#### Dependency lookup 
 - JNDI to look up a named reference. Typically placed at class level. <br />
 *Context.class - lookup()*
 - EJBContext lookup() -> EJBContext / SessionContext / MessageDrivenContext: **Only runtime exceptions and the name is exactly as it was specified in the resource reference.*
@@ -78,20 +78,44 @@ The session starts when the client obtains a reference to the bean and ends only
 - **Setter injection** 
 
 
-
 *@PersistenceUnit for EntityManagerFactory* 
+```java
+@Stateless
+public class EmployeeService {
+    @PersistenceContext(unitName="EmployeeService")
+    EntityManager em;
+
+    // ...
+}
+```
 *@PersistenceContext for EntityManager*
+```java
+@Stateful
+public class EmployeeService {
+    @PersistenceUnit(unitName="EmployeeService")
+    private EntityManagerFactory emf;
+    private EntityManager em;
+
+    @PostConstruct
+    public void init() {
+        em = emf.createEntityManager();
+    }
+
+    // ...
+}
+```
 
 ### Transaction review
 #### Acid transformation
 - **Atomicity:** Either all the operations in a transaction are successful or none of them. 
-- **Consistency**
-- **Isolation**
-- **Durability**
+- **Consistency** The data in the entire system is legal or valid with respect to the rest of the data in the system.
+- **Isolation** Changes made within a transaction are visible only to the transaction that is making the changes. Once a transaction commits the changes, they are atomically visible to other transactions.
+- **Durability** The changes made within a transaction endure beyond the completion of the transaction.
 
 #### Enterprise Transaction 
 - **Resource-local transaction:** Transaction at the level of the resource. These transactions are manipulated by interacting directly with the JDBC DataSource that is obtained from the application server.
-- **Container transaction:** Uses the JTA that is available in every Java EE aplication server. Are also called `JTA transactions` or `global transactions`.
+- **Container transaction:** Uses the JTA transaction and can span multiple resources. 
+Are also called `JTA transactions` or `global transactions`.
 
 #### Transaction demarcation
 ***The act of causing a transaction to either begin or complete.***
