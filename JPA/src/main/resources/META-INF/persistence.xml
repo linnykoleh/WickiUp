@@ -2,7 +2,7 @@
 			 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
 	http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd" version="2.1">
 
-	<persistence-unit name="infinite-finances">
+	<persistence-unit name="second-level-cache">
 
 		<mapping-file>META-INF/xml_mapping/mappingEmployee.xml</mapping-file>
 
@@ -30,4 +30,23 @@
 			<!--JPA пройдет по всем объектам, посмотрит у кого есть @Entity-->
 		</properties>
 	</persistence-unit>
+
+	<persistence-unit name="infinite-finances">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<properties>
+			<property name="javax.persistence.jdbc.user" value="sa"/>
+			<property name="javax.persistence.jdbc.password" value=""/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/test"/>
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<!-- create, update, validate, create-drop -->
+
+			<!--Не нужно объявлять маппинг, JPA сама это сделает-->
+			<!--JPA пройдет по всем объектам, посмотрит у кого есть @Entity-->
+		</properties>
+	</persistence-unit>
+
 </persistence>
