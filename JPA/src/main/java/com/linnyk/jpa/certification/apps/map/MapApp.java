@@ -23,19 +23,37 @@ public class MapApp {
         final EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
-        final Map<Project, Date> projectDateMap = new HashMap<>();
-        projectDateMap.put(new Project(), new Date());
-        projectDateMap.put(new Project(), new Date());
-        projectDateMap.put(new Project(), new Date());
+        final Project project1 = new Project();
+        final Project project2 = new Project();
+        final Project project3 = new Project();
 
         final Employee employee = new Employee();
-        employee.setCurrentProject(projectDateMap);
+        employee.getCurrentProject().put(project1, new Date());
+        employee.getCurrentProject().put(project2, new Date());
+        employee.getCurrentProject().put(project3, new Date());
+
+        entityManager.persist(project1);
+        entityManager.persist(project2);
+        entityManager.persist(project3);
 
         entityManager.persist(employee);
 
         transaction.commit();
         entityManager.close();
         entityManagerFactory.close();
+
+        /**
+
+
+         EMPLOYEE_CTM      EMP_PROJECTS                                         PROJECT_CTM
+         ---------------   -------------------------------------------------    --------------
+         | EMPLOYEE_ID |   |EMPLOYEE_ID | STARTDATE           | PROJECT_ID |    | PROJECT_ID |
+         ---------------   -------------------------------------------------    --------------
+         | 4           |-->|4	        | 2018-06-23 19:46:11 | 1          |--->| 1          |
+         ---------------   |4	        | 2018-06-23 19:46:12 | 2          |    | 2          |
+                           |4	        | 2018-06-23 19:46:13 | 3          |    | 3          |
+                           -------------------------------------------------    --------------
+         */
     }
 
 }

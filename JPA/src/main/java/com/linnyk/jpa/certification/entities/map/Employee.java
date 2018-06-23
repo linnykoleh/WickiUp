@@ -1,6 +1,7 @@
 package com.linnyk.jpa.certification.entities.map;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.CollectionTable;
@@ -24,18 +25,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "EMPLOYEE")
+@Table(name = "EMPLOYEE_CTM")
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "EMPLOYEE_ID")
 	private Integer id;
 
 	@ElementCollection
 	@CollectionTable(name = "EMP_PROJECTS", joinColumns = @JoinColumn(name = "EMPLOYEE_ID"))
-	@Column(name = "STARTDATE")
 	@MapKeyJoinColumn(name = "PROJECT_ID")
-	private Map<Project, Date> currentProject;
+	@Column(name = "STARTDATE")
+	private Map<Project, Date> currentProject = new HashMap<>();
 
 }
