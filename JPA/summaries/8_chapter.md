@@ -171,5 +171,30 @@ FROM Employee e JOIN e.phones p
     - **ALL operator** is used, the comparison between the left side of the equation and all subquery results must be true 
     - **ANY operator** behaves similarly, but the overall condition is true as long as at least one of the comparisons between the expression and the subquery result is true
     - **SOME operator** is an alias for the ANY operator.
+- **Native Database Functions**
+    - The following query invokes a database function named `shouldGetBonus` The id of the employee’s department and the projects he works on are passed as parameters and the function return type is a boolean. 
+    The result creates a condition that makes the query return the set of all employees who get a bonus.
+    ```sql
+    SELECT DISTINCT e
+    FROM Employee e JOIN e.projects p
+    WHERE FUNCTION('shouldGetBonus', e.department.id, p.id)
+    ```
+- **CASE Expressions**
+    -  The heart of the case expression is the WHEN clause, of which there must be at least one
+    ```sql
+    SELECT p.name,
+           CASE WHEN TYPE(p) = DesignProject THEN 'Development'
+                WHEN TYPE(p) = QualityProject THEN 'QA'
+                ELSE 'Non-Development'
+           END
+    FROM Project p
+    WHERE p.employees IS NOT EMPTY
+    ```   
+    - The scalar expressions in the **COALESCE** expression are resolved in order. 
+      The first one to return a non-null value becomes the result of the expression.
+      ```sql
+        SELECT COALESCE(d.name, d.id)
+        FROM Department d
+      ```
 
 
