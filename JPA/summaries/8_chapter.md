@@ -13,25 +13,39 @@
 - **State fields:** Simple persistent properties with no relationship mapping comprise the persistent state of the entity.
 - **Association fields:** Persistent properties that are also relationships.
 
+```sql
 SELECT <select_expression><br/> 
 FROM <from_clause><br/>
 [WHERE <conditional_expression>]<br/>
 [ORDER BY <order_by_clause>]<br/>
+```
+
+- Simple query
+```sql
+SELECT e FROM Employee e
+```
+- The structure of this query is very similar to a SQL query, but with a couple of important differences. 
+   - The first difference is that the domain of the query defined in the FROM clause is not a table but an entity; in this case, the Employee entity. 
+     As in SQL, it has been aliased to the identifier `e`. This aliased value is known as an identification variable and is the key by which the entity will be referred to in the rest of the select statement. 
+   - The second difference is that the SELECT clause in this example does not enumerate the fields of the table or use a wildcard to select all the fields. 
+     Instead, only the identification variable is listed in order to indicate that the result type of the query is the Employee entity, not a tabular set of rows.
 
 - **Identification variable:** The key by which the entity will be referred to in the rest of the select statement. (Employee e, where e is this identification variable) Every query must at least have one. 
 - Query interface: getResultList() returns a collection of zero or more x objects.
 
 #### SELECT
-- Path expression
+- Path expression - The dot operator (.) signifies path navigation in an expression. `e.department`, ` e.department.name`
+   - `SELECT e.name FROM Employee e` - The result type of the path expression in the SELECT clause is String, so executing this query using **getResultList()** will produce a collection of zero or more String objects
+   - `SELECT e.department FROM Employee e` - The following query demonstrates returning a different entity as a result of path navigation
+   - `SELECT DISTINCT e.department FROM Employee e` - To remove the duplicates, the DISTINCT operator must be used
 - State field path: navigation that results in one of the persistent state fields of the entity.
 - **Single valued association path:** Navigation that leads to a single entity.
 - **collection valued association path:** Navigation that leads to a collection entities.
-- The dot operator (.) signifies the path expression.
 - OBJECT(x) is used to make language backwards compatible, not recommended.
 - SELECT DISTINCT is used to remove duplicate results.
-- The result type of a select query can never be a collection type.
+- **The result type of a select query can never be a collection type.**
 - **Projection:** Only reporting a subset of the state fields from an entity. (e.name, e.salary)
-
+  `SELECT e.name, e.salary FROM Employee e` - Multiple expressions can be specified in the same SELECT clause by separating them with commas
 
 - Constructor expression
     - Specifies that the result of the query are to be stored using a user-specified object type.<br>
