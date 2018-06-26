@@ -68,8 +68,14 @@ SELECT e FROM Employee e
 - Join conditions can be specified explicitly, such as using the JOIN operator in the FROM clause of a query, or implicitly as a result of path navigation.
 
 ```sql
-SELECT p.number
+SELECT p
 FROM Employee e JOIN e.phones p
+
+in sql it means
+
+SELECT p.id, p.phone_num, p.type, p.emp_id
+FROM emp e, phone p
+WHERE e.id = p.emp_id
 ```
 - Inner join: between two entities returns the objects from both entity types that satisfy all the join conditions. Path navigation from one entity to another is a form of inner join.
 - Outer join: of two entities is the set of objects from both entity types that satisfy the join conditions plus the set of objects from one entity type (designated as the left entity) that have no matching join condition in the other.
@@ -91,6 +97,79 @@ FROM Employee e JOIN e.phones p
 	SELECT e
 	FROM Employee e JOIN FETCH e.address
 	```
+- The **BETWEEN** operator can be used in conditional expressions to determine whether the result of an expression falls within an inclusive range of values
+    ```sql
+    SELECT e
+    FROM Employee e
+    WHERE e.salary BETWEEN 40000 AND 45000
+    ```
+    Any employee making $40,000 to $45,000 inclusively is included in the results
+- The **wildcard characters** used by the pattern string are the underscore (_) for single character wildcards and the percent sign (%) for multicharacter wildcards.
+    ```sql
+    SELECT d
+    FROM Department d
+    WHERE d.name LIKE '__Eng%'
+  
+   - We are using a prefix of two underscore characters to wildcard the first two characters of the string candidates, so example department names to match this query would be “CAEngOtt” or “USEngCal”, but not “CADocOtt”. 
+         Note that pattern matches are case-sensitive.
+  ```
+    
+    ```sql
+    SELECT d
+    FROM Department d
+    WHERE d.name LIKE 'QA\_%' ESCAPE '\'
 
+    - Escaping the underscore makes it a mandatory part of the expression. For example, “QA_East” would match, but “QANorth” would not.
+    ```
+- **Subqueries**    
+    - Subqueries can be used in the WHERE and HAVING clauses of a query.
+    ```sql
+      SELECT e
+      FROM Employee e
+      WHERE e.salary = (SELECT MAX(emp.salary) FROM Employee emp)
+    ```
+    - Another good example
+    ```sql
+    SELECT e
+    FROM Employee e
+    WHERE EXISTS (SELECT 1
+                  FROM e.phones p
+                  WHERE p.type = 'Cell')
+            
+    in sql it means 
+        
+    SELECT e.id, e.name, e.salary, e.manager_id, e.dept_id, e.address_id
+    FROM emp e
+    WHERE EXISTS (SELECT 1
+                  FROM phone p
+                  WHERE p.emp_id = e.id AND
+                        p.type = 'Cell')
+                        
+    ```
+- **Collection Expressions**
+    - The IS EMPTY operator or its negated form IS NOT EMPTY is the logical equivalent of IS NULL, but for collections
+    ```sql
+    SELECT e
+    FROM Employee e
+    WHERE e.directs IS NOT EMPTY
+    ```   
+    - The MEMBER OF operator and its negated form NOT MEMBER OF are a shorthand way of checking whether an entity is a member of a collection association path
+    ```sql
+    SELECT e
+    FROM Employee e
+    WHERE :project MEMBER OF e.projects
+    ```
+- **ANY, ALL, and SOME Expressions**
+    - The ANY, ALL, and SOME operators can be used to compare an expression to the results of a subquery
+    ```sql
+    SELECT e
+    FROM Employee e
+    WHERE e.directs IS NOT EMPTY AND
+          e.salary < ALL (SELECT d.salary
+                          FROM e.directs d)
+    ```    
+    - **ALL operator** is used, the comparison between the left side of the equation and all subquery results must be true 
+    - **ANY operator** behaves similarly, but the overall condition is true as long as at least one of the comparisons between the expression and the subquery result is true
+    - **SOME operator** is an alias for the ANY operator.
 
 
