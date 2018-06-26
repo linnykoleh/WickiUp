@@ -56,16 +56,41 @@ SELECT e FROM Employee e
 - **Range variable declaration:** When an identification does not use a path expression.
 
 
-### JOIN
-***A query that combines results from multiple entities.***
-- Two or more range variable declarations are listed in the FROM clause and appear in the select clause.
-- JOIN operator is used to extend an identification variable using a path expression.
-- A path expression anywhere in the query navigates across an association field.
-- One or more WHERE conditions compare attributes of different identification variables.
-- Inner join: Path navigation from one entity to another is a form of inner join.
-- Outer join: The set of objects from both entity types that satisfy the join condition in the other.
+### JOINS
 
-SELECT p
+**Joins occur whenever any of the following conditions are met in a select query.**
+
+	- Two or more range variable declarations are listed in the FROM clause and appear in the select clause.
+	- The JOIN operator is used to extend an identification variable using a path expression.
+	- A path expression anywhere in the query navigates across an association field, to the same or a different entity.
+	- One or more WHERE conditions compare attributes of different identification variables.
+
+- Join conditions can be specified explicitly, such as using the JOIN operator in the FROM clause of a query, or implicitly as a result of path navigation.
+
+```sql
+SELECT p.number
 FROM Employee e JOIN e.phones p
+```
+- Inner join: between two entities returns the objects from both entity types that satisfy all the join conditions. Path navigation from one entity to another is a form of inner join.
+- Outer join: of two entities is the set of objects from both entity types that satisfy the join conditions plus the set of objects from one entity type (designated as the left entity) that have no matching join condition in the other.
 
-[ INNER ] JOIN <path_expression> [AS] <identifier>
+- **IN VERSUS JOIN**
+```sql
+SELECT DISTINCT p
+FROM Employee e, IN(e.phones) p
+
+The same like
+
+SELECT p.number
+FROM Employee e JOIN e.phones p
+```
+- The IN operator is intended to indicate that the variable p is an enumeration of the phones collection. The JOIN operator is a more powerful and expressive way to declare relationships and is the recommended operator for queries.
+- **Fetch Joins**
+	- For example, if we have an Employee entity with a lazy loading relationship to its address, the following query can be used to indicate that the relationship should be resolved eagerly during query execution:
+	```sql
+	SELECT e
+	FROM Employee e JOIN FETCH e.address
+	```
+
+
+
