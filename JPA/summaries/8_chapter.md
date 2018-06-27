@@ -56,7 +56,6 @@ SELECT e FROM Employee e
 - **Range variable declaration:** When an identification does not use a path expression.
 
 
-### JOINS
 
 **Joins occur whenever any of the following conditions are met in a select query.**
 
@@ -196,5 +195,66 @@ FROM Employee e JOIN e.phones p
         SELECT COALESCE(d.name, d.id)
         FROM Department d
       ```
+- **ORDER BY**      
+	- The optional keywords ASC or DESC after the expression can be used to indicate ascending or descending sorts, respectively. The default sort order is ascending.
+	```sql
+	SELECT e, d	
+	FROM Employee e JOIN e.department d
+	ORDER BY d.name, e.name DESC
+	```
+	- ORDER BY clause is limited to the same path expressions used in the SELECT clause. For example, the following query is not legal
+	```sql
+	SELECT e.name
+    FROM Employee e
+    ORDER BY e.salary DESC
+	```
+- **Aggregate Queries**
+	-  An aggregate query groups results and applies aggregate functions to obtain summary information about query results. 
+	   A query is considered an aggregate query if it uses an aggregate function or possesses a **GROUP BY** clause and/or a **HAVING**clause.	
+	```sql
+	SELECT <select_expression>
+	FROM <from_clause>
+	[WHERE <conditional_expression>]
+	[GROUP BY <group_by_clause>]
+	[HAVING <conditional_expression>]
+	[ORDER BY <order_by_clause>]
+    ```
+- **Aggregate Functions**   
+	- Five aggregate functions can be placed in the select clause of a query: AVG, COUNT, MAX, MIN, and SUM.
+- **GROUP BY Clause**
+	- GROUP BY clause defines the grouping expressions over which the results will be aggregated.
+	- Note that the same field expression used in the `SELECT` clause is repeated in the `GROUP BY` clause. 
+	  All non-aggregate expressions must be listed this way.
+    ```sql
+	SELECT d.name, e.salary, COUNT(p)
+	FROM Department d JOIN d.employees e JOIN e.projects p
+	GROUP BY d.name, e.salary
+	``` 
+- **HAVING Clause**	
+	- The `HAVING` clause defines a filter to be applied after the query results have been grouped
+	- It is effectively a secondary WHERE clause, and its definition is the same: the keyword HAVING followed by a conditional expression.
+	- The primary use of the HAVING clause is to restrict the results based on the aggregate result values
+	```sql
+	SELECT e, COUNT(p)
+	FROM Employee e JOIN e.projects p
+	GROUP BY e
+	HAVING COUNT(p) >= 2
+	```
+- **Update Queries**
+```sql
+	UPDATE Employee e
+	SET e.salary = 60000
+	WHERE e.salary = 55000
 
-
+	UPDATE Employee e
+	SET e.salary = e.salary + 5000
+	WHERE EXISTS (SELECT p
+				  FROM e.projects p
+				  WHERE p.name = 'Release2')
+```
+- **Delete Queries**
+	- If the WHERE clause is not provided, all entities of the given type are removed.
+```sql
+DELETE FROM Employee e
+WHERE e.department IS NULL
+```
