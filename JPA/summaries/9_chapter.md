@@ -238,3 +238,147 @@ sq.select(dept.<Integer>get("id"))
 c.select(emp)
  .where(cb.in(emp.get("dept").get("id")).value(sq));
 ```
+- Case Expressions
+```sql
+SELECT p.name,
+       CASE WHEN TYPE(p) = DesignProject THEN 'Development'
+            WHEN TYPE(p) = QualityProject THEN 'QA'
+            ELSE 'Non-Development'
+       END
+FROM Project p
+WHERE p.employees IS NOT EMPTY
+```
+JPQL => Criteria API
+```java
+CriteriaQuery<Object[]> c = cb.createQuery(Object[].class);
+Root<Project> project = c.from(Project.class);
+c.multiselect(project.get("name"),
+         cb.selectCase()
+           .when(cb.equal(project.type(), DesignProject.class),
+                 "Development")
+           .when(cb.equal(project.type(), QualityProject.class),
+                 "QA")
+           .otherwise("Non-Development"))
+ .where(cb.isNotEmpty(project.<List<Employee>>get("employees")));
+```
+- COALESHE
+```sql
+SELECT COALESCE(d.name, d.id)
+FROM Department d
+```
+JPQL => Criteria API
+```java
+CriteriaQuery<Object> c = cb.createQuery();
+Root<Department> dept = c.from(Department.class);
+c.select(cb.coalesce(dept.get("name"),
+                     dept.get("id")));
+```
+- Function Expressions
+```java
+CriteriaQuery<String> c = cb.createQuery(String.class);
+Root<Department> dept = c.from(Department.class);
+c.select(cb.function("initcap", String.class, dept.get("name")));
+```
+- Outer Join Criteria
+```sql
+SELECT e FROM Employee e JOIN e.projects p ON p.name = 'Zooby'
+```
+JPQL => Criteria API
+```java
+CriteriaQuery<Employee> q = cb.createQuery(Employee.class);
+Root<Employee> emp = q.from(Employee.class);
+Join<Employee,Project> project = emp.join("projects", JoinType.LEFT)
+            .on(cb.equal(project.get("name"), "Zooby"));
+q.select(emp);
+```
+- The ORDER BY Clause
+```java
+CriteriaQuery<Tuple> c = cb.createQuery(Tuple.class);
+Root<Employee> emp = c.from(Employee.class);
+Join<Employee,Department> dept = emp.join("dept");
+c.multiselect(dept.get("name"), emp.get("name"));
+c.orderBy(cb.desc(dept.get("name")),
+          cb.asc(emp.get("name")));
+```
+Criteria API => JPQL
+```sql
+SELECT d.name, e.name
+FROM Employee e JOIN e.dept d
+ORDER BY d.name DESC, e.name
+```
+- The GROUP BY and HAVING Clauses
+```sql
+SELECT e, COUNT(p)
+FROM Employee e JOIN e.projects p
+GROUP BY e
+HAVING COUNT(p) >= 2
+```
+JPQL => Criteria API 
+```java
+CriteriaQuery<Object[]> c = cb.createQuery(Object[].class);
+Root<Employee> emp = c.from(Employee.class);
+Join<Employee,Project> project = emp.join("projects");
+c.multiselect(emp, cb.count(project))
+ .groupBy(emp)
+ .having(cb.ge(cb.count(project),2));
+```
+- Bulk Update 
+```sql
+UPDATE Employee e
+SET e.salary = e.salary + 5000
+WHERE EXISTS (SELECT p
+              FROM e.projects p
+              WHERE p.name = 'Release2')
+```
+Criteria API => JPQL
+```java
+CriteriaUpdate<Employee> q = cb.createCriteriaUpdate(Employee.class);
+Root<Employee> e = q.from(Employee.class);
+Subquery<Project> sq = c.subquery(Project.class);
+Root<Employee> sqEmp = sq.correlate(emp);
+Join<Employee,Project> project = sqEmp.join("projects");
+sq.select(project)
+  .where(cb.equal(project.get("name"),"Release2"));
+q.set(emp.get("salary"), cb.sum(emp.get("salary"), 5000))
+ .where(cb.exists(sq));
+```
+- Bulk Delete
+```sql
+DELETE FROM Employee e
+WHERE e.department IS NULL
+```
+Criteria API => JPQL
+```java
+CriteriaDelete<Employee> q = cb.createCriteriaDelete(Employee.class);
+Root<Employee> emp = c.from(Employee.class);
+q.where(cb.isNull(emp.get("dept"));
+```
+-  The `metamodel` of a persistence unit is a description of the persistent type, state, and relationships of entities, embeddables, and managed classes.
+```java
+Metamodel mm = em.getMetamodel();
+EntityType<Employee> emp_ = mm.entity(Employee.class);
+```
+- The canonical metamodel consists of dedicated classes, typically generated, one per persistent class, that contain static declarations of the metamodel objects associated with that persistent class. 
+  This allows you to access the same information exposed through the metamodel API, but in a form that applies directly to your persistent classes
+```java
+@StaticMetamodel(Employee.class)
+public class Employee_ {
+    public static volatile SingularAttribute<Employee, Integer> id;
+    public static volatile SingularAttribute<Employee, String> name;
+    public static volatile SingularAttribute<Employee, String> salary;
+    public static volatile SingularAttribute<Employee, Department> dept;
+    public static volatile SingularAttribute<Employee, Address> address;
+    public static volatile CollectionAttribute<Employee, Project> project;
+    public static volatile MapAttribute<Employee, String, Phone> phones;
+}
+```  
+- If a persistent field or property in an entity is of a primitive type or a single-valued relationship, 
+ then the like-named field in the canonical metamodel class will be of type `SingularAttribute`.
+- If a persistent field or property is collection-valued, then the field in the canonical metamodel class will be of type 
+  `ListAttribute`, `SetAttribute`, `MapAttribute`, or `CollectionAttribute`, depending upon the type of collection.
+```java
+CriteriaQuery<Object> c = cb.createQuery();
+Root<Employee> emp = c.from(Employee.class);
+MapJoin<Employee,String,Phone> phone = emp.join(Employee_.phones);
+c.multiselect(emp.get(Employee_.name), phone.key(), phone.value());
+```  
