@@ -148,5 +148,93 @@ c.select(emp)
 
 ![alt text](images/13.png)
 
-   
-   
+- Creating Parameter Expressions
+```java
+CriteriaQuery<Employee> c = cb.createQuery(Employee.class);
+Root<Employee> emp = c.from(Employee.class);
+c.select(emp);
+ParameterExpression<String> deptName =
+    cb.parameter(String.class, "deptName");
+c.where(cb.equal(emp.get("dept").get("name"), deptName));
+```
+- Subqueries
+- The AbstractQuery interface provides the subquery() method for creation of subqueries
+```java
+public List<Employee> findEmployees(String name, String deptName,
+                                        String projectName, String city) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Employee> c = cb.createQuery(Employee.class);
+        Root<Employee> emp = c.from(Employee.class);
+        c.select(emp);
+
+        // ...
+
+        if (projectName != null) {
+            Subquery<Employee> sq = c.subquery(Employee.class);
+            Root<Project> project = sq.from(Project.class);
+            Join<Project,Employee> sqEmp = project.join("employees");
+            sq.select(sqEmp)
+              .where(cb.equal(project.get("name"),
+                              cb.parameter(String.class, "project")));
+            criteria.add(cb.in(emp).value(sq));
+        }
+
+        // ...
+}
+```
+Criteria API => JPQL
+```sql
+SELECT e
+FROM Employee e
+WHERE e IN (SELECT emp
+              FROM Project p JOIN p.employees emp
+              WHERE p.name = :project)
+```
+- `correlate()` method from the `Subquery` interface   
+```java
+if (projectName != null) {
+    Subquery<Project> sq = c.subquery(Project.class);
+    Root<Employee> sqEmp = sq.correlate(emp);
+    Join<Employee,Project> project = sqEmp.join("projects");
+    sq.select(project)
+      .where(cb.equal(project.get("name"),
+                      cb.parameter(String.class,"project")));
+    criteria.add(cb.exists(sq));
+}
+```
+- In Expressions
+```sql
+SELECT e
+FROM Employee e
+WHERE e.address.state IN ('NY', 'CA')
+```   
+JPQL => Criteria API
+```java
+CriteriaQuery<Employee> c = cb.createQuery(Employee.class);
+Root<Employee> emp = c.from(Employee.class);
+c.select(emp)
+ .where(emp.get("address")
+           .get("state").in("NY","CA"));
+```
+- More In expression example
+```sql
+SELECT e
+FROM Employee e
+WHERE e.department IN
+  (SELECT DISTINCT d
+   FROM Department d JOIN d.employees de JOIN de.project p
+   WHERE p.name LIKE 'QA%')
+```
+JPQL => Criteria API
+```java
+CriteriaQuery<Employee> c = cb.createQuery(Employee.class);
+Root<Employee> emp = c.from(Employee.class);
+Subquery<Department> sq = c.subquery(Department.class);
+Root<Department> dept = sq.from(Department.class);
+Join<Employee,Project> project = dept.join("employees").join("projects");
+sq.select(dept.<Integer>get("id"))
+  .distinct(true)
+  .where(cb.like(project.<String>get("name"), "QA%"));
+c.select(emp)
+ .where(cb.in(emp.get("dept").get("id")).value(sq));
+```
