@@ -1,18 +1,19 @@
 package com.linnyk.jpa.safari.query_language.jpql;
 
-import com.linnyk.jpa.safari.entities.Account;
-import com.linnyk.jpa.safari.entities.association.Transaction;
-import com.linnyk.jpa.safari.hibernate_api.configuration.HibernateFactoryBuilder;
-import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.junit.Test;
-
-import javax.persistence.*;
-
 import java.math.BigDecimal;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
+import org.junit.Test;
+
+import com.linnyk.jpa.safari.entities.Account;
+import com.linnyk.jpa.safari.entities.association.Transaction;
+import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
 
 public class JPQLApp {
 
