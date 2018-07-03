@@ -15,9 +15,18 @@
 
     <properties>
         <hibernate.version>5.2.10.Final</hibernate.version>
+        <version.javaee>7.0</version.javaee>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${version.javaee}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>

@@ -9,7 +9,9 @@
   If the `REFRESH` value is not present in the cascade element, the refresh will stop at the source entity
   
 ### Locking  
+
 #### Optimistic Locking
+
 - Provider maintains a versioning system for the entity
 - Version fields are at the core of optimistic locking and provide the best and most performant protection for infrequent concurrent entity modification.
 ```java
@@ -77,4 +79,25 @@ public class EmployeeManagement {
 }
 ```
 - The `LockModeType.OPTIMISTIC_FORCE_INCREMENT` value was introduced in JPA 2.0 and is really just a rename of the `LockModeType.WRITE` option that existed in JPA 1.0.  
-  
+ 
+#### Pessimistic Locking
+
+- Like the optimistic modes, the pessimistic locking modes also guarantee `Repeatable Read isolation`, they just do so pessimistically.
+- A transaction must be active in order to acquire a pessimistic lock.
+
+##### Pessimistic Write Locking
+```java
+public void accrueEmployeeVacation(int id) {
+    Employee emp = em.find(Employee.class, id);
+    // Find amt according to union rules and emp status
+    EmployeeStatus status = emp.getStatus();
+    double accruedDays = calculateAccrual(status);
+    if (accruedDays > 0) {
+        em.refresh(emp, LockModeType.PESSIMISTIC_WRITE);
+        if (status != emp.getStatus())
+            accruedDays = calculateAccrual(emp.getStatus());
+        if (accruedDays > 0)
+            emp.setVacationDays(emp.getVacationDays() + accruedDays);
+    }
+}
+```
