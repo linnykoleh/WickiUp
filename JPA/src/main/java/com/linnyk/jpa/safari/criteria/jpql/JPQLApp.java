@@ -1,8 +1,7 @@
 package com.linnyk.jpa.safari.criteria.jpql;
 
-import com.linnyk.jpa.safari.entities.association.Transaction;
-import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
-import org.junit.Test;
+import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,8 +11,11 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
-import java.math.BigDecimal;
-import java.util.List;
+
+import org.junit.Test;
+
+import com.linnyk.jpa.safari.entities.association.Transaction;
+import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
 
 public class JPQLApp {
 

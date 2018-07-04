@@ -101,3 +101,28 @@ public void accrueEmployeeVacation(int id) {
     }
 }
 ```
+
+##### Pessimistic Read Locking
+
+-  A `PESSIMISTIC_READ` mode can be used to pessimistically achieve repeatable read semantics when no writes to the entity are expected.
+
+##### Pessimistic Forced Increment Locking
+
+- Like the `OPTIMISTIC_FORCE_INCREMENT`, this mode will also increment the version field of the locked entity regardless of whether changes were made to it. 
+  It is a somewhat overlapping case with pessimistic read locking and optimistic write locking, for example, when non-owned collection-valued relationships are present in the entity and have been modified. 
+  Forcing the version field to be incremented can maintain a certain degree of version consistency across relationships.
+  
+#### Pessimistic Timeouts  
+
+```java
+TypedQuery<Employee> q = em.createQuery(
+        "SELECT e FROM EMPLOYEE e WHERE e.id = 42",
+        Employee.class);
+q.setLockMode(LockModeType.PESSIMISTIC_WRITE);
+q.setHint("javax.persistence.lock.timeout",5000);
+
+```
+
+#### Recovering From Pessimistic Failures
+
+- If the failure is severe enough to cause a transaction failure, a `PessimisticLockException` will be thrown and the transaction will be marked for rollback
