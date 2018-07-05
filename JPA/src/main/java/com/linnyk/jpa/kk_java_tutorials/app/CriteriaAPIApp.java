@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
 import org.junit.Test;
@@ -18,7 +19,7 @@ import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
 public class CriteriaAPIApp {
 
 	@Test
-	public void testSimpleSelection(){
+	public void simpleSelection(){
 		final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
 		final EntityManager entityManager = entityManagerFactory.createEntityManager();
 		final EntityTransaction transaction = entityManager.getTransaction();
@@ -44,7 +45,7 @@ public class CriteriaAPIApp {
 	}
 
 	@Test
-	public void testAttributeSelection(){
+	public void attributeSelection(){
 		final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
 		final EntityManager entityManager = entityManagerFactory.createEntityManager();
 		final EntityTransaction transaction = entityManager.getTransaction();
@@ -63,6 +64,92 @@ public class CriteriaAPIApp {
 		System.out.println(resultList);
 		// select e.employee_name from employee_table e where e.employee_id=2
 		// [Sean Murphy]
+
+		transaction.commit();
+		entityManager.close();
+		entityManagerFactory.close();
+	}
+
+	@Test
+	public void multipleAttributeSelection_1(){
+		final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
+		final EntityManager entityManager = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+
+		final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		final CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
+		final Root<EmployeeKK> root = criteriaQuery.from(EmployeeKK.class);
+
+		final Path<String> employeeNamePath = root.get("employeeName");
+		final Path<String> emailPath = root.get("email");
+		final Path<Double> salaryPath = root.get("salary");
+
+		criteriaQuery.select(criteriaBuilder.array(employeeNamePath, emailPath, salaryPath));
+
+		final TypedQuery<Object[]> typedQuery = entityManager.createQuery(criteriaQuery);
+		final List<Object[]> resultList = typedQuery.getResultList();
+
+		for(Object[] obj : resultList){
+			System.out.println();
+			System.out.println("employeeName: " + obj[0]);
+			System.out.println("email: " + obj[1]);
+			System.out.println("salary: " + obj[2]);
+			System.out.println();
+		}
+
+		// select e.employee_name, e.email, e.salary from employee_table e
+		//
+		// employeeName: Martin Bingel
+		// email: martin.cs2017@gmail.com
+		// salary: 50000.0
+		//
+		// employeeName: Sean Murphy
+		// email: sean.m2017@gmail.com
+		// salary: 90000.0
+
+		transaction.commit();
+		entityManager.close();
+		entityManagerFactory.close();
+	}
+
+	@Test
+	public void multipleAttributeSelection_2(){
+		final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
+		final EntityManager entityManager = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+
+		final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		final CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
+		final Root<EmployeeKK> root = criteriaQuery.from(EmployeeKK.class);
+
+		final Path<String> employeeNamePath = root.get("employeeName");
+		final Path<String> emailPath = root.get("email");
+		final Path<Double> salaryPath = root.get("salary");
+
+		// Заюзали multiselect вместо
+		// criteriaQuery.select(criteriaBuilder.array(employeeNamePath, emailPath, salaryPath));
+
+		criteriaQuery.multiselect(employeeNamePath, emailPath, salaryPath)
+				.where(criteriaBuilder.equal(root.get("employeeId"), 2));
+
+		final TypedQuery<Object[]> typedQuery = entityManager.createQuery(criteriaQuery);
+		final List<Object[]> resultList = typedQuery.getResultList();
+
+		for(Object[] obj : resultList){
+			System.out.println();
+			System.out.println("employeeName: " + obj[0]);
+			System.out.println("email: " + obj[1]);
+			System.out.println("salary: " + obj[2]);
+			System.out.println();
+		}
+
+		// select e.employee_name, e.email, e.salary from employee_table e where e.employee_id=2
+		//
+		// employeeName: Sean Murphy
+		// email: sean.m2017@gmail.com
+		// salary: 90000.0
 
 		transaction.commit();
 		entityManager.close();
