@@ -13,6 +13,7 @@ import javax.persistence.criteria.Root;
 
 import org.junit.Test;
 
+import com.linnyk.jpa.kk_java_tutorials.dto.EmployeeDTO;
 import com.linnyk.jpa.kk_java_tutorials.entities.EmployeeKK;
 import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
 
@@ -150,6 +151,37 @@ public class CriteriaAPIApp {
 		// employeeName: Sean Murphy
 		// email: sean.m2017@gmail.com
 		// salary: 90000.0
+
+		transaction.commit();
+		entityManager.close();
+		entityManagerFactory.close();
+	}
+
+	@Test
+	public void multipleAttributeSelectionConstructToDTO(){
+		final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
+		final EntityManager entityManager = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+
+		final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		final CriteriaQuery<EmployeeDTO> criteriaQuery = criteriaBuilder.createQuery(EmployeeDTO.class);
+		final Root<EmployeeKK> root = criteriaQuery.from(EmployeeKK.class);
+
+		final Path<String> employeeNamePath = root.get("employeeName");
+		final Path<String> emailPath = root.get("email");
+		final Path<Double> salaryPath = root.get("salary");
+
+		criteriaQuery.select(criteriaBuilder.construct(EmployeeDTO.class, employeeNamePath, emailPath, salaryPath));
+
+		final TypedQuery<EmployeeDTO> typedQuery = entityManager.createQuery(criteriaQuery);
+		final List<EmployeeDTO> resultList = typedQuery.getResultList();
+		// select e.employee_name, e.email, e.salary from employee_table e
+
+		resultList.forEach(System.out::println);
+
+		// EmployeeDTO(employeeName=Martin Bingel, email=martin.cs2017@gmail.com, salary=50000.0)
+		// EmployeeDTO(employeeName=Sean Murphy, email=sean.m2017@gmail.com, salary=90000.0)
 
 		transaction.commit();
 		entityManager.close();
