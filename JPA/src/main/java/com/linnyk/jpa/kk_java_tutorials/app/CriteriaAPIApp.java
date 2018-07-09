@@ -5,16 +5,21 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Tuple;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.junit.Test;
 
 import com.linnyk.jpa.kk_java_tutorials.dto.EmployeeDTO;
 import com.linnyk.jpa.kk_java_tutorials.entities.EmployeeKK;
+import com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.Partner;
+import com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.Person;
+import com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.Phone;
 import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
 
 public class CriteriaAPIApp {
@@ -182,6 +187,64 @@ public class CriteriaAPIApp {
 
 		// EmployeeDTO(employeeName=Martin Bingel, email=martin.cs2017@gmail.com, salary=50000.0)
 		// EmployeeDTO(employeeName=Sean Murphy, email=sean.m2017@gmail.com, salary=90000.0)
+
+		transaction.commit();
+		entityManager.close();
+		entityManagerFactory.close();
+	}
+
+	@Test
+	public void selectingValuesFromMultipleRootsInCriteriaQuery(){
+		final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
+		final EntityManager entityManager = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+
+		final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		final CriteriaQuery<Tuple> criteriaQuery = criteriaBuilder.createQuery(Tuple.class);
+
+		final Root<Person> personRoot = criteriaQuery.from(Person.class);
+		final Root<Partner> partnerRoot = criteriaQuery.from(Partner.class);
+
+		criteriaQuery.multiselect(personRoot, partnerRoot);
+
+		final Predicate personRestriction = criteriaBuilder.and(
+				criteriaBuilder.equal(personRoot.get("address"), "Bank of Canada,234 Wellington Street"),
+				criteriaBuilder.isNotEmpty(personRoot.get("phones") )
+		);
+		final Predicate partnerRestriction = criteriaBuilder.and(
+				criteriaBuilder.like( partnerRoot.get("name" ), "%Mur%" ),
+				criteriaBuilder.equal( partnerRoot.get("version"), 1 )
+		);
+		criteriaQuery.where(criteriaBuilder.and( personRestriction, partnerRestriction ) );
+
+		final TypedQuery<Tuple> typedQuery = entityManager.createQuery(criteriaQuery);
+		final List<Tuple> resultList = typedQuery.getResultList();
+
+		// select person.id, partner.id, person.address, person.createdOn , person.name, person.nickName, person.version, partner.name, partner.version
+		// from Person person
+		// cross join Partner partner
+		// where person.address=? and (exists (select phones.id from Phone phones where person.id=phones.person_id)) and (partner.name like ?) and partner.version=1
+		//
+		// select * from Phone p where p.person_id=?
+
+		for (Tuple tuple : resultList) {
+			Person person = (Person) tuple.get(0);
+			if(person != null){
+				System.out.println(person);
+				List<Phone> phones = person.getPhones();
+				for (Phone phone : phones) {
+					System.out.println(phone.getId() + "\t" + phone.getNumber()+ "\t" + phone.getType().toString());
+				}
+			}
+
+			Partner partner = (Partner) tuple.get(1);
+			System.out.println(partner);
+		}
+		//Person(id=2, name=Sean Murphy, nickName=Sam, address=Bank of Canada,234 Wellington Street, createdOn=2018-07-09 17:26:22.766, version=1, phones=[com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.Phone@2e17a321, com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.Phone@7593ea79])
+		//2	809865430	MOBILE
+		//3	022909742	LAND_LINE
+		//Partner(id=1, name=Sean Murphy, version=1)
 
 		transaction.commit();
 		entityManager.close();
