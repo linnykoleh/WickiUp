@@ -132,6 +132,8 @@ Are also called `JTA transactions` or `global transactions`.
 - To change this, use the annotation @TransactionManagement(TransactionManagementType.BEAN/CONTAINER)
 
 *`Transaction demarcation` is the act of causing a transaction to either begin or complete.*
+- When the container takes over the responsibility of transaction demarcation, is called `container-managed transaction (CMT) management`, 
+  but when the application is responsible for demarcation, it's called `bean-managed transaction (BMT) management`.
 
 ### Container-managed transactions 
 ***@TransactionAttribute(TransactionAttributeType.TYPE)***<br/>
@@ -144,8 +146,11 @@ Are also called `JTA transactions` or `global transactions`.
 - **NOT_SUPPORTED:** Suspends current transaction.
 - **NEVER:** If transaction is active, an exception is thrown.
 
+- Any bean wanting to cause a container-managed transaction to roll back can do so by invoking the setRollbackOnly() method on the EJBContext object. 
+  Although this will not cause the immediate rollback of the transaction, it is an indication to the container that the transaction should be rolled back when the transaction completes.
 
 ### Bean-managed transactions
+- Means that the application needs to start and stop transactions explicitly by making API calls
 - Bean class has the responsibility to begin and commit transaction.
 - The transactions do not get propagated to methods called on another BMT bean. 
 - Can be used when transactions must be initiated from the web tier.
@@ -154,13 +159,42 @@ Are also called `JTA transactions` or `global transactions`.
 ***The UserTransaction interface is the designated object in the JTA that applications can hold on to invoke to manage transaction boundaries.***
 
 - Can be injected by @Resource (when using dependency lookup : `java:comp/UserTransaction`)
-	- begin()
-	- commit()
-	- getStatus()
-	- rollback()
-	- setRollbackOnly()
-	- setTransactionTimeOut(int seconds)
 
+```java
+public interface UserTransaction {
+    void begin();
+    void commit();
+    int getStatus();
+    void rollback();
+    void setRollbackOnly();
+    void setTransactionTimeout(int seconds);
+}
+```
+
+- The `setRollbackOnly()` method indicates that the current transaction cannot be committed, leaving rollback as the only possible outcome. 
+- The transaction can be rolled back immediately by calling the `rollback()` method.
+- A time limit for the transaction can be set with the `setTransactionTimeout()` method, causing the transaction to roll back when the limit is reached
+- if `setRollbackOnly()` has been called on the current transaction, then the status will be `STATUS_MARKED_ROLLBACK` until the transaction has begun rolling back.
+
+```java
+public class ProjectServlet extends HttpServlet {
+    @Resource UserTransaction tx;
+    @EJB ProjectService bean;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            tx.begin();
+            bean.assignEmployeeToProject(projectId, empId);
+            bean.updateProjectStatistics();
+            tx.commit();
+        } catch (Exception e) {
+            // Try to roll back (may fail if exception came from begin() or commit(), but that's ok)
+            try { tx.rollback(); } catch (Exception e2) {}
+            throw new MyRuntimeException(e);
+        }
+    }
+}
+```
 - Only CMT can suspend the current transaction.
 - Only one transaction at any given time.
 
