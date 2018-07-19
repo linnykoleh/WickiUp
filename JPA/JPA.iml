@@ -15,7 +15,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
         <datasource-mapping>
-          <factory-entry name="infinite-finances" />
+          <factory-entry name="infinite-finances" value="c0af82ce-6553-4021-bcf9-1a42980ac04e" />
           <factory-entry name="second-level-cache" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />

@@ -1,4 +1,4 @@
-package com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots;
+package com.linnyk.jpa.kk_java_tutorials.entities.multiple;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

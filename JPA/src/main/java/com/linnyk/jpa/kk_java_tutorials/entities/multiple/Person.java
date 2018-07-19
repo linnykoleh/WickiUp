@@ -1,4 +1,4 @@
-package com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots;
+package com.linnyk.jpa.kk_java_tutorials.entities.multiple;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,7 +26,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "phones")
 @Entity
 @Table(name = "Person")
 public class Person {

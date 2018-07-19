@@ -17,11 +17,14 @@ import org.junit.Test;
 
 import com.linnyk.jpa.kk_java_tutorials.dto.EmployeeDTO;
 import com.linnyk.jpa.kk_java_tutorials.entities.EmployeeKK;
-import com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.Partner;
-import com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.Person;
-import com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.Phone;
+import com.linnyk.jpa.kk_java_tutorials.entities.multiple.Partner;
+import com.linnyk.jpa.kk_java_tutorials.entities.multiple.Person;
+import com.linnyk.jpa.kk_java_tutorials.entities.multiple.Phone;
 import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
 
+/**
+ * Firstly run DBPopulator in order to have data in DB
+ */
 public class CriteriaAPIApp {
 
 	@Test
@@ -245,6 +248,53 @@ public class CriteriaAPIApp {
 		//2	809865430	MOBILE
 		//3	022909742	LAND_LINE
 		//Partner(id=1, name=Sean Murphy, version=1)
+
+		transaction.commit();
+		entityManager.close();
+		entityManagerFactory.close();
+	}
+
+	@Test
+	public void joins(){
+		final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
+		final EntityManager entityManager = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+
+		final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		final CriteriaQuery<Phone> criteriaQuery = criteriaBuilder.createQuery(Phone.class);
+		final Root<Phone> root = criteriaQuery.from(Phone.class);
+
+		root.join("person");
+
+		criteriaQuery.where(criteriaBuilder.isNotEmpty(root.get("calls")));
+
+		final TypedQuery<Phone> query = entityManager.createQuery(criteriaQuery);
+		final List<Phone> resultList = query.getResultList();
+		// select *
+		// from Phone phone
+		// inner join Person person on phone.person_id=person.id
+		// where exists (select pc.id from phone_call pc where phone.id=pc.phone_id)
+
+		for(Phone phone : resultList){
+			System.out.println(phone);
+			System.out.println(phone.getCalls());
+		}
+		// select * from Person p where p.id=?
+		// Phone(id=1, person=Person(id=1, name=Mark Bingel, nickName=Mac, address=Alameda Street Los Angeles, createdOn=2018-07-19 17:05:23.473, version=1), number=9073637380, type=MOBILE)
+		//
+		// select * from phone_call pc where pc.phone_id=?
+		// [Call(id=1, phone=Phone(id=1, person=Person(id=1, name=Mark Bingel, nickName=Mac, address=Alameda Street Los Angeles, createdOn=2018-07-19 17:05:23.473, version=1), number=9073637380, type=MOBILE), timestamp=2018-07-19 17:05:23.473, duration=30), Call(id=2, phone=Phone(id=1, person=Person(id=1, name=Mark Bingel, nickName=Mac, address=Alameda Street Los Angeles, createdOn=2018-07-19 17:05:23.473, version=1), number=9073637380, type=MOBILE), timestamp=2018-07-19 17:05:23.473, duration=20)]
+		//
+		// select * from Person p where p.id=?
+		// Phone(id=2, person=Person(id=2, name=Sean Murphy, nickName=Sam, address=Bank of Canada,234 Wellington Street, createdOn=2018-07-19 17:05:23.473, version=1), number=809865430, type=MOBILE)
+		//
+		// select * from phone_call pc where pc.phone_id=?
+		// [Call(id=3, phone=Phone(id=2, person=Person(id=2, name=Sean Murphy, nickName=Sam, address=Bank of Canada,234 Wellington Street, createdOn=2018-07-19 17:05:23.473, version=1), number=809865430, type=MOBILE), timestamp=2018-07-19 17:05:23.473, duration=60), Call(id=4, phone=Phone(id=2, person=Person(id=2, name=Sean Murphy, nickName=Sam, address=Bank of Canada,234 Wellington Street, createdOn=2018-07-19 17:05:23.473, version=1), number=809865430, type=MOBILE), timestamp=2018-07-19 17:05:23.473, duration=50)]
+		// Phone(id=3, person=Person(id=2, name=Sean Murphy, nickName=Sam, address=Bank of Canada,234 Wellington Street, createdOn=2018-07-19 17:05:23.473, version=1), number=022909742, type=LAND_LINE)
+		//
+		// select * from phone_call pc where pc.phone_id=?
+		// [Call(id=5, phone=Phone(id=3, person=Person(id=2, name=Sean Murphy, nickName=Sam, address=Bank of Canada,234 Wellington Street, createdOn=2018-07-19 17:05:23.473, version=1), number=022909742, type=LAND_LINE), timestamp=2018-07-19 17:05:23.473, duration=120)]
 
 		transaction.commit();
 		entityManager.close();

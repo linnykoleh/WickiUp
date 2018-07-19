@@ -7,10 +7,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
 import com.linnyk.jpa.kk_java_tutorials.entities.EmployeeKK;
-import com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.Partner;
-import com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.Person;
-import com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.Phone;
-import com.linnyk.jpa.kk_java_tutorials.entities.selecting_values_from_multiple_roots.PhoneType;
+import com.linnyk.jpa.kk_java_tutorials.entities.multiple.Call;
+import com.linnyk.jpa.kk_java_tutorials.entities.multiple.Partner;
+import com.linnyk.jpa.kk_java_tutorials.entities.multiple.Person;
+import com.linnyk.jpa.kk_java_tutorials.entities.multiple.Phone;
+import com.linnyk.jpa.kk_java_tutorials.entities.multiple.PhoneType;
 import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
 
 public class DBPopulator {
@@ -45,6 +46,19 @@ public class DBPopulator {
 		phone1.setType(PhoneType.MOBILE);
 		phone1.setPerson(person1);
 
+		final Call call1 = new Call();
+		call1.setDuration(30);
+		call1.setPhone(phone1);
+		call1.setTimestamp(new Date());
+
+		final Call call2 = new Call();
+		call2.setDuration(20);
+		call2.setPhone(phone1);
+		call2.setTimestamp(new Date());
+
+		phone1.getCalls().add(call1);
+		phone1.getCalls().add(call2);
+		
 		person1.getPhones().add(phone1);
 
 		final Person person2 = new Person();
@@ -59,6 +73,19 @@ public class DBPopulator {
 		phone2.setType(PhoneType.MOBILE);
 		phone2.setPerson(person2);
 
+		final Call call3 = new Call();
+		call3.setDuration(60);
+		call3.setPhone(phone2);
+		call3.setTimestamp(new Date());
+
+		final Call call4 = new Call();
+		call4.setDuration(50);
+		call4.setPhone(phone2);
+		call4.setTimestamp(new Date());
+
+		phone2.getCalls().add(call3);
+		phone2.getCalls().add(call4);
+
 		final Phone phone3 = new Phone();
 		phone3.setNumber("022909742");
 		phone3.setType(PhoneType.LAND_LINE);
@@ -71,8 +98,16 @@ public class DBPopulator {
 		partner.setName("Sean Murphy");
 		partner.setVersion(1);
 
+		final Call call5 = new Call();
+		call5.setDuration(120);
+		call5.setPhone(phone3);
+		call5.setTimestamp(new Date());
+
+		phone3.getCalls().add(call5);
+
 		entityManager.persist(person1);
 		entityManager.persist(person2);
+
 		entityManager.persist(partner);
 
 		entityManager.persist(employeeKK1);
