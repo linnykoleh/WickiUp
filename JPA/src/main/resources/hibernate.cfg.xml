@@ -56,5 +56,8 @@
         <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._4.BillingDetails4"/>
         <mapping class="com.linnyk.jpa.safari.entities.inheritance_2._4.CreditCard4"/>
 
+        <mapping class="com.linnyk.jpa.certification.entities.dirty_checking.Site"/>
+        <mapping class="com.linnyk.jpa.certification.entities.dirty_checking.Page"/>
+
     </session-factory>
 </hibernate-configuration>
