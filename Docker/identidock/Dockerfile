@@ -1,5 +1,7 @@
 FROM python:3.4
 
+MAINTAINER linnykoleh <linnik@oleh.com>
+
 RUN groupadd -r uwsgi && useradd -r -g uwsgi uwsgi
 RUN pip install Flask==0.10.1
 

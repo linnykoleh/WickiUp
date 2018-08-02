@@ -105,7 +105,7 @@
 - **docker pull** - Загружает заданный образ из реестра
 
 - **docker push** - Выгружает образ или репозиторий в заданный реестр 
-	- `docker push linnikoleh/cowsay-dockerfile `
+	- `docker push linnikoleh/cowsay-dockerfile`
 	
 - **docker search** - Выводит список общедоступных репозиториев из реестра Docker Hub	
 
