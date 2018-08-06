@@ -7,17 +7,16 @@
 
     <parent>
         <groupId>com.linnik.wickiup</groupId>
-        <artifactId>WickiUp</artifactId>
+        <artifactId>Docker</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>Docker</artifactId>
+    <groupId>com.linnik.wickiup</groupId>
+    <artifactId>SimpleMicroservices</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>InUse</module>
-        <module>SimpleMicroservices</module>
+        <module>Client</module>
     </modules>
-
 
 </project>
