@@ -7,18 +7,15 @@
 
     <parent>
         <groupId>com.linnik.wickiup</groupId>
-        <artifactId>WickiUp</artifactId>
+        <artifactId>Spring</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>Spring</artifactId>
+    <artifactId>SpringCertification</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>SpringMetrics</module>
-        <module>IOC</module>
-        <module>SpringCertification</module>
+        <module>pet-sitter</module>
     </modules>
-
 
 </project>
