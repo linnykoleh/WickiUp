@@ -1,26 +1,16 @@
 package com.linnyk.jpa.kk_java_tutorials.app;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Tuple;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
-import org.junit.Test;
-
 import com.linnyk.jpa.kk_java_tutorials.dto.EmployeeDTO;
 import com.linnyk.jpa.kk_java_tutorials.entities.EmployeeKK;
 import com.linnyk.jpa.kk_java_tutorials.entities.multiple.Partner;
 import com.linnyk.jpa.kk_java_tutorials.entities.multiple.Person;
 import com.linnyk.jpa.kk_java_tutorials.entities.multiple.Phone;
 import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
+import org.junit.Test;
+
+import javax.persistence.*;
+import javax.persistence.criteria.*;
+import java.util.List;
 
 /**
  * Firstly run DBPopulator in order to have data in DB
@@ -300,4 +290,24 @@ public class CriteriaAPIApp {
 		entityManager.close();
 		entityManagerFactory.close();
 	}
+
+    @Test
+    public void jpql(){
+        final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        final EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        final TypedQuery<Phone> queryTyped = entityManager
+                .createQuery("from Phone p where size(p.calls) = 2", Phone.class);
+        final List<Phone> resultTyped = queryTyped.getResultList();
+
+        for(Phone tran : resultTyped){
+            System.out.println(tran);
+        }
+
+        transaction.commit();
+        entityManager.close();
+        entityManagerFactory.close();
+    }
 }
