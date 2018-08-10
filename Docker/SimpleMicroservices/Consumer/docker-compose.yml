@@ -1,0 +1,9 @@
+consumer:
+  image: linnikoleh/simplemicroservices/consumer
+  links:
+    - dnmonster
+
+dnmonster:
+  image: amouat/dnmonster:1.0
+  ports:
+  - "8080:8080"
