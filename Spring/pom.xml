@@ -17,8 +17,6 @@
     <modules>
         <module>SpringMetrics</module>
         <module>IOC</module>
-        <module>SpringCertification</module>
     </modules>
-
 
 </project>
