@@ -24,6 +24,7 @@
 		<module>OCP</module>
 		<module>JPA</module>
 		<module>Docker</module>
+		<module>Scala</module>
 	</modules>
 
 	<build>
