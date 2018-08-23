@@ -1,0 +1,84 @@
+<project default="deploy">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="init">
+        <delete dir="${exploded.dir}"/>
+
+        <mkdir dir="${exploded.dir}"/>
+        <mkdir dir="${exploded.dir}/WEB-INF"/>
+        <mkdir dir="${exploded.dir}/WEB-INF/classes"/>
+        <mkdir dir="${exploded.dir}/WEB-INF/lib"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.java.dir}" destdir="${exploded.dir}/WEB-INF/classes" debug="on" source="1.6" target="1.6">
+            <classpath>
+                <path refid="classpath"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="deploy" depends="compile">
+        <copy todir="${exploded.dir}/WEB-INF/lib">
+            <path refid="classpath"/>
+        </copy>
+        <copy todir="${exploded.dir}/WEB-INF/classes">
+            <fileset dir="${src.resources.dir}">
+                <include name="**/*.properties"/>
+                <include name="**/*.xml"/>
+                <include name="**/*.sql"/>
+            </fileset>
+        </copy>
+        <copy todir="${exploded.dir}/WEB-INF/pages">
+            <fileset dir="${src.webapp.dir}/WEB-INF/pages">
+                <include name="**/*.jsp"/>
+            </fileset>
+        </copy>
+        <copy todir="${exploded.dir}/WEB-INF" file="${src.webapp.dir}/WEB-INF/web.xml"/>
+        <copy todir="${exploded.dir}">
+            <fileset dir="${src.webapp.dir}">
+                <include name="**/*.jsp"/>
+                <include name="**/*.css"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="run" depends="deploy">
+        <delete dir="${tomcat.dir}"/>
+
+        <mkdir dir="${tomcat.dir}"/>
+        <mkdir dir="${tomcat.dir}/conf"/>
+        <mkdir dir="${tomcat.dir}/conf/Catalina"/>
+        <mkdir dir="${tomcat.dir}/conf/Catalina/localhost"/>
+        <mkdir dir="${tomcat.dir}/logs"/>
+        <mkdir dir="${tomcat.dir}/work"/>
+
+        <copy todir="${tomcat.dir}/conf">
+            <fileset dir="${env.TOMCAT_HOME}/conf/"/>
+        </copy>
+
+        <copy todir="${tomcat.dir}/conf/Catalina/localhost">
+            <fileset dir="${src.catalina.dir}"/>
+            <filterset>
+                <filter token="EXPLODED_DIR" value="${user.dir}\${exploded.dir}"/>
+            </filterset>
+        </copy>
+
+        <exec executable="${env.TOMCAT_HOME}/bin/startup.bat">
+            <env key="CATALINA_BASE" value="${user.dir}\${tomcat.dir}"/>
+            <env key="CATALINA_HOME" value="${env.TOMCAT_HOME}"/>
+            <env key="CATALINA_TMPDIR" value="${env.TOMCAT_HOME}/temp"/>
+            <env key="JRE_HOME" value="${env.JAVA_HOME}"/>
+            <env key="CLASSPATH" value="${env.TOMCAT_HOME}/bin/bootstrap.jar"/>
+        </exec>
+    </target>
+
+</project>

@@ -1,0 +1,30 @@
+Цель: Научится описывать сущности.
+
+Описать сущность Company, которая отображается на 2 таблицы в БД: Company и CompanyDetail.
+
+Структура таблиц:
+    1.	Company:
+        a.	Company_id – идентификатор компании (INT)
+        b.	Company_name – название компании (VARCHAR(50))
+    2.	CompanyDetail:
+        a.	Company_id – идентификатор компании (INT)
+        b.	CompanyDetail_address -  адрес компании
+
+Соответствие полей БД и полей сущности:
+    1.	Поле id  таблица Company, поле Company_id
+    2.	Поле name  таблица Company, поле Company_name
+    3.	Поле address  таблица CompanyDetail, поле CompanyDetail_address
+
+Шаги:
+    1.	Открыть класс edu.jpa.entity.Company
+    2.	Указать аннотацию @Entity
+    3.	Указать аннотацию @Table, определив имя primary таблицы (Country)
+    4.	Указать аннотацию @SecondaryTable, определив имя secondary таблицы (CompanyDetail), и колонки по которой таблицы связываются (параметр pkJoinColumns, аннотация @PrimaryKeyJoinColumn).
+    5.	Для атрибута id указать аннотацию @Id (значит атрибут будет ключевым)
+    6.	Для атрибутов id, name, address указать аннотацию @Column для определения того, на какое поле, и какой таблицы будет отображаться атрибут (параметры аннотации name и table).
+    7.	Запустить класс edu.jpa.Launcher
+    8.	В приложении dbVisualizer  открыть БД DB_LAB_01 и проанализировать созданные объекты (tables, constraints, etc.) и данные.
+
+EXTRA: помимо описания сущности в этом примере уже реализован следующие аспекты:
+    1.	Описан и настроен persistence context (/META-INF/persistence.xml)
+    2.	Написан код создания EntityManager и создания/сохранения двух экземпляров сущности Company: Company #1, Company#2 (см. класс edu.jpa.Launcher)
