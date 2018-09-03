@@ -43,7 +43,7 @@ public class MergeApp {
 	}
 
 	@Test
-	public void testMerge_merge() {
+	public void testMerge_update() {
 		final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
 		final EntityManager entityManager = entityManagerFactory.createEntityManager();
 		final EntityTransaction transaction = entityManager.getTransaction();
