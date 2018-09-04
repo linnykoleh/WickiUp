@@ -25,7 +25,6 @@
 		<module>JPA</module>
 		<module>Docker</module>
 		<module>Akka</module>
-		<module>BigData</module>
 	</modules>
 
 	<build>
