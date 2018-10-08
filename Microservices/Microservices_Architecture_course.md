@@ -1,14 +1,14 @@
 ## Microservices Architecture
 
+### Monolithic
+
+![alt text](images/web/microservices_architecture/Screenshot_3.png)
+
 ### Microservices 
 
 ![alt text](images/web/microservices_architecture/Screenshot_1.png)
 
 ![alt text](images/web/microservices_architecture/Screenshot_2.png)
-
-### Monolithic
-
-![alt text](images/web/microservices_architecture/Screenshot_3.png)
 
 ### Emergence of Microservices
 
@@ -97,3 +97,33 @@
 #### Self Hosting
 
 ![alt text](images/web/microservices_architecture/Screenshot_32.png)
+
+#### Registration and Discovery
+
+![alt text](images/web/microservices_architecture/Screenshot_33.png)
+
+#### Monitoring Tech
+
+![alt text](images/web/microservices_architecture/Screenshot_34.png)
+
+####  Logging Tech
+
+![alt text](images/web/microservices_architecture/Screenshot_35.png)
+
+#### Scaling
+
+![alt text](images/web/microservices_architecture/Screenshot_36.png)
+
+#### Caching
+
+![alt text](images/web/microservices_architecture/Screenshot_37.png)
+
+#### API Gateway
+
+![alt text](images/web/microservices_architecture/Screenshot_38.png)
+
+#### Automation Tools
+
+![alt text](images/web/microservices_architecture/Screenshot_39.png)
+
+![alt text](images/web/microservices_architecture/Screenshot_40.png)

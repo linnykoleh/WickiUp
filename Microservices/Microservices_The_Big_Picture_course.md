@@ -1,8 +1,8 @@
 ## Microservices The Big Picture
 
-### Monolith architecture
-
 ![alt text](images/web/microservices_the_big_picture/Screenshot_1.png)	
+
+### Monolith architecture
 
 ![alt text](images/web/microservices_the_big_picture/Screenshot_2.png)	
 
