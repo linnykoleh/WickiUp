@@ -14,43 +14,45 @@ public class OptimisticApp {
 	@Test
 	public void test() throws InterruptedException {
 		final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
-		final EntityManager entityManager = entityManagerFactory.createEntityManager();
-		final EntityTransaction transaction = entityManager.getTransaction();
+		final EntityManager em = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 
 		final OptimisticEntity optimisticEntity = new OptimisticEntity();
 		optimisticEntity.setName("optimisticEntity");
 
-		entityManager.persist(optimisticEntity);
+		em.persist(optimisticEntity);
 
 		transaction.commit();
-		entityManager.close();
+		em.close();
 
-		final EntityManager entityManager1 = entityManagerFactory.createEntityManager();
-		final EntityTransaction transaction1 = entityManager1.getTransaction();
+		System.out.println("-----###################-----");
+
+		final EntityManager em1 = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction1 = em1.getTransaction();
 		transaction1.begin();
 
-		final OptimisticEntity optimisticEntity1 = entityManager1.find(OptimisticEntity.class, optimisticEntity.getId());
-		optimisticEntity1.setName("NewOptimisticEntity");
+		final OptimisticEntity optimisticEntity1 = em1.find(OptimisticEntity.class, optimisticEntity.getId());
+		optimisticEntity1.setName("NewOptimisticEntity 1");
 
 		new Thread(() -> {
 			//Update version in order to get OptimisticLockException
-			final EntityManager entityManager2 = entityManagerFactory.createEntityManager();
-			final EntityTransaction transaction2 = entityManager2.getTransaction();
+			final EntityManager em2 = entityManagerFactory.createEntityManager();
+			final EntityTransaction transaction2 = em2.getTransaction();
 			transaction2.begin();
 
-			final OptimisticEntity optimisticEntity2 = entityManager2.find(OptimisticEntity.class, optimisticEntity.getId());
-			optimisticEntity2.setVersion(2);
+			final OptimisticEntity optimisticEntity2 = em2.find(OptimisticEntity.class, optimisticEntity.getId());
+			optimisticEntity2.setName("NewOptimisticEntity 2");
 
 			transaction2.commit();
-			entityManager2.close();
+			em2.close();
 
 		}).start();
 
 		Thread.sleep(10000);
 
 		transaction1.commit();
-		entityManager1.close();
+		em1.close();
 		// javax.persistence.OptimisticLockException: Batch update returned unexpected row count from update [0]; actual row count: 0; expected: 1
 
 		entityManagerFactory.close();
