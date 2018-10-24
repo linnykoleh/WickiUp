@@ -8,37 +8,35 @@ import org.junit.Test;
 
 import java.util.Date;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class TimeTestApp {
 
     @Test
     public void test() {
         final Session session = HibernateFactoryBuilder.getSessionFactoryXML().openSession();
         session.beginTransaction();
-        try{
-            final TimeTest timeTest = new TimeTest(new Date());
 
-            session.save(timeTest); //save
+        final TimeTest timeTest = new TimeTest(new Date());
 
-            session.getTransaction().commit();
+        session.save(timeTest); //save
+        session.getTransaction().commit();
 
-            session.refresh(timeTest); //refresh
+        System.out.println(timeTest);
+        //TimeTest(
+        // timeTestId=5, datetimeColumn=Wed Oct 24 09:18:35 CEST 2018,
+        // timestampColumn=Wed Oct 24 09:18:35 CEST 2018,
+        // dateColumn=Wed Oct 24 09:18:35 CEST 2018,
+        // timeColumn=Wed Oct 24 09:18:35 CEST 2018,
+        // sqlDatetimeColumn=2018-10-24 09:18:35.77,
+        // sqlTimestampColumn=2018-10-24 09:18:35.77,
+        // sqlDateColumn=2018-10-24,
+        // sqlTimeColumn=09:18:35,
+        // localDateTimeColumn=2018-10-24T09:18:35.770,
+        // localDateColumn=2018-10-24)
 
-            System.out.println(timeTest);// TimeTest [
-                                         //     timeTestId=2,
-                                         //     datetimeColumn=2018-05-15 13:09:19.665,
-                                         //     timestampColumn=2018-05-15 13:09:19.665,
-                                         //     dateColumn=2018-05-15,
-                                         //     timeColumn=13:09:19,
-                                         //     sqlDatetimeColumn=2018-05-15 13:09:19.665,
-                                         //     sqlTimestampColumn=2018-05-15 13:09:19.665,
-                                         //     sqlDateColumn=2018-05-15,
-                                         //     sqlTimeColumn=13:09:19]
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            session.close();
-            HibernateFactoryBuilder.getSessionFactoryXML().close();
-        }
+        session.close();
+        HibernateFactoryBuilder.getSessionFactoryXML().close();
     }
 }
