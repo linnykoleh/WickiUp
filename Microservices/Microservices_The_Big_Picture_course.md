@@ -18,6 +18,12 @@
 
 ![alt text](images/web/microservices_the_big_picture/Screenshot_7.png)
 
+![alt text](images/web/microservices_the_big_picture/Screenshot_33.png)
+
+![alt text](images/web/microservices_the_big_picture/Screenshot_34.png)
+
+![alt text](images/web/microservices_the_big_picture/Screenshot_35.png)
+
 ### Services
 
 ![alt text](images/web/microservices_the_big_picture/Screenshot_8.png)
