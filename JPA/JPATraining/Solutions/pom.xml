@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.luxoft.training.jpa</groupId>
-        <artifactId>jpa-training</artifactId>
-        <version>1.0</version>
+        <groupId>com.linnik.wickiup</groupId>
+        <artifactId>JPALuxoftTraining</artifactId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>Solutions</artifactId>
