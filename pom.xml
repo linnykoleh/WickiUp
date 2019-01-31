@@ -17,15 +17,13 @@
 	<modules>
 		<module>Solid</module>
 		<module>Patterns</module>
-		<module>Lafore</module>
-		<module>LeetCode</module>
-		<module>CompleteCode</module>
 		<module>AWS</module>
 		<module>OCP</module>
 		<module>JPA</module>
 		<module>Docker</module>
 		<module>Akka</module>
 		<module>Microservices</module>
+		<module>Algorithms</module>
 	</modules>
 
 	<build>
