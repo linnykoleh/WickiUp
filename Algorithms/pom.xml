@@ -17,6 +17,7 @@
     <modules>
         <module>Lafore</module>
         <module>LeetCode</module>
+        <module>LaakMann</module>
     </modules>
 
 </project>
