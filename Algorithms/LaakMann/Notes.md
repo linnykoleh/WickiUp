@@ -24,3 +24,70 @@
 - Time is not the only thing that matters in an algorithm. We might also care about the amount of memory or space-required by an algorithm.    
 - Space complexity is a parallel concept to time complexity. If we need to create an array of size n, this will
   require `0(n)` space. If we need a two-dimensional array of size nxn, this will require `O(n2)` space.
+  
+![alt text](images/Screenshot.png)  
+
+![alt text](images/order_of_growth.png)  
+
+
+| Big-O      |  computations for 10 things |  computations for 100 things
+|------------|-----------------------------|---------------------------
+|O(1)        |   1                         |     1
+|O(log(n))   |   3                         |     7
+|O(n)        |  10                         |   100
+|O(n log(n)) |  30                         |   700
+|O(n^2)      | 100                         | 10000
+
+For example: 
+```java
+List<int> numbers = new List<int> {1,2,3,4,5,6,7,12,543,7};
+```
+
+- `O (1)`
+
+```java
+return numbers.First();
+```
+
+- `O (n) `
+	- `O (n)` означает, что время, затрачиваемое вашим алгоритмом, растет линейно по мере увеличения вашего ввода. 
+
+```java
+int result = 0;
+foreach (int num in numbers){
+    result += num;
+}
+return result;
+```
+
+- `O (n log (n))`
+
+```java
+int result = 0;
+foreach (int num in numbers)
+{
+    int index = numbers.length - 1;
+    while (index > 1)
+    {
+        // yeah, stupid, but couldn't come up with something more useful :-(
+        result += numbers[index];
+        index /= 2;
+    }
+}
+return result;
+```
+
+- `O (n ^ 2)`
+	- `O (n ^ 2)` означает, что время, в течение которого ваш алгоритм растет, становится квадратом вашего ввода
+
+```java
+int result = 0;
+foreach (int outerNum in numbers)
+{
+    foreach (int innerNum in numbers)
+    {
+        result += outerNum * innerNum;
+    }
+}
+return result;
+```
