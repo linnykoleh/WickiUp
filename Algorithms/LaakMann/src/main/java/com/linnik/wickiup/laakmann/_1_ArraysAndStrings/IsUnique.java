@@ -1,5 +1,11 @@
 package com.linnik.wickiup.laakmann._1_ArraysAndStrings;
 
+/**
+ * - The time complexity for this code is O(n), where n is the length of the string.
+ * - The space complexity is O(1).
+ * <p>
+ * See ASCII table at http://www.asciitable.com/ for more information
+ */
 public class IsUnique {
 
     boolean isUniqueChars(String str) {

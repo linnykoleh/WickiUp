@@ -6,7 +6,7 @@
 
 ### Time Complexity
 
-- O (big 0): In academia, big O describes an upper bound on the time. An algorithm that prints all the
+- O (big 0): describes an upper bound on the time. An algorithm that prints all the
   values in an array could be described as O(N), but it could also be described as O(N2), O(N3), or 0( 2
   N) (or many other big O times). The
 
