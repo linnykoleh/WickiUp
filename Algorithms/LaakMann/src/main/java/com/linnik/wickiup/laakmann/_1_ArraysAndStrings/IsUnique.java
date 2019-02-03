@@ -1,13 +1,16 @@
 package com.linnik.wickiup.laakmann._1_ArraysAndStrings;
 
 /**
- * - The time complexity for this code is O(n), where n is the length of the string.
- * - The space complexity is O(1).
- * <p>
- * See ASCII table at http://www.asciitable.com/ for more information
+ * Is Unique: Implement an algorithm to determine if a string has all unique characters.
  */
 public class IsUnique {
 
+    /**
+     * - The time complexity for this code is O(n), where n is the length of the string.
+     * - The space complexity is O(1).
+     * <p>
+     * See ASCII table at http://www.asciitable.com/ for more information
+     */
     boolean isUniqueChars(String str) {
         if (str.length() > 128) return false;
 
