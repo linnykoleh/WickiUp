@@ -1,7 +1,9 @@
 package com.linnik.wickiup.laakmann._1_ArraysAndStrings;
 
 /**
+ * =====================================================================================
  * Is Unique: Implement an algorithm to determine if a string has all unique characters.
+ * =====================================================================================
  */
 public class IsUnique {
 

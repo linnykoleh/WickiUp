@@ -3,10 +3,11 @@ package com.linnik.wickiup.laakmann._1_ArraysAndStrings;
 import java.util.Arrays;
 
 /**
- *
+ *======================================================================================================
  * Check Permutation: Given two strings, write a method to decide if one is a permutation of the other
  *
  * If two strings are permutations, then we know they have the same characters, but in different orders.
+ * ======================================================================================================
  */
 public class CheckPermutation {
 

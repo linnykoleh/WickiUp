@@ -1,12 +1,14 @@
 package com.linnik.wickiup.laakmann._1_ArraysAndStrings;
 
 /**
+ * =====================================================================
  * URLify: Write a method to replace all spaces in a string with '%20'.
  * <p>
  * EXAMPLE
  * <p>
  * Input: "Mr John Smith ", 13
  * Output: "Mr%20John%20Smith"
+ * =====================================================================
  */
 public class URLify {
 
