@@ -1,4 +1,4 @@
-package com.linnik.wickiup.laakmann._1_ArraysAndStrings;
+package com.linnik.wickiup.laakmann._1_arrays_and_strings;
 
 /**
  * =====================================================================
