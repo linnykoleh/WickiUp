@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class LinkedList<T> {
 
-    Node<T> head;
-    Node<T> tail;
+    public Node<T> head;
+    public Node<T> tail;
 
-    void append(T val) {
+    public void append(T val) {
         Node<T> node = new Node<>(val);
         if (Objects.isNull(head)) {
             head = node;

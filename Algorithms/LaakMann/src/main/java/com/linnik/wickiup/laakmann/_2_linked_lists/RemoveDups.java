@@ -16,7 +16,7 @@ public class RemoveDups {
     /**
      * The solution takes O(N) time, where N is the number of elements in the linked list.
      */
-    <T> void deleteDups_1(Node<T> node) {
+    public <T> void deleteDups_1(Node<T> node) {
         HashSet<T> hashTable = new HashSet<>();
 
         Node cursor = null;
@@ -36,7 +36,7 @@ public class RemoveDups {
      * <p>
      * This code runs in O (1) space, but O (N2) time.
      */
-    <T> void deleteDups_2(Node<T> head) {
+    public <T> void deleteDups_2(Node<T> head) {
         Node<T> current = head;
         while (current != null) {
             /* Remove all future nodes that have the same value */

@@ -1,33 +1,30 @@
 package com.linnik.wickiup.laakmann._2_linked_lists;
 
 import com.linnik.wickiup.laakmann._2_linked_lists.structures.LinkedList;
+import com.linnik.wickiup.laakmann._2_linked_lists.structures.Node;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class RemoveDupsTest {
+public class ReturnKthToLastTest {
 
     @Test
     public void test1() {
         LinkedList<Integer> linkedList = getLinkedList();
 
-        String expected = "1 -> 2 -> 3 -> 4 -> null";
-
-        RemoveDups removeDups = new RemoveDups();
-        removeDups.deleteDups_1(linkedList.head);
-
-        Assert.assertEquals(expected, linkedList.head.toString());
+        new ReturnKthToLast().printKthToLast(linkedList.head, 3);
+        // 3th to last node is 6
+        // 3th to last node is 5
+        // 3th to last node is 4
     }
 
     @Test
     public void test2() {
+        String expected = "4 -> 5 -> 6 -> null";
         LinkedList<Integer> linkedList = getLinkedList();
 
-        String expected = "1 -> 2 -> 3 -> 4 -> null";
+        Node node = new ReturnKthToLast().nthTolast(linkedList.head, 3);
 
-        RemoveDups removeDups = new RemoveDups();
-        removeDups.deleteDups_2(linkedList.head);
-
-        Assert.assertEquals(expected, linkedList.head.toString());
+        Assert.assertEquals(expected, node.toString());
     }
 
     private LinkedList<Integer> getLinkedList() {
@@ -37,9 +34,8 @@ public class RemoveDupsTest {
         linkedList.append(2);
         linkedList.append(3);
         linkedList.append(4);
-
-        linkedList.append(1);
-        linkedList.append(2);
+        linkedList.append(5);
+        linkedList.append(6);
         return linkedList;
     }
 }
