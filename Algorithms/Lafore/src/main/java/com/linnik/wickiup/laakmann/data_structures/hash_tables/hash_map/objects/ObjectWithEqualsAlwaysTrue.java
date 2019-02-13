@@ -1,7 +1,5 @@
 package com.linnik.wickiup.laakmann.data_structures.hash_tables.hash_map.objects;
 
-import java.util.Objects;
-
 public class ObjectWithEqualsAlwaysTrue {
 
 	private final int a;
@@ -19,7 +17,7 @@ public class ObjectWithEqualsAlwaysTrue {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(a, b);
+		return a + b;
 	}
 
 	@Override

@@ -9,6 +9,14 @@ public class LinkedList<T> {
 
     public void append(T val) {
         Node<T> node = new Node<>(val);
+        append(node);
+    }
+
+    public void appendAsNode(Node<T> node) {
+        append(node);
+    }
+
+    private void append(Node<T> node) {
         if (Objects.isNull(head)) {
             head = node;
         } else if (Objects.isNull(tail)) {
