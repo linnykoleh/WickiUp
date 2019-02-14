@@ -16,46 +16,27 @@ import com.linnik.wickiup.laakmann._2_linked_lists.structures.Node;
  */
 public class Partition {
 
-	/* Pass in the head of the linked list and the value to partition around*/
 	public Node partition(Node<Integer> node, int partition) {
-		Node beforeStart = null;
-		Node beforeEnd = null;
-		Node afterStart = null;
-		Node afterEnd = null;
+		Node<Integer> head = node;
+		Node<Integer> tail = node;
 
-		/* Partition list*/
 		while (node != null) {
 			Node<Integer> next = node.next;
-			node.next = null;
 			if (node.value < partition) {
-				/* Insert node into end of before list*/
-				if (beforeStart == null) {
-					beforeStart = node;
-					beforeEnd = beforeStart;
-				} else {
-					beforeEnd.next = node;
-					beforeEnd = node;
-				}
+				/* Insert node at head. */
+				node.next = head;
+				head = node;
 			} else {
-				/* Insert node into end of after list*/
-				if (afterStart == null) {
-					afterStart = node;
-					afterEnd = afterStart;
-				} else {
-					afterEnd.next = node;
-					afterEnd = node;
-				}
+				/* Insert node at tail. */
+				tail.next = node;
+				tail = node;
 			}
 			node = next;
 		}
+		tail.next = null;
 
-		if (beforeStart == null) {
-			return afterStart;
-		}
-
-		/* Merge before list and after list */
-		beforeEnd.next = afterStart;
-		return beforeStart;
+		// The head has changed, so we need to return it to the user.
+		return head;
 	}
 
 }

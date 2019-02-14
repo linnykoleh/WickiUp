@@ -9,7 +9,7 @@ public class PartitionTest {
 
 	@Test
 	public void test() {
-		String expect = "3 -> 2 -> 1 -> 8 -> 5 -> 10 -> null";
+		String expect = "1 -> 2 -> 3 -> 8 -> 5 -> 10 -> null";
 		String actual = "3 -> 8 -> 5 -> 10 -> 2 -> 1 -> null";
 		Partition partition = new Partition();
 
