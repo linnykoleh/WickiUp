@@ -152,3 +152,32 @@ This means that if you'd like to find the Kth element in the list, you will need
 
 The benefit of a linked list is that you can add and remove items from the beginning of the list in constant
 time
+
+### Stack
+
+- A stack uses `LIFO` (last-in first-out) ordering. 
+  That is, as in a stack of dinner plates, the most recent item added to the stack is the first item to be removed.
+  
+- It uses the following operations:
+	- pop() : Remove the top item from the stack.
+	- push(item): Add an item to the top of the stack.
+	- peek(): Return the top of the stack.
+	- isEmpty(): Return true if and only if the stack is empty.  
+
+- Unlike an array, a stack does not offer constant-time access to the i th item. 
+  However, it does allow constant time adds and removes, as it doesn't require shifting elements around. 	
+ 
+- One case where stacks are often useful is in certain recursive algorithms
+
+### Queue
+
+- A queue implements `FIFO` (first-in first-out) ordering. 
+  As in a line or queue at a ticket stand, items are removed from the data structure in the same order that they are added.   
+  
+- It uses the operations:
+	- add(item): Add an item to the end of the list.
+	- remove(): Remove the first item in the list.
+	- peek() : Return the top of the queue.
+	- isEmpty(): Return true if and only if the queue is empty.   
+
+- One place where queues are often used is in breadth-first search or in implementing a cache. 	
