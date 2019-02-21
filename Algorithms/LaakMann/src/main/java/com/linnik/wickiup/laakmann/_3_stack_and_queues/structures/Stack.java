@@ -8,7 +8,7 @@ public class Stack {
 	private int capacity;
 	private Node top;
 	private Node bottom;
-	private int size = 0;
+	public int size = 0;
 
 	public Stack(int capacity) {
 		this.capacity = capacity;
