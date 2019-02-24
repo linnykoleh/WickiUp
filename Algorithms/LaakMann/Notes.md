@@ -7,8 +7,8 @@
 ### Time Complexity
 
 - O (big 0): describes an upper bound on the time. An algorithm that prints all the
-  values in an array could be described as O(N), but it could also be described as O(N2), O(N3), or 0( 2
-  N) (or many other big O times). The
+  values in an array could be described as O(N), but it could also be described as O(N^2), O(N^3), 
+  or 0(2N) (or many other big O times).
 
 #### Best Case, Worst Case, and Expected Case
 
@@ -17,7 +17,7 @@
 - **Worst Case**: What if we get really unlucky and the pivot is repeatedly the biggest element in the array?    
   In this case, our recursion doesn't divide the
   array in half and recurse on each half. It just shrinks the subarray by one element. 
-    - This will degenerate to an `O(N2)` runtime.
+    - This will degenerate to an `O(N^2)` runtime.
 - **Expected Case**
     - We can expect a runtime of `O(NlogN)`
     
@@ -111,7 +111,7 @@ return result;
 
 ![alt text](images/2_log.svg)  
 
-- `O(n2) — квадратичная сложность`
+- `O(n^2) — квадратичная сложность`
 Такую сложность имеет, например, алгоритм сортировки вставками. В канонической реализации он представляет из себя два вложенных цикла: 
 один, чтобы проходить по всему массиву, а второй, чтобы находить место очередному элементу в уже отсортированной части. 
 Таким образом, количество операций будет зависеть от размера массива как n * n, т. е. n2.

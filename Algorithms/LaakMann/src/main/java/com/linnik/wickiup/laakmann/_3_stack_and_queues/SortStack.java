@@ -12,7 +12,7 @@ import java.util.ArrayDeque;
 public class SortStack {
 
 	/**
-	 * This algorithm is O (N2) time and O ( N) space.
+	 * This algorithm is O(N^2) time and O(N) space.
 	 */
 	public void sort(ArrayDeque<Integer> firstStack) {
 		ArrayDeque<Integer> secondStack = new ArrayDeque<>();

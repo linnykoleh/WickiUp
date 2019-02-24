@@ -34,7 +34,7 @@ public class RemoveDups {
     /**
      * No Buffer Allowed
      * <p>
-     * This code runs in O (1) space, but O (N2) time.
+     * This code runs in O (1) space, but O (N^2) time.
      */
     public <T> void deleteDups_2(Node<T> head) {
         Node<T> current = head;
