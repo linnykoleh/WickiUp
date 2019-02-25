@@ -19,13 +19,13 @@ public class RemoveDups {
     public <T> void deleteDups_1(Node<T> node) {
         HashSet<T> hashTable = new HashSet<>();
 
-        Node cursor = null;
+        Node<T> prev = null;
         while (node != null) {
             if (hashTable.contains(node.value)) {
-                cursor.next = node.next;
+                prev.next = node.next;
             } else {
                 hashTable.add(node.value);
-                cursor = node;
+                prev = node;
             }
             node = node.next;
         }
