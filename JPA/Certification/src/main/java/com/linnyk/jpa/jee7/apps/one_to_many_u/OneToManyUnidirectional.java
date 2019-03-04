@@ -2,10 +2,12 @@ package com.linnyk.jpa.jee7.apps.one_to_many_u;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
 import org.junit.Test;
 
@@ -110,6 +112,70 @@ public class OneToManyUnidirectional {
 
 		transaction.commit();
 		entityManager.close();
+
+		final EntityManager entityManager1 = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction1 = entityManager1.getTransaction();
+		transaction1.begin();
+
+		final TypedQuery<OrderC> from_orderC = entityManager1.createQuery("from OrderC", OrderC.class);
+		from_orderC.getSingleResult().getOrderLineCS().clear();
+
+		transaction1.commit();
+		entityManager1.close();
+
+
+		final EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction2 = entityManager2.getTransaction();
+		transaction2.begin();
+
+		final TypedQuery<OrderC> from_orderC1 = entityManager2.createQuery("from OrderC", OrderC.class);
+		final OrderC singleResult = from_orderC1.getSingleResult();
+
+		transaction1.commit();
+		entityManager1.close();
+
+
+		entityManagerFactory.close();
+	}
+
+	@Test
+	public void test_JoinColumnClearCollection(){
+		final EntityManagerFactory entityManagerFactory = JPAFactoryBuilder.getEntityManagerFactory();
+		final EntityManager entityManager = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction = entityManager.getTransaction();
+		transaction.begin();
+
+		final OrderLineC orderLineC1 = new OrderLineC("Item 1", 21.3, 23);
+		final OrderLineC orderLineC2 = new OrderLineC("Item 2", 23.6, 12);
+		final OrderLineC orderLineC3 = new OrderLineC("Item 3", 76.2, 62);
+
+		final OrderC orderC = new OrderC(new Date(), Arrays.asList(orderLineC1, orderLineC2, orderLineC3));
+
+		entityManager.persist(orderC);
+		transaction.commit();
+		entityManager.close();
+
+		final EntityManager entityManager1 = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction1 = entityManager1.getTransaction();
+		transaction1.begin();
+
+		final TypedQuery<OrderC> from_orderC = entityManager1.createQuery("from OrderC", OrderC.class);
+		from_orderC.getSingleResult().getOrderLineCS().clear();
+
+		transaction1.commit();
+		entityManager1.close();
+
+		final EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+		final EntityTransaction transaction2 = entityManager2.getTransaction();
+		transaction2.begin();
+
+		final TypedQuery<OrderC> from_orderC1 = entityManager2.createQuery("from OrderC", OrderC.class);
+		final OrderC singleResult = from_orderC1.getSingleResult();
+
+		transaction1.commit();
+		entityManager1.close();
+
+
 		entityManagerFactory.close();
 	}
 }
