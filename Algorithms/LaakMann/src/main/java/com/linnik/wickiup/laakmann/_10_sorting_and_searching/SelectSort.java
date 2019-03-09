@@ -3,7 +3,7 @@ package com.linnik.wickiup.laakmann._10_sorting_and_searching;
 public class SelectSort {
 
     /**
-     * Time : 0(n2) Memory: 0(1) .
+     * Time: 0(n2) Memory: 0(1)
      */
     public void sort(int[] array) {
         for (int out = 0; out < array.length; out++) {
