@@ -1,4 +1,4 @@
-package com.linnik.wickiup.solid.o.bad;
+package com.linnik.wickiup.solid.o._1_.bad;
 
 /**
  * @author LinnykOleh
