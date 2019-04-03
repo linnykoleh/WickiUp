@@ -24,6 +24,7 @@
 		<module>Akka</module>
 		<module>Microservices</module>
 		<module>Algorithms</module>
+		<module>UI</module>
 	</modules>
 
 	<build>
