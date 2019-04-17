@@ -97,7 +97,7 @@ some messgae this is acked
 
 From folder where is Kafka run:
 
-`kafka-console-consumer.sh --zookeeper 127.0.0.1:2181 --topic first_topic`
+`kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic kafka_topic`
 
 ![alt text](images/Screenshot_1.png)
 
@@ -105,13 +105,13 @@ From folder where is Kafka run:
 
 From folder where is Kafka run:
 
-`kafka-console-consumer.sh --zookeeper 127.0.0.1:2181 --topic first_topic --from-beginning`
+`kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic kafka_topic --from-beginning`
 
 ### Consume messages for group of consumers
 
 From folder where is Kafka run:
 
-`kafka-console-consumer.sh --zookeeper 127.0.0.1:2181 --topic first_topic`
+`kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic kafka_topic --topic first_topic`
 
 ![alt text](images/Screenshot_2.png)
 
