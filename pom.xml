@@ -25,6 +25,7 @@
 		<module>Microservices</module>
 		<module>Algorithms</module>
 		<module>UI</module>
+		<module>Kafka</module>
 	</modules>
 
 	<build>
