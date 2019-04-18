@@ -1,4 +1,4 @@
-package com.linnyk.kafka;
+package com.linnyk.kafka.demo.producers;
 
 import java.util.Properties;
 

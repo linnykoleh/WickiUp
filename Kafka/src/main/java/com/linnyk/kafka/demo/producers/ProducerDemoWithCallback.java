@@ -1,4 +1,4 @@
-package com.linnyk.kafka;
+package com.linnyk.kafka.demo.producers;
 
 import java.util.Properties;
 
@@ -23,23 +23,27 @@ public class ProducerDemoWithCallback {
 		// 2. Create the producer
 		KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
-		// 3. Create producer record
-		ProducerRecord<String, String> producerRecord = new ProducerRecord<>("my_topic", "Hello world");
+		for (int i = 0; i < 5; i++) {
 
-		// 4. Send data asynchronous
-		producer.send(producerRecord, new Callback() {
-			@Override
-			public void onCompletion(RecordMetadata metadata, Exception exception) {
+			// 3. Create producer record
+			ProducerRecord<String, String> producerRecord = new ProducerRecord<>("my_topic", "Hello world " + 5);
+
+			// 4. Send data asynchronous
+			producer.send(producerRecord, (metadata, exception) -> {
 				// executes every time record is successfully sent or an exception is thrown
-				if (exception != null) {
+				if (exception == null) {
 					System.out.println("Success sent");
-					System.out.println(metadata);
+					System.out.println("topic: " + metadata.topic());
+					System.out.println("partition: " + metadata.partition());
+					System.out.println("offset: " + metadata.offset());
+					System.out.println("timestamp: " + metadata.timestamp());
+					System.out.println("---------------------------");
 				} else {
-					System.out.println("Didn't sent");
+					System.out.println("Didn't sent: " + exception);
 				}
 
-			}
-		});
+			});
+		}
 
 		// flush
 		producer.flush();
