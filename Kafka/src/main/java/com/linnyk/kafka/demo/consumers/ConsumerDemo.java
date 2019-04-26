@@ -12,7 +12,9 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 
 public class ConsumerDemo {
 
-	public static void main(String[] args) {
+    private static final String TOPIC = "twitter_tweets";
+
+    public static void main(String[] args) {
 
 		// 1. Create consumer configuration
 		Properties properties = new Properties();
@@ -26,7 +28,7 @@ public class ConsumerDemo {
 		KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
 
 		// 3. Subscribe on topic(s)
-		consumer.subscribe(Arrays.asList("my_topic"));
+		consumer.subscribe(Arrays.asList(TOPIC));
 
 		// 4. Poll for new data
 		while (true) {

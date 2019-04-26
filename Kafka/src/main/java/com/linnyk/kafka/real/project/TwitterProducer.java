@@ -24,12 +24,13 @@ import java.util.concurrent.TimeUnit;
 
 public class TwitterProducer {
 
-    private static final String CONSUMER_KEY = "consumerKey";
-    private static final String CONSUMER_SECRET = "consumerSecret";
-    private static final String TOKEN = "token";
-    private static final String SECRET = "secret";
+    private static final String CONSUMER_KEY = "YmNLGxU73g1Pn32tAVMTlpmWA";
+    private static final String CONSUMER_SECRET = "wOF4FMRvUi1XLX2xQNO8ZsQrSqixn5NMN0Rw4xEPZdt75ot3zV";
+    private static final String TOKEN = "995365795856338945-j6upUCPEhVUCHJNQJquK4zvBC8eK44b";
+    private static final String SECRET = "YOH6P9MelUawjMkY72sXNyXULyF9UVaO6yU8n58pqcln0";
 
-    private static final ArrayList<String> TERMS = Lists.newArrayList("kafka");
+    private static final ArrayList<String> TERMS = Lists.newArrayList("java", "kafka", "russia", "putin ");
+    private static final String TOPIC = "twitter_tweets";
 
     public static void main(String[] args) {
         System.out.println("Hello twitter producer");
@@ -48,7 +49,7 @@ public class TwitterProducer {
         // 2 create twitter producer
         KafkaProducer<String, String> kafkaProducer = createKafkaProducer();
 
-
+        // 3 loop to send tweets to kafka
         while (!hosebirdClient.isDone()) {
             String msg = null;
             try {
@@ -59,17 +60,13 @@ public class TwitterProducer {
             }
             if (Objects.nonNull(msg)) {
                 System.out.println(msg);
-                //
-                kafkaProducer.send(new ProducerRecord<>("twitter_tweets", null, msg), (recordMetadata, e) -> {
+                kafkaProducer.send(new ProducerRecord<>(TOPIC, null, msg), (recordMetadata, e) -> {
                     if (e != null) {
                         System.out.println("Error: " + e);
                     }
                 });
             }
         }
-
-
-        // loop to send tweets to kafka
     }
 
 
@@ -101,6 +98,12 @@ public class TwitterProducer {
         properties.setProperty(ProducerConfig.ACKS_CONFIG, "all");
         properties.setProperty(ProducerConfig.RETRIES_CONFIG, Integer.toString(Integer.MAX_VALUE));
         properties.setProperty(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, "5");
+
+        // high throughput producer
+        properties.setProperty(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");
+        properties.setProperty(ProducerConfig.LINGER_MS_CONFIG, "20");
+        properties.setProperty(ProducerConfig.BATCH_SIZE_CONFIG, Integer.toString(32 * 1024)); //32 KB
+
 
         return new KafkaProducer<>(properties);
     }

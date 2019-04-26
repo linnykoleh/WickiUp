@@ -150,3 +150,7 @@ From folder where is Kafka run:
  
 ![alt text](images/Screenshot_10.png)  
 
+### Message compression
+
+![alt text](images/Screenshot_15.png) 
+
