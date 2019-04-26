@@ -29,9 +29,22 @@ From folder where is Kafka run:
  
 ### Create topic
 
+![alt text](images/Screenshot_11.png) 
+
+![alt text](images/Screenshot_12.png) 
+
+![alt text](images/Screenshot_13.png) 
+
+![alt text](images/Screenshot_14.png) 
+
+- Replication means you have a copy of data 
+- Leader and ISR are determining by **zookeeper**
+
 From folder where is Kafka run:
 
 `kafka-topics.sh --zookeeper 127.0.0.1:2181 --topic first_topic --create --partitions 3 --replication-factor 1`
+
+`kafka-topics.sh --zookeeper 127.0.0.1:2181 --create --topic twitter_tweets --partitions 6 --replication-factor 1`
 
 Information:
 
@@ -124,4 +137,16 @@ From folder where is Kafka run:
 ![alt text](images/Screenshot_4.png)
 
 ![alt text](images/Screenshot_5.png)
+
+### acks
+
+![alt text](images/Screenshot_6.png) 
+ 
+![alt text](images/Screenshot_7.png)  
+
+![alt text](images/Screenshot_8.png)  
+
+![alt text](images/Screenshot_9.png) 
+ 
+![alt text](images/Screenshot_10.png)  
 
