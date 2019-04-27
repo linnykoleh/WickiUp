@@ -2,7 +2,6 @@
 
 ### Setup
 
-
 - Download Kafka
 - Where Kafka is, create folder **data**
 	- Inside folder **data** create folders **kafka** and **zookeeper**	
@@ -20,7 +19,7 @@ From folder where is Kafka run:
 
 `zookeeper-server-start.sh config/zookeeper.properties`
 
- 
+
 ### Start kafka
 
 From folder where is Kafka run:
@@ -154,3 +153,14 @@ From folder where is Kafka run:
 
 ![alt text](images/Screenshot_15.png) 
 
+### Delivery semantic
+
+![alt text](images/Screenshot_16.png) 
+
+![alt text](images/Screenshot_17.png)
+
+- For most application you should use **at least once** processing 
+
+### Consumer offset reset behavior 
+
+![alt text](images/Screenshot_18.png) 

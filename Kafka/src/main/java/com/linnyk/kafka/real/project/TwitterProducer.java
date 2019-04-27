@@ -36,7 +36,6 @@ public class TwitterProducer {
         System.out.println("Hello twitter producer");
 
         new TwitterProducer().run();
-
     }
 
     private void run() {
@@ -68,7 +67,6 @@ public class TwitterProducer {
             }
         }
     }
-
 
     private Client createTwitterClient(BlockingQueue<String> msgQueue) {
         Hosts hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
@@ -103,7 +101,6 @@ public class TwitterProducer {
         properties.setProperty(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");
         properties.setProperty(ProducerConfig.LINGER_MS_CONFIG, "20");
         properties.setProperty(ProducerConfig.BATCH_SIZE_CONFIG, Integer.toString(32 * 1024)); //32 KB
-
 
         return new KafkaProducer<>(properties);
     }
