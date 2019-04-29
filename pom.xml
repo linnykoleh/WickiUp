@@ -26,6 +26,7 @@
 		<module>Algorithms</module>
 		<module>UI</module>
 		<module>Kafka</module>
+		<module>gRPC</module>
 	</modules>
 
 	<build>
