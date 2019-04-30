@@ -24,8 +24,23 @@ public class CalculatorClient {
 
         sum(service);
         primeNumber(service);
+        sqrt(service);
 
         channel.shutdown();
+    }
+
+    private static void sqrt(CalculatorServiceGrpc.CalculatorServiceBlockingStub service) {
+        SquareRootRequest rootRequest = SquareRootRequest.newBuilder()
+                .setNumber(0)
+                .build();
+        try {
+            SquareRootResponse squareRootResponse = service.squareRoot(rootRequest);
+            double rootedNumber = squareRootResponse.getRootedNumber();
+            System.out.println("RootedNumber is " + rootedNumber);
+        } catch (Exception e) {
+            System.out.println("Got an exception ");
+            e.printStackTrace();
+        }
     }
 
     private static void sum(CalculatorServiceGrpc.CalculatorServiceBlockingStub service) {

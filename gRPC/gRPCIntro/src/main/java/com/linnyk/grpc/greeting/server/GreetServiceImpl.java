@@ -88,4 +88,36 @@ public class GreetServiceImpl extends GreetServiceGrpc.GreetServiceImplBase {
             }
         };
     }
+
+    /**
+     * Bi Directional streaming example
+     */
+    @Override
+    public StreamObserver<GreetEveryoneRequest> greetEveryone(StreamObserver<GreetEveryoneResponse> responseObserver) {
+        System.out.println("Request for greetEveryone");
+
+        return new StreamObserver<GreetEveryoneRequest>() {
+            @Override
+            public void onNext(GreetEveryoneRequest value) {
+                String response = "Hello " + value.getGreeting().getFirstName();
+
+                System.out.println("Request for :" + value.getGreeting().getFirstName());
+
+                GreetEveryoneResponse greetEveryoneResponse = GreetEveryoneResponse.newBuilder()
+                        .setResult(response)
+                        .build();
+                responseObserver.onNext(greetEveryoneResponse);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                // client sends an error
+            }
+
+            @Override
+            public void onCompleted() {
+                responseObserver.onCompleted();
+            }
+        };
+    }
 }

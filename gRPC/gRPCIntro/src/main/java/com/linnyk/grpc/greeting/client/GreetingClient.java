@@ -27,9 +27,10 @@ public class GreetingClient {
         // Asynchronous client
         GreetServiceGrpc.GreetServiceStub asyncClient = GreetServiceGrpc.newStub(channel);
 
-        unaryCall(syncClient);
-        serverStreamCall(syncClient);
-        clientStreamCall(asyncClient);
+//        unaryCall(syncClient);
+//        serverStreamCall(syncClient);
+//        clientStreamCall(asyncClient);
+        biDirectionalStreamCall(asyncClient);
 
         System.out.println("Shutting down channel");
         channel.shutdown();
@@ -109,6 +110,40 @@ public class GreetingClient {
         streamObserver.onCompleted();
 
         countDownLatch.await();
+    }
+
+    private static void biDirectionalStreamCall(GreetServiceGrpc.GreetServiceStub asyncClient) throws InterruptedException {
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+
+        StreamObserver<GreetEveryoneRequest> requestObserver = asyncClient.greetEveryone(new StreamObserver<GreetEveryoneResponse>() {
+
+            @Override
+            public void onNext(GreetEveryoneResponse value) {
+                System.out.println("Response is: " + value.getResult());
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                countDownLatch.countDown();
+            }
+
+            @Override
+            public void onCompleted() {
+                System.out.println("Server is done sending data");
+                countDownLatch.countDown();
+            }
+        });
+        for (int i = 0; i < 10; i++) {
+            Greeting greeting = Greeting.newBuilder().setFirstName("Oleh #" + i).build();
+            requestObserver.onNext(GreetEveryoneRequest.newBuilder()
+                    .setGreeting(greeting)
+                    .build());
+            Thread.sleep(500);
+        }
+        requestObserver.onCompleted();
+
+        countDownLatch.await();
+
     }
 
 }

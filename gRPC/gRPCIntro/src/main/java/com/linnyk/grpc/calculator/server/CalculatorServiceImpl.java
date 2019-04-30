@@ -1,6 +1,7 @@
 package com.linnyk.grpc.calculator.server;
 
 import com.proto.calculator.*;
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
 public class CalculatorServiceImpl extends CalculatorServiceGrpc.CalculatorServiceImplBase {
@@ -29,6 +30,27 @@ public class CalculatorServiceImpl extends CalculatorServiceGrpc.CalculatorServi
             } else {
                 divisor++;
             }
+        }
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void squareRoot(SquareRootRequest request, StreamObserver<SquareRootResponse> responseObserver) {
+        System.out.println("Request for squareRoot is: " + request);
+        int number = request.getNumber();
+
+        if (number > 0) {
+            double sqrt = Math.sqrt(number);
+            SquareRootResponse squareRootResponse = SquareRootResponse.newBuilder()
+                    .setRootedNumber(sqrt)
+                    .build();
+            responseObserver.onNext(squareRootResponse);
+        } else {
+            responseObserver.onError(Status.INVALID_ARGUMENT
+                    .withDescription("The number is being sent is not positive")
+                    .augmentDescription("Number sent: " + number)
+                    .asRuntimeException()
+            );
         }
         responseObserver.onCompleted();
     }
