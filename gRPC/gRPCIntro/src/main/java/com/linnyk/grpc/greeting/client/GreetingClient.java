@@ -1,22 +1,32 @@
 package com.linnyk.grpc.greeting.client;
 
 import com.proto.greet.*;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
+import io.grpc.*;
+import io.grpc.netty.shaded.io.grpc.netty.GrpcSslContexts;
+import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
+import javax.net.ssl.SSLException;
+import java.io.File;
 import java.util.Iterator;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 public class GreetingClient {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws SSLException, InterruptedException {
         System.out.println("Hello CalculatorClient");
 
-        // Create channel
+        // Plaintext channel for development
         ManagedChannel channel = ManagedChannelBuilder
                 .forAddress("localhost", 50051)
                 .usePlaintext()
+                .build();
+
+        // Secure channel for production
+        ManagedChannel secureChannel = NettyChannelBuilder
+                .forAddress("localhost", 50051)
+                .sslContext(GrpcSslContexts.forClient().trustManager(new File("ssl/ca.crt")).build())
                 .build();
 
         System.out.println("Creating stub");
@@ -27,10 +37,11 @@ public class GreetingClient {
         // Asynchronous client
         GreetServiceGrpc.GreetServiceStub asyncClient = GreetServiceGrpc.newStub(channel);
 
-//        unaryCall(syncClient);
-//        serverStreamCall(syncClient);
-//        clientStreamCall(asyncClient);
+        unaryCall(syncClient);
+        serverStreamCall(syncClient);
+        clientStreamCall(asyncClient);
         biDirectionalStreamCall(asyncClient);
+        doUnaryCallWithDeadline(syncClient);
 
         System.out.println("Shutting down channel");
         channel.shutdown();
@@ -143,7 +154,45 @@ public class GreetingClient {
         requestObserver.onCompleted();
 
         countDownLatch.await();
-
     }
 
+    private static void doUnaryCallWithDeadline(GreetServiceGrpc.GreetServiceBlockingStub syncClient) {
+        try {
+            System.out.println("Sending a request with a deadline of 3000 ms");
+            GreetWithDeadlineRequest request = GreetWithDeadlineRequest.newBuilder()
+                    .setGreeting(Greeting.newBuilder()
+                            .setFirstName("Oleh")
+                            .build())
+                    .build();
+            GreetWithDeadlineResponse response = syncClient
+                    .withDeadline(Deadline.after(30000, TimeUnit.MILLISECONDS))
+                    .greetWithDeadline(request);
+            System.out.println(response.getResult());
+        } catch (StatusRuntimeException e) {
+            if (e.getStatus() == Status.DEADLINE_EXCEEDED) {
+                System.out.println("Deadline has been exceeded, we don't want the response");
+            } else {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            System.out.println("Sending a request with a deadline of 100 ms");
+            GreetWithDeadlineRequest request = GreetWithDeadlineRequest.newBuilder()
+                    .setGreeting(Greeting.newBuilder()
+                            .setFirstName("Oleh")
+                            .build())
+                    .build();
+            GreetWithDeadlineResponse response = syncClient
+                    .withDeadline(Deadline.after(100, TimeUnit.MILLISECONDS))
+                    .greetWithDeadline(request);
+            System.out.println(response.getResult());
+        } catch (StatusRuntimeException e) {
+            if (e.getStatus() == Status.DEADLINE_EXCEEDED) {
+                System.out.println("Deadline has been exceeded, we don't want the response");
+            } else {
+                e.printStackTrace();
+            }
+        }
+    }
 }

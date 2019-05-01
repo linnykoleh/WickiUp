@@ -34,6 +34,9 @@ public class CalculatorServiceImpl extends CalculatorServiceGrpc.CalculatorServi
         responseObserver.onCompleted();
     }
 
+    /**
+     * Error handling example
+     */
     @Override
     public void squareRoot(SquareRootRequest request, StreamObserver<SquareRootResponse> responseObserver) {
         System.out.println("Request for squareRoot is: " + request);

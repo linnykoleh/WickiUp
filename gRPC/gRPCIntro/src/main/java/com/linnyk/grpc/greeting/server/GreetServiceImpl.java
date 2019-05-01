@@ -1,6 +1,7 @@
 package com.linnyk.grpc.greeting.server;
 
 import com.proto.greet.*;
+import io.grpc.Context;
 import io.grpc.stub.StreamObserver;
 
 public class GreetServiceImpl extends GreetServiceGrpc.GreetServiceImplBase {
@@ -119,5 +120,29 @@ public class GreetServiceImpl extends GreetServiceGrpc.GreetServiceImplBase {
                 responseObserver.onCompleted();
             }
         };
+    }
+
+    @Override
+    public void greetWithDeadline(GreetWithDeadlineRequest request, StreamObserver<GreetWithDeadlineResponse> responseObserver) {
+
+        // can be used to check info about client behaviour
+        Context current = Context.current();
+        try {
+            for (int i = 0; i < 3; i++) {
+                if (!current.isCancelled()) {
+                    System.out.println("sleep for 100ms");
+                    Thread.sleep(100);
+                } else {
+                    return;
+                }
+                System.out.println("Send response");
+                responseObserver.onNext(GreetWithDeadlineResponse.newBuilder()
+                        .setResult("Hello " + request.getGreeting().getFirstName())
+                        .build());
+                responseObserver.onCompleted();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

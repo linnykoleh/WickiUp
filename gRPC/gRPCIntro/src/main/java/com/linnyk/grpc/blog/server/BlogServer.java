@@ -1,19 +1,17 @@
-package com.linnyk.grpc.calculator.server;
+package com.linnyk.grpc.blog.server;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import io.grpc.protobuf.services.ProtoReflectionService;
 
 import java.io.IOException;
 
-public class CalculatorServer {
+public class BlogServer {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        System.out.println("Hello CalculatorServer");
+        System.out.println("Hello BlogServer");
         final Server server = ServerBuilder
                 .forPort(50051)
-                .addService(new CalculatorServiceImpl())
-                .addService(ProtoReflectionService.newInstance()) //reflection
+                .addService(new BlogServiceImpl())
                 .build();
 
         server.start();
