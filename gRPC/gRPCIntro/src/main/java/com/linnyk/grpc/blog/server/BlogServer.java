@@ -2,6 +2,7 @@ package com.linnyk.grpc.blog.server;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.protobuf.services.ProtoReflectionService;
 
 import java.io.IOException;
 
@@ -12,6 +13,7 @@ public class BlogServer {
         final Server server = ServerBuilder
                 .forPort(50051)
                 .addService(new BlogServiceImpl())
+                .addService(ProtoReflectionService.newInstance())
                 .build();
 
         server.start();

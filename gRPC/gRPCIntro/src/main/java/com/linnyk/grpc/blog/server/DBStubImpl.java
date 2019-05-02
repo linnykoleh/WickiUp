@@ -2,6 +2,7 @@ package com.linnyk.grpc.blog.server;
 
 import com.proto.blog.Blog;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -25,7 +26,19 @@ public class DBStubImpl {
         return newBlog;
     }
 
-    public Blog get(String id) {
+    public Blog read(String id) {
         return blogs.get(id);
+    }
+
+    public Blog update(Blog blog) {
+        return blogs.put(blog.getId(), blog);
+    }
+
+    public Blog remove(String id) {
+        return blogs.remove(id);
+    }
+
+    public Collection<Blog> getAllBlogs() {
+        return blogs.values();
     }
 }
