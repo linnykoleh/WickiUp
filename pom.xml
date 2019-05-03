@@ -27,6 +27,7 @@
 		<module>UI</module>
 		<module>Kafka</module>
 		<module>gRPC</module>
+		<module>FFmpeg</module>
 	</modules>
 
 	<build>
