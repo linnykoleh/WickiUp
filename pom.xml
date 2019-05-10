@@ -28,6 +28,7 @@
 		<module>Kafka</module>
 		<module>gRPC</module>
 		<module>FFmpeg</module>
+		<module>Consul</module>
 	</modules>
 
 	<build>
