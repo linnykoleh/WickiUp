@@ -12,6 +12,7 @@
 
     <modules>
         <module>ConsulIntro</module>
+        <module>ConsulServices</module>
     </modules>
 
 </project>
