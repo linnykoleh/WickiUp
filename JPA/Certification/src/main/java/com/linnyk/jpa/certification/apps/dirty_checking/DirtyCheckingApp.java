@@ -1,6 +1,8 @@
 package com.linnyk.jpa.certification.apps.dirty_checking;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,8 +21,6 @@ import com.linnyk.jpa.certification.entities.dirty_checking.Page;
 import com.linnyk.jpa.certification.entities.dirty_checking.Site;
 import com.linnyk.jpa.safari.hibernate_api.configuration.HibernateFactoryBuilder;
 import com.linnyk.jpa.safari.jpa_api.configuration.JPAFactoryBuilder;
-
-import javafx.collections.FXCollections;
 
 public class DirtyCheckingApp {
 
@@ -94,13 +94,16 @@ public class DirtyCheckingApp {
 		final Page page3 = new Page("Contact", "The contact page");
 
 		final Site site = new Site("Sale Shop");
-		site.setPages(FXCollections.observableSet(page1, page2, page3));
+		Set<Page> sites = new HashSet<>();
+		sites.add(page1);
+		sites.add(page2);
+		sites.add(page3);
+		site.setPages(sites);
 
 		entityManager.persist(site);
 
 		transaction.commit();
 		entityManager.close();
 	}
-
 
 }

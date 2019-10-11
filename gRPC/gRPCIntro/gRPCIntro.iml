@@ -12,7 +12,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Bundled Protobuf Distribution" level="application" />
     <orderEntry type="library" name="Maven: io.grpc:grpc-netty-shaded:1.20.0" level="project" />
     <orderEntry type="library" name="Maven: io.grpc:grpc-core:1.20.0" level="project" />
     <orderEntry type="library" name="Maven: io.grpc:grpc-context:1.20.0" level="project" />
@@ -34,6 +33,6 @@
     <orderEntry type="library" name="Maven: io.grpc:grpc-services:1.20.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java-util:3.7.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.re2j:re2j:1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.4" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.8" level="project" />
   </component>
 </module>
