@@ -30,6 +30,8 @@
 		<module>FFmpeg</module>
 		<module>Consul</module>
 		<module>Java9</module>
+		<module>RxJava</module>
+		<module>RxJava</module>
 	</modules>
 
 	<build>
