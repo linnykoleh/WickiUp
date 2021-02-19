@@ -6,14 +6,12 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import java.math.BigInteger;
 import java.util.concurrent.TimeUnit;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
-
-public class Tests {
+public class RxTests {
 
     public static void main(String[] args) throws InterruptedException {
         Disposable subscribe = Observable
                 .range(5, 3)
-                .subscribe(Tests::log);
+                .subscribe(RxTests::log);
 
 
         System.out.println("================================");
@@ -36,24 +34,45 @@ public class Tests {
 
         Observable
                 .timer(1, TimeUnit.SECONDS)
-                .subscribe(Tests::log);
+                .subscribe(RxTests::log);
         Thread.sleep(2200);
 
         System.out.println("================================");
 
-        Observable
-                .interval(1, SECONDS)
-                .subscribe(Tests::log);
+//        Observable
+//                .interval(1, SECONDS)
+//                .subscribe(Tests::log);
         Thread.sleep(2000);
 
         System.out.println("================================");
 
         Observable<Integer> delayed = delayed(1);
-        Disposable subscribe2 = delayed.subscribe(Tests::log);
+        Disposable subscribe2 = delayed.subscribe(RxTests::log);
         Thread.sleep(2000);
         subscribe2.dispose();
 
         System.out.println("================================");
+
+        Observable
+                .just(8, 9, 10)
+                .doOnNext(RxTests::log)
+                .filter(i -> i % 3 > 0)
+                .doOnNext(RxTests::log)
+//                .map(i -> "#" + i * 10)
+                .flatMap(Observable::just)
+//                .filter(s -> s.length() < 4)
+                .subscribe(RxTests::log);
+
+        System.out.println("================================");
+
+        Observable.just('S', 'p', 'a', 'r', 't', 'a')
+                .map(Character::toLowerCase)
+                .flatMap(Observable::just)
+                .subscribe(RxTests::log);
+
+        System.out.println("================================");
+
+
     }
 
     private static void log(Object obj) {
