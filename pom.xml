@@ -31,7 +31,7 @@
 		<module>Consul</module>
 		<module>Java9</module>
 		<module>RxJava</module>
-		<module>RxJava</module>
+		<module>MongoDB</module>
 	</modules>
 
 	<build>
