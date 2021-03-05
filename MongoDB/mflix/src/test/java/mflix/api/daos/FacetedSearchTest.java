@@ -27,14 +27,14 @@ public class FacetedSearchTest extends TicketTest {
     private MovieDao dao;
 
     @Autowired
-    MongoClient mongoClient;
+    private MongoClient mongoClient;
 
     @Value("${spring.mongodb.database}")
-    String databaseName;
+    private String databaseName;
 
     @Before
     public void setup() {
-        this.dao = new MovieDao(mongoClient, databaseName);
+        dao = new MovieDao(mongoClient, databaseName);
     }
 
     @Test

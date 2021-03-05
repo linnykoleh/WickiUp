@@ -193,7 +193,11 @@ public class MovieDao extends AbstractMFlixDao {
         List<Document> movies = new ArrayList<>();
         // TODO > Ticket: Paging - implement the necessary cursor methods to support simple
         // pagination like skip and limit in the code below
-        moviesCollection.find(castFilter).sort(sort).iterator()
+        moviesCollection.find(castFilter)
+                .sort(sort)
+                .limit(limit)
+                .skip(skip)
+                .iterator()
                 .forEachRemaining(movies::add);
         return movies;
     }
@@ -224,7 +228,6 @@ public class MovieDao extends AbstractMFlixDao {
      * "output": { "count": {"$sum": 1} } } }
      */
     private Bson buildRuntimeBucketStage() {
-
         BucketOptions bucketOptions = new BucketOptions();
         bucketOptions.defaultBucket("other");
         BsonField count = new BsonField("count", new Document("$sum", 1));
@@ -261,12 +264,14 @@ public class MovieDao extends AbstractMFlixDao {
      */
     public List<Document> getMoviesCastFaceted(int limit, int skip, String... cast) {
         List<Document> movies = new ArrayList<>();
+
         String sortKey = "tomatoes.viewer.numReviews";
-        Bson skipStage = Aggregates.skip(skip);
         Bson matchStage = Aggregates.match(Filters.in("cast", cast));
         Bson sortStage = Aggregates.sort(Sorts.descending(sortKey));
+        Bson skipStage = Aggregates.skip(skip);
         Bson limitStage = Aggregates.limit(limit);
         Bson facetStage = buildFacetStage();
+
         // Using a LinkedList to ensure insertion order
         List<Bson> pipeline = new LinkedList<>();
 
@@ -275,6 +280,10 @@ public class MovieDao extends AbstractMFlixDao {
         // Your job is to order the stages correctly in the pipeline.
         // Starting with the `matchStage` add the remaining stages.
         pipeline.add(matchStage);
+        pipeline.add(sortStage);
+        pipeline.add(skipStage);
+        pipeline.add(limitStage);
+        pipeline.add(facetStage);
 
         moviesCollection.aggregate(pipeline).iterator().forEachRemaining(movies::add);
         return movies;
@@ -288,7 +297,6 @@ public class MovieDao extends AbstractMFlixDao {
      * @return Bson defining the $facet stage.
      */
     private Bson buildFacetStage() {
-
         return Aggregates.facet(
                 new Facet("runtime", buildRuntimeBucketStage()),
                 new Facet("rating", buildRatingBucketStage()),

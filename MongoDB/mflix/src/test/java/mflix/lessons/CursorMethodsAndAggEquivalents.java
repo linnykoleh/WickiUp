@@ -27,7 +27,6 @@ public class CursorMethodsAndAggEquivalents extends AbstractLesson {
     private MongoCollection<Document> sortable;
 
     public CursorMethodsAndAggEquivalents() {
-        super();
         sortable = testDb.getCollection("sortable");
     }
 

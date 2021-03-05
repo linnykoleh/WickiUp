@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-@SpringBootTest(classes = {MongoDBConfiguration.class})
+@SpringBootTest(classes = MongoDBConfiguration.class)
 @EnableConfigurationProperties
 @EnableAutoConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,15 +26,15 @@ public class PagingTest extends TicketTest {
     private String sortKey;
 
     @Autowired
-    MongoClient mongoClient;
+    private MongoClient mongoClient;
 
     @Value("${spring.mongodb.database}")
-    String databaseName;
+    private String databaseName;
 
     @Before
     public void setup() {
-        this.dao = new MovieDao(mongoClient, databaseName);
-        this.sortKey = "tomatoes.viewer.numReviews";
+        dao = new MovieDao(mongoClient, databaseName);
+        sortKey = "tomatoes.viewer.numReviews";
     }
 
     @Test
