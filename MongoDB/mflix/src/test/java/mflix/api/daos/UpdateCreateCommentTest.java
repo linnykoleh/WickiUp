@@ -21,7 +21,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
 
-@SpringBootTest(classes = {MongoDBConfiguration.class})
+@SpringBootTest(classes = MongoDBConfiguration.class)
 @EnableConfigurationProperties
 @EnableAutoConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,10 +30,10 @@ public class UpdateCreateCommentTest extends TicketTest {
     private CommentDao dao;
 
     @Autowired
-    MongoClient mongoClient;
+    private MongoClient mongoClient;
 
     @Value("${spring.mongodb.database}")
-    String databaseName;
+    private String databaseName;
 
     private String notValidEmail;
     private String validEmail;
@@ -107,14 +107,13 @@ public class UpdateCreateCommentTest extends TicketTest {
 
     @Test
     public void testUserFailsUpdateOthersComments() {
-
         Comment fakeComment = fakeCommentWithId();
         dao.addComment(fakeComment);
         String newCommentText = randomText(20);
 
-        Assert.assertTrue(
+        Assert.assertFalse(
                 "Cannot update comments not owned by user",
-                !dao.updateComment(fakeComment.getId(), newCommentText, notValidEmail));
+                dao.updateComment(fakeComment.getId(), newCommentText, notValidEmail));
     }
 
     @Test(expected = IncorrectDaoOperation.class)

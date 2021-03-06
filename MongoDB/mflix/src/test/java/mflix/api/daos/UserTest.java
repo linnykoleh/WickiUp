@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
 
-@SpringBootTest(classes = {MongoDBConfiguration.class})
+@SpringBootTest(classes = MongoDBConfiguration.class)
 @EnableConfigurationProperties
 @EnableAutoConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -33,14 +33,13 @@ public class UserTest extends TicketTest {
     private String jwt;
 
     @Autowired
-    MongoClient mongoClient;
+    private MongoClient mongoClient;
 
     @Value("${spring.mongodb.database}")
-    String databaseName;
+    private String databaseName;
 
     @Before
     public void setup() {
-
         this.dao = new UserDao(mongoClient, databaseName);
         this.testUser = new User();
         this.testUser.setName("Hermione Granger");
@@ -58,13 +57,11 @@ public class UserTest extends TicketTest {
         MongoDatabase db = mongoClient.getDatabase(databaseName);
         db.getCollection("users").deleteMany(new Document("email", email));
         db.getCollection("users").deleteMany(new Document("email", "log@out.com"));
-        db.getCollection("sessions").deleteMany(new Document("user_id", "log@out" +
-                ".com"));
+        db.getCollection("sessions").deleteMany(new Document("user_id", "log@out.com"));
     }
 
     @Test
     public void testRegisterUser() {
-
         assertTrue(
                 "Should have correctly created the user - check your write user method",
                 dao.addUser(testUser)); // add string explanation

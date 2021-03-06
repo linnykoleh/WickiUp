@@ -17,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @see com.mongodb.MongoWriteException
@@ -108,7 +109,7 @@ public class BasicWrites extends AbstractLesson {
         doc1.put("label", "Square Enix");
 
         Document doc2 = new Document();
-        HashMap<String, Object> documentValues = new HashMap<>();
+        Map<String, Object> documentValues = new HashMap<>();
         documentValues.put("title", "Tom Raider");
         documentValues.put("label", "Eidos");
         documentValues.put("year", 2013);

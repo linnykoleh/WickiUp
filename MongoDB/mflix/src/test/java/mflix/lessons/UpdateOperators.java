@@ -29,10 +29,6 @@ public class UpdateOperators extends AbstractLesson {
     private Document bandOne;
     private Document bandTwo;
 
-    public UpdateOperators() {
-        super();
-    }
-
     /* First, we must set up a test collection and the documents that go in
      * it. We are calling this collection "artists" and throwing Gorillaz and
      * Weird Al Yankovic in there for testing purposes.
@@ -255,7 +251,7 @@ public class UpdateOperators extends AbstractLesson {
         band2Id = null;
     }
 }
-/* And we're done with update operators! Let's quickly recap what we
+/** And we're done with update operators! Let's quickly recap what we
  * learned.
  *
  * 1. You can replace entire documents with replaceOne. This operation

@@ -4,7 +4,7 @@ import org.bson.codecs.pojo.annotations.BsonProperty;
 
 public class Session {
 
-    @BsonProperty(value = "user_id")
+    @BsonProperty("user_id")
     private String userId;
 
     private String jwt;

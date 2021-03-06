@@ -18,24 +18,23 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.HashMap;
 
-@SpringBootTest(classes = {MongoDBConfiguration.class})
+@SpringBootTest(classes = MongoDBConfiguration.class)
 @EnableConfigurationProperties
 @EnableAutoConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserPreferencesTest extends TicketTest {
 
     @Autowired
-    MongoClient mongoClient;
+    private MongoClient mongoClient;
 
     @Value("${spring.mongodb.database}")
-    String databaseName;
+    private String databaseName;
 
     private UserDao dao;
     private String email;
 
     @Before
     public void setup() {
-
         this.dao = new UserDao(mongoClient, databaseName);
         this.email = "user@preferences.email";
         Document userDoc = new Document("email", email);
@@ -51,7 +50,6 @@ public class UserPreferencesTest extends TicketTest {
 
     @Test
     public void testUpdateSinglePreferences() {
-
         String expected = "FC Porto";
         String key = "favorite_club";
         HashMap<String, String> userPrefs = new HashMap<>();

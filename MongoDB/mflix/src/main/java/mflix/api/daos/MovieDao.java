@@ -29,12 +29,6 @@ public class MovieDao extends AbstractMFlixDao {
         moviesCollection = db.getCollection(MOVIES_COLLECTION);
     }
 
-    @SuppressWarnings("unchecked")
-    private Bson buildLookupStage() {
-        return null;
-
-    }
-
     /**
      * movieId needs to be a hexadecimal string value. Otherwise it won't be possible to translate to
      * an ObjectID
@@ -55,21 +49,40 @@ public class MovieDao extends AbstractMFlixDao {
      * @param movieId - Movie identifier string.
      * @return Document object or null.
      */
-    @SuppressWarnings("UnnecessaryLocalVariable")
     public Document getMovie(String movieId) {
         if (!validIdValue(movieId)) {
             return null;
         }
-
         List<Bson> pipeline = new ArrayList<>();
         // match stage to find movie
         Bson match = Aggregates.match(Filters.eq("_id", new ObjectId(movieId)));
+        Bson lookup = buildLookupStage();
+
         pipeline.add(match);
+        pipeline.add(lookup);
         // TODO> Ticket: Get Comments - implement the lookup stage that allows the comments to
         // retrieved with Movies.
+
         Document movie = moviesCollection.aggregate(pipeline).first();
 
         return movie;
+    }
+
+    private Bson buildLookupStage(){
+        List<Variable<String>> let = new ArrayList<>();
+        let.add(new Variable<>("id", "$_id"));
+
+        // lookup pipeline
+        Bson exprMatch = Document.parse("{'$expr': {'$eq': ['$movie_id', '$$id']}}");
+
+        Bson lookupMatch = Aggregates.match(exprMatch);
+        List<Bson> lookUpPipeline = new ArrayList<>();
+        // lookup sort stage
+        Bson sortLookup = Aggregates.sort(Sorts.descending("date"));
+
+        lookUpPipeline.add(lookupMatch);
+        lookUpPipeline.add(sortLookup);
+        return Aggregates.lookup("comments", let, lookUpPipeline, "comments");
     }
 
     /**
@@ -80,7 +93,6 @@ public class MovieDao extends AbstractMFlixDao {
      * @param skip  - number of documents to be skipped.
      * @return list of documents.
      */
-    @SuppressWarnings("UnnecessaryLocalVariable")
     public List<Document> getMovies(int limit, int skip) {
         String defaultSortKey = "tomatoes.viewer.numReviews";
         List<Document> movies =
@@ -98,7 +110,6 @@ public class MovieDao extends AbstractMFlixDao {
      */
     public List<Document> getMovies(int limit, int skip, Bson sort) {
         List<Document> movies = new ArrayList<>();
-
         moviesCollection
                 .find()
                 .limit(limit)

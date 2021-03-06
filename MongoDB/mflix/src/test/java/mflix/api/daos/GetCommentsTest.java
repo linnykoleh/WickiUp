@@ -20,7 +20,7 @@ import javax.print.Doc;
 import java.util.Date;
 import java.util.List;
 
-@SpringBootTest(classes = {MongoDBConfiguration.class})
+@SpringBootTest(classes = MongoDBConfiguration.class)
 @EnableConfigurationProperties
 @EnableAutoConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -29,10 +29,10 @@ public class GetCommentsTest extends TicketTest {
     private MovieDao dao;
 
     @Autowired
-    MongoClient mongoClient;
+    private MongoClient mongoClient;
 
     @Value("${spring.mongodb.database}")
-    String databaseName;
+    private String databaseName;
 
     private String existingMovieId = "573a13c7f29313caabd73ea7";
     private String commentId;
@@ -56,12 +56,10 @@ public class GetCommentsTest extends TicketTest {
 
     @Before
     public void setUp() {
-
         this.dao = new MovieDao(mongoClient, databaseName);
         InsertComment();
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public void testGetMovieComments() {
         String movieId = "573a13b5f29313caabd42c2f";
@@ -105,6 +103,5 @@ public class GetCommentsTest extends TicketTest {
                         "array: Check your buildLookupStage method",
                 foundDocument);
     }
-
 
 }

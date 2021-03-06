@@ -1,13 +1,20 @@
 package mflix.api.daos;
 
 import com.mongodb.MongoClientSettings;
+import com.mongodb.ReadConcern;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Aggregates;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Sorts;
+import com.mongodb.client.model.Updates;
+import joptsimple.internal.Strings;
 import mflix.api.models.Comment;
 import mflix.api.models.Critic;
 import org.bson.Document;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,28 +25,30 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mongodb.client.model.Aggregates.limit;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 @Component
 public class CommentDao extends AbstractMFlixDao {
 
-    public static String COMMENT_COLLECTION = "comments";
+    public static final String COMMENT_COLLECTION = "comments";
+
     private final Logger log;
     private MongoCollection<Comment> commentCollection;
     private CodecRegistry pojoCodecRegistry;
 
     @Autowired
-    public CommentDao(
-            MongoClient mongoClient, @Value("${spring.mongodb.database}") String databaseName) {
+    public CommentDao(MongoClient mongoClient, @Value("${spring.mongodb.database}") String databaseName) {
         super(mongoClient, databaseName);
-        log = LoggerFactory.getLogger(this.getClass());
-        this.db = this.mongoClient.getDatabase(MFLIX_DATABASE);
-        this.pojoCodecRegistry =
+        log = LoggerFactory.getLogger(getClass());
+
+        db = this.mongoClient.getDatabase(MFLIX_DATABASE);
+        pojoCodecRegistry =
                 fromRegistries(
                         MongoClientSettings.getDefaultCodecRegistry(),
                         fromProviders(PojoCodecProvider.builder().automatic(true).build()));
-        this.commentCollection =
+        commentCollection =
                 db.getCollection(COMMENT_COLLECTION, Comment.class).withCodecRegistry(pojoCodecRegistry);
     }
 
@@ -65,12 +74,19 @@ public class CommentDao extends AbstractMFlixDao {
      * returns the resulting Comment object.
      */
     public Comment addComment(Comment comment) {
-
         // TODO> Ticket - Update User reviews: implement the functionality that enables adding a new
         // comment.
+        if (Strings.isNullOrEmpty(comment.getId())) {
+            throw new IncorrectDaoOperation("Id is empty");
+        }
+        try {
+            commentCollection.insertOne(comment);
+            return comment;
+        } catch (Exception e) {
+            throw new IncorrectDaoOperation(e.getMessage(), e);
+        }
         // TODO> Ticket - Handling Errors: Implement a try catch block to
         // handle a potential write exception when given a wrong commentId.
-        return null;
     }
 
     /**
@@ -87,12 +103,20 @@ public class CommentDao extends AbstractMFlixDao {
      * @return true if successfully updates the comment text.
      */
     public boolean updateComment(String commentId, String text, String email) {
-
         // TODO> Ticket - Update User reviews: implement the functionality that enables updating an
         // user own comments
+        try {
+            long modifiedCount = commentCollection.updateOne(
+                    Filters.and(Filters.eq("_id", new ObjectId(commentId)), Filters.eq("email", email)),
+                    Updates.set("text", text)
+            ).getModifiedCount();
+            return modifiedCount != 0;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return false;
+        }
         // TODO> Ticket - Handling Errors: Implement a try catch block to
         // handle a potential write exception when given a wrong commentId.
-        return false;
     }
 
     /**
@@ -106,9 +130,22 @@ public class CommentDao extends AbstractMFlixDao {
         // TODO> Ticket Delete Comments - Implement the method that enables the deletion of a user
         // comment
         // TIP: make sure to match only users that own the given commentId
+        if (Strings.isNullOrEmpty(commentId)) {
+            throw new IllegalArgumentException("commentId is empty");
+        }
+        try {
+            long deletedCount = commentCollection.deleteOne(Filters.and(
+                    Filters.eq("_id", new ObjectId(commentId)),
+                    Filters.eq("email", email)
+            )).getDeletedCount();
+            return deletedCount != 0;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return false;
+        }
+
         // TODO> Ticket Handling Errors - Implement a try catch block to
         // handle a potential write exception when given a wrong commentId.
-        return false;
     }
 
     /**
@@ -126,6 +163,34 @@ public class CommentDao extends AbstractMFlixDao {
         // // guarantee for the returned documents. Once a commenter is in the
         // // top 20 of users, they become a Critic, so mostActive is composed of
         // // Critic objects.
+
+        /**
+         * In this method we can use the $sortByCount stage:
+         * https://docs.mongodb.com/manual/reference/operator/aggregation/sortByCount/index.html
+         * using the $email field expression.
+         */
+
+//        Arrays.asList(group("$email", sum("count", 1L)), sort(descending("count")), limit(20L))
+
+        Bson groupByCountStage = Aggregates.sortByCount("$email");
+        // Let's sort descending on the `count` of comments
+        Bson sortStage = Aggregates.sort(Sorts.descending("count"));
+        // Given that we are required the 20 top users we have to also $limit
+        // the resulting list
+        Bson limitStage = limit(20);
+
+        // Add the stages to a pipeline
+        List<Bson> pipeline = new ArrayList<>();
+        pipeline.add(groupByCountStage);
+        pipeline.add(sortStage);
+        pipeline.add(limitStage);
+
+        MongoCollection<Critic> commentCriticCollection =
+                db.getCollection("comments", Critic.class)
+                        .withCodecRegistry(this.pojoCodecRegistry)
+                        .withReadConcern(ReadConcern.MAJORITY);
+
+        commentCriticCollection.aggregate(pipeline).into(mostActive);
         return mostActive;
     }
 }

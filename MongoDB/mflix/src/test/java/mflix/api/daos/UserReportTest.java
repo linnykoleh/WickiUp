@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-@SpringBootTest(classes = {MongoDBConfiguration.class})
+@SpringBootTest(classes = MongoDBConfiguration.class)
 @EnableConfigurationProperties
 @EnableAutoConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,14 +25,14 @@ public class UserReportTest extends TicketTest {
     private CommentDao dao;
 
     @Autowired
-    MongoClient mongoClient;
+    private MongoClient mongoClient;
 
     @Value("${spring.mongodb.database}")
-    String databaseName;
+    private String databaseName;
 
     @Before
     public void setUp() {
-        this.dao = new CommentDao(mongoClient, databaseName);
+        dao = new CommentDao(mongoClient, databaseName);
     }
 
     @Test

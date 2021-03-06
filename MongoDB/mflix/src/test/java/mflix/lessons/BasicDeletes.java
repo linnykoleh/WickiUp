@@ -21,7 +21,7 @@ public class BasicDeletes extends AbstractLesson {
      * In this lesson we are going to check out how to perform deletes and remove documents that match
      * a query predicate.
      */
-    MongoCollection<Document> sports;
+    private MongoCollection<Document> sports;
 
     @Before
     public void setUp() {

@@ -20,18 +20,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
 
-@SpringBootTest(classes = {MongoDBConfiguration.class})
+@SpringBootTest(classes = MongoDBConfiguration.class)
 @EnableConfigurationProperties
 @EnableAutoConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 public class DeleteCommentTest extends TicketTest {
 
     private CommentDao dao;
+
     @Autowired
-    MongoClient mongoClient;
+    private MongoClient mongoClient;
 
     @Value("${spring.mongodb.database}")
-    String databaseName;
+    private String databaseName;
 
     private String commentId;
 
@@ -39,22 +40,20 @@ public class DeleteCommentTest extends TicketTest {
 
     @Before
     public void setUp() {
-
-        this.dao = new CommentDao(mongoClient, databaseName);
+        dao = new CommentDao(mongoClient, databaseName);
 
         Document commentDoc = new Document("email", ownerEmail);
         commentDoc.append("date", new Date());
         commentDoc.append("text", "some text");
         commentDoc.append("name", "user name");
 
-        this.mongoClient.getDatabase(databaseName).getCollection("comments").insertOne(commentDoc);
+        mongoClient.getDatabase(databaseName).getCollection("comments").insertOne(commentDoc);
 
         commentId = commentDoc.getObjectId("_id").toHexString();
     }
 
     @Test
     public void testDeleteOfOwnedComment() {
-
         Assert.assertTrue(
                 "Should be able to delete owns comments: Check your deleteComment() method",
                 dao.deleteComment(commentId, ownerEmail));
@@ -92,6 +91,6 @@ public class DeleteCommentTest extends TicketTest {
     @After
     public void tearDown() {
         Bson deleteFiler = Filters.eq("_id", new ObjectId(this.commentId));
-        this.mongoClient.getDatabase(databaseName).getCollection("comments").deleteOne(deleteFiler);
+        mongoClient.getDatabase(databaseName).getCollection("comments").deleteOne(deleteFiler);
     }
 }

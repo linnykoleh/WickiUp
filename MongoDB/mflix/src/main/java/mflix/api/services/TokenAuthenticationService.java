@@ -32,7 +32,6 @@ public class TokenAuthenticationService {
     private String jwtSecret;
 
     public TokenAuthenticationService() {
-        super();
         log = LoggerFactory.getLogger(this.getClass());
     }
 
@@ -79,7 +78,6 @@ public class TokenAuthenticationService {
     }
 
     public String generateToken(Authentication authentication) {
-
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 
         Date now = new Date();

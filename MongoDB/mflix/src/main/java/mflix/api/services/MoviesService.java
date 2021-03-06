@@ -349,7 +349,6 @@ public class MoviesService {
      * settings.
      */
     public Map<String, ?> getConfiguration() {
-
         return this.movieDao.getConfiguration();
     }
 }

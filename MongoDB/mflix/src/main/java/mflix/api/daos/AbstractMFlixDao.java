@@ -20,6 +20,7 @@ public abstract class AbstractMFlixDao {
     protected final String MFLIX_DATABASE;
     protected MongoDatabase db;
     protected MongoClient mongoClient;
+
     @Value("${spring.mongodb.uri}")
     private String connectionString;
 

@@ -27,7 +27,6 @@ public class MovieDocumentMapper {
     }
 
     public static Movie mapToMovie(Bson bson) {
-
         Movie movie = new Movie();
         Document document = (Document) bson;
         try {
