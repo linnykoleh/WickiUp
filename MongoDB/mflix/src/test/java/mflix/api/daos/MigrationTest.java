@@ -15,7 +15,7 @@ import java.io.IOException;
 @SpringBootTest
 public class MigrationTest extends TicketTest {
 
-    MongoCollection<Document> movies;
+`    private MongoCollection<Document> movies;
 
     @Before
     public void setup() throws IOException {
