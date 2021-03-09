@@ -39,8 +39,12 @@ public class MovieDao extends AbstractMFlixDao {
     private boolean validIdValue(String movieId) {
         //TODO> Ticket: Handling Errors - implement a way to catch a
         //any potential exceptions thrown while validating a movie id.
-        //Check out this method's use in the method that follows.
-        return true;
+        //
+        try {
+            return ObjectId.isValid(movieId);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -68,7 +72,7 @@ public class MovieDao extends AbstractMFlixDao {
         return movie;
     }
 
-    private Bson buildLookupStage(){
+    private Bson buildLookupStage() {
         List<Variable<String>> let = new ArrayList<>();
         let.add(new Variable<>("id", "$_id"));
 

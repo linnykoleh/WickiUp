@@ -56,8 +56,13 @@ public class UserDao extends AbstractMFlixDao {
      */
     public boolean addUser(User user) {
         //TODO > Ticket: Durable Writes -  you might want to use a more durable write concern here!
-        usersCollection.withWriteConcern(WriteConcern.MAJORITY).insertOne(user);
-        return true;
+        try {
+            usersCollection.withWriteConcern(WriteConcern.MAJORITY).insertOne(user);
+            return true;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new IncorrectDaoOperation(e.getMessage());
+        }
         //TODO > Ticket: Handling Errors - make sure to only add new users
         // and not users that already exist.
     }
@@ -116,9 +121,14 @@ public class UserDao extends AbstractMFlixDao {
 
     public boolean deleteUserSessions(String userId) {
         //TODO> Ticket: User Management - implement the delete user sessions method
-        Document document = new Document("user_id", userId);
-        sessionsCollection.deleteOne(document);
-        return true;
+        try {
+            Document document = new Document("user_id", userId);
+            sessionsCollection.deleteOne(document);
+            return true;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return false;
+        }
     }
 
     /**
@@ -132,10 +142,15 @@ public class UserDao extends AbstractMFlixDao {
         //TODO> Ticket: User Management - implement the delete user method
         //TODO > Ticket: Handling Errors - make this method more robust by
         // handling potential exceptions.
-        Document document = new Document("email", email);
-        usersCollection.deleteOne(document);
-        deleteUserSessions(email);
-        return true;
+        try {
+            Document document = new Document("email", email);
+            usersCollection.deleteOne(document);
+            deleteUserSessions(email);
+            return true;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return false;
+        }
     }
 
     /**

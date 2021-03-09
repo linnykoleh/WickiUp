@@ -26,12 +26,12 @@ import java.util.concurrent.TimeUnit;
 public class TimeoutsTest extends TicketTest {
 
     @Autowired
-    MongoClient mongoClient;
+    private MongoClient mongoClient;
 
     private String mongoUri;
 
     @Value("${spring.mongodb.database}")
-    String databaseName;
+    private String databaseName;
 
     private MovieDao movieDao;
 

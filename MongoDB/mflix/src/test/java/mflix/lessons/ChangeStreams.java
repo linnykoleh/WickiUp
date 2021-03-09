@@ -186,8 +186,7 @@ public class ChangeStreams extends AbstractLesson {
                                         Document.parse("{'fullDocument.even': 0}"),
                                         Filters.eq("operationType", "update"))));
         List<Document> allUpdates = new ArrayList<>();
-        for (ChangeStreamDocument<Document> d :
-                comments.watch(oddFilter).fullDocument(FullDocument.UPDATE_LOOKUP)) {
+        for (ChangeStreamDocument<Document> d : comments.watch(oddFilter).fullDocument(FullDocument.UPDATE_LOOKUP)) {
             Document updatedDoc = d.getFullDocument();
             System.out.println(updatedDoc);
             if (updatedDoc.containsKey("stop")) {
