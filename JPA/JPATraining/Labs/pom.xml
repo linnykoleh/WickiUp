@@ -181,7 +181,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <hibernate.version>4.3.6.Final</hibernate.version>
-        <spring.version>4.1.4.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
     </properties>
 
     
